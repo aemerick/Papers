@@ -16,7 +16,7 @@
 
 \begin{document}
 
-\title{Simulating Dwarf Galaxy Evolution with Individual Star Feedback and Chemical Evolution I: Methods and Test Case}
+\title{REDO Simulating Dwarf Galaxy Evolution with Individual Star Feedback and Chemical Evolution I: Methods and Test Case}
 %Unstable Star Formation for the Lowest Mass Dwarf Galaxies
 \author{Andrew Emerick}
 \affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
@@ -51,7 +51,7 @@ Increasing resolution, while more expensive, generally makes it easier to model 
 
 Our work builds upon our current understanding of galactic chemodynamics while making three notable advancements: 1) direct star-by-star modeling, 2) stellar wind feedback, and 3) using an adaptive ray tracing method to follow stellar ionizing radiation. Using star-by-star modeling, we are able to capture in more detail the stellar yields from individual stars released over their lifetime. In addition to better capturing how individual metal species enrich the ISM, this allows us to chemically tag individual stars. This opens an exciting new channel for testing models of galaxy evolution by enabling us to leverage current and ongoing observations probing the detailed chemical abundances of stars in the Milky Way and Local Group. \textbf{(citations to obs campaigns - GAIA, RAVE, APOGEE, etc.).}
 
-This paper is the first in a series of papers examining in detail the role that the individual components of multi-channel stellar feedback play in galaxy dynamical and chemical evolution. In this paper we introduce a new method of modeling for feedback physics and galactic chemical enrichment in the cosmological, hydrodynamics code \texttt{Enzo}. For the first time in galaxy-scale simulations, we model star formation down to particles representing individual stars, while simultaneously capturing stellar feedback through stellar winds, core collapse and Type 1a supernovae, photoelectric heating, and ionizing radiation through ray-tracing radiative transfer. In addition, we couple to a self-consistent set of stellar yields tables from the to track stellar yields from massive star stellar winds, AGB star winds, and supernovae. We describe each mode of our multi-channel feedback implementation in detail below, and briefly discuss their implementation in a set of isolated dwarf galaxy simulations.
+This paper is the first in a series of papers examining in detail the role that the individual components of multi-channel stellar feedback play in galaxy dynamical and chemical evolution. In this paper we introduce a new method of modeling for feedback physics and galactic chemical enrichment in the cosmological, hydrodynamics code \texttt{Enzo}. For the first time in galaxy-scale simulations, we model star formation down to particles representing individual stars, while simultaneously capturing stellar feedback through stellar winds, core collapse and Type 1a supernovae, photoelectric heating, and ionizing radiation through ray-tracing radiative transfer. In addition, we couple to a self-consistent set of stellar yields tables from the to track stellar yields from massive star stellar winds, AGB star winds, and supernovae. We describe each mode of our multi-channel feedback implementation in detail below, and briefly discuss their implementation in an isolated dwarf galaxy simulation.
 
 Readers who may want to only briefly skim (or skip) over the details of our included physics are advised to just read the beginning of Section~\ref{sec:methods}, which contains a complete -- yet brief -- summary of the included physics.
 
@@ -205,54 +205,49 @@ In addition to the LW radiation from the UV background, we account for localized
 
 \section{Galaxy Initial Conditions}
 \label{sec:IC}
-The dwarf galaxy presented in this work a comparison simulation to the ``compact'' dwarf galaxy simulated in \cite{Hu2017}. There are some minor qualitative differences due to differences in initialization scheme. The gaseous disk of our galaxy is initialized as an exponential disk as used in \cite{Tonnesen2009} and \cite{Salem2015}. This is given as
+The galaxy presented in this work is constructed to be similar to the observed properties of the Local Group dwarf galaxy Leo P \citep{Giovanelli2013,McQuinn2013,McQuinn2015a,McQuinn2015}, but is not intended to be a matched model to this galaxy. Leo P is gas rich ($M_{\rm gas} > M_{*}$) and low metallicity, with $M_{\rm HI} = 8.1\times 10^{5}$~M$_{\odot}$ and $M_{*} = 5.6^{+0.4}_{-1.9} \times 10^{5}$~M$_{\odot}$ \citep{McQuinn2015a} extending to a radius $r_{\rm HI} = 500$~pc, and with $12 + \rm{log(O/H)} = 7.17 \pm 0.04$ \citep{Skillman2013}, or $Z \sim 5.4\times10^{-4}$ adopting $Z_{\odot} = 0.018$ from \cite{Asplund2009}. Our dwarf galaxy is constructed without an initial background stellar population, with a total gas mass of $1.8 \times 10^{6}$~M$_{\odot}$ (or $M_{\rm HI} = 1.35 \times 10^{6}$~M$_{\odot}$) and $Z = 4.3\times 10^{-4}$, comparable to the average $z = 0$ metallicity from the stellar models computed in \citep{McQuinn2015}.
+
+The galaxy initially consists of a smooth, exponential gas disk in hydrostatic equillibrium with a static, background dark matter potential. The gas profile follows \cite{Tonnesen2009} and \cite{Salem2015}, or
 \begin{equation}
 \rho_{\rm gas} (R,z) = \frac{M_{\rm gas}}{2\pi a^2_{\rm gas}b_{\rm gas}} 0.5^2{\rm sech}\left(\frac{R}{a_{\rm gas}}\right){\rm sech}\left(\frac{z}{b_{\rm gas}}\right)
 \end{equation}
-where $a_{\rm gas}$ and $b_{\rm gas}$ are the radial and vertical gas disk scale heights, and $M_{\rm gas}$ is approximately 70\% of the total gas mass. We set $a_{\rm gas} = 1$~kpc, $b_{\rm gas} = 0.35$~kpc, and a total gas mass of $M_{\rm T,gas} = 4.0\times 10^7$~M$_{\odot}$. We include a static \citet{MiyamotoNagai1975} stellar background potential with total mass $M_{*} = 2\times 10^7 \rm{M_{\odot}}$ and the same scale height as the gas disk. This potential is given as
-\begin{equation}
-\Phi_* (R,z) = GM_{*}\left[R^2 + \left(a_* + \sqrt{z^2 + b_*^2}\right)^2\right]^{-1/2}.
-\end{equation}
-Our dwarf galaxy is embedded in a static, background, \citet{Burkert1995} dark matter potential with $M_{\rm vir} = 10^{10} \rm{M_{\odot}}$, $R_{\rm vir}~=~44$~kpc and r$_{\rm s} = 4.4$~kpc. This gives a maximum circular velocity $V_{\rm max} = 36.1$~km~s$^{-1}$ at $R_{\rm vmax}~=~1.43$~kpc. We note \cite{Hu2017} uses a NFW profile with the same concentration, giving $V_{\rm max} = 37.6$~km~s$^{-1}$ at $R_{\rm vmax}~=~9.5$~kpc. This is the most significant difference between our two initial conditions. The temperature of the gas disk is set by enforcing initial hydrostatic equilibrium with both the background stellar and dark matter potentials. The initial gas metallicity is set to 0.1 Z$_{\odot}$.
+where $a_{\rm gas}$ and $b_{\rm gas}$ are the radial and vertical gas disk scale heights, and $M_{\rm gas}$ is approximately 70\% of the total gas mass. We set $a_{\rm gas} = 250$~pc, $b_{\rm gas} = 100$~pc, and a total gas mass of $M_{\rm T,gas} = 2.0\times 10^6$~M$_{\odot}$. We adopt a Burkert \citet{Burkert1995} dark matter potential with $M_{\rm vir} = 3.5^{8} \rm{M_{\odot}}$, $R_{\rm vir}~=~14.3$~kpc and r$_{\rm s} = 370$~pc. This gives a maximum circular velocity $V_{\rm max} = 17.4$~km~s$^{-1}$ at $R_{\rm vmax}~=~1.2$~kpc. These parameters were adopted specifically to match the observed dynamical mass of Leo P interior to 500 pc, or $M_{\rm dyn} (r < 500~\rm{pc}) = 2.7\times 10^{7}$ M$_{\odot}$, and represent virial properties near the minimum halo mass expected for galaxies of this size \citep{Ferrero2012} (need more cite). We will explore the effect of adopting different dark matter potentials within the large range of possible profiles in a future work.
 
-Following the initialization procedure of \cite{Hu2017}, we use artificial supernova driving to disturb the initially smooth gas profile. This generates realistic ISM turbulence and density structures and prevents the otherwise uniform collapse of the gas to a thin disk that rapidly undergoes a large burst of star formation. The supernova driving occurs at random positions throughout the gas disk in regular intervals of 0.5 Myr until 10 Myr after the first star forms. This SNe rate corresponds to the equilibrium SFR of this galaxy in \cite{Hu2017}, or $1.2\times 10^{-3}$~M$_{\odot}$~yr$^{-1}$. To maintain effective supernova driving, these explosions are uncorrelated with the local gas density \citep{Gatto2017}. The yields from these artificial supernovae are set to not affect the chemical evolution of the galaxy, but to maintain constant local gas abundances.
-
-We simulate two realizations of the same dwarf galaxy in order to approximately test the effects of using radiative transfer to track stellar ionizing radiation as compared to a more approximate model. The first, our fiducial model, includes all physics as discussed above. The second uses all physics, but approximates the downside of approximate radiative feedback models by limiting ionizing radiation to local regions around the star particle, deleting photons that travel more than 50 pc. This is a very conservative mimicry of a Stromgren type approximation for photoionization feedback \citep[e.g.][]{Hopkins2012,Hu2017}, which is often used instead of full radiative transfer. Briefly, this generally photoionizes all gas within the Stromgren radius of a given star, expanding the region to account for overlapping HII regions by making estimates of the local density dependent recombination rate to determine if the region should be expanded. This, along with lack of angular information, can mass-bias the ionizing radiation, preferentially depositing most of the ionizing flux in local denser regions even though this ionizing radiation may be able to travel farther. Allowing photons to propagate normally within 50 pc effectively assumes this approximation is entirely consistent with radiative transfer within 50 pc, and asks the question as to whether or not longer distance photon propagation is important for galaxy evolution. We refer to these two galaxies as our ``fiducial'' and ``shortrad'' models for the remainder of this work.
-
-% move leo P stuff to another paper: Each of the dwarf galaxies presented in this paper are modeled after the current observed properties of the Local Group ultrafaint dwarf galaxy Leo P. Leo P is remarkable for its large gas to stellar ratio, Mgas = XXX Mstar = XXX, and presence of ongoing star formation -- SFR = XX. HI observations of Leo P constrain its dynamical mass interior to XX pc to be XX Msun. Each of our dwarf galaxies are embedded in a fixed, constant Burkert dark matter profile, of which we adopt a scale radius of 395 pc. This implies a total virial mass of XXX Msun and virial radius of XXX kpc, using the definition of Bryan et. al. 199x. 
-% The galaxy temperature is set such that the gas is in hydrostatic equilibrium with the background dark matter halo, ignoring the self-gravity of the gas. We adopt the initial gas phase metal fraction of  metal fraction of $Z = 4.3\times10^{-4}$, which is within the span of SFH modeled metallicities of Leo P presented in Fig. 8 of \cite{McQuinn2015a}; we note this is slightly lower than the observed current metallicity of Leo P, with $12 + \rm{log(O/H)} = 7.17 \pm 0.04$, or $Z \sim 5.4\times10^{-4}$ adopting $Z_{\odot} = 0.018$ from \cite{Asplund2009}. 
+Following the initialization procedure of \cite{Hu2017}, we use artificial supernova driving to generate realistic densities and turbulent properties in the galaxy ISM. This additionally prevents an otherwise uniform collapse of the gas disk. The supernovae explode at a fixed rate of $0.4$~Myr$^{-1}$, corresponding to the SFR obtained given the central HI surface density and the relation presented in \citep{Roychowdhury2009}. We stop the artificial driving 25~Myr after the first star particle forms. These artificial supernova do not drive chemical evolution of the galaxy, containing metal yields corresponding to the mean ISM abundances. 
 
 \section{Results}
 \label{sec:results}
 
-The shortrad galaxy agrees fairly well with the results found in both \citep{Hu2016} and \citep{Hu2017}, in terms of both morphological structure and star formation properties. This is in contrast to the results found in \citep{Forbes2016}, for reasons outlined in the discussion of \citet{Hu2017}. However, our full physics simulation, while similar to \citep{Hu2017}, shows significant differences. This is discussed in detail below.
+%\begin{figure*}
+%\includegraphics[width=0.23\linewidth]
 
 
-\begin{figure*}
-\includegraphics[width=0.23\linewidth]{panel/HI_sndriving.png}
-\includegraphics[width=0.23\linewidth]{panel/H2_sndriving.png}
-\includegraphics[width=0.23\linewidth]{panel/G_o_sndriving.png}
-\includegraphics[width=0.23\linewidth]{panel/temperature_sndriving.png}\\
-\vspace{0.1cm}
-\includegraphics[width=0.23\linewidth]{panel/HI_shortrad.png}
-\includegraphics[width=0.23\linewidth]{panel/H2_shortrad.png}
-\includegraphics[width=0.23\linewidth]{panel/G_o_shortrad.png}
-\includegraphics[width=0.23\linewidth]{panel/temperature_shortrad.png}
-\caption{Projections of our fiducial galaxy (top) and shortrad galaxy (bottom) at the end of the simulation time. The left two panels are integrated projections through the full disk, giving HI and H$_2$ column density. On the right, we show thin, face-on projections of G$_{o}$ and temperature in the central 50 pc of the disk. We note both the strange dark region in the top $G_o$ plot and the white boxes at the edges of the thin projections are artifacts of the visualization process, and are not present in the simulation.\textbf{yes plot fonts and label sizes need fixing - AE}}
-\label{fig:panel}
-\end{figure*}
+
+%\begin{figure*}
+%\includegraphics[width=0.23\linewidth]{panel/HI_sndriving.png}
+%\includegraphics[width=0.23\linewidth]{panel/H2_sndriving.png}
+%\includegraphics[width=0.23\linewidth]{panel/G_o_sndriving.png}
+%\includegraphics[width=0.23\linewidth]{panel/temperature_sndriving.png}\\
+%\vspace{0.1cm}
+%\includegraphics[width=0.23\linewidth]{panel/HI_shortrad.png}
+%\includegraphics[width=0.23\linewidth]{panel/H2_shortrad.png}
+%\includegraphics[width=0.23\linewidth]{panel/G_o_shortrad.png}
+%\includegraphics[width=0.23\linewidth]{panel/temperature_shortrad.png}
+%\caption{Projections of our fiducial galaxy (top) and shortrad galaxy (bottom) at the end of the simulation time. The left two panels are integrated projections through the full disk, giving HI and H$_2$ column density. On the right, we show thin, face-on projections of G$_{o}$ and temperature in the central 50 pc of the disk. We note both the strange dark region in the top $G_o$ plot and the white boxes at the edges of the thin projections are artifacts of the visualization process, and are not present in the simulation.\textbf{yes plot fonts and label sizes need fixing - AE}}
+%\label{fig:panel}
+%\end{figure*}
 
 \subsection{Morphological Structure}
 \label{sec:structure}
 We show edge-on (left) and face-on (right) projections of our fiducial galaxy (top) and shortrad (bottom) at the end of the simulation time in Figure~\ref{fig:panel}. The left two panels are number density weighted projections through the full disk, giving HI and H$_2$ column density. The right hand panels show face-on projections through thin (50 pc) slabs at the center of the galaxy for the interstellar radiation field normalized to the MW value in the solar neighborhood, or $G_o$, and gas temperature. In general, the shortrad simulation is visually consistent with that found in \citep{Hu2016,Hu2017}, exhibiting a thick, puffy disk with a relatively smooth HI column and an H$_2$ distribution that is more confined to the plane of the galaxy and is roughly uniformly distributed. Looking at the fiducial simulation, it is clear that the ray-tracing radiative transfer produces a significant change in the galactic structure. Both the HI and H$_2$ are significantly more disturbed, with notable gaps in the HI column caused by regions carved out by the ionizing radiation, and with significantly less uniform H$_2$ column, from molecular hydrogen destroyed through ionization heating. 
 
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{panel/sndriving_particles}\\
-\vspace{0.1cm}
-\includegraphics[width=0.9\linewidth]{panel/shortrad_particles}
-\caption{Face on, density weighted projections of gas number density for both galaxies. Each of the black points represents a single particle (star) in the simulation, and can be a living star, a white dwarf, a massless tracer originating from a Type Ia explosion, or a SNII remnant. The population is dominated by low mass stars; only a fraction of these particles have active feedback (winds, radiation, supernovae) at any one moment. \textbf{yes plot fonts and label sizes need fixing - AE}}
-\label{fig:number density}
-\end{figure}
+%\begin{figure}
+%\includegraphics[width=0.9\linewidth]{panel/sndriving_particles}\\
+%\vspace{0.1cm}
+%\includegraphics[width=0.9\linewidth]{panel/shortrad_particles}
+%\caption{Face on, density weighted projections of gas number density for both galaxies. Each of the black points represents a single particle (star) in the simulation, and can be a living star, a white dwarf, a massless tracer originating from a Type Ia explosion, or a SNII remnant. The population is dominated by low mass stars; only a fraction of these particles have active feedback (winds, radiation, supernovae) at any one moment. \textbf{yes plot fonts and label sizes need fixing - AE}}
+%\label{fig:number density}
+%\end{figure}
 
 The differences are further emphasized in the temperature projections, where a visually more significant fraction of the gas in the fiducial simulations sits at temperatures near 10$^4$~K, and much less sits at very low ($\sim$ 10 K) temperatures. The differences between gas phase in these simulations is discussed in Section~\ref{sec:phase}. The ISRF of both galaxies is quite similar, though since the ISRF in our model is generated by massive stars alone, it reflects the SFR over the previous 10 - 40 Myr, which is in fact similar in both galaxies (see Section~\ref{sec:sfr}).
 
@@ -261,48 +256,71 @@ Finally, in Figure~\ref{fig:number density} we present face-on projections of ga
 \subsection{SFR and Mass Evolution}
 \label{sec:sfr}
 
-\begin{figure*}
-\includegraphics[width=0.32\linewidth]{sfr_comparison}
-\includegraphics[width=0.32\linewidth]{stars_mass_comparison}
-\includegraphics[width=0.32\linewidth]{HI_mass_comparison}
-\caption{The 10 Myr averaged SFR (left), stellar mass (middle), and disk HI mass (right) for each galaxy. \textbf{need to increase font sizes and y axis lim}}
-\label{fig:SFR}
-\end{figure*}
+%\begin{figure*}
+%\includegraphics[width=0.32\linewidth]{sfr_comparison}
+%\includegraphics[width=0.32\linewidth]{stars_mass_comparison}
+%\includegraphics[width=0.32\linewidth]{HI_mass_comparison}
+%\caption{The 10 Myr averaged SFR (left), stellar mass (middle), and disk HI mass (right) for each galaxy. \textbf{need to increase font sizes and y axis lim}}
+%\label{fig:SFR}
+%\end{figure*}
 
 In Figure ~\ref{fig:SFR} we compare the star formation rates of both simulations (left), along with the stellar mass evolution (middle), and HI mass evolution (right). The peak and average SFRs for each galaxy over the 270~Myr simulation time are comparable, with a peak at roughly $0.04$~M$_{\odot}$~yr$^{-1}$ and an average of about $1.1~\times~10^{-3}$~M$_{\odot}$~yr$^{-1}$ in each simulation. However, the SFR evolution is qualitatively different, with the fiducial run exhibiting a $\sim$80~Myr period of minimal, patchy star formation between 125~Myr and 200~Myr ($<\rm{SFR}>~=~2.2\times~10^{-5}~$M$_{\odot}$~yr$^{-1}$). Although there is a lull in star formation during this time in the shortrad case, star formation is continuous. This difference is due solely to the long-range effects of stellar ionizing radiation, though we cannot also rule out the possibility that it also makes SN feedback more effective. It is apparent in this simulation that stellar radiation feedback is effective at suppressing star formation galaxy wide, not just locally.
 
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{HI_surface_density}
-\caption{\textbf{Coloring / style needs to change} Time averaged HI surface density profiles (dashed line) for both galaxies over the simulation time. The hatched regions show one standard deviation from the mean in each radial bin. Although there is noticeable variance in the HI profile in both galaxies, it is significantly greater for the full physics simulation. Truncating the ionizing photons to local regions alone results in a steadier and on average greater amount of HI at all but the very outer edge of the galaxy.}
-\label{fig:HI profile evolution}
-\end{figure}
+%\begin{figure}
+%\includegraphics[width=0.9\linewidth]{HI_surface_density}
+%\caption{\textbf{Coloring / style needs to change} Time averaged HI surface density profiles (dashed line) for both galaxies over the simulation time. The hatched regions show one standard deviation from the mean in each radial bin. Although there is noticeable variance in the HI profile in both galaxies, it is significantly greater for the full physics simulation. Truncating the ionizing photons to local regions alone results in a steadier and on average greater amount of HI at all but the very outer edge of the galaxy.}
+%\label{fig:HI profile evolution}
+%\end{figure}
 
 The long-range effects of the ionization are clear in the HI evolution of these galaxies (middle). The presence of stellar ionizing radiation throughout the galaxy decreases the amount of HI gas present in the disk by a factor of $\sim$4, by the end of the simulation time. Figure~\ref{fig:HI profile evolution} shows the average HI surface density profile of each galaxy over the course of the simulation time, with the filled regions indicating one standard deviation from the mean. These differences in evolution lead to differences in metal production and distribution in these two galaxies, discussed further in \ref{sec:chemical evolution}.
 
+\subsection{Outflow Properties}
+\label{sec:outflows}
+
+Show mass loading factors as a function of time here at all radii.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth]{outflow_velocity_distribution}
+\caption{The time averaged radial velocity distribution of outflowing material external to the disk and within the virial radius of our dwarf galaxy. The outflowing material is multiphase, broken into WNM, WIM, and HIM. See XXX for definitions of these regimes. We note that WNM is often labeled simply as ``cold'', or gas below $T = 10^{4}$K. There is little to no outflowing mass in the CNM or molecular phases.}
+\label{fig:outflow_velocity}
+\end{figure}
+
+Detailed outflow properties, beyond outflow rates and mass loading factors, are important discriminators between the model dependent feedback physics included in galaxy simulations. (this has been shown previously with XX XX XX producing very different outflow properties depending on what physics is included). In Figure~\ref{fig:outflow_velocity} we present radial velocity distributions of all material outside our dwarf galaxy's disk, and within the halo, broken into three gas phases. Half of the outflow, by mass, is at velocities below 40 km s$^{-1}$, with 75\% at velocities of 70 km s$^{1} or below. This gas is dominated by the two warm gas phases, with the WNM dominating at lower velocities, and the WIM at higher velocities. The distribution has a very long tail out to and beyond 500 km s$^{-1}$. These dominant launching mechanism in this simulation are supernovae (Emerick et. al. in prep), generating a rapidly moving and volume filling HIM. However, as shown the HIM comprises very little of the outflow by mass. Most of the outflowing gas comes from the warm phase, pushed out by the high pressure, fast moving HIM. Some of this warm gas certainly originates from adiabatically and radiatively cooled HIM, however. The amount of transfer between phases in the halo of our galaxy will be investigated in future work.
+
+Final paragraph on metallicity of outflowing material.
 
 \subsection{Phase Diagrams}
 \label{sec:phase}
 
-Figure~\ref{fig:phase} gives a comparison of the phase diagrams for each simulation, averaged over the final 150 Myr of simulation time. There are a few distinct regions in the left diagram that one can easily distinguish. There is an overdensity at low temperatures and densities ($\sim$~100~K and between $n = 0.1$~cm$^{-3}$ and $n = 1.0$~cm$^{-3}$) which extends somewhat to higher densities. This regime marks the approximate density regime where gas self-shielding against the UVB becomes significant (see Fig. 3 of \citet{Rahmati2013}). The large extensions to low densities and high temperatures mark gas heated during initial SNe injection and subsequent shock heated gas. Finally, there are two overdensities at temperatures around 10$^{4}$ K. The larger, and lower, of the two is hot phase of the the equillibrium cooling curve, and is obvious in the right hand diagram as well. However, the higher of the two is less pronounced in the right hand diagram. This is photoionized gas that has been photoheated to around $T = 2\times 10^4$~K.
+Our simulations contain both ample resolution and microphysics to capture a multi-phase medium within the ISM and halo of our simulated galaxy. We define five different gas phases following those defined in (Cite Draine ISM): molecular, cold neutral medium (CNM), warm neutral medium (WNM), warm ionized medium (WIM), and hot ionized medium (HIM). See Appendix (ref) for a quantitative definition of these phases. Each of these exist in our simulations, and are regulated by the complex interplay between turbulence, self-gravity, and stellar feedback throughout the galaxy's evolution. Here we discuss the phase properties of the gas throughout the simulation box and within the ISM of our dwarf galaxy.
 
-Comparing these two diagrams it is apparent that the stellar ionizing radiation significantly impacts the detailed properties of the galaxy's ISM in regions well outside our artificial truncation radius of 50 pc. This radiation is able to prevent the cooling of dense gas to the very low temperatures seen in the right hand diagram and maintains a significant amount of photoheated gas at temperatures around 10$^4$~K.  
+Figure~\ref{fig:phase} shows the temperature-density phase diagram of all gas in the simulation domain, averaged over the final 50 Myr of simulation time. One can readily identify the two most massive regions of gas in the simulation, a low density, warm phase produced through ionization and supernovae heating, and a cold, high density phase which makes up most of the mass in the galaxy's disk (see Figure~\ref{fig:ISM_evolution}). [discuss what is / is not in disk from this diagram]
 
 \begin{figure*}
-\includegraphics[width=0.45\linewidth]{sndriving_phase.png}
-\includegraphics[width=0.45\linewidth]{shortrad_phase.png}
-\caption{The temperature-number density phase diagrams for both simulations, averaged over the last 150 Myr of simulation time.}
+\includegraphics[width=0.45\linewidth]{phase_diagram.png}
+\caption{The full-box temperature vs. number density phase diagram of our dwarf galaxy simulation, averaged over the final 50 Myr of simulation time.}
 \label{fig:phase}
+\end{figure*}
+
+The mass of the ISM in our dwarf galaxy is dominated by the CNM over the entire simulation time, as shown in the left panel of Figure~\ref{fig:ISM_evolution}. Together, the CNM and WNM comprise roughly 90\% of the galaxy's gas mass. The hotter WIM and HIM contain little mass, but by far dominate the ISM volume, as shown in the right panel. (more here)
+
+\begin{figure*}
+\includegraphics[width=0.45\linewidth]{mass_fraction_evolution.png}
+\includegraphics[width=0.45\linewidth]{volume_fraction_evolution.png}
+\caption{The evolution of the mass and volume fractions for each phase of our galaxy's ISM. This figures only consider gas present within the disk of the galaxy.}
+\label{fig:ISM_evolution}
 \end{figure*}
 
 \subsection{Chemical Evolution} %and Metal Enriched Outflows}
 \label{sec:chemical evolution}
 Although our simulations are long enough to begin to discuss morphological and dynamical differences between the galaxies, they are too short to focus in detail in chemodynamical evolution. For this reason, we make only a brief comparison between these two galaxies, saving a more detailed examination for our simulations of lower mass dwarf galaxies run for $\sim$Gyr timescales (Emerick et. al. in prep).
 
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{element_mass_comparison_fraction}
-\caption{Ratio of amount of mass in a given mutually exclusive phase (disk, halo, and stars) between the fiducial and shortrad simulations. The halo ratio has been multiplied by 0.5 for clarity. We caution against making any interpretation of Mn and ratios for the s and r-process elements (Y, Ba, and Eu) as there is very little mass of these elements produced in the $\sim$100 Myr timescales examined here. \textbf{comment: I thought of a few different ways of conveying this information, but all were painful to look at or make (e.x. double bar graph showing fractional element dist)... this was the least painful, but open to suggestions}.}
-\label{fig:element mass ratio}
-\end{figure}
+%\begin{figure}
+%\includegraphics[width=0.9\linewidth]{element_mass_comparison_fraction}
+%\caption{Ratio of amount of mass in a given mutually exclusive phase (disk, halo, and stars) between the fiducial and shortrad simulations. The halo ratio has been multiplied by 0.5 for clarity. We caution against making any interpretation of Mn and ratios for the s and r-process elements (Y, Ba, and Eu) as there is very little mass of these elements produced in the $\sim$100 Myr timescales examined here. \textbf{comment: I thought of a few different ways of conveying this information, but all were painful to look at or make (e.x. double bar graph showing fractional element dist)... this was the least painful, but open to suggestions}.}
+%\label{fig:element mass ratio}
+%\end{figure}
 
 In Figure~\ref{fig:element mass ratio} we divide the total mass of each element contained in each of three regimes (stars, disk, or halo) of the fiducial simulation by the mass in the shortrad simulation (i.e. $>$ 1 means more mass in the given in the given phase in the fiducial simulation). We multiply the halo ratio, defined as all elements outside the disk but within the virial radius, by 0.5 for clarity. Although the total metal production in each galaxy is similar, the partitioning of those metals differs significantly.
 
@@ -405,7 +423,7 @@ where $E_{51}$ is the injection energy in units of 10$^{51}$~erg, $n_{o}$ is the
 \centering
 \includegraphics[width=0.4\linewidth]{sn_density_hist}
 \includegraphics[width=0.4\linewidth]{sn_radius_hist}
-\caption{Distribution of peak and average gas densities (left) in the injection region of each of the supernovae from simulation XXX. On the right, we show the radius of the pressure driven snowplow phase of the supernova, computed using the average and peak densities, for each supernova. The vertical lines give one and three cell widths. As shown, a fraction of these SN are certainly under resolved, with R$_{\rm PDS}$ less than the size of the initial injection region, but a majority are resolved. \textbf{font sizes and labels need improving - AE}}
+\caption{Distribution of peak and average gas densities (left) in the injection region of each of the supernovae from the simulation. On the right, we give the distribution of the radius of the pressure driven snowplow phase for each supernova assuming a uniform medium at either the peak or average density in the injection region. The vertical lines give one and 4.5 cell widths. As shown, a fraction of these SN are certainly under resolved, with R$_{\rm PDS}$ less than a single cell size, but a majority are resolved.}
 \label{fig:supernova histogram}
 \end{figure}
 
