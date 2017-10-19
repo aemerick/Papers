@@ -219,57 +219,53 @@ Following the initialization procedure of \cite{Hu2017}, we use artificial super
 
 \section{Results}
 \label{sec:results}
+\textit{intro text}
 
-%\begin{figure*}
-%\includegraphics[width=0.23\linewidth]
-
-
-
-%\begin{figure*}
-%\includegraphics[width=0.23\linewidth]{panel/HI_sndriving.png}
-%\includegraphics[width=0.23\linewidth]{panel/H2_sndriving.png}
-%\includegraphics[width=0.23\linewidth]{panel/G_o_sndriving.png}
-%\includegraphics[width=0.23\linewidth]{panel/temperature_sndriving.png}\\
-%\vspace{0.1cm}
-%\includegraphics[width=0.23\linewidth]{panel/HI_shortrad.png}
-%\includegraphics[width=0.23\linewidth]{panel/H2_shortrad.png}
-%\includegraphics[width=0.23\linewidth]{panel/G_o_shortrad.png}
-%\includegraphics[width=0.23\linewidth]{panel/temperature_shortrad.png}
-%\caption{Projections of our fiducial galaxy (top) and shortrad galaxy (bottom) at the end of the simulation time. The left two panels are integrated projections through the full disk, giving HI and H$_2$ column density. On the right, we show thin, face-on projections of G$_{o}$ and temperature in the central 50 pc of the disk. We note both the strange dark region in the top $G_o$ plot and the white boxes at the edges of the thin projections are artifacts of the visualization process, and are not present in the simulation.\textbf{yes plot fonts and label sizes need fixing - AE}}
-%\label{fig:panel}
-%\end{figure*}
-
-\subsection{Morphological Structure}
+\subsection{Morphological Structure and Evolution}
 \label{sec:structure}
 
-We begin by characterizing the morphological properties of our dwarf galaxy, as demonstrated in a series of face-on and edge-on images over the simulation time, presented in Figure~\ref{fig:panel_x} and Figure~\ref{fig:panel_z}. Each figure gives density weighted projections of number density (first row), temperature slices (second row), HI column density projections (third row), and O column density projections (fourth row), at four different times in the simulation \textit{(list times here)}. In addition, the number density plots show all main sequence stars in the simulation at the given time, represented by individual black points. \textit{(discuss properties and any interesting characteristics here)}
+We begin by characterizing the morphological properties of our dwarf galaxy, as demonstrated in a series of face-on and edge-on images over the simulation time, presented in Figure~\ref{fig:panel_x} and Figure~\ref{fig:panel_z}. Each figure gives density weighted projections of number density (first row), temperature slices (second row), HI column density projections (third row), and O column density projections (fourth row), at four different times in the simulation \textit{(list times here)}. In addition, the number density plots show all main sequence stars in the simulation at the given time, represented by individual black points. \textit{(discuss properties and any interesting characteristics here... maybe give a table of scale height, scale radius, half light radius, at each of these times?)}
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.975\linewidth]{multiplot_4x4_x.png}
-\caption{Edge on projections (placeholder)}
+\caption{textbf{Draft figure - need to pretty up and finalize fields and times.} Edge-on views of our dwarf galaxy at four different times in its evolution, beginning with the time at first star formation and ending at XXX Myr. Shown are density weighted projections of number density (top row), temperature slices (second row), and integrated projections giving HI column density (third row) and O column density (fourth row). Additionally, each individual main sequence star particle is shown in the number density projections as a single black dot.}
 \label{fig:panel_x}
 \end{figure*}
+
+The gas disk is is thin outside the stellar radius of our galaxy, but is still resolved. In Figure~\ref{fig:scale_height} we plot the scale height of our gas disk as a function of radius for various times over the simulation evolution, including the initial conditions. At the outer edges of the cold disk, the scale height is roughly 15 pc. Prior to the first star formed, the scale height in the inner 200 pc is roughly 20 pc. Though small, each of these scale heights are resolved at our maximum resolution of 1.8 pc. However, the typical scale heights are much larger after the onset of stellar feedback, roughly 100-200 pc at various above/below the stellar disk. The stellar feedback produces vertical density profiles that decrease slowly with height above/below the midplane, leading to these large scale heights. (\textit{I have a very rough couple sentences here on the mass-weighted height of the disk, but commented it out...}
+%We additionally compute the mass weighted height of the disk, defined as $H = (\sum{Mz^2}/\sum{M})^{1/2}$, where the summation is over each gas cell, as a function of radius (not shown here). $H$ is generally larger than the scale height by a factor of 2, but is comparable to the scale height at radii with ongoing star formation, indicating a particularly uniform-then-truncated density distribution. At large radii, away from active star formation, $H$ is roughly 50 pc, or $\sim$ 3 times the scale height.
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.975\linewidth]{multiplot_4x4_z.png}
-\caption{Face on projections (placeholder)}
+\caption{\textbf{Draft figure - need to pretty up and finalize fields}. Same as Figure~\ref{fig:panel_x}, but showing face-on projections/slices.}
 \label{fig:panel_z}
 \end{figure*}
+
+The increased gravitational potential towards the center of our dwarf galaxy leads to an inside-out star formation evolution, whereby star formation propagates from the inner regions outward during the galaxy's evolution. This is obvious in the face-on panels, which demonstrate the growth of the stellar population from the center outward, and the declining gas densities inside-out as a result of stellar feedback driven winds. This region quickly becomes volume-filled with warm and hot gas generated from radiation feedback and supernovae. Both the ISM and the halo gas is multi-phase, containing gas at cold, warm, and hot temperatures with a range of densities, as evident by the temperature slices in both panels. 
+
+Interestingly, there is significant structure well above the gas disk in the form of dense clouds and filamentary features, as seen in the edge-on projections. These gas cold gas clumps appear to have typical sizes on order of $\sim$ 10 pc, but with tails that can extend up to 100 pc. These consist of both cool, self-gravitating gas clumps that are being pushed out and ablated by the stellar feedback driven winds, and gas that is cooling and condensing in the disk-halo interface of our dwarf galaxy. These clumps have typical velocities on order of a few to 10 km s$^{-1}$, and appear to survive for 10 - 100 Myr before being fully ablated or re-accreted onto the main body of the gaseous disk. The evolution of these dense clumps in the context of the disk-halo interface in our low mass dwarf galaxy will be examined in a future work. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.975\linewidth]{scale_height}
+\caption{\textbf{VERY ROUGH DRAFT FIGURE:}\textit{Current scale height computation is approximate only... need to write a better method which will help with some of the noisiness of the result, and not be prone to over/underestimating}. The average gas disk scale height as a function of radius for the last XX Myr of simulation time (black) as compared to the uniform initial conditions (blue) and the scale height profile immediately before the first star formed (orange).}
+\label{fig:scale_height}
+\end{figure}
 
 \subsection{SFR and Mass Evolution}
 \label{sec:sfr}
 
-\textit{ Give plots here showing SFR + SNR, HI mass evolution, and stellar mass evolution. Would be nice to combine this somehow into as few plots as possible. Discuss evolution (this is likely the largest change with simulation time (will we hit a quiescent period??))}
+\textit{Discuss evolution in Figure~\ref{fig:sfr_mass_evolution} (this is may have the largest qualitative change with more simulation time (will we hit a quiescent period??))}
 
-%\begin{figure*}
-%\includegraphics[width=0.32\linewidth]{sfr_comparison}
-%\includegraphics[width=0.32\linewidth]{stars_mass_comparison}
-%\includegraphics[width=0.32\linewidth]{HI_mass_comparison}
-%\caption{The 10 Myr averaged SFR (left), stellar mass (middle), and disk HI mass (right) for each galaxy. \textbf{need to increase font sizes and y axis lim}}
-%\label{fig:SFR}
-%\end{figure*}
+\begin{figure*}
+\centering
+\includegraphics[width=0.475\linewidth]{sfr_snr}
+\includegraphics[width=0.475\linewidth]{mass_evolution}
+\caption{The star formation rate and core collapse supernova rate in our dwarf galaxy in 10 Myr bins (left), along with the evolution of the total gas mass (black), HI mass (blue), H$_2$ mass (orange), and stellar mass (red) in the galaxy (right).}
+\label{fig:sfr_mass_evolution}
+\end{figure*}
 
 \subsection{Outflow Properties}
 \label{sec:outflows}
@@ -306,12 +302,13 @@ Our simulations contain both ample resolution and microphysics to capture a mult
 Figure~\ref{fig:phase} shows the temperature-density phase diagram of all gas in the simulation domain, averaged over the final 50 Myr of simulation time. One can readily identify the two most massive regions of gas in the simulation, a low density, warm phase produced through ionization and supernovae heating, and a cold, high density phase which makes up most of the mass in the galaxy's disk (see Figure~\ref{fig:ISM_evolution}). [discuss what is / is not in disk from this diagram]
 
 \begin{figure}
-\includegraphics[width=0.45\linewidth]{phase_diagram.png}
+\centering
+\includegraphics[width=0.95\linewidth]{phase_diagram.png}
 \caption{The full-box temperature vs. number density phase diagram of our dwarf galaxy simulation, averaged over the final 50 Myr of simulation time.}
 \label{fig:phase}
 \end{figure}
 
-The mass of the ISM in our dwarf galaxy is dominated by the CNM over the entire simulation time, as shown in the left panel of Figure~\ref{fig:ISM_evolution}. Together, the CNM and WNM comprise roughly 90\% of the galaxy's gas mass. The hotter WIM and HIM contain little mass, but by far dominate the ISM volume, as shown in the right panel. (more here)
+The mass of the ISM in our dwarf galaxy is dominated by the CNM over the entire simulation time, as shown in the left panel of Figure~\ref{fig:ISM_evolution}. However, the volume is dominated by both the WIM and HIM gas phases, as shown in the right panel. Together, these figures better quantify the general properties observed in the panel plots in Figure~\ref{fig:panel_x} and Figure~\ref{fig:panel_z}. Together, the CNM and WNM comprise roughly 90\% of the galaxy's mass throughout its entire evolution. The WNM represents roughly 30\% of the volume at the end of the simulation, while the volume of the CNM is completely negligible. Together, the two warm phases, WNM and WIM, comprise a majority of the ISM volume, the rest occupied by the HIM. 
 
 \begin{figure*}
 \centering
