@@ -221,6 +221,8 @@ Following the initialization procedure of \cite{Hu2017}, we use artificial super
 \label{sec:results}
 \textit{intro text}
 
+We make extensive use of the open-source \textsc{yt} toolkit \citep{yt} in the analysis of these simulations. All of the analysis scripts used for this work can be found at https://github.com/aemerick/galaxy-analysis.
+
 \subsection{Morphological Structure and Evolution}
 \label{sec:structure}
 
@@ -257,13 +259,15 @@ Interestingly, there is significant structure well above the gas disk in the for
 \subsection{SFR and Mass Evolution}
 \label{sec:sfr}
 
-\textit{Discuss evolution in Figure~\ref{fig:sfr_mass_evolution} (this is may have the largest qualitative change with more simulation time (will we hit a quiescent period??))}
+We present the star formation rate (SFR) and core collapse supernova rate (SNR) evolution of our dwarf galaxy as measured in 10 Myr bins in the left panel of Figure~\ref{fig:sfr_mass_evolution}. By the end of the simulation, there have been no Type 1a supernovae. Within the first 40 Myr of evolution the SFR rises quickly to between $2-4 \times 10^{-4}$ M$_{\odot}$ yr$^{-1}$, and remains at this level with fluctuations of about a factor of 2 at most.\footnote{The granularity in our star formation algorithm creates a lower limit in the SFR that depends on the period over which the SFR is measured ($\Delta t$). Since we produce stars in $\sim 100$ M$_{\odot}$ sets, the smallest value for our measured SFR is $\sim 100/ \Delta t$. For $\Delta t = 10$ Myr this is 10$^{-5}$ yr$^{-1}$.} Averaging over the entire simulation time since the first star was formed, we obtain a $<\rm{SFR}> = 2.34 \times 10^{-4}$ M$_{\odot}$ yr$^{-1}$. (compare to observed galaxies given gas mass).
+
+At initialization, the H and He of our dwarf galaxy is entirely neutral, with no molecular hydrogen component. By the time of first star formation ($t=0$ in Figure~\ref{fig:sfr_mass_evolution}), HI still dominates the mass of the galaxy, but a fairly significant component of molecular hydrogen has formed, with a mass of about $6 \times 10^5$ M$_{\odot}$, or roughly 17\% of the total mass in the galaxy's disk. The total amount of molecular hydrogen mass in the system remains fairly consistent throughout the evolution, yet its fraction increases to about 25\% as the total amount of mass in the disk decreases through feedback driven winds. Small drops in the H$_2$ mass correspond with small increases in the total stellar mass, as some small fraction of H$_2$ is converted into stars, and more is destroyed from the subsequent feedback. Examining the molecular properties of the ISM in low mass dwarf galaxies in more detail is a vital avenue of future research, as there are significant observational uncertainties in deriving H$_2$ content of galaxies in this low metallicity regime \citep{Leroy2008, Mcquin2012,Amorin2016}.
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.475\linewidth]{sfr_snr}
 \includegraphics[width=0.475\linewidth]{mass_evolution}
-\caption{The star formation rate and core collapse supernova rate in our dwarf galaxy in 10 Myr bins (left), along with the evolution of the total gas mass (black), HI mass (blue), H$_2$ mass (orange), and stellar mass (red) in the galaxy (right).}
+\caption{The SFR and core collapse SNR in our dwarf galaxy in 10 Myr bins (left), along with the evolution of the total gas mass (black), HI mass (blue), H$_2$ mass (orange), and stellar mass (red) in the galaxy (right). Note that the vertical axis limits in the left panel have been scaled to the same numerical values, yet with different units for the SFR and SNR.}
 \label{fig:sfr_mass_evolution}
 \end{figure*}
 
@@ -297,7 +301,7 @@ Final paragraph on metallicity of outflowing material.
 \subsection{Phase Diagrams}
 \label{sec:phase}
 
-Our simulations contain both ample resolution and microphysics to capture a multi-phase medium within the ISM and halo of our simulated galaxy. We define five different gas phases following those defined in (Cite Draine ISM): molecular, cold neutral medium (CNM), warm neutral medium (WNM), warm ionized medium (WIM), and hot ionized medium (HIM). See Appendix (ref) for a quantitative definition of these phases. Each of these exist in our simulations, and are regulated by the complex interplay between turbulence, self-gravity, and stellar feedback throughout the galaxy's evolution. Here we discuss the phase properties of the gas throughout the simulation box and within the ISM of our dwarf galaxy.
+Our simulations contain both ample resolution and microphysics to capture a multi-phase medium within the ISM and halo of our simulated galaxy. We define five different gas phases following those defined in \citep{Draine2011}: molecular, cold neutral medium (CNM), warm neutral medium (WNM), warm ionized medium (WIM), and hot ionized medium (HIM). See Appendix \ref{appendix:phases} for a quantitative definition of these phases. Each of these exist in our simulations, and are regulated by the complex interplay between turbulence, self-gravity, and stellar feedback throughout the galaxy's evolution. Here we discuss the phase properties of the gas throughout the simulation box and within the ISM of our dwarf galaxy.
 
 Figure~\ref{fig:phase} shows the temperature-density phase diagram of all gas in the simulation domain, averaged over the final 50 Myr of simulation time. One can readily identify the two most massive regions of gas in the simulation, a low density, warm phase produced through ionization and supernovae heating, and a cold, high density phase which makes up most of the mass in the galaxy's disk (see Figure~\ref{fig:ISM_evolution}). [discuss what is / is not in disk from this diagram]
 
@@ -412,6 +416,19 @@ In future works we will investigate in detail the role each individual feedback 
 \bibliography{msbib}
 
 \appendix
+
+\section{Gas Phases of the ISM}
+\label{appendix:phases}
+
+To aid with comparison to other works, we reproduce our definitions for the various phases of the ISM, as adopted from \cite{Draine2011} Table 1.3. These are used consistently throughout this analysis. These definitions are constructed to be mutually exclusive and implicitly assume gas within a given phase is in static equilibrium within that phase.
+
+\begin{enumerate}
+\item Hot Ionized Medium (HIM): $T \geq 10^{5.5}$ K
+\item Warm Ionized Medium (WIM): $10^{4}~\rm{K} \leq T < 10^{5.5}~\rm{K} $
+\item Warm Neutral Medium (WNM): $10^{2}~\rm{K} \leq T < 10^{4}~ \rm{K}$
+\item Cold Neutral Medium (CNM): \textbf{MAY CHANGE} $T < 10^2$ K, $n < 100$ cm$^{-3}$
+\item Molecular: \textbf{MAY CHANGE} $T < 10^2$, $n > 100$ cm$^{-3}$
+\end{enumerate}
 
 \section{Stellar Radiation Properties}
 \label{appendix:radiation}
