@@ -360,17 +360,18 @@ Observations of Local Group dwarf galaxies have shown that they retain very litt
 
 Roughly \textbf{35\%} of the N produced remains in the disk, as compared to \textbf{15\%} of O and \textbf{15\%} of Fe, for example. This difference is entirely feedback driven, but a coincidence of our particular galaxy conditions. At our galaxy's metallicity, the IMF weighted production of N rests entirely with the stellar winds of stars between 8 and 10 M$_{\odot}$; there is little to no N production in supernovae at this metallicity. The rest of the species either have very little stellar wind production, produced solely in supernovae, or have similar production levels between both supernovae and stellar winds (like O, for example). The typically lower injection energies of N into the galaxy than the SN injected elements means N is preferentially retained within the ISM, and not as effectively ejected through outflows. In truth, the stars that produce N do eventually explode as supernovae, sweeping up some fraction of the wind produced N into outflows. However, clearly some of this N is able to mix more effectively within the ISM than the other metal species. How abundance variations like this evolve over longer timescales and with varying feedback physics is the subject of ongoing work (Emerick et. al. in prep.). 
 
-\begin{figure}
+\begin{figure*}
 \includegraphics[width=0.9\linewidth]{species_bar.png}\\
 \includegraphics[width=0.9\linewidth]{species_bar_disk.png}
 \caption{The fraction of each species in the full simulation box contained in the halo, gas in the galaxy disk, and stars (top), and the fraction of species within the disk alone each in phase of the ISM (bottom).}
 \label{fig:species_fractions}
-\end{figure}
+\end{figure*}
 
 The bottom panel illustrates where these metals are partitioned within the ISM of the galaxy at the end of the simulation time. The CNM contains roughly 50-60\% of each species, with the CNM and WNM together accounting for most of the metals in the galaxy. The WIM contains only $\sim$ 10\% of each species, with the HIM containing very little. This may be counterintuitive to the fact that most metals are initially injected into the galaxy in either the WIM or HIM phases. However, the disk metals represent only a small fraction of the total metals produced. Much of the metals are effectively removed from the disk into the halo (see Section~\ref{sec:outflows}). It is apparently that the remaining metals quickly mix or cool into denser gas phases.
 
 \subsection{Stellar Abundances}
 \label{sec:stellar properties}
+\textbf{This section needs work. As per discussion with Keith and Kathryn, displaying abundance evolution like this is confusing and misleading. Switch to discussion of mass / abundance fraction evolution of individual specie(s).}
 We plot the $[\alpha / {\rm Fe}]-[\rm{Fe}/\rm{H}]$ ratio for all star particles in our simulation that are ``alive'' in Figure~\ref{fig:stellar_abundance}. This represents stars that have not gone supernovae or have otherwise formed a compact object. Here, $\alpha = (\rm{O} + \rm{Mg} + \rm{Si})/3.0$, and the notation [X/Y] denotes the ratio of the abundance of species X over Y, relative to the solar value, or log([X/Y]) = log(X/Y) - log(X$_{\odot}$/Y$_{\odot}$). All stars are colored by their age.
 
 \begin{figure}
