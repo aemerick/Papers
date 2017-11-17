@@ -73,8 +73,17 @@ Readers who may want to only briefly skim (or skip) over the details of our incl
 
 \section{Methods}
 \label{sec:methods}
-In brief, we produce high resolution galaxy scale simulations tracking stars not as SSP's, but as individual stars sampled from an assumed IMF.
-This allows us to follow star-by-star variations in feedback physics and stellar yields in detail. To properly model the ISM, we track non-equilibrium primordial chemistry (including molecular hydrogen) using \texttt{Grackle} \citep{GrackleMethod}, with heating and approximate self-shielding from a metagalactic UV background. We use updated \texttt{Cloudy} metal line cooling tables consistent with our self-shielding approximation (see Appendix ~\ref{appendix:cooling}), and an updated observationally motivated dust model for the low metallicity regimes studied here (Z $\lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties (surface gravity, effective temperature, radius, lifetime) from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure. In addition, we follow the optically thin non-ionizing UV radiation from these stars leading to photoelectric heating and Lyman-Werner (LW) dissociation of molecular hydrogen. We track the stellar wind feedback and supernovae from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia supernovae progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star with the associated local gas abundances for each species. These methods are discussed in full detail below.
+In 
+%mm brief, 
+     summary, 
+we produce high-resolution galaxy-scale simulations tracking stars not as SSP's, but as individual stars sampled from an assumed IMF.
+This allows us to follow star-by-star variations in feedback physics and stellar yields in detail. To properly model the ISM, we track non-equilibrium primordial chemistry (including molecular hydrogen) using \texttt{Grackle} \citep{GrackleMethod}, with heating and approximate self-shielding from a metagalactic UV background. We 
+%mm 
+    assume collisional ionization equilibrium for all other elements in order to
+use updated \texttt{Cloudy} metal line cooling tables consistent with our self-shielding approximation (see Appendix ~\ref{appendix:cooling}), and an updated observationally motivated dust model for the low metallicity regimes studied here (Z $\lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties (surface gravity, effective temperature, radius, lifetime) from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure. In addition, we follow the optically thin non-ionizing UV radiation from these stars leading to photoelectric heating and Lyman-Werner (LW) dissociation of molecular hydrogen. We track the stellar wind feedback and supernovae from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia supernovae progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star
+%mm
+   as it forms
+with the associated local gas abundances for each species. These methods are discussed in full detail below.
 
 \subsection{Hydrodynamics and Gravity}
 \label{sec:hydro}
