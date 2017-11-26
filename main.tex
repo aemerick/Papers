@@ -231,9 +231,13 @@ Instead of assigning a fixed ionizing photon energy across all sources, we integ
 
 We also include the effects of radiation pressure on \ion{H}{1}. This has been shown to be important in suppressing the star formation rates of dwarf galaxies by influencing turbulence and the dense gas content of the ISM \citep{WiseAbel2012,Ceverino2014}. We ignore the absorption of ionizing radiation by dust and re-radiation in the infrared. This is included in other models \citep[e.g.][]{Rosdahl2015,FIRE,FIRE2} as this may increase by a factor of a few to several the effective radiation pressure \citep{ZhangDavis2017}. However, the importance of multiple scattering is still unclear. Other works have shown the effect to only increase the radiation pressure by a factor of order unity \citep{Krumholz2012,Krumholz2013,Reissl2017}. Due to these uncertainties, and given that we focus on low-metallicity dwarf galaxies with low dust content, we ignore this effect.
 
-\subsubsection{Diffusive Heating}
+%mm \subsubsection{Diffusive Heating}
+         \subsubsection{Diffuse  Heating}
 \label{sec:diffusive heating}
-We include two forms of diffusive heating in our simulations, each tied directly to the non-equilibrium primordial chemistry network in \texttt{Grackle}: 1) the optically thin, metagalactic UV background \citep{HM2012}, and 2) localized photoelectric heating from the far-ultraviolet (FUV, 6 eV $<$ $h\nu$ $<$ 13.6 eV) radiation from our stars. Photoelectric heating can be a dominant heating mechanism in the ISM of the Milky Way \citep{Parravano2003}, and could be significant in regulating star formation in dwarf galaxies \citep{Forbes2016}. However, this conclusion warrants further research as its exact importance in dwarf galaxies relative to other feedback mechanisms is contentious \citep{Hu2016,Hu2017}. Generally, models for photoelectric heating and LW radiation in hydrodynamic simulations of galaxies adopt a constant value or a static, radial profile. Only recently has the localization and time variation of these processes been considered.
+We include two forms of 
+%mm diffusive 
+   diffuse
+heating in our simulations, each tied directly to the non-equilibrium primordial chemistry network in \texttt{Grackle}: 1) the optically thin, metagalactic UV background \citep{HM2012}, and 2) localized photoelectric heating from the far-ultraviolet (FUV, 6 eV $<$ $h\nu$ $<$ 13.6 eV) radiation from our stars. Photoelectric heating can be a dominant heating mechanism in the ISM of the Milky Way \citep{Parravano2003}, and could be significant in regulating star formation in dwarf galaxies \citep{Forbes2016}. However, this conclusion warrants further research as its exact importance in dwarf galaxies relative to other feedback mechanisms is contentious \citep{Hu2016,Hu2017}. Generally, models for photoelectric heating and LW radiation in hydrodynamic simulations of galaxies adopt a constant value or a static, radial profile. Only recently has the localization and time variation of these processes been considered.
 
 Self-shielding of gas against the metagalactic UV background is important in high-resolution simulations, particularly for low-mass, low metallicity dwarf galaxies where the UV background is capable of gradually photoevaporating unshielded gas from the galaxy. We have implemented the \citet{Rahmati2013} approximate self-shielding method in \texttt{Grackle} to account for \ion{H}{1} self-shielding against the UV background (see \citep{GrackleMethod} for more details of this implementation). We assume \ion{He}{1} ionization generally follows \ion{H}{1}. This allows us to approximate \ion{He}{1} self-shielding using the same form (A. Rahmati, private communication). We ignore \ion{He}{2} photoionization from the UV background entirely. Accounting for self-shielding in this manner leads to an inconsistency in using tabulated, optically-thin metal line cooling rates from Cloudy (see Section 4.1.1 of \citet{Hu2017}). As mentioned previously, we have re-computed metal line cooling tables using \texttt{Cloudy} models of optically thick clouds to be consistent with our self-shielding prescription. This is described in more detail in Appendix ~\ref{appendix:cooling}. 
 
@@ -378,21 +382,39 @@ The mass of the ISM in our dwarf galaxy is dominated by the CNM over the entire 
 
 The interstellar radiation field (ISRF) of our galaxy varies dramatically in both space and time, as has been seen previously in works modeling varying radiation fields 
 %mm 
-   both as expected from stellar positions in our own galaxy \citep{Parravano2003},
+   both as expected from stellar motions in our own galaxy \citep{Parravano2003},
    and in models including radiation \citep[e.g.][]{Hu2017}. 
-This is particularly not surprising in the low SFR regime, where there can be large fluctuations over time 
+This is particularly not surprising in our low SFR regime, where there can be large fluctuations over time 
 %mm in proximity to a massive, radiating star. 
     as individual massive stars form, move about, and evolve.
-In Figure~\ref{fig:ISRF} we present 1D volume averaged radial profiles of the ISRF in various bands, time averaged over the last 50 Myr of simulation time. The top panel shows the average $G_{\rm o}$, or the ISRF flux between 6 - 13.6 eV normalized to the value in the solar neighborhood of the Milky Way (see Section XX). The contribution from the metagalactic background is below the lower vertical axis limit on this plot. The shaded region gives the minimum and maximum value of $G_{\rm o}$ in the sampled time range. As shown, regions typically experience fluctuations in the ISRF of an order of magnitude. Interestingly, the central 200 pc does not contain the peak of the ISRF in the galaxy. This is likely a transient property, however, and is a by-product of the inside-out star formation of this dwarf galaxy. By the end of the simulation the feedback from stars produced in the central region has reduced the SFR compared to outer parts of the galaxy. The latter is thus host to more radiating young stars.
+In Figure~\ref{fig:ISRF} we present 
+%mm 1D volume-
+    azimuthally averaged radial profiles of the ISRF in various bands, time averaged over the last 50 Myr of simulation time. The top panel shows 
+%mm the average value of 
+$G_{\rm o}$, the ISRF flux between 6--13.6~eV normalized to the value in the solar neighborhood of the Milky Way (see Sect.~\ref{sec:diffusive heating}). (The contribution from the metagalactic background falls below the lower vertical axis limit on this plot.) 
+%mm The shaded region gives the minimum and maximum value of $G_{\rm o}$ in the sampled time range. [redundant with caption] 
+%mm As shown, regions typically experience  
+    This shows that any given point experiences
+fluctuations in the ISRF of an order of magnitude. Interestingly, the central 200 pc does not contain the peak of the ISRF in the galaxy. This is likely a transient property, however, and is a by-product of the inside-out star formation of this dwarf galaxy. By the end of the simulation the feedback from stars produced in the central region has reduced the SFR compared to outer parts of the galaxy. The latter is thus host to more radiating young stars.
 
 \begin{figure}
 \includegraphics[width=0.95\linewidth]{G_o_profile} \\
 \includegraphics[width=0.95\linewidth]{ionizing_photon_profile}
-\caption{1D radial profiles of the ISRF in our galaxy in three different bands, time-averaged over the final 50 Myr of simulation time. The top panel gives $G_{\rm o}$, or the flux of radiation between 6 - 13.6 eV normalized to the value in the solar neighborhood, shaded between minimum and maximum values at each position. The bottom panel gives the \ion{H}{1} and \ion{He}{1} ionizing stellar radiation flux, showing average value and maximum values only. For these fields the minimum value reaches zero at some point over the examined period at all radii.}
+\caption{
+%mm 1D radial
+    Azimuthally averaged radial 
+profiles of the ISRF in our galaxy in three different bands, time-averaged over the final 50 Myr of simulation time. The top panel gives $G_{\rm o}$, the flux of radiation between 6--13.6 eV normalized to the value in the solar neighborhood, shaded between minimum and maximum values at each position, with the average shown as a black line. The bottom panel gives the \ion{H}{1} and \ion{He}{1} ionizing stellar radiation flux, showing average and maximum values only. For these fields the minimum value reaches zero at some point during the examined period at all radii.}
 \label{fig:ISRF}
 \end{figure}
 
-The bottom panel gives the ionizing photon fluxes (\ion{H}{1} and \ion{He}{1}) from ionizing photons from the stellar radiation \texttt{only}. Since these fields are tracked directly with ray-tracing radiative transfer, the profiles encode information about local attenuation of these photons from dense, neutral gas. This is the main driver of the differences between these fields and $G_{\rm o}$. In addition, we only show the average line and shade to the maximum value at any given position, since the minimum value reaches zero at all radii at some point over the 50 Myr examined. As shown, this causes the profile to vary much more dramatically at all radii. However, the same general trend is preserved of less radiation in the inner 200 pc than the region between 200 and 400 pc, and an order of magnitude or more fluctuation at all radii. The rapid drop off beyond 400 pc is due to the rapid attenuation of ionizing photons by the cold gas at large radii (see Figure~\ref{fig:panel_x}).
+The bottom panel gives the ionizing photon fluxes for \ion{H}{1} and \ion{He}{1} from %mm ionizing photons from the 
+stellar radiation 
+%mm \texttt{only}.
+   {\em only}. 
+Since these fields are tracked directly using ray-tracing radiative transfer, the profiles encode information about local attenuation of these photons from dense, neutral gas. This is the main driver of the differences between these fields and $G_{\rm o}$. 
+%mm In addition, we only show the average line and shade to the maximum value at any given position, since the minimum value reaches zero at all radii at some point over the 50 Myr examined. As shown, this causes the profile to 
+   The ionizing fields
+vary much more dramatically at all radii. However, the same general trend is preserved of less radiation in the inner 200 pc than in the region between 200 and 400 pc, and an order of magnitude or more fluctuation at all radii. The rapid drop off beyond 400 pc is due to the rapid attenuation of ionizing photons by the cold gas at large radii (see Figure~\ref{fig:panel_x}).
 
 \begin{figure*}
 \centering
@@ -402,7 +424,9 @@ The bottom panel gives the ionizing photon fluxes (\ion{H}{1} and \ion{He}{1}) f
 \label{fig:ISRF_2D}
 \end{figure*}
 
-These plots are useful to understand the time-varying properties of the ISRF in a spatially averaged sense. However, the local variations for individual regions can be much larger than is illustrated in these profiles. In Figure~\ref{fig:ISRF_2D} we present a 2D profile of $G_{\rm o}$ averaged over the final 50 Myr of the simulation time, which effectively captures the large spikes in local ISRF from recent star forming regions. The 1D profiles accurately capture the averaged heating / ionizing effects of the ISRF in our galaxy, which helps reduce star formation by increase the thermal pressure support and equillibrium temperature of the ISM, yet it is these spikes that act as important local feedback to shut off star formation in dense, collapsing regions that satisfy our star formation criteria. This point will be examined in more detail in future work with comparison simulations using different feedback processes (Emerick et. al. in prep).
+These plots are useful to understand the time-varying properties of the ISRF in a spatially averaged sense. However, the local variations for individual regions can be much larger than is illustrated in these profiles. In Figure~\ref{fig:ISRF_2D} we present %mm a 2D profile of $G_{\rm o}$ averaged 
+    the full distribution of $G_{\rm o}$ over the final 50 Myr of the simulation time, which effectively captures the large spikes in local ISRF from recent star forming regions. The azimuthally averaged profiles accurately capture the averaged heating and ionizing effects of the ISRF in our galaxy, which helps reduce star formation by increasing the thermal pressure support and equilibrium temperature of the ISM, yet it is the spikes that act as important local feedback to shut off star formation in dense, collapsing regions that satisfy our star formation criteria. This point will be examined in more detail in future work with comparison simulations using different feedback processes.
+%mm (Emerick et. al. in prep).  [I'd only insert the reference when there is an actual astro-ph number to support it.] 
 
 \subsection{Outflow Properties}
 \label{sec:outflows}
