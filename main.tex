@@ -63,7 +63,7 @@ The relative simplicity of idealized, isolated galaxy evolution simulations allo
 
 Using star-by-star modeling, we are able to capture in more detail the stellar yields from individual stars released over their lifetime. In addition to better capturing how individual metal species enrich the ISM, this allows us to chemically tag individual stars. This opens an exciting new channel for testing models of galaxy evolution by enabling us to leverage current and ongoing observations probing the detailed chemical abundances of stars in the Milky Way and Local Group, such as APOGEE and APOGEE2 \citep{APOGEE2010,APOGEE}, the Gaia-ESO survey \citep{Gaia}, and GALAH \citep{GALAH}.
 
-This paper is the first in a series of papers examining in detail the role that the individual components of multi-channel stellar feedback play in galaxy dynamical and chemical evolution. In this paper we introduce a new method of modeling for feedback physics and galactic chemical enrichment in the cosmological, hydrodynamics code \texttt{Enzo}. For the first time in galaxy-scale simulations, we model star formation down to particles representing individual stars, while simultaneously capturing stellar feedback through stellar winds, core collapse and Type 1a supernovae, photoelectric heating, and ionizing radiation through ray-tracing radiative transfer. In addition, we couple to a self-consistent set of stellar yields 
+This paper is the first in a series of papers examining in detail the role that the individual components of multi-channel stellar feedback play in galaxy dynamical and chemical evolution. In this paper we introduce a new method of modeling for feedback physics and galactic chemical enrichment in the cosmological, hydrodynamics code \texttt{Enzo}. For the first time in galaxy-scale simulations, we model star formation down to particles representing individual stars, while simultaneously capturing stellar feedback through stellar winds, core collapse and Type Ia supernovae, photoelectric heating, and ionizing radiation through ray-tracing radiative transfer. In addition, we couple to a self-consistent set of stellar yields 
 %mm tables from the
 to track stellar yields from massive star stellar winds, AGB star winds, and supernovae. We describe each mode of our multi-channel feedback 
 %mm implementation 
@@ -326,12 +326,12 @@ Interestingly, there is significant structure well above the gas disk in the for
 \subsection{Star Formation Rate and Mass Evolution}
 \label{sec:sfr}
 
-We present the star formation rate (SFR) and core collapse supernova rate evolution of our dwarf galaxy as measured in 10 Myr bins in the left panel of Figure~\ref{fig:sfr_mass_evolution}. By the end of the simulation, there have been no Type 1a supernovae. Within the first 40 Myr of evolution the SFR rises quickly to between $2-4 \times 10^{-4}$ M$_{\odot}$ yr$^{-1}$, and remains at this level with fluctuations of about a factor of 2 or less.  Averaging over the entire simulation time since the first star was formed, we obtain a $<\rm{SFR}> = 2.34 \times 10^{-4}$ M$_{\odot}$ yr$^{-1}$. The star formation rate of our model galaxy as compared to observed galaxies is discussed further in Section~\ref{sec:observation}.
+We present the star formation rate (SFR) and core collapse supernova rate evolution of our dwarf galaxy as measured in 10 Myr bins in the left panel of Figure~\ref{fig:sfr_mass_evolution}. (By the end of the simulation, there have been no Type Ia supernovae.) Within the first 40 Myr of evolution the SFR rises quickly to between $2-4 \times 10^{-4}$ M$_{\odot}$ yr$^{-1}$, and remains at this level with fluctuations of about a factor of 2 or less.  Averaging over the entire simulation time since the first star was formed, we obtain  $<\rm{SFR}> = 2.34 \times 10^{-4}$ M$_{\odot}$ yr$^{-1}$. The star formation rate of our model galaxy as compared to observed galaxies is discussed further in Section~\ref{sec:observation}.
 
 %mm \footnote{  [This is rather too long for a footnote, I think.]
-The granularity in our star formation algorithm creates a lower limit to the SFR that depends on the period over which the SFR is measured $\Delta t$. Since we produce stars in $\sim 100$~M$_{\odot}$ sets, the smallest value for our measured SFR is $\sim 100/ \Delta t$. For $\Delta t = 10$ Myr this is 10$^{-5}$ yr$^{-1}$. Removing the granularity requires a fundamental change in our star formation algorithm, likely at the cost of increased complexity and computational expense. Sink particles, which track pre-main sequence stellar mass accumulation, would be the most viable way to do this \citep[see for example ][]{Krumholz2004,Federrath2010,GongOstriker2013,BleulerTeyssier2014,Sormani2017}.
+The granularity in our star formation algorithm creates a lower limit to the SFR that depends on the period $\Delta t$ over which the SFR is measured. Since we produce stars in $\sim 100$~M$_{\odot}$ sets, the smallest value for our measured SFR is $\sim 100/ \Delta t$. For $\Delta t = 10$ Myr this is 10$^{-5}$ yr$^{-1}$. Removing the granularity requires a fundamental change in our star formation algorithm, likely at the cost of increased complexity and computational expense. Sink particles, which track pre-main sequence stellar mass accumulation, would be the most viable way to do this \citep[see for example ][]{Krumholz2004,Federrath2010,GongOstriker2013,BleulerTeyssier2014,Sormani2017}.
 
-At initialization, all H and He of our dwarf galaxy is neutral, with no molecular hydrogen component. By the time of first star formation ($t=0$ in Figure~\ref{fig:sfr_mass_evolution}), \ion{H}{1} still dominates the mass of the galaxy, but a fairly significant component of molecular hydrogen has formed, with a mass of about \textbf{$6 \times 10^5$ M$_{\odot}$, or roughly 17\%} of the total mass in the galaxy's disk. The total amount of molecular hydrogen mass in the system remains fairly consistent throughout the evolution, yet its fraction increases to about \textbf{25\%} as the total amount of mass in the disk decreases through feedback driven winds. Small drops in the H$_2$ mass correspond with small increases in the total stellar mass, as some small fraction of H$_2$ is converted into stars, and more is destroyed from the subsequent feedback. Examining the molecular properties of the ISM in low mass dwarf galaxies in more detail is a vital avenue of future research, as there are significant observational uncertainties in deriving H$_2$ content of galaxies in this low metallicity regime \citep{Leroy2008,McQuinn2012,Amorin2016}. The molecular properties of our galaxy is discussed further in context with other works in Section~\ref{sec:observation}.
+At initialization, all H and He of our dwarf galaxy is neutral, with no molecular hydrogen component. By the time of first star formation ($t=0$ in Figure~\ref{fig:sfr_mass_evolution}), \ion{H}{1} still dominates the mass of the galaxy, but a fairly significant component of molecular hydrogen has formed, with a mass of about \textbf{$6 \times 10^5$ M$_{\odot}$, or roughly 17\%} of the total mass in the galaxy's disk. The total amount of molecular hydrogen mass in the system remains fairly consistent throughout the evolution, yet its fraction increases to about \textbf{25\%} as the total amount of mass in the disk decreases through feedback driven winds. Small drops in the H$_2$ mass correspond with small increases in the total stellar mass, as some small fraction of H$_2$ is converted into stars, and more is destroyed from the subsequent feedback. Examining the molecular properties of the ISM in low mass dwarf galaxies in more detail is a vital avenue of future research, as there are significant observational uncertainties in deriving H$_2$ content of galaxies in this low metallicity regime \citep{Leroy2008,McQuinn2012,Amorin2016}. The molecular properties of our galaxy are discussed further in context with other works in Section~\ref{sec:observation}.
 
 \begin{figure*}
 \centering
@@ -344,14 +344,22 @@ At initialization, all H and He of our dwarf galaxy is neutral, with no molecula
 \subsection{Phase Diagrams and ISM Properties}
 \label{sec:phase}
 
-Our simulations contain both ample resolution and microphysics to capture a multi-phase medium within the ISM and halo of our simulated galaxy \textbf{too strong of a claim?}. We define five different gas phases following those defined in \citep{Draine2011}: molecular, cold neutral medium (CNM), warm neutral medium (WNM), warm ionized medium (WIM), and hot ionized medium (HIM). See Appendix \ref{appendix:phases} for a quantitative definition of these phases. Each of these exist in our simulations, and are regulated by the complex interplay between turbulence, self-gravity, and stellar feedback throughout the galaxy's evolution. Here we discuss the phase properties of the gas throughout the simulation box and within the ISM of our dwarf galaxy.
+Our simulations contain both ample resolution and microphysics to capture a multi-phase medium within the ISM and halo of our simulated galaxy. 
+%mm \textbf{too strong of a claim?}. [No, it's quite true: you just need a cooling curve balanced against diffuse and SN heating.] 
+We define five different gas phases following those defined in \citep{Draine2011}: molecular gas, cold neutral medium (CNM), warm neutral medium (WNM), warm ionized medium (WIM), and hot ionized medium (HIM). See Appendix \ref{appendix:phases} for a quantitative definition of these phases. Each of these exist in our simulations, and are regulated by the complex interplay between 
+%mm
+   cooling, 
+turbulence, self-gravity, and 
+%mm 
+    diffuse and shock heating from 
+stellar feedback throughout the galaxy's evolution. Here we discuss the phase properties of the gas throughout the simulation box and within the ISM of our dwarf galaxy.
 
 Figure~\ref{fig:phase} shows the temperature-density phase diagram of all gas in the simulation domain, averaged over the final 50 Myr of simulation time. One can readily identify the two most massive regions of gas in the simulation, a low density, warm phase produced through ionization and supernovae heating, and a cold, high density phase which makes up most of the mass in the galaxy's disk (see Figure~\ref{fig:ISM_evolution}). \textbf{not completely sure what to talk about here for the diagram}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.95\linewidth]{phase_diagram.png}
-\caption{The full-box temperature vs. number density phase diagram of our dwarf galaxy simulation, averaged over the final 50 Myr of simulation time.}
+\caption{The temperature vs.\ number density phase diagram of our dwarf galaxy simulation, averaged over the final 50 Myr of simulation time, and showing the whole simulation domain.}
 \label{fig:phase}
 \end{figure} 
 
@@ -361,14 +369,21 @@ The mass of the ISM in our dwarf galaxy is dominated by the CNM over the entire 
 \centering
 \includegraphics[width=0.45\linewidth]{phase_mass_fraction_evolution_log.png}
 \includegraphics[width=0.45\linewidth]{phase_volume_fraction_evolution_log.png}
-\caption{The evolution of the mass and volume fractions for each phase of our galaxy's ISM. This figures only consider gas present within the disk of the galaxy.}
+\caption{The evolution of the mass and volume fractions for each phase of the model galaxy's ISM. This figure only includes gas present within the disk of the galaxy.}
 \label{fig:ISM_evolution}
 \end{figure*}
 
 \subsection{Interstellar Radiation Field}
 \label{sec:ISRF}
 
-The ISRF of our galaxy varies dramatically in both space and time, as has been deomonstrated previously in works modelling varying radiation fields \citep{Parravano2003,Hu2017}. This is especially not surprising in the low SFR regime, where there can be large fluctuations in proximity to a massive, radiating star over time. In Figure~\ref{fig:ISRF} we present 1D volume averaged radial profiles of the ISRF in various bands, time averaged over the last 50 Myr of simulation time. The top panel shows the average $G_{\rm o}$, or the ISRF flux between 6 - 13.6 eV normalized to the value in the solar neighborhood of the Milky Way (see Section XX). The contribution from the metagalactic background is below the lower vertical axis limit on this plot. The shaded region gives the minimum and maximum value of $G_{\rm o}$ in the sampled time range. As shown, regions typically experience fluctuations in the ISRF of an order of magnitude. Interestingly, the central 200 pc does not contain the peak of the ISRF in the galaxy. This is likely a transient property, however, and is a by-product of the inside-out star formation of this dwarf galaxy. By the end of the simulation the feedback from stars produced in the central region has reduced the SFR compared to outer parts of the galaxy. The latter is thus host to more radiating young stars.
+The interstellar radiation field (ISRF) of our galaxy varies dramatically in both space and time, as has been seen previously in works modeling varying radiation fields 
+%mm 
+   both as expected from stellar positions in our own galaxy \citep{Parravano2003},
+   and in models including radiation \citep[e.g.][]{Hu2017}. 
+This is particularly not surprising in the low SFR regime, where there can be large fluctuations over time 
+%mm in proximity to a massive, radiating star. 
+    as individual massive stars form, move about, and evolve.
+In Figure~\ref{fig:ISRF} we present 1D volume averaged radial profiles of the ISRF in various bands, time averaged over the last 50 Myr of simulation time. The top panel shows the average $G_{\rm o}$, or the ISRF flux between 6 - 13.6 eV normalized to the value in the solar neighborhood of the Milky Way (see Section XX). The contribution from the metagalactic background is below the lower vertical axis limit on this plot. The shaded region gives the minimum and maximum value of $G_{\rm o}$ in the sampled time range. As shown, regions typically experience fluctuations in the ISRF of an order of magnitude. Interestingly, the central 200 pc does not contain the peak of the ISRF in the galaxy. This is likely a transient property, however, and is a by-product of the inside-out star formation of this dwarf galaxy. By the end of the simulation the feedback from stars produced in the central region has reduced the SFR compared to outer parts of the galaxy. The latter is thus host to more radiating young stars.
 
 \begin{figure}
 \includegraphics[width=0.95\linewidth]{G_o_profile} \\
