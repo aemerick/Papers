@@ -1,0 +1,110 @@
+\documentclass[twocolumn]{aastex61}
+\pdfoutput=1 %for arXiv submission
+\usepackage{amsmath,amstext}
+\usepackage[T1]{fontenc}
+\usepackage{apjfonts} 
+\usepackage[figure,figure*]{hypcap}
+
+\renewcommand*{\sectionautorefname}{Section} %for \autoref
+\renewcommand*{\subsectionautorefname}{Section} %for \autoref
+
+\shorttitle{Dwarf Galaxy Feedback}
+\shortauthors{Emerick, Bryan, Mac-Low}
+
+\begin{document}
+
+\title{(TBD): Feedback and Chemical Evolution in Low Mass Dwarf Galaxies III: Role of Feedback in Regulating Metal Enrichment of Stars and the ISM}
+
+%\title{Simulating Dwarf Galaxy Evolution with Individual Star Feedback II: Importance of Dark Matter Halo Depth to Prevent Self-Quenching in the Lowest Mass Dwarf Galaxies}
+
+\author{Andrew Emerick}
+\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+\affiliation{Department of Astrophysics, American Museum of Natural History, New York, NY, USA}
+\author{Greg Bryan}
+\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+\affiliation{Center for Computational Astrophysics, Flatiron Institute, 162 5th Ave, New York, NY, 10003, U.S.A}
+\author{Mordecai-Mark Mac Low}
+\affiliation{Department of Astrophysics, American Museum of Natural History, New York, NY, USA}
+
+\begin{abstract}
+Abstract.
+\end{abstract}
+
+\keywords{}
+
+\section{Introduction}
+
+
+\section{Methods}
+\label{sec:methods}
+We refer the reader to Paper I for a detailed description of our numerical methods and feedback models, briefly summarized below.
+
+\subsection{Hydrodynamics}
+We use the adaptive mesh refinement (AMR) astrophysical hydrodynamics and N-body code \textsc{Enzo}\footnote{http://www.enzo-project.org} \citep{Enzo2014} in this work. \texttt{Enzo} is an open-source code that is undergoing continual, active development by many researchers across several institutions. We use a substantially modified version of the current development version of \texttt{Enzo} (version 2.X) in this work.\footnote{This version is contained in a publicly available fork of the main repository: https://bitbucket.org/aemerick/enzo-emerick. Specifically, simulations presented here were conducted at changeset 445de816fd99.}. We solve the equations of hydrodynamics in our isolated galaxy simulations using a direct-Eulerian piecewise parabolic method (PPM) \citep{ColellaWoodward1984, Bryan1995} and a two-shock approximate Riemann solver with progressive fallback to more diffusive solvers. We include the contribution of gas self-gravity to the local potential, and evolve the collisionless star particles using a particle mesh N-body solver.
+
+Each galaxy is centered in a 128$^{3}$ zone computational domain with width equal to approximately 2 $R_{\rm vir}$ (see Section~\ref{sec:IC} and Table~\ref{table:IC}). We use 8 or 9 additional levels of refinement to reach a maximum resolution of $\sim$ 2 pc in each galaxy. A zone is refined 1) if the mass in a given cell exceeds $M_{\rm res} = 52 $~M$_{\odot}$, 2) such that the local Jeans length is always refined by 8 cells. In addition, regions within 4 cells of a star particle are refined to the maximum refinement level to ensure feedback is always deposited at maximum resolution. Our star formation density threshold corresponds roughly to densities where the Jeans length becomes unresolved at the maximum refinement level (discussed below). However, we use a pressure floor to prevent artificial fragmentation of this star forming gas. 
+
+\subsection{Star Formation and Stellar Feedback}
+We refer the reader to Paper I for the complete details of our star formation and feedback methods, summarized below. 
+
+We allow star formation using a stochastic method \citep{Goldbaum2015,Goldbaum2016} that samples directly from an adopted IMF. In contrast to most other galaxy scale simulations to date, these star particles represent individual stars rather than populations of many stars. In each star forming region, defined as zones with $n > 200$~cm$^{-3}$, $T < 200$~K, and a convergent flow, we compute the probability that 100 M$_{\odot}$ of stars form in that region in that time step assuming the star formation rate depends on the local gas free-fall time and a star formation efficiency, which we take as $\epsilon_{\rm f} = 0.02$ (cite). Stars are sampled from a Salpeter IMF with $M_{*} \in [1,100]$~M$_{\odot}$. 
+
+We follow yields from 12 individual metal species using yields tables from XXXX for all stars with $M_{*} < 25$~M$_{\odot}$, and XXX for the stellar winds from stars with $M_{*} > 25$M$_{\odot}$. We make the simplifying assumption that all stars with $M_{*} > 25$M~$_{\odot}$ do not explode as supernovae, given the significant uncertainties in the end-of-life behaviors for stars in this regime (citations). We include three distinct feedback channels for each of our stars: 1) supernovae, both core collapse and Type Ia, 2) stellar winds, both from massive and AGB stars, and 3) stellar radiation from massive stars. Here, we define massive stars as those with birth masses greater than 8 M$_{\odot}$. 
+% Stellar attributes, used to set their lifetimes and feedback properties, are interpolated from the ZAMS values on the PARSEC stellar evolution tracks given the initial mass and metallicity of each star.
+
+Supernovae are injected as thermal feedback alone with $E_{\rm SN} = 10^{51}$~erg in a 3-cell radius region around the given star particle. We have demonstrated in Paper I (see Appendix) that we have sufficient resolution to resolve these explosions with thermal energy injection alone. Low mass stars are tracked as white dwarfs at the end of their lives, using a delay-time-distribution model to determine when, if at all, a  given white dwarf will explode as a Type Ia supernovae. We assume the energy injection from stellar winds is negligible, given the computational expense of following fast (10$^{3}$ km s$^{-1}$), hot ($\sim 10^{6}$~K) gas while satisfying the Courant condition. Rather, winds are injected as thermal energy, with wind temperature equal to the stellar surface temperature, and at $v_{\rm wind} = 1$ km s$^{-1}$. Confirming the common assumption that wind energy is not a significant long-term source of feedback in the evolution of these galaxies is the subject of ongoing work.
+
+We follow stellar radiation in four bands. Two, HI and HeI ionizing radiation, are followed through direct ray-tracing methods from (cite). The other two, FUV and LW radiation, are assumed to be everywhere optically thin in these small, low metallicity dwarf galaxies. The stellar FUV radiation contributes to the local photoelectric heating rate using a prescription described in Paper I, similar to previous works \cite{BakesTielens1994,Wolfire2003,Forbes2016,Hu2017}. The LW radiation contributes to the local H$_{2}$ dissociation rates. These radiation fields are included in addition to the metagalactic UV background, discussed below.
+
+% We follow the ionizing radiation from massive stars, $M_{*} > 8$~M$_{\odot}$, through direct radiative transfer (cite) using fluxes obtained from interpolation on the OSTAR2002 grid of stellar atmospheric properties. We also follow FUV and LW band radiation from these stars under the assumption that this non-ionizing radiation is optically thin. The FUV radiation is used to compute the local photoelectric heating rate using a model adopted from (bakes, wolfire, forbes). 
+
+% We follow stellar winds from both massive stars, assumed to be constant throughout their lifetime, and the AGB phases of less massive stars. Due to the computational expense of following these fast ($\sim 10^{3}$~km~s$^{-1}$) and hot ($T \sim 10^{6}$~K) winds, we inject these winds with low velocities and with thermal energy equivalent to the stellar effective temperature. We therefore assume that energy injection to the ISM from these winds to be negligible compared to the stellar radiation and supernova feedback (cite). Confirming the effects of a detailed stellar wind implementation on long-term galaxy evolution is the subject of future work.
+
+%We track both core collapse supernovae from massive stars and Type Ia supernovae from low mass stars. The Type Ia supernovae are included self-consistently, using a delay time distribution model to compute the probability that a white dwarf formed from the low mass stars will explode in the simulation time, deterministically setting their explosion times. 
+
+\subsection{Heating and Cooling Physics}
+\label{sec:heating and cooling}
+We use the chemistry and cooling package Grackle \citep{GrackleMethod} to follow 9 species non-equillibrium primordial chemistry and approximate metal line cooling in our simulations. Our primordial cooling and heating rates are computed self-consistently with the non-equillibrium chemistry under a metagalactic UV background \citep{HM2012}. We account for approximate self-shielding against the UV background following \citep{Rahmati2013} and include use metal line cooling rates tabulated from \textsc{Cloudy}, accounting self-consistently for the reduced ionizing background in self-shielded regimes (see Paper I for more details on these tables). We also include both the LW radiation and photoelectric heating from the UV background.
+
+\subsection{Initial Conditions}
+\label{sec:IC}
+Each galaxy in this work was initialized as a uniform distribution of gas set to be in hydrostatic equilibrium with a background, static dark matter potential. The gas properties in each galaxy remain fixed, modeled after the Local Group dwarf galaxy Leo P, as does the dynamical mass interior to 500 pc, set to $M_{\rm dyn} (r < 500~\rm{pc}) = 2.7\times 10^{7}$ M$_{\odot}$. In each of our four galaxies, we vary only the maximum circular velocity of the dark matter halo, and by extension $M_{\rm vir}$ and $R_{\rm vir}$, as described below.
+
+The gas properties in each galaxy are designed to be similar to that of the Local Group dwarf galaxy Leo P \citep{Giovanelli2013,McQuinn2013,McQuinn2015a,McQuinn2015}, but are not meant to be a matched model to this galaxy. Leo P is gas rich ($M_{\rm gas} > M_{*}$) and low metallicity, with $M_{\rm HI} = 8.1\times 10^{5}$~M$_{\odot}$ and $M_{*} = 5.6^{+0.4}_{-1.9} \times 10^{5}$~M$_{\odot}$ \citep{McQuinn2015a} extending to a radius $r_{\rm HI} = 500$~pc, and with $12 + \rm{log(O/H)} = 7.17 \pm 0.04$ \citep{Skillman2013}, or $Z \sim 5.4\times10^{-4}$ adopting $Z_{\odot} = 0.018$ from \cite{Asplund2009}. We initialize our dwarf galaxy without an initial background stellar population, with a total gas mass of $1.8 \times 10^{6}$~M$_{\odot}$ (or $M_{\rm HI} = 1.35 \times 10^{6}$~M$_{\odot}$) and $Z = 4.3\times 10^{-4}$, comparable to the average $z = 0$ metallicity from the stellar models computed in \citep{McQuinn2015}. The gas density profile is set using an exponential disk (see Paper I) with scale radius and scale height of $250$~pc and $100$~pc respectively, with a total radial extent of 600~pc. The temperature and circular velocity profiles are set assuming hydrostatic equillibrium with the dark matter background, described below.
+
+
+As mentioned, we fix the dynamical mass interior to 500 pc in each galaxy to the measured value in Leo P. This is equivalent to fixing the circular velocity at 500 pc, or $v_{\rm c, 500 \rm{pc}} = 15$~km~s$^{-1}$ as is observed for Leo P \citep{Bernstein-Cooper2014}. We represent our dark matter halo using a static Burkert potential \citep{Burkert1995}, and vary the maximum circular velocity by changing the adopted scale radius, $r_{\rm s}$. We do this for four different values of $v_{\rm c, max}$. Table~\ref{table: IC} gives the dark matter halo properties for each galaxy, and we show the profiles for each in Figure~\ref{fig:dm profile}. Increasing $v_{\rm c,max}$ while keeping $v_{\rm c}$ fixed at 500 pc serves to reduce dark matter density profile interior to 500 pc, broadening the potential well.
+
+As the initial gas profile in each galaxy is smooth, we use initial supernova driving to prevent uniform collapse and a spurious starburst. We randomly place supernovae in the disk of the galaxy at a fixed rate of $0.4$~Myr$^{-1}$, corresponding to the SFR obtained given the central HI surface density and the relation presented in \citep{Roychowdhury2009}. We stop the artificial driving 25~Myr after the first star particle forms.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.8\linewidth]{dark_matter_mass_virial} \\
+%\vspace{0.1cm}
+%\includegraphics[width=0.8\linewidth]{circular_velocity_virial} \\
+%\includegraphics[width=0.8\linewidth]{initial_surface_density}
+%\caption{Dark matter cumulative mass (top) and circular velocity profiles (middle) for each of our galaxies, plotted as a fraction of the virial radius for each (see Table~\ref{table:IC} for details). The cumulative mass interior to 500 pc is held fixed in each galaxy, at $2.5\times 10^7$ M$_{\odot}$, with the variations in profile arising from changing the scale radius. The bottom panel gives the initial gas surface density profiles for each galaxy, which are essentially the same.}
+%\ref{fig:dm profile}
+
+\section{Results}
+
+
+\section{Discussion}
+
+
+
+\section{Conclusion}
+
+\acknowledgments
+Acknowledgments.
+
+\facilities{Yeti, CCA cluster, Stampede, Pleiades} 
+\software{Numpy, Enzo, yt, astropy}
+
+\bibliographystyle{yahapj}
+\bibliography{msbib}
+
+\appendix
+\section{appendix section}
+
+\end{document}
