@@ -83,7 +83,7 @@ This allows us to follow star-by-star variations in feedback physics and stellar
 use updated \texttt{Cloudy} metal line cooling tables consistent with our self-shielding approximation (see Appendix ~\ref{appendix:cooling}), and an updated observationally motivated dust model for the low metallicity regimes studied here (Z $\lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties (surface gravity, effective temperature, radius, lifetime) from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure. In addition, we follow the optically thin non-ionizing UV radiation from these stars leading to photoelectric heating and Lyman-Werner dissociation of molecular hydrogen. We track the stellar wind feedback and supernovae from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia supernovae progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star
 %mm
    as it forms
-with the associated local gas abundances for each species. These methods are discussed in full detail below.
+with the associated local gas abundances for each species. In addition, we track a total metal density field which is the sum of all metals, including those not directly tracked. This field is used to inform the heating/cooling physics and determines the metallicity of each star. These methods are discussed in full detail below.
 
 \subsection{Hydrodynamics and Gravity}
 \label{sec:hydro}
@@ -371,18 +371,12 @@ The total mass outflow rates and mass loading factors at 0.1, 0.25, 0.5, and 1.0
 
 Interestingly, the v$_{\rm c}\sim$ 30 km s$^{-1}$ halos examined in \citet{Muratov2015} are more massive than the M$_{\rm vir} = 2.5\times 10^9$ M$_{\odot}$ halo examined here by a factor of a few. Using a fit provided in \citet{Muratov2015} to extrapolate and compare at fixed halo mass, one would expect mass loading factors on order of 100 at 0.25 R$_{\rm vir}$ for our dwarf galaxy, a factor of a few higher than what we find. These differences could be attributed to our lack of cosmological evolution in these isolated simulations, but ultimately requires a larger set of dwarf galaxy simulations to make a more robust comparison. We note, however, that our results are much closer to the \citep{Muratov2015} results than those in \citet{Hu2016,Hu2017}, which find mass loading factors at 0.05 $R_{\rm vir}$ between 1 and 10 for a dwarf galaxy with M$_{\rm vir} = 10^{10}$ M$_{\odot}$, and therefore certainly much smaller mass loading factors at 0.25 $R_{\rm vir}$.
 
-Dwarf galaxies efficiently, and preferentially, eject metals released in stellar feedback from their shallow potential wells \citep{MacLowFerrara1999,FerraraTolstoy2000}. This has been better quantified recently both observationally \citep[e.g.][]{Kirby2011-metals,Zahid2012,Peeples2014,McQuinn2015} and with more detailed cosmological simulations \citep{Angles-Alcazar2017,Muratov2017}. The right hand panel of Figure~\ref{fig:mass_outflow} gives the metal mass loading factor over time for our dwarf galaxy, considering only the new metals produced by the star particles. Metal mass loading factor is defined as 
-\begin{equation}
-\eta_{\rm metal} = \frac{\dot{M_{\rm metal}}}{\rm{SFR} \times \frac{M_{\rm metal}}{M_{*}}},
-\end{equation}
-where $\dot{M_{\rm metal}}$ is the metal mass outflow rate, $M_{\rm metal}$ is the total mass in metals produced, and $M_{*}$ is the total mass in stars.  \textbf{compare mass loading here and in other works... check back to Muratov for these. also cite miao and drummond.} \citep{Li2017}
-
 % figure here of mass loading and mass outflow rates
 \begin{figure*}
 \centering
-\includegraphics[width=0.33\linewidth]{total_mass_outflow}
-\includegraphics[width=0.33\linewidth]{total_mass_loading}
-\includegraphics[width=0.33\linewidth]{metal_mass_loading}
+\includegraphics[width=0.45\linewidth]{total_mass_outflow}
+\includegraphics[width=0.45\linewidth]{total_mass_loading}
+%\includegraphics[width=0.33\linewidth]{metal_mass_loading}
 \caption{Spherical mass outflow rates (Eq.~[\ref{eq:dotM}]) and mass loading rates over time at 4 different radii from the galaxy.}
 \label{fig:mass_outflow}
 \end{figure*}
@@ -406,10 +400,33 @@ Detailed outflow properties, beyond outflow rates and mass loading factors, can 
 %\label{fig:outflow_metallicity}
 %\end{figure}
 
-\subsection{Chemical Evolution} 
+\subsection{Metal Evolution} 
 \label{sec:chemical evolution}
 \textbf{Commented out all previous discussion of species abundance retention differences and stellar abundances to save for a future paper. Instead, here give a panel plot showing the column densities of the metals at various times?}
 
+Dwarf galaxies efficiently, and preferentially, eject metals released in stellar feedback from their shallow potential wells \citep{MacLowFerrara1999,FerraraTolstoy2000}. This has been better quantified recently both observationally \citep[e.g.][]{Kirby2011-metals,Zahid2012,Peeples2014,McQuinn2015} and with more detailed cosmological simulations \citep{Angles-Alcazar2017,Muratov2017}. The right hand panel of Figure~\ref{fig:mass_outflow} gives the metal mass loading factor over time for our dwarf galaxy, considering only the new metals produced by the star particles. Metal mass loading factor is defined as 
+\begin{equation}
+\eta_{\rm metal} = \frac{\dot{M_{\rm metal}}}{\rm{SFR} \times \frac{M_{\rm metal}}{M_{*}}},
+\end{equation}
+where $\dot{M_{\rm metal}}$ is the metal mass outflow rate, $M_{\rm metal}$ is the total mass in metals produced, and $M_{*}$ is the total mass in stars.  \textbf{compare mass loading here and in other works... check back to Muratov for these. also cite miao and drummond.} \citep{Li2017}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{metal_mass_loading} \\
+\includegraphics[width=0.9\linewidth]{metal_fraction_evolution}
+\caption{Top: Metal mass loading factor at four radii over time (see text for how this is defined). Bottom: The fraction of metals contained in the disk, CGM, and outside the halo of our dwarf galaxy over time. In both panels, we consider the total mass of all individually tracked metal species, which is zero at initialization, not the aggregate total metallicity field, which is non-zero at initialization.}
+\label{fig:metal_evolution}
+\end{figure}
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.23\linewidth]{metal_mass_loading} 
+\includegraphics[width=0.23\linewidth]{metal_fraction_evolution}
+\includegraphics[width=0.23\linewidth]{metal_mass_loading} 
+\includegraphics[width=0.23\linewidth]{metal_fraction_evolution}
+\caption{Full-box projections of the entire computational domain showing the total column density in each of 4 different metal species at the end of the simulation time. For a more reasonable comparison across metal fields with significant differences total column density, the maximum of the color bar scales are each set to the peak column density for that field, and the minimum to a fixed fraction of this maximum.}
+\label{fig:metal_column_panels}
+\end{figure*}
 
 %Observations of Local Group dwarf galaxies have shown that they retain very little of the total amount of metals they are expected to have produced, given their star formation histories (see Section~\ref{sec:observation}). In Figure~\ref{fig:species_fractions} we show the fraction of metals retained within the disk or expelled into the halo of our galaxy over time, along with a breakdown of the locations of each metal species by the end of the simulation. As shown in the top panel, a majority of each metal tracer species is found outside the disk of the galaxy, in the galaxy halo. In total, \textbf{85\%} of the tracer metal species produced lie outside of the disk of our galaxy. Interestingly, the exact fraction is not uniform across metal species. 
 
