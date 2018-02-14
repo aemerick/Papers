@@ -100,18 +100,21 @@ This paper is the first in a series examining in detail the role that the indivi
 % In this paper we introduce a new method of feedback physics and galactic chemical enrichment in the cosmological, hydrodynamics code \texttt{Enzo}. For the first time in galaxy-scale simulations, we model star formation down to particles representing individual stars, while simultaneously capturing stellar feedback through stellar winds, core collapse and Type Ia supernovae, photoelectric heating, and ionizing radiation through ray-tracing radiative transfer. In addition, we couple to a self-consistent set of stellar yields
 %to track yields from massive star stellar winds, AGB star winds, and supernovae. 
 We describe each mode of our multi-channel feedback 
-in detail below, and briefly discuss their implementation in an isolated dwarf galaxy simulation.
+in detail in Sect.~\ref{sec:methods}, describe their implementation in an isolated dwarf galaxy simulation
+%mm2 
+   in Sect.~\ref{sec:IC}, show results from this simulation in Sect.~\ref{sec:results}, discuss the 
+   results in Sect.~\ref{sec:discussion}, and conclude in Sect.~\ref{sec:conclusion}.
 
 Readers who may want to only briefly skim (or skip) over the details of our included physics are advised to just read the beginning of Section~\ref{sec:methods}, which contains a complete---yet brief---summary of the included physics.
 
 \section{Methods}
 \label{sec:methods}
-%mm2 In      summary, 
-We produce high-resolution galaxy-scale simulations tracking stars not as SSP's, but as individual stars sampled from an assumed IMF.
+%mm2 In  summary, 
+We produce high-resolution, galaxy-scale simulations tracking stars not as SSP's, but as individual stars sampled from an assumed IMF.
 This allows us to follow star-by-star variations in feedback physics and stellar yields in detail. To properly model the ISM, we track non-equilibrium, primordial chemistry (including molecular hydrogen) using \texttt{Grackle} \citep{GrackleMethod}, with heating and approximate self-shielding from a metagalactic ultraviolet (UV) background. We 
 %mm 
     assume collisional ionization equilibrium for all other elements in order to
-use updated \texttt{Cloudy} metal-line cooling tables consistent with our self-shielding approximation (see Appendix ~\ref{appendix:cooling}), and an updated observationally motivated dust model for the low metallicity regimes studied here (Z $\lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties (surface gravity, effective temperature, radius, lifetime) from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure. In addition, we follow the optically thin non-ionizing UV radiation from these stars leading to photoelectric heating and Lyman-Werner dissociation of molecular hydrogen. We track the stellar wind feedback and supernovae from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia supernovae progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star
+use updated \texttt{Cloudy} metal-line cooling tables consistent with our self-shielding approximation (see Appendix ~\ref{appendix:cooling}), and an updated observationally motivated dust model for the low metallicity regimes studied here (Z $\lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties including surface gravity, effective temperature, radius, and lifetime from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure. In addition, we follow the optically thin, non-ionizing UV radiation from these stars leading to photoelectric heating and Lyman-Werner dissociation of molecular hydrogen. We track the stellar wind feedback and supernovae from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia supernovae progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star
 %mm
    as it forms
 with the associated local gas abundances for each species. In addition, we track a total metal density field which is the sum of all metals, including those not directly tracked. This field is used to inform the heating/cooling physics and determines the metallicity of each star. These methods are discussed in full detail below.
@@ -285,7 +288,7 @@ Following the initialization procedure of \citet{Hu2017}, we use artificial supe
 
 \section{Results}
 \label{sec:results}
-We present our initial results here, providing a brief overview of the morphological (Section~\ref{sec:structure}), star formation (Section~\ref{sec:sfr}), ISM (Section~\ref{sec:phase}), radiation field (Section~\ref{sec:ISRF}), outflow (Section~\ref{sec:outflows}), and chemical (Section~\ref{sec:chemical evolution}) properties of our dwarf galaxy during the first 500~Myr after the first star forms. Unless otherwise noted, $t = 0$ is defined as the time at which the first star particle forms, which is 43~Myr after the actual initialization of the simulation. The galaxy disk is defined as the fixed physical region within a cylindrical radius of 600~pc and $|z| < 200$~pc relative to the center of the galaxy. ISM properties are calculated considering only the gas contained within the disk of the galaxy.
+We present our initial results here, providing an overview of the morphological (Section~\ref{sec:structure}), star formation (Section~\ref{sec:sfr}), ISM (Section~\ref{sec:phase}), radiation field (Section~\ref{sec:ISRF}), outflow (Section~\ref{sec:outflows}), and chemical (Section~\ref{sec:chemical evolution}) properties of our dwarf galaxy during the first 500~Myr after the first star forms. Unless otherwise noted, $t = 0$ is defined as the time at which the first star particle forms, which is 43~Myr after the actual initialization of the simulation. The galaxy disk is defined as the fixed physical region within a cylindrical radius of 600~pc and $|z| < 200$~pc relative to the center of the galaxy. ISM properties are calculated considering only the gas contained within the disk of the galaxy.
 
 Our analysis makes extensive use of the open-source \textsc{yt} toolkit \citep{yt}. All analysis scripts used in this work can be found at https://github.com/aemerick/galaxy-analysis at changeset 66452ba.
 
@@ -518,7 +521,7 @@ Beginning with log(O/H), the gas from the recent SN explosion is abundantly clea
 
 %We note the ``knee'' like feature at very low [Fe/H] is not the characteristic knee seen in $[\alpha / {\rm Fe}]-[\rm{Fe}/\rm{H}]$ space, corresponding to the period when iron enrichment from SN Type Ia begins to make a significant contribution to the galactic chemical evolution. This generally occurs after roughly 1 Gyr of stellar evolution, far longer than the \textbf{170} Myr simulated here. % The origin of this feature and the longer term chemical evolution of this galaxy will be investigated in a future work.
 
-\section{Discussion}
+\secton{Discussion}
 \label{sec:discussion}
 
 \subsection{Comparison to Observed Low Mass Dwarf Galaxies}
