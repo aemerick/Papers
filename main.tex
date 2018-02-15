@@ -511,7 +511,7 @@ where $\dot{M}_{\rm metal}$ is the metal mass outflow rate, $M_{\rm metal}$ is t
 \label{fig:metal_evolution}
 \end{figure}
 
-These large metal mass loading factors indicate that a majority of the metals produced in our dwarf galaxy are ejected from the disk. This is quantified in the lower panel of Fig.~\ref{fig:metal_evolution}, where we show the mass fraction of metals in the disk, CGM, and outside the virial radius of our galaxy over time. After the first 20 Myr, supernova-driven winds rapidly drive out large quantities of metals from the disk and into the galaxy's halo. This continues throughout the simulation, with only $\sim$12\% of produced metals residing in the disk of the galaxy. It only takes 150 Myr for some metals to reach the virial radius of the halo, with a steadily increasing fraction continually leaving the virial radius, reaching 40\% by the end of the simulation. Likewise, the CGM metal content continually decreases until the end of the simulation, from loss through the virial radius of the halo. Although the metal content of the ISM gradually decreases throughout the simulation, it seems somewhat steady at $\sim 10\%$ through the final 200~Myr of evolution. See Section~\ref{sec:obs_metals} for further discussion.
+These large metal mass loading factors indicate that a majority of the metals produced in our dwarf galaxy are ejected from the disk. This is quantified in the lower panel of Fig.~\ref{fig:metal_evolution}, where we show the mass fraction of metals in the disk, circumgalactic medium (CGM), and outside the virial radius of our galaxy over time. After the first 20 Myr, supernova-driven winds rapidly drive out large quantities of metals from the disk and into the galaxy's halo. This continues throughout the simulation, with only $\sim$12\% of produced metals residing in the disk of the galaxy. It only takes 150 Myr for some metals to reach the virial radius of the halo, with a steadily increasing fraction continually leaving the virial radius, reaching 40\% by the end of the simulation. Likewise, the CGM metal content continually decreases until the end of the simulation, from loss through the virial radius of the halo. Although the metal content of the ISM gradually decreases throughout the simulation, it seems somewhat steady at $\sim 10\%$ through the final 200~Myr of evolution. See Section~\ref{sec:obs_metals} for further discussion.
 %\textbf{closing sentence}
 
 \subsubsection{Metal Distribution within the ISM}
@@ -598,22 +598,56 @@ is species dependent. A more detailed analysis is beyond the scope of this work,
 \subsubsection{Gas and Star Formation}
 \label{sec:gas_sf}
 
-The observational sample of isolated, gaseous, low mass dwarf galaxies is limited compared to more massive galaxies, but has improved substantially with recent blind and targeted \ion{H}{1} surveys \citep[e.g.][]{Giovanelli2005, Geha2006, Geha2012, Walter2008, Cannon2011, Haynes2011, Hunter2012, Bradford2015, James2015, Tollerud2015, Sand2015, Wang2017}. However, the sample of isolated, gaseous dwarf galaxies with $M_{*} < 10^{7}$~M$_{\odot}$ remains small. In Figure ~\ref{fig:KS} we show where our galaxy lies relative to the observed Kennicutt-Schmidt (KS) relation (left) for low mass galaxies, and the extended Schmidt law (ESL) (right). In both diagrams, our simulations are given by the colored points, sampled every 1 Myr throughout the entire simulation. Although simple to measure in simulations, these quantities are challenging to directly compare to observations. We have attempted to make a reasonable analog to how $\Sigma_{\rm sfr}$ and $\Sigma_{\rm gas}$ are measured observationally for low mass dwarfs given the procedure described in \citet{Roychowdhury2014}. We define $\Sigma_{\rm sfr} = \dot{M}_{*, \rm{10 Myr}} / A_{*, \rm{10 Myr}}$, where $\dot{M}_{*, \rm{10 Myr}}$ is the SFR measured over the preceding 10 Myr, and $A_{*, \rm{10 Myr}}$ is the disk defined out to the farthest star formed within the previous 10 Myr. Likewise, $\Sigma_{\rm gas} = M_{\rm gas, 10 Myr} / A_{*, \rm{10 Myr}}$, where M$_{\rm gas, 10 Myr}$ is the total gas mass within this defined disk. However, the total gas content cannot be determined observationally. To match this limitation, we follow \cite{Roychowdhury2014} and take $\Sigma_{\rm gas, obs} = 1.34 \times \Sigma_{\rm HI}$, where the factor 1.34 attempts to account for He. There is generally no correction applied to account for any H$_{2}$ or HII content. The molecular component is discussed further in Section~\ref{sec:molecular gas content}.
+The observational sample of isolated, gaseous, low mass dwarf galaxies is limited compared to more massive galaxies, but has improved substantially with recent blind and targeted \ion{H}{1} surveys \citep[e.g.][]{Giovanelli2005, Geha2006, Geha2012, Walter2008, Cannon2011, Haynes2011, Hunter2012, Bradford2015, James2015, Tollerud2015, Sand2015, Wang2017}. However, the sample of isolated, gaseous dwarf galaxies with $M_{*} < 10^{7}$~M$_{\odot}$ remains small. In Figure ~\ref{fig:KS} we show where our galaxy lies relative to the observed Kennicutt-Schmidt (KS) relation and extended Schmidt law (ESL)  for low mass galaxies. In both diagrams, our simulations are given by the colored points, sampled every 1 Myr throughout the entire simulation. Although simple to measure in simulations, these quantities are challenging to directly compare to observations. 
+
+%mm [new para]
+We have attempted to make a reasonable analog to how $\Sigma_{\rm sfr}$ and $\Sigma_{\rm gas}$ are measured observationally for low mass dwarfs using the procedure described in \citet{Roychowdhury2014}. We define $\Sigma_{\rm sfr} = \dot{M}_{*,10} / A_{*,10}$, where $\dot{M}_{*,10}$ is the SFR measured over the preceding 10~Myr, and $A_{*,10}$ is the
+%mm2 disk defined out to the farthest
+   area of the disk within the radius of the outermost 
+star formed within the previous 10 Myr. Likewise, $\Sigma_{\rm gas} = M_{\rm gas,10} / A_{*,10}$, where M$_{\rm gas,10}$ is the total gas mass within this defined disk. However, the total gas content cannot be determined observationally. To match this limitation, we follow \cite{Roychowdhury2014} and take $\Sigma_{\rm gas, obs} = 1.34 \times \Sigma_{\rm HI}$, where the factor 1.34 attempts to account for He. There is generally no correction applied to account for any H$_{2}$ or \ion{H}{2} content. The molecular component is discussed further in Section~\ref{sec:molecular gas content}.
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.475\linewidth]{all_gas_schmidt_law_evolution}
 \includegraphics[width=0.475\linewidth]{all_gass_efficiency_evolution}
-\caption{The KS law (left) and ESL (right) relationships for our galaxy as measured every 1 Myr. We take $\Sigma_{\rm gas, obs} = 1.34 \times \Sigma_{\rm HI}$ in our simulations to make a fair comparison to the observational sample (see text for more details). Plotted as points on both plots are recent observations from the SHIELD sample \citep{Teich2016}. On the left, we also give the best fit line to galaxies from the FIGGS sample from \cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \cite{Shi2011}. The simulations points are colored by time, with dark / purple early and light / green late. This is simply to indicate there is no obvious correlation with time in this diagram.}
+\caption{The KS law (left) and ESL (right) relationships for our galaxy as measured every megayear, plotted as points colored by time, with dark / purple early and light / green late. 
+%mm2 We take $\Sigma_{\rm gas, obs} = 1.34 \times \Sigma_{\rm HI}$ in our simulations to make a fair comparison to the observational sample (see text for more details)
+    See text for details of the calculation.
+Recent observations from the SHIELD sample \citep{Teich2016} are plotted as 
+%mm2 points
+    black points with error bars.
+On the left, we also give the best fit line to galaxies from the FIGGS sample from \cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \cite{Shi2011}.
+%mm2  This  is simply to indicate there 
+   There
+is no clear correlation with time in this diagram.}
 \label{fig:KS}
 \end{figure*}
 
-In both panels, we also include recent observational constraints on these relationships. For the KS relationship we include the best fit line from \citet{Roychowdhury2014} (black, dashed). In both we give recent measurements from the SHIELD galaxy sample \citep{Teich2016} (black, points). Recently, \cite{Roychowdhury2017} demonstrated that the best fit line in the ESL from \cite{Shi2011} extends to the low mass FIGGS sample of galaxies; we give this best fit line and 1$\sigma$ errors in the right hand panel (black lines). Our galaxy fluctuates significantly about both relationships with no clear trends in time. However, in both cases, it is consistent with the available observational sample. At times our galaxy exhibits gas surface densities below the observational constraints. The trend is still consistent with higher densities at this point, but with a larger scatter towards lower star formation rate densities and efficiencies.
+%mm2 In both panels, we also 
+   We
+include recent observational constraints on these relationships
+%mm2
+    in Figure ~\ref{fig:KS}. 
+%mm2 For the KS relationship we 
+   These 
+include the best-fit line from \citet{Roychowdhury2014}, 
+%mm2 (black, dashed). In both we give recent measurements from
+the SHIELD galaxy sample \citep{Teich2016}, 
+%mm2 (black, points). Recently, \cite{Roychowdhury2017} demonstrated that the best fit line in the ESL from \cite{Shi2011} extends to the low mass FIGGS sample of galaxies; we give this best fit line and 1$\sigma$ errors in the right hand panel (black lines). 
+  and the best-fit line with 1$\sigma$ errors from \citet{Shi2011}, which 
+  \citet{Roychowdhury2017} demonstrated extends to the low mass FIGGS sample of galaxies.
+Our galaxy fluctuates significantly about both relationships with no clear trends in time. However, in both cases, it is consistent with the available observational sample. At times our galaxy exhibits gas surface densities below the observational constraints. The trend is still consistent with higher densities at this point, but with a larger scatter towards lower star formation rate densities and efficiencies.
 
-Fig.~\ref{fig:KS} represents a remarkable result. In constructing our galaxy model, we employed \textit{no} tuning of the underlying physics, adopting only canonical values for any available free parameters. It is non-trivial that our galaxy should oscillate about the median relationships in Fig.~\ref{fig:KS}, but signifies a proper accounting of the relevant physics governing gas and star forming properties in our galaxy. This result is consistent with recent galactic evolution simulations run at high resolution with a detailed accounting of stellar feedback physics (\textit{relevant citations})
+%mm2 Fig.~\ref{fig:KS} represents a remarkable result. 
+In constructing our galaxy model, we employed \textit{no} tuning of the underlying physics, adopting only canonical values for any available free parameters. It is thus non-trivial that our galaxy should oscillate about the median relationships in Fig.~\ref{fig:KS}, and signifies a proper accounting of the relevant physics governing gas and star forming properties in our galaxy. This result is consistent with 
+%mm2 recent 
+galactic evolution simulations run at high resolution with a detailed accounting of stellar feedback physics (\textit{relevant citations}
+%mm2
+   starting with A. Kravtsov 2003, ApJ L.)
 %mm 
-%ae: but does this bit then contradict my statement that this is remarkable? if its 'just gravity' at play?
-   but also with the demonstration by \citet{Li2005} that the KS law can be reproduced 
+%ae: but does this bit then contradict my statement that this is remarkable? if its 'just gravity' at play?  
+%mm2: that's the question, isn't it?  maybe keep the description of the result, but remove the claim of remarkability, as I have edited to do?
+   but also with the demonstration by \citet{Li2006} that the KS law can be reproduced 
    by gravitation acting on an isothermal disk, which was argued to demonstrate that 
    this represents the basic physics at work.
 
@@ -623,26 +657,42 @@ Fig.~\ref{fig:KS} represents a remarkable result. In constructing our galaxy mod
 The molecular gas content of low mass dwarf galaxies is generally assumed
 to be small, but is not well constrained by either theory or observations. Assuming the relationship in \citet{Leroy2013} and \citet{Momose2013}, \citet{Roychowdhury2014} finds typical molecular gas fractions anywhere from $f_{\rm H_2} = 0.05$ to $f_{\rm H_2} = 0.5$; a significant range in values. As discussed in Section~\ref{sec:properties}, our galaxy has $f_{H_2}$ of 0.17--0.20, within this range, but significantly exceeding the few percent often found in models. Ignoring the H$_2$ component of our galaxies would lead to an average shift of 0.24 dex to the right in the KS relationship, and 0.24 dex right and down in the ESL. This does not result in a significant disagreement with the observed relationships, but would constitute a quantitative change to the observed fits if our $f_{\rm H_2}$ is robust for observed low mass, low metallicity dwarf galaxies. 
 
-Interestingly, in this low-dust regime, our H$_2$ formation is dominated by the gas-phase reactions H$^-$~+~H~$\rightarrow$~H$_2$~+~e$^{-}$. In our model, H$^{-}$ is produced solely through the reaction H~+~e$^{-} \rightarrow$ H$^{-}$~+~$\gamma$. Prior to the establishment of a local stellar radiation field, e$^{-}$ production is dominated by the ionizations of H and He from the UVB. This has the seemingly counterintuitive effect that turning off the UVB actually decreases the formation rate of H$_2$, as confirmed in test simulations. In a test simulation ignoring H$^{-}$, we find H$_{2}$ mass fractions on order of  $\sim 5\%$ by first star formation, a factor of 3 reduction from our fiducial model.
+Interestingly, in this low-dust regime, our H$_2$ formation is dominated by the gas-phase reaction H$^-$~+~H~$\rightarrow$~H$_2$~+~e$^{-}$. In our model, H$^{-}$ is produced solely through the reaction H~+~e$^{-} \rightarrow$ H$^{-}$~+~$\gamma$. Prior to the establishment of a local stellar radiation field, e$^{-}$ production is dominated by the ionization of H and He from the ultraviolet background. This has the seemingly counterintuitive effect that turning off the ultraviolet background actually decreases the formation rate of H$_2$, as confirmed in test simulations. In a test simulation ignoring H$^{-}$, we find H$_{2}$ mass fractions on order of  $\sim 5\%$ by first star formation, a factor of 3 reduction from our fiducial model.
 
-This explains our contention with the simulations in \citet{Hu2016} and \citet{Hu2017}, which find low molecular fractions ($f_{\rm H_2} \sim 10^{-4}$) even in their simulations without any feedback ($f_{\rm H_2} \sim 2 \times 10^{-3}$). Although these works do contain a non-equilibrium chemical model, they do not include either H$^{-}$ or a background radiation field. Our model suggests that H$^{-}$ and a UVB (in the absence of a local radiation field) are critical components in H$_2$ formation in small dwarf galaxies. It is not surprising that the gas phase reactions dominate over grain catalysis in this low metallicity regime \citep{Glover2003}, but the total amount of H$_2$ formed is perhaps surprising. However, the rate coefficients association with gas-phase H$_2$ formation are uncertain by an order of magnitude \citep{Glover2006,Glover2007}.
+This explains our 
+%mm2 contention 
+    disagreement
+with the simulations in \citet{Hu2016} and \citet{Hu2017}, which find low molecular fractions ($f_{\rm H_2} \sim 10^{-4}$) even in their simulations without any feedback ($f_{\rm H_2} \sim 2 \times 10^{-3}$). Although these works do contain a non-equilibrium chemical model, they do not include either H$^{-}$ or a background radiation field. Our model suggests that H$^{-}$ and the ultraviolet background (in the absence of a local radiation field) are critical components in H$_2$ formation in small dwarf galaxies. It is not surprising that the gas phase reactions dominate over grain catalysis in this low metallicity regime \citep{Glover2003}, but the total amount of H$_2$ formed is perhaps surprising. However, the rate coefficients associated with gas-phase H$_2$ formation are uncertain by an order of magnitude \citep{Glover2006,Glover2007}.
 %In addition, \cite{Glover2006} demonstrated that the total amount of H$_2$ formed can be quite sensitive to the initial conditions.
-Finally, our model lacks additional chemistry which may be important in the formation and destruction of H$_2$, including HD chemistry, C and O chemistry, a detailed dust model, and cosmic rays. It is unclear how the combination of all of these effects will behave, especially considering that even at this resolution, we are unable to resolve the high density turbulent density perturbations in which H$_2$ forms most efficiently \citep{Glover2007}. This uncertainty certainly warrants further study of molecular gas in low metallicity dwarf galaxies.
+%mm2 Finally, our model lacks additional chemistry which 
+    Our model does lack additional chemistry that
+may be important to the formation and destruction of H$_2$, including HD chemistry, C and O chemistry, a detailed dust model, and cosmic rays. It is unclear how the combination of all of these effects will behave, especially considering that even at this resolution, we are unable to resolve the high density turbulent density perturbations in which H$_2$ forms most efficiently \citep{Glover2007}. This uncertainty certainly warrants further study of molecular gas in low metallicity dwarf galaxies.
 %ae rewrote above and took out this citation, need to see if need to put back in:
 %            there is some possible observational evidence for higher than expected ($\sim 15$ \%)   %            molecular fractions \citep{Schruba2017}, though this still remains highly uncertain.
 
 \subsubsection{Metal Retention}
 \label{sec:obs_metals}
 
-The simulations presented here have not yet been run for the gigayear timescales required to make direct comparisons to the observed stellar and gas phase metallicities of comparable dwarf galaxies at $z = 0$. However, we can compare to a key observable, the retention fraction of metals within stars and the galaxy's ISM compared to what would be expected from stellar evolution models based on the galaxy's star formation history. This can be done readily with Milky Way dSph's, whose stars seem to retain very little of the expected metal production: on order of a few percent or less depending on the galaxy and the species \citep{Kirby2011-metals}. However, environmental effects, namely ram pressure and tidal stripping, complicate the understanding of how these metals were removed from the galaxy. 
+The simulations presented here have not yet been run for the gigayear timescales required to make direct comparisons to the observed stellar and gas phase metallicities of comparable dwarf galaxies at $z = 0$. However, we can compare to a key observable, the retention fraction of metals within stars and the galaxy's ISM compared to what would be expected from
+%mm2
+  closed box
+stellar evolution models based on the galaxy's star formation history. This can be done readily with Milky Way dSph's. Their stars seem to retain very little of the expected metal production: on order of a few percent or less depending on the galaxy and the species \citep{Kirby2011-metals}. However, environmental effects, namely ram pressure and tidal stripping, complicate the understanding of how these metals were removed from the galaxy. 
 
-Leo P, the dwarf galaxy we approximate in our initial conditions, is extremely valuable as a gaseous, star forming low-mass dwarf galaxy, with an observable \ion{H}{2} region, necessary for determining gas phase abundances, and close enough to the Milky Way to conduct this experiment. Leo P retains $\sim$ 5\% $\pm$ 2\% of its metals, $\sim$ 1\% in stars and the remaining in ISM gas \citep{McQuinn2015}. As discussed in Section~\ref{sec:chemical evolution}, roughly 90\% of the tracked metals produced during the simulation no longer reside within the galaxy's disk. At the end of our simulation, we agree with the observations; however, this is an evolving quantity that also depends on how much (if any) subsequent re-accretion of these metals occurs. Although more than half of these metals are expected to eventually re-accrete \citep{Angles-Alcazar2017}, it is still possible that
+Leo P, the dwarf galaxy we approximate in our initial conditions, is extremely valuable as a %mm2 gaseous, 
+   gas-containing,
+star forming, low-mass dwarf galaxy, with an observable \ion{H}{2} region, necessary for determining gas phase abundances, that is close enough to the Milky Way to conduct this experiment. Leo P retains $\sim$ 5\% $\pm$ 2\% of its metals, $\sim$ 1\% in stars and the rest in ISM gas \citep{McQuinn2015}. As discussed in Section~\ref{sec:chemical evolution}, roughly 90\% of the tracked metals produced during our simulation no longer reside within the galaxy's disk. At the end of our simulation, we 
+%mm2
+   thus
+agree with the observations; however, this is an evolving quantity that also depends on how much (if any) subsequent re-accretion of these metals occurs. Although more than half of these metals are expected to eventually re-accrete \citep{Angles-Alcazar2017}, it is still possible that
 most of the metals that have been produced at these early times will remain outside the galaxy disk. We will examine the long term, and species-by-species, evolution of the metal retention fraction in future work.
 
-It is interesting to consider whether ejected metals in our model reside in the CGM or have been ejected into the IGM. While this cannot be observationally determined for dwarf galaxies at this mass, cosmological simulations of a $M_{\rm vir} = 10^{10}$ M$_{\odot}$ galaxy show that, by redshift zero $\sim$ 60\% of ejected gas is recycled, while 40\% is ejected from the galaxy's halo \citep{Angles-Alcazar2017}. In our case, no metals have been ejected beyond the virial radius; this is not surprising however, given that metals ejected beyond the halo would need to travel with an average velocity of 150 km s$^{-1}$ for the entirety of our simulation time.  We find 13.7\% of all metals lie within 1 kpc of the center of our galaxy, 26.5\% within 0.25 $R_{\rm vir}$ (or 6.85 kpc), and 38.6\% outside $R_{\rm vir}$. The re-accretion or final ejection of this gas is directly relevant to the chemical evolution of low mass dwarf galaxies. Recycling of metal enriched gas could be a significant driver of long-term chemical evolution in low mass galaxies, particularly if a majority of metals ejected from the disk (itself nearly all the metals produced by the galaxy) return. Our model seems to suggest that many of the metals ejected into the halo will not be recycled back into the galaxy, but this is difficult to determine with only 500~Myr of evolution. In addition, the accretion of pristine gas from the IGM could significantly affect the gas flows around the galaxy, possibly promoting the retention of ejected metals. This effect is not included in our isolated galaxy simulations, and its role is beyond the scope of this work.
+It is interesting to consider whether ejected metals in our model reside in the CGM or have been ejected into the intergalactic medium. While this cannot be observationally determined for dwarf galaxies at this mass, cosmological simulations of a $M_{\rm vir} = 10^{10}$ M$_{\odot}$ galaxy show that, by redshift zero $\sim$ 60\% of ejected gas is recycled, while 40\% is ejected from the galaxy's halo \citep{Angles-Alcazar2017}. In our case, no metals have been ejected beyond the virial radius; this is not surprising however, given that metals ejected beyond the halo would need to travel with an average velocity of 150 km s$^{-1}$ for the entirety of our simulation time.  We find 13.7\% of all metals lie within 1 kpc of the center of our galaxy, 26.5\% within 0.25 $R_{\rm vir}$ (or 6.85 kpc), and 38.6\% outside $R_{\rm vir}$. 
+
+%mm2 [new para]
+The re-accretion or final ejection of this gas is directly relevant to the chemical evolution of low mass dwarf galaxies. Recycling of metal enriched gas could be a significant driver of long-term chemical evolution in low mass galaxies, particularly if a majority of metals ejected from the disk (itself nearly all the metals produced by the galaxy) return. Our model seems to suggest that many of the metals ejected into the halo will not be recycled back into the galaxy, but this is difficult to determine with only 500~Myr of evolution. In addition, the accretion of pristine gas from the intergalactic medium could significantly affect the gas flows around the galaxy, possibly promoting the retention of ejected metals. This effect is not included in our isolated galaxy simulations, and its role is beyond the scope of this work.
 
 \subsection{Missing Physics}
-Although we include detailed physics in our simulations, there remains additional physical processes that may be relevant, these are discussed below.
+Although we include many detailed physical models in our simulations, there remain additional physical processes that may be relevant, which we now discuss.
 
 \subsubsection{Full Stellar Wind Model}
 \label{sec:stellar winds discussion}
@@ -654,11 +704,16 @@ Our stellar wind model significantly reduces the injected wind velocity from $\s
    at resolutions where peak densities are not anyway high enough to trap ionization 
    fronts, 
 a full model of stellar winds may affect detailed ISM properties and metal mixing, warranting a closer examination in a future work.
-
+%mm2: should we recover the reference to Shull \& Saken?
 %old comment: (need to ref or back up this claim: see Dale et al. 2014 for individual clouds, while the right panel of Fig 2 in Shull \& Saken 1995 shows that the integrated wind energy from a cluster is about 10\% that of the supernovae -M). 
 
-\subsubsection{Cosmic Rays and Magnetic Fields}
-Recent work has explored the importance of cosmic ray feedback in regulating the ISM and wind properties in galactic disks \citep{Hanasz2013,GirichidisCR,Simpson2016,Farber2017}, isolated galaxies \citep{SalemBryanCorlies,Salem2015,Pakmor2016,Ruszkowski2017}, and galaxies in cosmological context \citep{SalemBryanHummels}. These relativistic charged particles act as a source of non-thermal pressure support in the galaxy's ISM, capable of driving outflows at different velocities and containing different thermal phases than those driven through thermal feedback alone \citep{SalemBryanCorlies}. Modeling cosmic rays is challenging, however, as they encompass a wide range of energies (give range), with significant uncertainties in how they propagate through the ISM \citep[e.g.][]{Wiener2017}. Their propagation is often modeled as a diffusive process, but in truth this diffusion should vary depending on cosmic ray energy. In addition, cosmic rays couple effectively to the magnetic fields of galaxies, diffusing preferentially along structured magnetic field lines within the ISM. Modeling cosmic ray feedback completely requires both an accurate cosmic ray model and magnetohydrodynamics in order to capture the interplay of these two physical phenomena. Finally, including MHD presents additional difficulties in untangling the effects each individual feedback mechanism on galaxy chemodynamics.
+\subsubsection{Cosmic Rays} 
+%mm2 and Magnetic Fields}  One could make the case that we should have a separate discussion of magnetic fields.  However, this section is only about CRs.
+
+Recent work has explored the importance of cosmic ray feedback in regulating the ISM and wind properties in galactic disks \citep{Hanasz2013,GirichidisCR,Simpson2016,Farber2017}, isolated galaxies \citep{SalemBryanCorlies,Salem2015,Pakmor2016,Ruszkowski2017}, and galaxies in cosmological context \citep{SalemBryanHummels}. These relativistic charged particles act as a source of non-thermal pressure support in the galaxy's ISM, capable of driving outflows at different velocities and containing different thermal phases than those driven through thermal feedback alone \citep{SalemBryanCorlies}. Modeling cosmic rays is challenging, however, as they encompass a wide range of energies,
+%mm2 (give range), with 
+   and there are
+significant uncertainties in how they propagate through the ISM \citep[e.g.][]{Wiener2017}. Their propagation is often modeled as a diffusive process, but in truth this diffusion should vary depending on cosmic ray energy. In addition, cosmic rays couple effectively to the magnetic fields of galaxies, diffusing preferentially along structured magnetic field lines within the ISM. Modeling cosmic ray feedback completely thus requires both an accurate cosmic ray model and magnetohydrodynamics in order to capture the interplay of these two physical phenomena. Finally, including MHD presents additional difficulties in untangling the effects of each individual feedback mechanism on galaxy chemodynamics.
 
 We do note that an isotropic, two-fluid model for cosmic ray feedback exists in  \textsc{Enzo} \citep{SalemBryan2014,Salem2015} and has been well tested. Mechanically, including cosmic ray feedback in our model is trivial. However, the cosmic ray population, their diffusion coefficient, and the magnetic field structure of the lowest mass dwarf galaxies each have significant enough uncertainties to warrant reserving their full inclusion into our model to a later work.
 
@@ -670,40 +725,65 @@ We do note that an isotropic, two-fluid model for cosmic ray feedback exists in 
 \label{sec:binary stars}
 % Although we track individual stars and assign properties to each based on stellar evolution models, these properties are fixed. A more detailed model could follow each star on an interpolated stellar evolution track, which would account for variations in radiation and stellar wind properties in each star over time. 
 
-Roughly half of massive stars live in binary pairs. Their interactions, primarily through mass transfer, can significantly alter their radiation properties and lifetimes. This can change both how much and how long these stars emit ionizing radiation, an important source of stellar feedback, and where and when these stars explode as supernovae. This effect is rarely accounted for in galaxy evolution models, which are commonly based on calculations of single star evolution (e.g. STARBURST99), but could be significant. For example, \cite{Zapartas2017} finds that binarity extends the timescales over which core collapse supernovae occur from a given star formation event, from a maximum time of $\sim$ 50~Myr to $\sim$~200~Myr. Although they find only $\sim 15\%$ of core collapse supernovae explode after 50~Myr, this could still be an important effect. Properly accounting for the delay times due to variations in individual star lifetimes has already been shown to change the significance of feedback and influence galaxy metallicity properties \citep{Kimm2015}. Extending the lifetimes of these stars could increase the role of radiation feedback, however this may be less important as these additional photons are more likely to escape the galaxy \citep[e.g.][]{Ma2016-binary}. 
+Roughly half of massive stars live in binary pairs 
+%mm2 doi:10.1051/0004-6361/201219621
+   \citep{Sana2012}. 
+Their interactions, primarily through mass transfer, can significantly alter their radiation properties and lifetimes. This can change both how much and how long these stars emit ionizing radiation, an important source of stellar feedback, and where and when these stars explode as supernovae. This effect is rarely accounted for in galaxy evolution models, which are commonly based on calculations of single star evolution (e.g. STARBURST99), but could be significant. For example, \citet{Zapartas2017} finds that binarity extends the timescales over which core collapse supernovae occur from a given star formation event, from a maximum time of $\sim$ 50~Myr to $\sim$~200~Myr. Although they find only $\sim 15\%$ of core collapse supernovae explode after 50~Myr, this could still be an important effect. Properly accounting for the delay times due to variations in individual star lifetimes has already been shown to change the significance of feedback and influence galaxy metallicity properties \citep{Kimm2015}. Extending the lifetimes of these stars could increase the role of radiation feedback, however this may be less important as these additional photons are more likely to escape the galaxy \citep[e.g.][]{Ma2016-binary}. 
 % does this affect yields??
 % runaway stars
 
-Since we model stars on a star-by-star basis, both of these effects could be reasonably accounted for by stochastically assigning binary star properties to some subset of our individual stars. This is beyond the scope of this project, but will be investigated in future works.
+Since we model stars on a star-by-star basis, both of these effects could be reasonably accounted for by stochastically assigning binary star properties to some subset of our individual stars. This is beyond the scope of this project, but will be investigated in future work.
 
 \section{Conclusion}
 \label{sec:conclusion}
-We have developed a new method for simulating galaxy evolution with detailed feedback and chemical enrichment. For the first time on galaxy scales, we simultaneously model multi-channel stellar feedback in detail, accounting for stellar winds, core collapse and Type Ia supernovae, ionizing radiation followed through radiative transfer, photoelectric heating, and Lyman-Werner radiation using individual star particles. This, coupled with the detailed chemistry and heating/cooling physics followed with \textsc{Grackle}, allows us to capture realistic galaxy evolution in detail. In this work, we apply these methods to simulate the evolution of an isolated, low mass dwarf galaxy modeled after the $z=0$ properties of the Leo P ultrafaint dwarf galaxy. We present an overview of the properties of this galaxy in this work.
+We have developed a new method for simulating galaxy evolution with detailed feedback and chemical enrichment. For the first time on galaxy scales, we simultaneously model multi-channel stellar feedback in detail, accounting for stellar winds, core collapse and Type Ia supernovae, ionizing radiation followed through radiative transfer, photoelectric heating, and Lyman-Werner radiation using individual star particles. This, coupled with the detailed chemistry and heating/cooling physics followed with \textsc{Grackle}, allows us to capture realistic galaxy evolution in detail. In this work, we apply these methods to simulate the evolution of an isolated, low-mass, dwarf galaxy modeled after the $z=0$ properties of the Leo P ultrafaint dwarf galaxy. We present an overview of the properties of this 
+%mm2 galaxy
+    simulation 
+in this work.
 % AE: mention companion paper here if publish at same time
 
 For our simulated dwarf galaxy, we find:
 \begin{enumerate}
-\item Multi-channel feedback is effective in this galaxy in regulating star formation consistent with the KS relationship and extended Schmidt law in observed galaxies. See Figures~\ref{fig:sfr_mass_evolution} and \ref{fig:KS}.
+\item Multi-channel feedback is effective in this galaxy in regulating star formation 
+%mm2 
+   to occur at a rate 
+consistent with the KS relationship and extended Schmidt law in observed galaxies. See Figures~\ref{fig:sfr_mass_evolution} and \ref{fig:KS}.
 
-\item This feedback drives large outflows ($\eta \sim 50$ at 0.25~R$_{\rm vir}$) with metal mass loading factors near unity. By mass, nearly all of this outflow is moving with velocities below 100 km~s$^{-1}$, but there is a significant tail towards velocities up to 1000 km s$^{-1}$ (Figure~\ref{fig:outflow_velocity}). This galaxy is consistent with observed metal retention fractions of UFD's, retaining only $\sim$10\% of metals in the disk. By the end of the simulation the remaining metals reside within the virial radius ($\sim$50\%) and $\sim$40\% are ejected outside the virial radius. The fraction in the disk remains fairly constant towards the end of the simulation, but the metals in the halo are still evolving. See Figures \ref{fig:mass_outflow}, \ref{fig:outflow_velocity}, and \ref{fig:metal_evolution}.
+\item This feedback drives large outflows 
+%mm2 ($\eta \sim 50$ at 0.25~R$_{\rm vir}$) with
+   having mass loading factors of $\eta \sim 50$ at 0.25~R$_{\rm vir}$, and
+metal mass loading factors near unity. By mass, nearly all of this outflow is moving with velocities below 100 km~s$^{-1}$, but there is a significant tail towards velocities up to 1000 km s$^{-1}$ (Figure~\ref{fig:outflow_velocity}). 
 
-\item A thin, yet resolved, gas scale height ($\sim$~50~pc) beyond our stellar radius, with larger scale heights ($\sim 100 - 200$~pc) driven by feedback interior to the stellar radius. This is comparable to the resolution limit of the diffuse \ion{H}{1} in observed, gaseous UFDs. See Figure~\ref{fig:scale_height}.
+%mm2 [made this a separate item]
+\item 
+%mm2 This galaxy result is consistent with the observed metal retention fractions of ultrafaint dwarfs, retaining only $\sim$10\% of metals in the disk. 
+    Only $\sim$10\% of metals are retained in the disk of our simulated galaxy, consistent with the observed metal retention fractions of ultrafaint dwarfs.  By the end of the simulation $\sim$50\% of the remaining metals remain within the virial radius and $\sim$40\% 
+have been ejected beyond the virial radius. The fraction in the disk remains fairly constant towards the end of the simulation, but the metals in the halo are still evolving. See Figures \ref{fig:mass_outflow}, \ref{fig:outflow_velocity}, and \ref{fig:metal_evolution}.
 
-\item The ISRF of our galaxy is highly varying in time by orders of magnitude, though is relatively uniform in space at any given time. It is unclear how important these fluctuations are as a source of feedback, or if the affect can simply be approximated with a time averaged radial profile. See Figures \ref{fig:ISRF} and \ref{fig:ISRF_2D}.
+\item A thin, yet resolved, gas scale height ($\sim 50$~pc) beyond our stellar radius, with larger scale heights ($\sim 100$--200~pc) driven by feedback interior to the stellar radius. This is comparable to the resolution limit of the diffuse \ion{H}{1} in observed, gaseous ultrafaint dwarfs. See Figure~\ref{fig:scale_height}.
 
-\item Our galaxy forms a significant amount of H$_2$ through gas ($H^-$) reactions. This dense gas is more resistive to feedback driven outflows than the less dense gas in the galaxy. This leads to high molecular gas fractions, with a H$_2$ mass comparable to the \ion{H}{1} content by the end of the simulation. This result requires further investigation to determine if this behavior is universally true of ultrafaint dwarf galaxies. See Figure~\ref{fig:ISM_evolution}.
+\item The ISRF of our galaxy is highly varying in time, by orders of magnitude, though it is relatively uniform in space at any given time. It is unclear how important these fluctuations are as a source of feedback, or if the affect can 
+%mm2 simply 
+be approximated with a time averaged radial profile. See Figures \ref{fig:ISRF} and \ref{fig:ISRF_2D}.
+
+\item Formation of a significant amount of H$_2$ through gas phase reactions with H$^_$. This dense gas is more resistive to feedback driven outflows than the less dense gas in the galaxy. This leads to high molecular gas fractions, with an H$_2$ mass comparable to that of \ion{H}{1} by the end of the simulation. This result requires further investigation to determine if this behavior is universally true of ultrafaint dwarf galaxies. See Figure~\ref{fig:ISM_evolution}.
 \end{enumerate}
 
-Finally, we used O and N as examples to briefly demonstrate that there are discernible differences in how individual metal species are distributed within the ISM of our galaxy. In future work we will investigate in detail how metal enrichment proceeds in low mass dwarf galaxies, including how metals move through the various phases of the ISM into star forming gas, and the gas flows of individual metals through the halos of low mass dwarf galaxies. In addition, we will investigate the role of each of our sources of feedback plays in driving dwarf galaxy chemodynamics.
+Finally, we used O and N as examples to briefly demonstrate that there are discernible differences in how individual metal species are distributed within the ISM of our galaxy. In future work we will investigate in detail how metal enrichment proceeds in low mass dwarf galaxies, including how metals move through the various phases of the ISM into star forming gas, and how individual metals move 
+%mm2 through the halos of low mass dwarf galaxies.
+  into halos. 
+% In addition, we will investigate 
+   This will allow us to examine
+the role each of our sources of feedback plays in driving dwarf galaxy chemodynamics.
 
 \section*{Acknowledgements:} A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. 
 We gratefully recognize computational
 resources provided by NSF XSEDE through grant number TGMCA99S024, \textbf{need Pleiades alloc}, Columbia University, and the \textbf{(need proper ack. for Simons computing resources)}. Analysis in this work
-made significant use of the publicly available yt (http://ytproject.org)
-toolkit. \textsc{Enzo}, \textsc{Grackle}, and yt are the products of a collaborative effort of many independent scientists from numerous institutions around
+made significant use of the publicly available \textsc{yt} (http://ytproject.org)
+toolkit. \textsc{Enzo}, \textsc{Grackle}, and \textsc{yt} are the products of a collaborative effort of many independent scientists from numerous institutions around
 the world. Their commitment to open science has helped make
 this work possible
-We would also like to thank for their advice and valuable conversations: John Wise, Brian O'Shea, Benoit Cote, Britton Smith, Simon Glover, Kathryn Johnston, Mary Putman, Keith Hawkins, Joshua Wall, and Chia-yu Hu. \textbf{is this too many people? I do think they all deserve acknowledgement. (list is in no particular order)}
+We would also like to thank for their advice and valuable conversations: John Wise, Brian O'Shea, Benoit Cote, Britton Smith, Simon Glover, Kathryn Johnston, Mary Putman, Keith Hawkins, Joshua Wall, and Chia-yu Hu. \textbf{AE: is this too many people? I do think they all deserve acknowledgement. (list is in no particular order).  MM: I'd alphabetize and use first initials following ApJ style, but fine by me to keep everyone on.}
 
 \textit{Software:} \textsc{Enzo} \citep{Enzo2014}, \textsc{yt} \citep{yt}, \textsc{Grackle} \citep{GrackleMethod}, \textsc{Cloudy} \citep{Cloudy2013}
 %\bibliographystyle{apj}
