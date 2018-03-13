@@ -1,4 +1,5 @@
 %mm2 substantive changes marked with this comment tag, minor changes and wordsmithing done silently.  12-15 Feb
+%mm3 since Greg has already read this, I have removed commentary as I go.  substantive changes now marked with %mm3 13 Mar 18
 \documentclass[twocolumn]{aastex61}
 \pdfoutput=1 %for arXiv submission
 \usepackage{amsmath,amstext}
@@ -22,7 +23,9 @@
 
 \begin{document}
 
-\title{Simulating an Isolated Dwarf Galaxy with Individual Star Feedback and Chemistry}
+%mm3 [Proposed new title]
+\title{Simulating an Isolated Dwarf Galaxy with Energetic Feedback and Chemical Yields from Individual Stars}
+%mm3 \title{Simulating an Isolated Dwarf Galaxy with Individual Star Feedback and Chemistry}
 %\title{Simulating Dwarf Galaxy Evolution with Individual Star Feedback and Chemical Evolution}
 %Unstable Star Formation for the Lowest Mass Dwarf Galaxies
 \author{Andrew Emerick}
@@ -38,13 +41,31 @@
 %\affiliation{Institut f{\"u}r Theoretische Astrophysik, Zentrum f{\"u}r Astronomie der Universit{\"a}t Heidelberg, Heidelberg, Germany}
 
 \begin{abstract}
-\textbf{CHANGE: Cleaned up a few sentences. better intro + last sentence. added wind caveat. removed large H2 content mention (should I put this last one back?).}
+%\textbf{CHANGE: Cleaned up a few sentences. better intro + last sentence. added wind caveat. removed large H2 content mention (should I put this last one back?).}
 %Galactic chemical evolution is driven through stellar feedback and its ability to drive metal mixing within the interstellar medium (ISM) and beyond the galaxy in outflows. However, we are far from a complete understanding of feedback and galactic chemodynamics in general. 
-In order to better understand the relationship between feedback and galactic chemical evolution, we have developed a new model for stellar feedback at high resolution ($\sim$ few pc) in global disk simulations using the adaptive mesh refinement hydrodynamics code \textsc{Enzo}. For the first time in galaxy scale simulations, we simulate detailed stellar feedback from individual stars including %stellar winds from massive and asymptotic giant branch stars,
-AGB winds, 
-photoelectric heating, Lyman-Werner dissociation radiation, ionizing radiation tracked through an adaptive ray-tracing radiative transfer method, and core collapse and Type Ia supernovae. {\bf We additionally include stellar winds from massive stars, but reduce their velocity due to computational constraints.}
+In order to better understand the relationship between feedback and galactic chemical evolution, we have developed a new model for stellar feedback at 
+%mm3 high resolution ($\sim$ few pc) 
+   grid resolutions of only a few parsecs 
+in global disk simulations, using the adaptive mesh refinement hydrodynamics code \textsc{Enzo}. For the first time in galaxy scale simulations, we simulate detailed stellar feedback from individual stars including %stellar winds from massive and asymptotic giant branch stars,
+%mm3 AGB
+    asymptotic giant branch 
+winds, 
+photoelectric heating, Lyman-Werner dissociating radiation, ionizing radiation tracked through an adaptive ray-tracing radiative transfer method, and core collapse and Type Ia supernovae. 
+%mm3 [moved below] {\bf We additionally include stellar winds from massive stars, but reduce their velocity due to computational constraints.}
 %This star-by-star method allows us to directly account for variations in stellar properties that govern their feedback properties (mass, lifetime, surface temperature, and metallicity).
-We furthermore follow the star-by-star stellar yields using tracer fields for 15 metal species: C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba. We describe these methods in detail in this work and present the first results from 500~Myr of evolution of an isolated dwarf galaxy with properties similar to a Local Group ultrafaint dwarf galaxy. We demonstrate that our physics and feedback model is capable of producing a dwarf galaxy whose evolution is consistent with observations in both the Kennicutt-Schmidt relationship and extended Schmidt relationship. Effective feedback drives significantly metal-enriched outflows, leading to low metal retention fractions consistent with observations. Finally, we demonstrate that these simulations yield valuable information on the differences with which individual metal species mix and evolve within the ISM.
+We furthermore follow the star-by-star 
+%mm3 stellar 
+      chemical
+yields using tracer fields for 15 metal species: C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba.
+%mm3 
+    We include the yields ejected in massive stellar winds, but neglect the winds' energetic contribution due to computational 
+    constraints.
+ We describe these methods in detail in this work and present the first results from 500~Myr of evolution of an isolated dwarf galaxy with properties similar to a Local Group ultrafaint dwarf galaxy. We demonstrate that our physics and feedback model is capable of producing a dwarf galaxy whose evolution is consistent with observations in both the Kennicutt-Schmidt relationship and extended Schmidt relationship. Effective feedback drives significantly metal-enriched outflows, leading to low metal retention fractions consistent with observations. Finally, we demonstrate that these simulations yield valuable information on the
+%mm3 differences with which individual metal species mix and evolve 
+    variation in mixing behavior of individual metal species
+within the 
+%mm3 ISM.
+     multi-phase interstellar medium.
 
 
 %Our low-dust content galaxy exhibits a significant H$_2$ mass fraction, formed primarily through gas-phase H$^{-}$ reactions.
