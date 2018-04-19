@@ -2,7 +2,7 @@
 %mm3 since Greg has already read this, I have removed commentary as I go.  substantive changes now marked with %mm3 13 Mar 18
 %\documentclass[twocolumn]{aastex61}
 %\pdfoutput=1 %for arXiv submission
-\documentclass[a4paper,fleqn,usenatbib,useAMS]{mnras}
+\documentclass[fleqn,usenatbib,useAMS]{mnras}
 \usepackage{graphicx}	% Including figure files
 \usepackage{amsmath}	% Advanced maths commands
 \usepackage{amssymb}	% Extra maths symbols
@@ -36,7 +36,7 @@
 \newcommand{\msun}{M$_{\odot}$}
 \newcommand{\ccunit}{cm$^{-3}$}
 
-
+%%%%%%%%%%%%%%%%%%\hypersetup{draft}
 % For bibtex
 
 
@@ -98,7 +98,7 @@ Detailed interstellar medium (ISM) and chemical abundance properties of galaxies
 
 %mm2 I think there does need to be some introduction to this discussion:
 
-However, much of this work has been done with Lagrangian smoothed particle hydrodynamics schemes, with a few recent exceptions  \citep{Few2012,Simpson2013,Few2014,Vorobyov2015,Corlies2018}. In its original form, this scheme does not capture mixing between chemically inhomogeneous particles, as necessary for chemical evolution. This can be modeled with sub-grid models of turbulent metal diffusion \citep[e.g.][]{Shen2010,Shen2013,Brook2014,Su2017a,Escala2018}, but there are many possibly models that are not necessarily applicable in every regime \citep[see ][]{Revaz2016}. While mixing occurs in Eulerian codes even without sub-grid models, numerical diffusion tends to result in over-mixing, requiring very high resolution to reduce. Molecular diffusion or even turbulent mixing is certainly not resolved in any galaxy-scale simulation with either method, requiring additional sub-grid models; this can be particularly important for understanding the initial pollution of otherwise pristine gas \citep[see ][ and references therein]{PanScannapiecoScalo2013,Sarmento2017}. Moreover, metal mixing efficiencies may vary species-by-species, as suggested by recent work \citep[e.g.][]{Cohen2013, Roederer2014, FrebelNorris2015, Hirai2017, Cote2017}. Mixing behavior is tied critically to the feedback source (stellar winds, supernovae, and possibly more exotic sources) that inject metals into different phases of 
+However, much of this work has been done with Lagrangian smoothed particle hydrodynamics schemes, with a few recent exceptions  \citep{Few2012,Simpson2013,Few2014,Vorobyov2015,Corlies2018}. In its original form, this scheme does not capture mixing between chemically inhomogeneous particles, as necessary for chemical evolution. This can be modeled with sub-grid models of turbulent metal diffusion \citep[e.g.][]{Shen2010,Shen2013,Brook2014,Su2017a,Escala2018}, but there are many possibly models that are not necessarily applicable in every regime \citep[see ][]{Revaz2016}. While mixing occurs in Eulerian codes even without sub-grid models, numerical diffusion tends to result in over-mixing, requiring very high resolution to reduce. Molecular diffusion or even turbulent mixing is certainly not resolved in any galaxy-scale simulation with either method, requiring additional sub-grid models; this can be particularly important for understanding the initial pollution of otherwise pristine gas \citep[see ][ and references therein]{PanScannapiecoScalo2013,Sarmento2017}. Moreover, metal mixing efficiencies may vary species-by-species \citep[e.g.][]{Cohen2013, Roederer2014, FrebelNorris2015, Hirai2017, Cote2017}. Mixing behavior is tied critically to the feedback source (stellar winds, supernovae, and possibly more exotic sources) that inject metals into different phases of 
 the ISM with different energies and on different timescales; the observational effect of this is poorly understood, however. The variations in how different methods handle sub-grid metal injection and metal mixing schemes can lead to uncertainties in connecting models to observations and the fundamental physics that drives galaxy evolution.
 
 Increasing physical resolution reduces reliance on sub-grid physics for mixing.  However, at high particle mass resolution ($M \lesssim 10^3$ M$_{\odot}$) standard schemes for modeling stars as simple stellar populations lose validity  \citep[as studied in detail by][]{Revaz2016}. Below 10$^4$ M$_{\odot}$, such schemes do not fully sample the initial mass function (IMF), and cannot be considered average representations of stellar populations. This is acutely problematic at star particle masses comparable to or below the mass of the most massive individual star ($\sim 100$ M$_{\odot}$). Various approaches exist to address this issue \citep[e.g.][]{Kobayashi2000,WeidnerKroupa2004,Pflamm-AltenburgKroupa2006,RevazJablonka2012,Kroupa2013,Rosdahl2015,Su2017b}, but none are without caveats \citep{Revaz2016}, save for schemes which begin to track the star-by-star information within a given particle by directly sampling the IMF at formation time \citep[e.g.][]{Hu2017}.  The most straightforward solution is to remove the single stellar population formalism entirely and simply track stars as individual particles. 
@@ -527,7 +527,7 @@ Although simple to measure in simulations, these quantities are challenging to d
 \centering
 \includegraphics[width=0.475\linewidth]{all_gas_schmidt_law_evolution.png}
 \includegraphics[width=0.475\linewidth]{all_gass_efficiency_evolution.png}
-\caption{The Kennicutt-Schmidt law (left) and extended Schmidt law (right) relationships for our galaxy as measured every megayear, plotted as points colored by time, with dark / purple early and light / green late. See text for details of the calculation. Recent observations from the SHIELD sample Teich2016 are plotted as black points with error bars. On the left, we also give the best fit line to galaxies from the FIGGS sample from Roychowdhury2014, and on the right we also show the best fit line and 1 $\sigma$ errors from Shi2011. There is no clear correlation with time in this diagram.} %something is breaking here in compiling
+\caption{The Kennicutt-Schmidt law (left) and extended Schmidt law (right) relationships for our galaxy as measured every megayear, plotted as points colored by time, with dark / purple early and light / green late. See text for details of the calculation. Recent observations from the SHIELD sample \protect\citep{Teich2016} are plotted as black points with error bars. On the left, we also give the best fit line to galaxies from the FIGGS sample from \protect\cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \protect\cite{Shi2011}. There is no clear correlation with time in this diagram.} %something is breaking here in compiling
 \label{fig:KS}
 \end{figure*}
 
@@ -784,5 +784,6 @@ Finally, each of the lower resolution runs retain a similar fraction of their pr
 
 %\appendix
 %\section{appendix section}
+\label{lastpage}
 
 \end{document}
