@@ -1,39 +1,75 @@
 %mm2 substantive changes marked with this comment tag, minor changes and wordsmithing done silently.  12-15 Feb
 %mm3 since Greg has already read this, I have removed commentary as I go.  substantive changes now marked with %mm3 13 Mar 18
-\documentclass[twocolumn]{aastex61}
-\pdfoutput=1 %for arXiv submission
-\usepackage{amsmath,amstext}
+%\documentclass[twocolumn]{aastex61}
+%\pdfoutput=1 %for arXiv submission
+\documentclass[a4paper,fleqn,usenatbib,useAMS]{mnras}
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{multicol}        % Multi-column entries in tables
+\usepackage{bm}		% Bold maths symbols, including upright Greek
+%\usepackage{pdflscape}	% Landscape pages
+
 \usepackage[T1]{fontenc}
-\usepackage{apjfonts} 
+\usepackage{ae,aecompl}
+\usepackage{newtxtext,newtxmath}
+
+%\usepackage{amsmath,amstext}
+%\usepackage[T1]{fontenc}
 \usepackage[figure,figure*]{hypcap}
-\usepackage{multirow}
-\usepackage{mathtools}
-\renewcommand*{\sectionautorefname}{Section} %for \autoref
-\renewcommand*{\subsectionautorefname}{Section} %for \autoref
+%\usepackage{multirow}
+%\usepackage{mathtools}
+%\renewcommand*{\sectionautorefname}{Section} %for \autoref
+%\renewcommand*{\subsectionautorefname}{Section} %for \autoref
 %\usepackage{graphicx}
+
+%\usepackage{apjfonts} 
+%\usepackage{natbib} % bibliography
+
 
 %\usepackage[active,floats,tightpage]{preview}
 %    \setlength\PreviewBorder{1em}
 
 
-\shorttitle{Feedback with Individual Stars}
-\shortauthors{Emerick, Bryan, Mac Low}
+%\shorttitle{Feedback with Individual Stars}
+%\shortauthors{Emerick, Bryan, Mac Low}
 \newcommand{\msun}{M$_{\odot}$}
 \newcommand{\ccunit}{cm$^{-3}$}
 
+
+% For bibtex
+
+
+\title[Feedback with Individual Stars]{Simulating an Isolated Dwarf Galaxy with Energetic Feedback and Chemical Yields from Individual Stars}
+
+\author[A. Eemerick et. al.]{
+Andrew Emerick,$^{1,2}$
+Greg L. Bryan,$^{1,3}$
+and Mordecai-Mark Mac Low$^{2,1}$
+\\
+$^{1}$Department of Astronomy, Columbia University, New York, NY, 10027, USA\\
+$^{2}$Department of Astrophysics, American Museum of Natural History, New York, NY, USA\\
+$^{3}$Center for Computational Astrophysics, Flatiron Institute, 162 5th Ave, New York, NY, 10003, U.S.A}
+
+
 \begin{document}
 
-\title{Simulating an Isolated Dwarf Galaxy with Energetic Feedback and Chemical Yields from Individual Stars}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+%\title{Simulating an Isolated Dwarf Galaxy with Energetic Feedback and Chemical Yields from Individual Stars}
 
-\author{Andrew Emerick}
-\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
-\affiliation{Department of Astrophysics, American Museum of Natural History, New York, NY, USA}
-\author{Greg L. Bryan}
-\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
-\affiliation{Center for Computational Astrophysics, Flatiron Institute, 162 5th Ave, New York, NY, 10003, U.S.A}
-\author{Mordecai-Mark Mac Low}
-\affiliation{Department of Astrophysics, American Museum of Natural History, New York, NY, USA}
-\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+%\author{Andrew Emerick}
+%\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+%\affiliation{Department of Astrophysics, American Museum of Natural History, New York, NY, USA}
+%\author{Greg L. Bryan}
+%\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+%\affiliation{Center for Computational Astrophysics, Flatiron Institute, 162 5th Ave, New York, NY, 10003, U.S.A}
+%\author{Mordecai-Mark Mac Low}
+%\affiliation{Department of Astrophysics, American Museum of Natural History, New York, NY, USA}
+%\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+
+
 
 %\affiliation{Institut f{\"u}r Theoretische Astrophysik, Zentrum f{\"u}r Astronomie der Universit{\"a}t Heidelberg, Heidelberg, Germany}
 
@@ -43,7 +79,9 @@
 In order to better understand the relationship between feedback and galactic chemical evolution, we have developed a new model for stellar feedback at grid resolutions of only a few parsecs in global disk simulations, using the adaptive mesh refinement hydrodynamics code \textsc{Enzo}. For the first time in galaxy scale simulations, we simulate detailed stellar feedback from individual stars including asymptotic giant branch winds, photoelectric heating, Lyman-Werner dissociating radiation, ionizing radiation tracked through an adaptive ray-tracing radiative transfer method, and core collapse and Type Ia supernovae. We furthermore follow the star-by-star chemical yields using tracer fields for 15 metal species: C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba. We include the yields ejected in massive stellar winds, but greatly reduce the winds' velocities due to computational constraints. We describe these methods in detail in this work and present the first results from 500~Myr of evolution of an isolated dwarf galaxy with properties similar to a Local Group ultrafaint dwarf galaxy. We demonstrate that our physics and feedback model is capable of producing a dwarf galaxy whose evolution is consistent with observations in both the Kennicutt-Schmidt relationship and extended Schmidt relationship. Effective feedback drives significantly metal-enriched outflows, leading to low metal retention fractions consistent with observations. Finally, we demonstrate that these simulations yield valuable information on the variation in mixing behavior of individual metal species within the multi-phase interstellar medium.
 \end{abstract}
 
-\keywords{Galaxy -- Hydrodynamics -- Simulation -- Feedback}
+\begin{keywords}
+Galaxy -- Hydrodynamics -- Simulation -- Feedback
+\end{keywords}
 
 \section{Introduction}
 %
@@ -77,7 +115,7 @@ Readers who may want to only briefly skim (or skip) over the details of our incl
 \section{Methods}
 \label{sec:methods}
 We produce high-resolution, galaxy-scale simulations tracking stars not as single stellar populations, but as individual stars sampled from an assumed IMF.
-This allows us to follow star-by-star variations in feedback physics and stellar yields in detail. To properly model the ISM, we track non-equilibrium, primordial chemistry (including molecular hydrogen) using \texttt{Grackle} \citep{GrackleMethod}, with heating and approximate self-shielding from a metagalactic ultraviolet (UV) background. We assume collisional ionization equilibrium for all other elements and use updated \texttt{Cloudy} metal-line cooling tables consistent with our self-shielding approximation (see Appendix~\ref{appendix:cooling}). We also include an updated observationally motivated dust model for the low metallicity regimes studied here ($Z \lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties including surface gravity, effective temperature, radius, and lifetime from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure on \ion{H}{1}. In addition, we follow the optically thin, non-ionizing UV radiation from these stars that cause photoelectric heating and Lyman-Werner dissociation of molecular hydrogen. We track the stellar wind feedback and SNe from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia SN progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star as it forms with the associated local gas abundances for each species. In addition, we track a total metal density field which is the sum of all metals, including those not directly tracked. This field is used to inform the heating/cooling physics, and determines the metallicity of each star at birth. These methods are discussed in full detail below.
+This allows us to follow star-by-star variations in feedback physics and stellar yields in detail. To properly model the ISM, we track non-equilibrium, primordial chemistry (including molecular hydrogen) using \texttt{Grackle} \citep{GrackleMethod}, with heating and approximate self-shielding from a metagalactic ultraviolet (UV) background. We assume collisional ionization equilibrium for all other elements and use updated \texttt{Cloudy} metal-line cooling tables consistent with our self-shielding approximation (see Appendix~\ref{appendix:cooling}). We also include an updated observationally motivated dust model for the low metallicity regimes studied here ($Z \lesssim 0.1$ Z$_{\odot}$). Each star is assigned basic properties including surface gravity, effective temperature, radius, and lifetime from tabulated stellar evolution models, which inform how the stars deposit their feedback. We directly track ionizing radiation from massive stars using an adaptive ray tracing radiative transfer method that includes the effects of radiation pressure on HI. In addition, we follow the optically thin, non-ionizing UV radiation from these stars that cause photoelectric heating and Lyman-Werner dissociation of molecular hydrogen. We track the stellar wind feedback and SNe from these stars, depositing individual metal yields from both. We include AGB wind feedback and yields for lower mass stars, and track these directly as Type Ia SN progenitors. We follow yields for 15 individual metal species (C, N, O, Na, Mg, Si, S, Ca, Mn, Fe, Ni, As, Sr, Y, and Ba), chemically tagging each star as it forms with the associated local gas abundances for each species. In addition, we track a total metal density field which is the sum of all metals, including those not directly tracked. This field is used to inform the heating/cooling physics, and determines the metallicity of each star at birth. These methods are discussed in full detail below.
 
 \subsection{Hydrodynamics and Gravity}
 \label{sec:hydro}
@@ -186,24 +224,24 @@ In practice, we invert the cumulative probability function to assign an exact ti
 
 \subsubsection{Ionizing Radiation from Discrete Sources}
 \label{sec:ionizing radiation}
-Radiation feedback, including ionization, ionization heating, and radiation pressure, is an important source of feedback in galaxies. \ion{H}{2} regions carved out by stellar radiation change the ISM structure in regions where SNe eventually explode, generally increasing their dynamical importance. However, accounting for angular effects, radiation can also allow energy from SNe to dissipate more readily by escaping out of channels carved through dense clouds. Radiation feedback effects have been included with various approximations in a wide range of simulations \citep[e.g.][]{OppenheimerDave2006, Krumholz2007, HopkinsQuataertMurray2012, Agertz2013, Renaud2013, Stinson2013, Roskar2014, Ceverino2014, FIRE, AgertzKravtsov2015, Forbes2016, Hu2016, Hu2017, FIRE2}, with a smaller subset using full radiation hydrodynamics \citep{WiseAbel2012,Wise2012a,Wise2014,Kim2013a, Kim2013b,Pawlik2013,Rosdahl2015,Aubert2015,Ocvirk2016,BaczynskiGloverKlessen2015,Pawlik2017} due to the additional computational expense of direct ray tracing. As we seek a complete accounting of stellar feedback physics, we follow \ion{H}{1} and \ion{He}{1} ionizing radiation from our stars through the ray tracing methods described below. 
+Radiation feedback, including ionization, ionization heating, and radiation pressure, is an important source of feedback in galaxies. \ion{H}{2} regions carved out by stellar radiation change the ISM structure in regions where SNe eventually explode, generally increasing their dynamical importance. However, accounting for angular effects, radiation can also allow energy from SNe to dissipate more readily by escaping out of channels carved through dense clouds. Radiation feedback effects have been included with various approximations in a wide range of simulations \citep[e.g.][]{OppenheimerDave2006, Krumholz2007, HopkinsQuataertMurray2012, Agertz2013, Renaud2013, Stinson2013, Roskar2014, Ceverino2014, FIRE, AgertzKravtsov2015, Forbes2016, Hu2016, Hu2017, FIRE2}, with a smaller subset using full radiation hydrodynamics \citep{WiseAbel2012,Wise2012a,Wise2014,Kim2013a, Kim2013b,Pawlik2013,Rosdahl2015,Aubert2015,Ocvirk2016,BaczynskiGloverKlessen2015,Pawlik2017} due to the additional computational expense of direct ray tracing. As we seek a complete accounting of stellar feedback physics, we follow HI and HeI ionizing radiation from our stars through the ray tracing methods described below. 
 
-Enzo includes an adaptive ray tracing implementation, \textsc{Enzo+Moray} \citep{WiseAbel2011}, to solve the equations of radiative transfer coupled to the hydrodynamics of the simulation. We follow \ion{H}{1} and \ion{He}{1} ionizing photons which are coupled to the \texttt{Grackle} primordial chemistry and heating and cooling routines to track photoionization and heating, as well as radiation pressure on hydrogen. 
+Enzo includes an adaptive ray tracing implementation, \textsc{Enzo+Moray} \citep{WiseAbel2011}, to solve the equations of radiative transfer coupled to the hydrodynamics of the simulation. We follow HI and HeI ionizing photons which are coupled to the \texttt{Grackle} primordial chemistry and heating and cooling routines to track photoionization and heating, as well as radiation pressure on hydrogen. 
 
-We determine the \ion{H}{1} and \ion{He}{1} ionizing photon rates for each star using the OSTAR2002 \citep{Lanz2003} grid of O-type stellar models, appropriate for $M_{*} \gtrsim 15$~M$_{\odot}$ at solar metallicity\footnote{The exact stellar mass range on the OSTAR2002 grid is model dependent and a function of metallicity}. We use linear interpolation in stellar effective temperature, surface gravity, and metallicity to compute the ionizing photon fluxes and rates for each star. Stars less massive than about 15 M$_{\odot}$ and very massive stars with sub-solar metallicity are generally not well sampled by the OSTAR2002 grid. In this case, we integrate a black body spectrum at $T_{\rm eff}$ to obtain the ionizing photon fluxes, but normalize the result to be continuous with the OSTAR2002 grid (see Appendix \ref{appendix:radiation}).
+We determine the HI and HeI ionizing photon rates for each star using the OSTAR2002 \citep{Lanz2003} grid of O-type stellar models, appropriate for $M_{*} \gtrsim 15$~M$_{\odot}$ at solar metallicity\footnote{The exact stellar mass range on the OSTAR2002 grid is model dependent and a function of metallicity}. We use linear interpolation in stellar effective temperature, surface gravity, and metallicity to compute the ionizing photon fluxes and rates for each star. Stars less massive than about 15 M$_{\odot}$ and very massive stars with sub-solar metallicity are generally not well sampled by the OSTAR2002 grid. In this case, we integrate a black body spectrum at $T_{\rm eff}$ to obtain the ionizing photon fluxes, but normalize the result to be continuous with the OSTAR2002 grid (see Appendix \ref{appendix:radiation}).
 
 %AE (taking this out... looked into more detail in paper and they argue this, but frankly I do not see how they reach this conclusion from their Appendix plots): \citet{Dale2012} demonstrated that uncertainties on the order of a few in the ionizing radiation rates are not significant in giant molecular cloud (GMC) scale simulations.
 %Generally, the ionizing fluxes from high temperature black bodies underestimate the OSTAR2002 flux, and lower temperature black bodies overestimate the flux by a factor of 2-5 and 10-1000 respectively. 
 
-Instead of assigning a fixed ionizing photon energy across all sources, we integrate over each star's blackbody curve to compute the average ionizing photon energy individually for each source (see Appendix~\ref{appendix:radiation}). The average energy for \ion{H}{1} and \ion{He}{1} ionizing photons changes significantly over the OSTAR2002 temperature range $\log(T_{4,\rm{eff}} [K]) \in \left[2.75,5.5\right]$, ranging from 15.72 eV to 20.07 eV and 26.52 eV to 31.97 eV respectively.
+Instead of assigning a fixed ionizing photon energy across all sources, we integrate over each star's blackbody curve to compute the average ionizing photon energy individually for each source (see Appendix~\ref{appendix:radiation}). The average energy for HI and HeI ionizing photons changes significantly over the OSTAR2002 temperature range $\log(T_{4,\rm{eff}} [K]) \in \left[2.75,5.5\right]$, ranging from 15.72 eV to 20.07 eV and 26.52 eV to 31.97 eV respectively.
 
-We also include the effects of radiation pressure on \ion{H}{1}. This has been shown to be important in suppressing the star formation rates of dwarf galaxies by influencing turbulence and the dense gas content of the ISM \citep{WiseAbel2012,Ceverino2014}. We ignore the absorption of ionizing radiation by dust and re-radiation in the infrared. This is included in other models \citep[e.g.][]{Rosdahl2015,FIRE,FIRE2} as this may increase by a factor of a few to several the effective radiation pressure \citep{ZhangDavis2017}. However, the importance of multiple scattering is still unclear. Other works have shown the effect to only increase the radiation pressure by a factor of order unity \citep{Krumholz2012,Krumholz2013,Reissl2017,Wibking2018}. Due to these uncertainties, and given that our dwarf galaxy has a low dust content, and therefore a low infrared opacity, we ignore this effect. 
+We also include the effects of radiation pressure on HI. This has been shown to be important in suppressing the star formation rates of dwarf galaxies by influencing turbulence and the dense gas content of the ISM \citep{WiseAbel2012,Ceverino2014}. We ignore the absorption of ionizing radiation by dust and re-radiation in the infrared. This is included in other models \citep[e.g.][]{Rosdahl2015,FIRE,FIRE2} as this may increase by a factor of a few to several the effective radiation pressure \citep{ZhangDavis2017}. However, the importance of multiple scattering is still unclear. Other works have shown the effect to only increase the radiation pressure by a factor of order unity \citep{Krumholz2012,Krumholz2013,Reissl2017,Wibking2018}. Due to these uncertainties, and given that our dwarf galaxy has a low dust content, and therefore a low infrared opacity, we ignore this effect. 
 
 \subsubsection{Diffuse  Heating}
 \label{sec:diffusive heating}
 We include two forms of diffuse heating in our simulations, each tied directly to the non-equilibrium primordial chemistry network in \texttt{Grackle}: 1) the optically thin, uniform metagalactic UV background \citep{HM2012}, and 2) localized photoelectric heating from the FUV (6 eV $<h\nu< 13.6$ eV) radiation from each of our star particles. The FUV flux for each star is again obtained from the OSTAR2002 grid by directly integrating over the spectral energy distributions for each gridded star. Like the ionizing radiation, we again use an adjusted black body spectrum to compute the flux for stars off of the grid (see Sect.~\ref{sec:ionizing radiation} and Appendix~\ref{appendix:radiation}). Photoelectric heating can be a dominant heating mechanism in the ISM of the Milky Way \citep{Parravano2003}, and could be significant in regulating star formation in dwarf galaxies \citep{Forbes2016}. However, this conclusion warrants further research as its exact importance in dwarf galaxies relative to other feedback mechanisms is contentious \citep{Hu2016,Hu2017}. Generally, models for photoelectric heating and Lyman-Werner radiation in hydrodynamic simulations of galaxies adopt a constant value or a static, radial profile. Only recently has the localization and time variation of these processes been considered.
 
-Self-shielding of gas against the metagalactic UV background is important in high-resolution simulations, particularly for low-mass, low-metallicity dwarf galaxies where the UV background is capable of gradually photoevaporating unshielded gas from the galaxy \citep{Simpson2013}. We have implemented the \citet{Rahmati2013} approximate self-shielding method in \texttt{Grackle} to account for \ion{H}{1} self-shielding against the UV background \citep[see][ for more details of this implementation]{GrackleMethod}. We assume \ion{He}{1} ionization generally follows \ion{H}{1}. This allows us to approximate \ion{He}{1} self-shielding using the same form (A. Rahmati, private communication). We ignore \ion{He}{2} photoionization from the UV background entirely. Accounting for self-shielding in this manner leads to an inconsistency in using tabulated, optically-thin metal line cooling rates from \textsc{Cloudy} (see Section 4.1.1 of \citet{Hu2017}). As mentioned previously, we have re-computed metal line cooling tables using \textsc{Cloudy} models of optically thick clouds to be consistent with our self-shielding prescription. This is described in more detail in Appendix ~\ref{appendix:cooling}. 
+Self-shielding of gas against the metagalactic UV background is important in high-resolution simulations, particularly for low-mass, low-metallicity dwarf galaxies where the UV background is capable of gradually photoevaporating unshielded gas from the galaxy \citep{Simpson2013}. We have implemented the \citet{Rahmati2013} approximate self-shielding method in \texttt{Grackle} to account for HI self-shielding against the UV background \citep[see][ for more details of this implementation]{GrackleMethod}. We assume HeI ionization generally follows HI. This allows us to approximate HeI self-shielding using the same form (A. Rahmati, private communication). We ignore HeII photoionization from the UV background entirely. Accounting for self-shielding in this manner leads to an inconsistency in using tabulated, optically-thin metal line cooling rates from \textsc{Cloudy} (see Section 4.1.1 of \citet{Hu2017}). As mentioned previously, we have re-computed metal line cooling tables using \textsc{Cloudy} models of optically thick clouds to be consistent with our self-shielding prescription. This is described in more detail in Appendix ~\ref{appendix:cooling}. 
 
 %Ignoring this effect leads to an overestimation of the cooling rates when in the self-shielding regime. %We refer to \citet{2006agna.book.....O,2010MNRAS.408.1945M,2012MNRAS.421.2232F,Rahmati2013} for a more detailed description of this approximation and \citet{Gracklemethod} for its specific implementation, as used here.
 
@@ -234,7 +272,7 @@ In addition to the Lyman-Werner radiation from the UV background, we account for
 \section{Galaxy Initial Conditions}
 \label{sec:IC}
 We apply these methods to a first test case of the evolution of an isolated, low mass dwarf galaxy. The galaxy is constructed to have initial properties similar to those observed for the Local Group dwarf galaxy Leo P \citep{Giovanelli2013,McQuinn2013,McQuinn2015a,McQuinn2015}, although it is not intended to be a matched model to this galaxy. Leo P is gas rich, with $M_{\rm HI} = 8.1\times 10^{5}$~M$_{\odot}$ and $M_{*} = 5.6^{+0.4}_{-1.9} \times 10^{5}$~M$_{\odot}$ \citep{McQuinn2015a} extending to a radius $r_{\rm HI} = 500$~pc, and low metallicity,
-with $12 + \rm{log(O/H)} = 7.17 \pm 0.04$ \citep{Skillman2013}, or a metallicity fraction of $Z/Z_{\odot} \sim 5.4\times10^{-4}$, adopting $Z_{\odot} = 0.018$ from \citet{Asplund2009}. Our dwarf galaxy model is constructed without an initial background stellar population, with a total gas mass of $1.8 \times 10^{6}$~M$_{\odot}$, of which $M_{\rm HI} = 1.35 \times 10^{6}$~M$_{\odot}$, and $Z/Z_{\odot} = 4.3\times 10^{-4}$, comparable to the average redshift $z = 0$ metallicity from the stellar models computed in \citet{McQuinn2015}.
+with $12 + \rm{log(O/H)} = 7.17 \pm 0.04$ \citep{Skillman2013}, or a metallicity of $Z \sim 5.4\times10^{-4}$ ($Z/Z_{\odot} = 0.03$, adopting $Z_{\odot} = 0.018$ from \citet{Asplund2009}). Our dwarf galaxy model is constructed without an initial background stellar population, with a total gas mass of $1.8 \times 10^{6}$~M$_{\odot}$, of which $M_{\rm HI} = 1.35 \times 10^{6}$~M$_{\odot}$, and $Z = 4.3\times 10^{-4}$, comparable to the average redshift $z = 0$ metallicity from the stellar models computed in \citet{McQuinn2015}.
 
 The galaxy initially consists of a smooth, exponential gas disk in hydrostatic equilibrium with a static, background dark matter potential. The gas profile follows \citet{Tonnesen2009} and \citet{Salem2015}, with
 \begin{equation}
@@ -242,7 +280,7 @@ The galaxy initially consists of a smooth, exponential gas disk in hydrostatic e
 \end{equation}
 where $a_{\rm gas}$ and $b_{\rm gas}$ are the radial and vertical gas disk scale heights, and $M_{\rm o}$ is approximately 70\% of the total gas mass. We set $a_{\rm gas} = 250$~pc, $b_{\rm gas} = 100$~pc, and $M_o = 1.26\times 10^6$~M$_{\odot}$. We adopt a \citet{Burkert1995} dark matter potential with $M_{\rm vir} = 2.48\times 10^{9}~M_{\odot}$, $R_{\rm vir}~=~27.4$~kpc and r$_{\rm s} = 990$~pc. This gives a maximum circular velocity $V_{\rm max} = 30.1$~km~s$^{-1}$ at $R_{\rm vmax}~=~3.2$~kpc. These parameters were adopted specifically to match the observed dynamical mass of Leo P interior to 500 pc of $M_{\rm dyn} (r < 500~\rm{pc}) = 2.7\times 10^{7}$ M$_{\odot}$, and represent virial properties within the halo mass expected for galaxies of this size \citep{Ferrero2012,Read2017}. We will explore the effect of adopting different dark matter potentials within the large range of possible profiles in future work.
 
-Following the initialization procedure of \citet{Hu2017}, we use artificial SN driving to generate realistic initial densities and turbulent properties in the galaxy ISM. This prevents an otherwise uniform collapse of the gas disk at the beginning of the simulation. During this period, SNe explode at a fixed rate of $0.4$~Myr$^{-1}$, corresponding to the SFR obtained given the central \ion{H}{1} surface density and the relation presented in \citep{Roychowdhury2009}. We stop the artificial driving 25~Myr after the first star particle forms. These artificial SNe do not drive chemical evolution of the galaxy; their metal yields correspond to the mean ISM abundances. We note that this initial driving is somewhat ad hoc in that we do not include any other effects from the stellar population that would have caused these SNe.
+Following the initialization procedure of \citet{Hu2017}, we use artificial SN driving to generate realistic initial densities and turbulent properties in the galaxy ISM. This prevents an otherwise uniform collapse of the gas disk at the beginning of the simulation. During this period, SNe explode at a fixed rate of $0.4$~Myr$^{-1}$, corresponding to the SFR obtained given the central HI surface density and the relation presented in \citep{Roychowdhury2009}. We stop the artificial driving 25~Myr after the first star particle forms. These artificial SNe do not drive chemical evolution of the galaxy; their metal yields correspond to the mean ISM abundances. We note that this initial driving is somewhat ad hoc in that we do not include any other effects from the stellar population that would have caused these SNe.
 
 We emphasize here that our model, with no initial stellar distribution, is not intended to reproduce the evolution of Leo P, which has formed stars continuously over cosmological timescales. In addition, the mass fractions for the individual metals we track are set to zero so that we follow only the evolution of metals self-consistently produced in the simulations. Otherwise, the galaxy chemical properties would be dominated by the somewhat arbitrary choice of initial abundances. In some ways this is similar to the first pollution of pristine gas in the early Universe, but we note that we cannot directly make this comparison as the environmental conditions and UVB properties were different at high redshift, and we explicitly ignore Pop III and Pop II stellar evolution. Instead, this work is intended as a numerical experiment to investigate how metal enrichment from ongoing star formation proceeds in a gas / dark matter environment similar to low mass halos at both low redshift and the early Universe. The subsequent metal enrichment from the stars in our simulation can be thought of as tracking 
 a change in abundances from arbitrary initial conditions. We will discuss how to make proper comparisons to observed stellar and gas abundance properties of dwarf galaxies in future work, where we will investigate the abundance evolution of our simulations in more detail.
@@ -261,13 +299,13 @@ We begin by characterizing the morphological properties of our dwarf galaxy, as 
 \begin{figure*}
 \centering
 \includegraphics[width=0.975\linewidth]{multiplot_4x4_x.png}
-\caption{Edge-on views of our dwarf galaxy at four different times in its evolution, 0, 150, 300, and 500 Myr after the beginning of star formation. Shown are the density weighted projection of number density (top row), temperature slices (second row), \ion{H}{1} column density (third row), and H$_2$ column density (fourth row). Each individual main sequence star particle is shown in the number density projections as a single black dot.}
+\caption{Edge-on views of our dwarf galaxy at four different times in its evolution, 0, 150, 300, and 500 Myr after the beginning of star formation. Shown are the density weighted projection of number density (top row), temperature slices (second row), HI column density (third row), and H$_2$ column density (fourth row). Each individual main sequence star particle is shown in the number density projections as a single black dot.}
 \label{fig:panel_x}
 \end{figure*}
 
 The initially puffy gas distribution collapses to a thin disk, with scale heights between 10--30~pc, as shown by the blue line in Fig~\ref{fig:scale_height}. This figure shows the scale height of all gas in the disk, averaged over 40~Myr periods centered on each given time. Stellar feedback acts to heat up this initially thin disk substantially, creating typical scale heights of 50--200~pc. Towards the end of the simulation time, the half-light radius is $390 \pm 21$ pc, where the uncertainty represents the 1$\sigma$ variation in this quantity during the final 20 Myr. Although the disk remains thin beyond the half-light radius, with a scale height of around 40--60~pc, it is fully resolved at all radii. By the end of the simulation, the majority of the gas has a scale height of $\sim$100~pc. 
 
-Constraining the gas scale height in ultra-faint dwarf galaxies observationally, to compare to our simulations, is challenging. For Leo P, located at 1.7~Mpc, \ion{H}{1} observations that are capable of detecting the diffuse \ion{H}{1} throughout the galaxy have a resolution of 100--200 pc, with higher resolution observations identifying only the densest \ion{H}{1} clumps in the galaxy \citep[e.g.][]{Bernstein-Cooper2014}.
+Constraining the gas scale height in ultra-faint dwarf galaxies observationally, to compare to our simulations, is challenging. For Leo P, located at 1.7~Mpc, HI observations that are capable of detecting the diffuse HI throughout the galaxy have a resolution of 100--200 pc, with higher resolution observations identifying only the densest HI clumps in the galaxy \citep[e.g.][]{Bernstein-Cooper2014}.
 
 \begin{figure*}
 \centering
@@ -293,13 +331,13 @@ We present the star formation rate (SFR) and core collapse SN rate (SNR) evoluti
 
 We note that the granularity in our star formation algorithm creates a lower limit to the SFR that depends on the period $\Delta t$ over which the SFR is measured. Since we produce stars in $\sim 100$~M$_{\odot}$ sets, the smallest value for our measured SFR is $\sim 100/ \Delta t$. For $\Delta t = 10$ Myr this is 10$^{-5}$ yr$^{-1}$. Removing the granularity requires a fundamental change in our star formation algorithm, likely at the cost of increased complexity and computational expense. Sink particles, which track pre-main sequence stellar mass accumulation, would be the most viable way to do this \citep[see for example ][]{Krumholz2004,Federrath2010,GongOstriker2013,BleulerTeyssier2014,Sormani2017}.
 
-At initialization, all H and He of our dwarf galaxy is neutral, with no molecular hydrogen component. By the time of first star formation ($t=0$ in Figure~\ref{fig:sfr_mass_evolution}), \ion{H}{1} still dominates the mass of the galaxy, but a fairly significant component of molecular hydrogen has formed, with a mass of about $5.8 \times 10^5$ M$_{\odot}$, or roughly 16\%, of the total gas mass in the galaxy's disk. The total amount of molecular hydrogen mass in the system remains fairly consistent throughout the evolution, yet its fraction increases over time to roughly 35-40\%; at this point, it is about equal with the \ion{H}{1} gas. This is because the total amount of gas in the disk decreases through feedback-driven winds, but the H$_2$ is preferentially retained. Small fluctuations in the H$_2$ mass correspond with small increases in the total stellar mass, as some small fraction of H$_2$ is converted into stars, and more is destroyed from the subsequent feedback. Examining the molecular properties of the ISM in low mass dwarf galaxies in more detail is a vital avenue of future research, as there are significant observational uncertainties in deriving H$_2$ content of galaxies in this low metallicity regime \citep{Leroy2008,McQuinn2012,Amorin2016}. The molecular properties of our galaxy are discussed further in context with other works in Section~\ref{sec:observation}. 
+At initialization, all H and He of our dwarf galaxy is neutral, with no molecular hydrogen component. By the time of first star formation ($t=0$ in Figure~\ref{fig:sfr_mass_evolution}), HI still dominates the mass of the galaxy, but a fairly significant component of molecular hydrogen has formed, with a mass of about $5.8 \times 10^5$ M$_{\odot}$, or roughly 16\%, of the total gas mass in the galaxy's disk. The total amount of molecular hydrogen mass in the system remains fairly consistent throughout the evolution, yet its fraction increases over time to roughly 35-40\%; at this point, it is about equal with the HI gas. This is because the total amount of gas in the disk decreases through feedback-driven winds, but the H$_2$ is preferentially retained. Small fluctuations in the H$_2$ mass correspond with small increases in the total stellar mass, as some small fraction of H$_2$ is converted into stars, and more is destroyed from the subsequent feedback. Examining the molecular properties of the ISM in low mass dwarf galaxies in more detail is a vital avenue of future research, as there are significant observational uncertainties in deriving H$_2$ content of galaxies in this low metallicity regime \citep{Leroy2008,McQuinn2012,Amorin2016}. The molecular properties of our galaxy are discussed further in context with other works in Section~\ref{sec:observation}. 
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.475\linewidth]{sfr_snrx100}
 \includegraphics[width=0.475\linewidth]{mass_evolution}
-\caption{Left: The SFR and core collapse SN rate in our dwarf galaxy in 10 Myr bins (left). Right: The evolution of the total gas mass (black), \ion{H}{1} mass (blue), H$_2$ mass (orange), and stellar mass (red) in the disk of our galaxy over time. Note that the SN rate has been scaled by a factor of 100 to fit on the same vertical axis as the SFR.}
+\caption{Left: The SFR and core collapse SN rate in our dwarf galaxy in 10 Myr bins (left). Right: The evolution of the total gas mass (black), HI mass (blue), H$_2$ mass (orange), and stellar mass (red) in the disk of our galaxy over time. Note that the SN rate has been scaled by a factor of 100 to fit on the same vertical axis as the SFR.}
 \label{fig:sfr_mass_evolution}
 \end{figure*}
 
@@ -311,7 +349,7 @@ Our simulations include sufficient resolution and microphysics to capture a mult
 Figure~\ref{fig:phase} shows the temperature-density distribution of all gas within 0.25 R$_{\rm vir}$ of the center of the galaxy, averaged over the time period 300--350~Myr. One can readily identify the two regimes containing most of the mass in the simulation: low density, warm gas produced through ionization and SN heating, and cold, high density gas that makes up most of the mass in the galaxy's disk (see Figure~\ref{fig:ISM_evolution}). Several notable features of the distribution include: broad ranges of temperature even in quite dense gas, perhaps produced by photoionization and photoelectric heating, a substantial amount of extremely cold gas below 10~K, and the lack of well-defined thermal phases due to the complexity of both the heating and cooling in a turbulent medium. We note that we are likely missing important physics, such as cosmic ray heating and ionization, that would prevent the formation of the coldest gas in this diagram (below about 10~K), but we do not expect this to significantly alter our results. The boxed regime in the lower right corner shows our star formation density and temperature threshold. Gas in this regime is rapidly consumed by star formation and subsequent feedback. Given the small size of our dwarf galaxy, the total amount of mass in this regime at any given instant can be small, but does show up in this time average. We will investigate the typical formation and destruction timescales of this dense, star forming gas in future work.
 
 \begin{figure}
-\centering
+%\centering
 \includegraphics[width=0.95\linewidth]{phase_diagram.png}
 \caption{The temperature vs.\ number density phase diagram of our dwarf galaxy simulation showing all gass interior to 0.25~$R_{\rm vir}$, averaged over a 50~Myr period from t~=~300~Myr to t~=~350~Myr. The two red dashed lines show lines of constant pressure for guidance. The region in the lower right corner indicates our density and temperature thresholds for star formation.}
 \label{fig:phase}
@@ -322,7 +360,7 @@ The mass of the ISM in our dwarf galaxy is dominated by the CNM for the first 20
 These results are in contrast with those found for the more massive dwarf galaxy modeled by \citet{Hu2016,Hu2017}. They find the mass and volume fraction of the ISM are nearly entirely dominated by warm gas (ionized and neutral), with cold gas having $\sim$ 10\% of the mass, and occupying negligible volume, and hot gas occupying $\sim$ 10\% of the volume, but having negligible mass. Our lower mass, lower metallicity galaxy contains more cold gas (by mass fraction) by a large factor, and more hot gas (by volume fraction) by a factor of a few. The driver of these differences, which are likely somewhat related to differences in the dark matter halo potential, will be investigated in future work. We have compared our cooling curves to those used in \citep{Hu2017} (C. Hu, private communication) and found them to be comparable; though this could contribute to the differences, it is likely not the dominant source.
 
 \begin{figure*}
-\centering
+%\centering
 \includegraphics[width=0.45\linewidth]{phase_mass_fraction_evolution_log.png}
 \includegraphics[width=0.45\linewidth]{phase_volume_fraction_evolution_log.png}
 \caption{The evolution of the mass and volume fractions for each phase of the model galaxy's ISM.}
@@ -338,21 +376,21 @@ The interstellar radiation field (ISRF) of our galaxy varies dramatically in bot
 \includegraphics[width=0.95\linewidth]{G_o_profile} \\
 \includegraphics[width=0.95\linewidth]{ionizing_photon_profile}
 \caption{
-Azimuthally averaged radial profiles of the ISRF in the mid-plane of our galaxy in two different bands, time-averaged over 50 Myr from 300 -- 350~Myr. Here we define the midplane as within 2.5~$dx$ of z = 0, or 4.5~pc. The top panel gives $G_{\rm o}$, the flux of radiation between 6--13.6 eV normalized to the value in the solar neighborhood, shaded between minimum and maximum values at each position, with the average shown as a black line. The bottom panel gives the \ion{H}{1} ionizing stellar radiation flux. Since this radiation is tracked directly through radiative transfer, the minimum value at all radii is 0 at some point. For this reason we only shade between the first quartile and maximum values. \ion{He}{1} ionizing radiation is very similar to \ion{H}{1} ionizing radiation, with a small vertical offset, and is not shown for clarity.}
+Azimuthally averaged radial profiles of the ISRF in the mid-plane of our galaxy in two different bands, time-averaged over 50 Myr from 300 -- 350~Myr. Here we define the midplane as within 2.5~$dx$ of z = 0, or 4.5~pc. The top panel gives $G_{\rm o}$, the flux of radiation between 6--13.6 eV normalized to the value in the solar neighborhood, shaded between minimum and maximum values at each position, with the average shown as a black line. The bottom panel gives the HI ionizing stellar radiation flux. Since this radiation is tracked directly through radiative transfer, the minimum value at all radii is 0 at some point. For this reason we only shade between the first quartile and maximum values. HeI ionizing radiation is very similar to HI ionizing radiation, with a small vertical offset, and is not shown for clarity.}
 \label{fig:ISRF}
 \end{figure}
 
-The bottom panel gives the ionizing photon fluxes for \ion{H}{1} from stellar radiation {\em only}. Since this field is tracked directly using ray-tracing radiative transfer, the profile encodes information about local attenuation of these photons from dense, neutral gas. This is the main driver of the differences between this field and $G_{\rm o}$. However, both profiles track each other well as a function of radius. The lack of dramatic trend with radius in both diagrams suggests that one could model the ISRF in low mass dwarf galaxies using a uniform heating / ionization rate; however, this would still fail to capture the fact that any given region of the galaxy will experience order of magnitude or more fluctuations in the incident flux. 
+The bottom panel gives the ionizing photon fluxes for HI from stellar radiation {\em only}. Since this field is tracked directly using ray-tracing radiative transfer, the profile encodes information about local attenuation of these photons from dense, neutral gas. This is the main driver of the differences between this field and $G_{\rm o}$. However, both profiles track each other well as a function of radius. The lack of dramatic trend with radius in both diagrams suggests that one could model the ISRF in low mass dwarf galaxies using a uniform heating / ionization rate; however, this would still fail to capture the fact that any given region of the galaxy will experience order of magnitude or more fluctuations in the incident flux. 
 
 \begin{figure*}
-\centering
+%\centering
 \includegraphics[width=0.45\linewidth]{g_o_2D_phase}
 \includegraphics[width=0.45\linewidth]{q_o_2D_phase}
-\caption{Single-snapshot 2D radial profile plots at 200~Myr of the ISRF in two flux bands, $G_{\rm o}$ and \ion{H}{1} ionizing radiation, illustrating the full dynamic range of radiation flux at a given radius in the galaxy. Here, we include all gas within the mid-plane of our dwarf galaxy. Since a majority of the mass of the galaxy is in the cold phase (see Figure~\ref{fig:phase}), and is therefore optically thick to \ion{H}{1} ionizing radiation, it does not show up in the \ion{H}{1} ionizing radiation diagram. This gas readily appears in the $G_{\rm o}$ diagram since we assume it to be optically thin, though we do apply a localized shielding approximation.}
+\caption{Single-snapshot 2D radial profile plots at 200~Myr of the ISRF in two flux bands, $G_{\rm o}$ and HI ionizing radiation, illustrating the full dynamic range of radiation flux at a given radius in the galaxy. Here, we include all gas within the mid-plane of our dwarf galaxy. Since a majority of the mass of the galaxy is in the cold phase (see Figure~\ref{fig:phase}), and is therefore optically thick to HI ionizing radiation, it does not show up in the HI ionizing radiation diagram. This gas readily appears in the $G_{\rm o}$ diagram since we assume it to be optically thin, though we do apply a localized shielding approximation.}
 \label{fig:ISRF_2D}
 \end{figure*}
 
-To further quantify the local variations in these radiation fields, we present the full distribution of $G_{\rm o}$ and the \ion{H}{1} ionizing flux in Figure~\ref{fig:ISRF_2D} at a single snapshot at 200~Myr. This diagram shows how dramatic the increase in ISRF near young, massive stars is (the spikes in both diagrams), while much of the mid-plane sees an ISRF orders of magnitude lower. The striking contrast between the two diagrams is due to the shielding of the \ion{H}{1} ionizing flux in the most massive (cold and dense) regions of the galaxy through the radiative transfer calculations; shielding of the FUV radiation is approximate and in general weaker, making these regions more prominent in the left hand figure (the pink/white clumps). From both of these diagrams, it is clear that the ISRF of a low mass dwarf galaxy varies greatly over time and space in a way that cannot be appropriately captured by an analytic profile. Although one could adopt an averaged radial profile to provide a realistic, global source of energy for thermal pressure support of the gas against collapse, it is unclear how sufficient this would be in suppressing star formation. In particular, the large increases around sites of recent star formation could be important sources of feedback to destroy molecular clouds and reduce their effective star formation efficiency. It remains to be seen which of these two modes of feedback is more important in regulating star formation.
+To further quantify the local variations in these radiation fields, we present the full distribution of $G_{\rm o}$ and the HI ionizing flux in Figure~\ref{fig:ISRF_2D} at a single snapshot at 200~Myr. This diagram shows how dramatic the increase in ISRF near young, massive stars is (the spikes in both diagrams), while much of the mid-plane sees an ISRF orders of magnitude lower. The striking contrast between the two diagrams is due to the shielding of the HI ionizing flux in the most massive (cold and dense) regions of the galaxy through the radiative transfer calculations; shielding of the FUV radiation is approximate and in general weaker, making these regions more prominent in the left hand figure (the pink/white clumps). From both of these diagrams, it is clear that the ISRF of a low mass dwarf galaxy varies greatly over time and space in a way that cannot be appropriately captured by an analytic profile. Although one could adopt an averaged radial profile to provide a realistic, global source of energy for thermal pressure support of the gas against collapse, it is unclear how sufficient this would be in suppressing star formation. In particular, the large increases around sites of recent star formation could be important sources of feedback to destroy molecular clouds and reduce their effective star formation efficiency. It remains to be seen which of these two modes of feedback is more important in regulating star formation.
 
 \subsection{Outflow Properties}
 \label{sec:outflows}
@@ -368,7 +406,7 @@ The total mass outflow rates and mass loading factors at 0.1, 0.25, 0.5, and 1.0
 Interestingly, the v$_{\rm c}\sim$ 30 km s$^{-1}$ halos examined in \citet{Muratov2015} are more massive than the M$_{\rm vir} = 2.5\times 10^9$ M$_{\odot}$ halo examined here by a factor of a few. Using a fit provided in \citet{Muratov2015} to extrapolate and compare $\eta$ at fixed halo mass, one would expect mass loading factors on order of 100 at 0.25 R$_{\rm vir}$ for our dwarf galaxy, a factor of a few higher than what we find. These differences could be attributed to our lack of cosmological evolution in these isolated simulations, but ultimately requires a larger set of dwarf galaxy simulations to make a more robust comparison. We note, however, that our results are closer to the \citet{Muratov2015} results than those in \citet{Hu2016,Hu2017}, which find mass loading factors at 0.05 $R_{\rm vir}$ between 1 and 10 for a dwarf galaxy with M$_{\rm vir} = 10^{10}$ M$_{\odot}$, and therefore certainly have much smaller mass loading factors at 0.25 $R_{\rm vir}$.
 
 \begin{figure*}
-\centering
+%\centering
 \includegraphics[width=0.45\linewidth]{total_mass_outflow}
 \includegraphics[width=0.45\linewidth]{total_mass_loading}
 %\includegraphics[width=0.33\linewidth]{metal_mass_loading}
@@ -379,7 +417,7 @@ Interestingly, the v$_{\rm c}\sim$ 30 km s$^{-1}$ halos examined in \citet{Murat
 Detailed outflow properties, beyond outflow rates and mass loading factors, can help discriminate between the model dependent feedback physics included in galaxy simulations. In Figure~\ref{fig:outflow_velocity} we present radial velocity distributions of all material outside our dwarf galaxy's disk, and within the halo, broken into three gas phases. Half of the outflow, by mass, is at velocities below 40 km s$^{-1}$, with 75\% at velocities of 70 km s$^{-1}$ or below. This gas is dominated by the two warm gas phases, with the WNM dominating at lower velocities, and the WIM at higher velocities. The distribution has a very long tail out to and beyond 500~km~s$^{-1}$. The dominant launching mechanism in this simulation is SN feedback, which generates a rapidly moving and volume-filling HIM, consistent with the results in \citet{Hu2016,Hu2017}. However, as shown, the HIM comprises very little of the outflow by mass. Most of the outflowing gas (by mass) comes from the warm phase, pushed out by the high pressure, fast moving HIM. Some of this warm gas certainly originates from adiabatically and radiatively cooled HIM, however. The amount of transfer between phases in the halo of our galaxy will be investigated in future work.
 
 \begin{figure}
-\centering
+%\centering
 \includegraphics[width=0.95\linewidth]{outflow_velocity_distribution}
 \caption{The time averaged radial velocity distribution of outflowing material external to the disk and within the virial radius of our dwarf galaxy. The outflowing material is multiphase, broken into WNM, WIM, and HIM. See Section~\ref{sec:phase} for definitions of these regimes. We note that WNM is often labeled simply as ``cold'', or gas below $T = 10^{4}$~K. There is little to no outflowing mass in the CNM or molecular phases.}
 \label{fig:outflow_velocity}
@@ -406,7 +444,7 @@ Dwarf galaxies efficiently, and preferentially, eject metals released in stellar
 where $\dot{M}_{\rm metal}$ is the metal mass outflow rate, $M_{\rm metal}$ is the total mass in metals produced, and $M_{*}$ is the total mass in stars. We note the very large loading factors in the first 20~Myr are artificial, and a byproduct of the initial conditions. For half of the evolution, the inner three radii give $\eta_{\rm metal}$ below unity (around 0.6), but it increases at each radius, fluctuating around unity for the second half of the simulation. Recent simulations of outflows from a Milky Way type disk indicate typical $\eta_{\rm metal}$ comparable to our results, usually between 0.5 and 1 \citep{Li2017,Fielding2017}. \cite{Muratov2017} computes a slightly different quantity for their galaxies, the normalized metal outflow rate $\eta_{Z} = \dot{M}_{\rm metal}/{\rm SFR}$, finding values of about 0.02 at 0.25~$R_{\rm vir}$ regardless of galaxy circular velocity. Our galaxy is consistent with this value, with an average $\eta_Z = 0.015$, fluctuating between 0.007 and 0.02.
 
 \begin{figure}
-\centering
+%\centering
 \includegraphics[width=0.9\linewidth]{metal_mass_loading} \\
 \includegraphics[width=0.9\linewidth]{metal_fraction_evolution}
 \caption{{\bf Top}: Metal mass loading factor (see Eq.[~\ref{eq:eta-metal}]) at the same radii as in Figure~\ref{fig:mass_outflow}. This is the ratio between the metal outflow rate and the metal production rate. {\bf Bottom}: The fraction of metals contained in the disk, CGM, and outside the halo of our dwarf galaxy over time. In both panels, we consider the total mass of all individually tracked metal species, which is zero at initialization, not the aggregate total metallicity field, which is non-zero at initialization.}
@@ -481,16 +519,16 @@ As noted in Section~\ref{sec:IC}, our galaxy model is not intended to directly r
 \subsubsection{Gas and Star Formation}
 \label{sec:gas_sf}
 
-The observational sample of isolated, gaseous, low mass dwarf galaxies is limited compared to more massive galaxies, but has improved substantially with recent blind and targeted \ion{H}{1} surveys \citep[e.g.][]{Giovanelli2005, Geha2006, Geha2012, Walter2008, Cannon2011, Haynes2011, Hunter2012, Bradford2015, James2015, Tollerud2015, Sand2015, Wang2017}. However, the sample of isolated, gaseous dwarf galaxies with $M_{*} < 10^{7}$~M$_{\odot}$ remains small. In Figure ~\ref{fig:KS} we show where our galaxy lies relative to the observed Kennicutt-Schmidt relation and extended Schmidt law for low mass galaxies. In both diagrams, our simulations are given by the colored points, sampled every megayear throughout the entire simulation. 
+The observational sample of isolated, gaseous, low mass dwarf galaxies is limited compared to more massive galaxies, but has improved substantially with recent blind and targeted HI surveys \citep[e.g.][]{Giovanelli2005, Geha2006, Geha2012, Walter2008, Cannon2011, Haynes2011, Hunter2012, Bradford2015, James2015, Tollerud2015, Sand2015, Wang2017}. However, the sample of isolated, gaseous dwarf galaxies with $M_{*} < 10^{7}$~M$_{\odot}$ remains small. In Figure ~\ref{fig:KS} we show where our galaxy lies relative to the observed Kennicutt-Schmidt relation and extended Schmidt law for low mass galaxies. In both diagrams, our simulations are given by the colored points, sampled every megayear throughout the entire simulation. 
 
 Although simple to measure in simulations, these quantities are challenging to directly compare to observations. We have attempted to make a reasonable analog to how $\Sigma_{\rm sfr}$ and $\Sigma_{\rm gas}$ are measured observationally for low mass dwarfs \citet[see ][]{Roychowdhury2014}. We define $\Sigma_{\rm sfr} = \dot{M}_{*,10} / A_{*,10}$, where $\dot{M}_{*,10}$ is the SFR measured over the preceding 10~Myr, and $A_{*,10}$ is the area of the disk within the radius of the outermost star formed within the previous 10 Myr. Likewise, $\Sigma_{\rm gas} = M_{\rm gas,10} / A_{*,10}$, where M$_{\rm gas,10}$ is the total gas mass within this defined disk. However, the total gas content cannot be determined observationally. To match this limitation, we follow \cite{Roychowdhury2014} and take $\Sigma_{\rm gas, obs} = 1.34 \times \Sigma_{\rm HI}$, where the factor 1.34 attempts to account for He. We note that there is generally no correction made for any possible H$_{\rm 2}$ or \ion{H}{2} content. As shown in Section~\ref{sec:molecular gas content}, these components may be significant.
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.475\linewidth]{all_gas_schmidt_law_evolution}
-\includegraphics[width=0.475\linewidth]{all_gass_efficiency_evolution}
+\includegraphics[width=0.475\linewidth]{all_gas_schmidt_law_evolution.png}
+\includegraphics[width=0.475\linewidth]{all_gass_efficiency_evolution.png}
 \caption{The Kennicutt-Schmidt law (left) and extended Schmidt law (right) relationships for our galaxy as measured every megayear, plotted as points colored by time, with dark / purple early and light / green late. See text for details of the calculation.
-Recent observations from the S\ion{H}{1}ELD sample \citep{Teich2016} are plotted as black points with error bars. On the left, we also give the best fit line to galaxies from the FIGGS sample from \cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \cite{Shi2011}.   There is no clear correlation with time in this diagram.}
+Recent observations from the SHIELD sample \citep{Teich2016} are plotted as black points with error bars. On the left, we also give the best fit line to galaxies from the FIGGS sample from \cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \cite{Shi2011}.   There is no clear correlation with time in this diagram.}
 \label{fig:KS}
 \end{figure*}
 
@@ -573,14 +611,14 @@ have been ejected beyond the virial radius. The fraction in the disk remains fai
 
 \item 
 The gas scale height is thin ($\sim 50$~pc), yet resolved, 
-beyond our stellar radius, with larger scale heights ($\sim 100$--200~pc) driven by feedback interior to the stellar radius. This is comparable to the resolution limit of the diffuse \ion{H}{1} in observed, gaseous ultrafaint dwarfs. (See Figure~\ref{fig:scale_height}).
+beyond our stellar radius, with larger scale heights ($\sim 100$--200~pc) driven by feedback interior to the stellar radius. This is comparable to the resolution limit of the diffuse HI in observed, gaseous ultrafaint dwarfs. (See Figure~\ref{fig:scale_height}).
 
 \item The ISRF of our galaxy varies strongly in time, by orders of magnitude, though it has a relatively uniform radial profile averaged over tens of megayears. It is unclear how important these fluctuations are as a source of feedback, or if the affect can be approximated with a time-averaged radial profile. (See Figures \ref{fig:ISRF} and \ref{fig:ISRF_2D}.)
 
 \item 
 %mm3 (\textbf{Possibly remove depending on follow up}) Formation of a significant amount of H$_2$ 
      A significant amount of H$_2$ forms
-through gas phase reactions with H$^-$. This dense gas is more resistive to feedback driven outflows than the less dense gas in the galaxy. This leads to high molecular gas fractions, with an H$_2$ mass comparable to that of \ion{H}{1} by the end of the simulation. This result requires further investigation to determine if this behavior is universally true of ultrafaint dwarf galaxies. (See Figure~\ref{fig:ISM_evolution}.)
+through gas phase reactions with H$^-$. This dense gas is more resistive to feedback driven outflows than the less dense gas in the galaxy. This leads to high molecular gas fractions, with an H$_2$ mass comparable to that of HI by the end of the simulation. This result requires further investigation to determine if this behavior is universally true of ultrafaint dwarf galaxies. (See Figure~\ref{fig:ISM_evolution}.)
 
 \item Finally, we used O and N as examples to briefly demonstrate that there are marked differences in how individual metal species are distributed within the ISM of our galaxy. These variations could be tied to differences in elemental yields among different sources (for example, AGB winds vs. SNe), as suggested by \cite{KrumholzTing2018}. This will be explored in more detail in future work.
 %mm3 (Emerick et. al. \textit{in prep.}). [only cite after submission]
@@ -591,7 +629,8 @@ through gas phase reactions with H$^-$. This dense gas is more resistive to feed
 \section*{Acknowledgments:} 
 We would like to thank the following for their advice and valuable discussions, without which this work would not have been possible: B. C\^ot\'e, S. Glover, K. Hawkins, C. Hu, K. Johnston, B. O'Shea, M. Putman, B. Smith, J. Wall, and J. Wise. A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. G.L.B. is funded by NSF AST-1312888, NASA NNX15AB20G, and NSF AST-1615955. M.-M.M.L. was partly funded by NASA  grant NNX14AP27G. We gratefully recognize computational resources provided by NSF XSEDE through grant number TGMCA99S024, by the NASA High-End Computing (HEC) Program through the NASA Advanced Supercomputing (NAS) Division at Ames Research Center, Columbia University, and the Flatiron Institute. This work made significant use of many open source software packages, including \textsc{yt}, \textsc{Enzo}, \textsc{Grackle}, \textsc{Python}, \textsc{IPython}, \textsc{NumPy}, \textsc{SciPy}, \textsc{Matplotlib}, \textsc{HDF5}, \textsc{h5py}, \textsc{Astropy}, \textsc{Cloudy} and \textsc{deepdish}. These are products of collaborative effort by many independent developers from numerous institutions around the world. Their commitment to open science has helped make this work possible. 
 
-\bibliographystyle{yahapj}
+%\bibliographystyle{yahapj}
+\bibliographystyle{mnras}
 \bibliography{msbib}
 
 \appendix
@@ -613,7 +652,7 @@ To aid in comparison to other works, we define our ISM phases here, as adopted a
 
 \section{Stellar Radiation Properties}
 \label{appendix:radiation}
-We determine the radiation properties of our model stars as a function of stellar mass and metallicity from the OSTAR2002 grid \citep{Lanz2003} in the regime that it covers, or integrated from an adjusted black body curve for other stars, given the ZAMS stellar radius obtained from the PARSEC \citep{Bressan2012,Tang2014} stellar evolution data set. In Figure~\ref{fig:stellar radiation properties} we plot these properties. We use a constant factor across metallicities for stars not sampled on the OSTAR2002 grid to shift the black body radiation fluxes to be roughly continuous with the ionizing photon rates and luminosities as a function of stellar mass. This requires two factors for each radiation type, one for low mass and one for high mass stars. We use the following multiplicative factors to adjust the black body spectrum for \ion{H}{1} and \ion{He}{1} ionizing radiation respectively: [0.1, 3.2] and [0.0001, 4.0]. We do not find this adjustment to be necessary for the FUV and Lyman-Werner radiation bands.
+We determine the radiation properties of our model stars as a function of stellar mass and metallicity from the OSTAR2002 grid \citep{Lanz2003} in the regime that it covers, or integrated from an adjusted black body curve for other stars, given the ZAMS stellar radius obtained from the PARSEC \citep{Bressan2012,Tang2014} stellar evolution data set. In Figure~\ref{fig:stellar radiation properties} we plot these properties. We use a constant factor across metallicities for stars not sampled on the OSTAR2002 grid to shift the black body radiation fluxes to be roughly continuous with the ionizing photon rates and luminosities as a function of stellar mass. This requires two factors for each radiation type, one for low mass and one for high mass stars. We use the following multiplicative factors to adjust the black body spectrum for HI and HeI ionizing radiation respectively: [0.1, 3.2] and [0.0001, 4.0]. We do not find this adjustment to be necessary for the FUV and Lyman-Werner radiation bands.
 
 The ionizing radiation photon energies are taken as the average ionizing photon energy for a black body of the star's given T$_{\rm eff}$ obtained from the PARSEC grid. A more accurate approach to compute this energy would convolve the full stellar spectrum and the frequency-dependent absorption cross section. We tested this approach using the frequency-dependent photoionization cross sections from \citet{1996ApJ...465..487V}.\footnote{Source code containing the analytic fits given in \citet{1996ApJ...465..487V} was obtained from \url{http://www.pa.uky.edu/~verner/photo.html}} 
 The blackbody approximation is accurate to within 5\%, yet substantially easier to compute on the fly, as integrals over the blackbody spectrum can be expressed as infinite series that rapidly converge to high precision. Unlike for the ionizing radiation, we assume constant FUV and Lyman-Werner band energies for each star, at 9.8 eV and 12.8 eV respectively.
@@ -629,7 +668,7 @@ The blackbody approximation is accurate to within 5\%, yet substantially easier 
 \vspace{0.01cm}
 \includegraphics[width=0.4\linewidth]{E0}
 \includegraphics[width=0.4\linewidth]{E1}
-\caption{Radiation properties for our model stars, showing the ionizing photon luminosities for \ion{H}{1} (top left) and \ion{He}{1} (top right) for each star, the FUV (middle left) and Lyman-Werner (middle right) luminosities, and finally the average ionizing photon energy for \ion{H}{1} (bottom left) and \ion{He}{1} (bottom right). Note, we only track radiation from stars above 8.0 \msun, which dominate over less massive stars, even when accounting for IMF weighting.}
+\caption{Radiation properties for our model stars, showing the ionizing photon luminosities for HI (top left) and HeI (top right) for each star, the FUV (middle left) and Lyman-Werner (middle right) luminosities, and finally the average ionizing photon energy for HI (bottom left) and HeI (bottom right). Note, we only track radiation from stars above 8.0 \msun, which dominate over less massive stars, even when accounting for IMF weighting.}
 \label{fig:stellar radiation properties}
 \end{figure}
 
@@ -642,10 +681,10 @@ Modeling SN feedback with the injection of thermal energy alone can lead to rapi
 The left panel of Figure~\ref{fig:SN histogram} gives the distributions of the peak and average ISM number densities in the SN injection regions for each SN in our simulations. As shown, a majority explode in regions at substantially lower densities than the star formation threshold of 200~cm$^{-3}$. For most SNe, $n_{\rm max} \le 1.0$~cm$^{-3}$, which is due to the substantial pre-SN feedback included in our simulations. The right panel of Figure ~\ref{fig:SN histogram} gives the fractional distribution of the calculated radius of the pressure-driven snowplow ($R_{\rm PDS}$) phase of the Sedov-Taylor expansion, adopting the definitions from \citet{Simpson2016}
 \begin{equation}
 R_{\rm PDS} = 
-\begin{cases*}
-49.3E^{1/4}_{51}n^{-1/2}_{o} & if  Z $\le$ 0.01 \\
-18.5E^{2/7}_{51}n^{-3/7}_{o}Z^{-1/7} & if  Z $\ge$ 0.01 \\
-\end{cases*}
+\begin{cases}
+49.3E^{1/4}_{51}n^{-1/2}_{o} & if  Z \le 0.01 \\
+18.5E^{2/7}_{51}n^{-3/7}_{o}Z^{-1/7} & if  Z \ge 0.01 \\
+\end{cases}
 \end{equation}
 where $E_{51}$ is the injection energy in units of 10$^{51}$~erg, $n_{o}$ is the number density of the medium, and $Z$ is the metallicity in units of $Z_{o}$. \citet{Simpson2016} found that $R_{\rm PDS} > 4.5 \Delta x$ is needed to resolve the SN explosion with thermal energy injection alone, assuming uniform density in the injection region. In practice, the injection region is never uniform. We give $R_{\rm PDS}$ assuming uniform density at both the average and maximum number density in the injection region of each SN. As shown, a majority of SNe are resolved (to the right of the 4.5$\Delta x$ line), but up to 10\% are somewhat under-resolved. In general, these are SN explosions from the most massive (i.e. most prompt) stars. We do not expect that resolving these SNe will dramatically alter our results. However, we note that using our feedback model at resolutions much less than a few parsecs will require adopting a different injection mechanism.
 
