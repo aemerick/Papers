@@ -58,20 +58,15 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[Short title, max. 45 characters]{MNRAS \LaTeXe\ template -- title goes here}
+\title{Gas Fractions of Galaxies Across Simulations}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
-\author[K. T. Smith et al.]{
-Keith T. Smith,$^{1}$\thanks{E-mail: mn@ras.org.uk (KTS)}
-A. N. Other,$^{2}$
-Third Author$^{2,3}$
-and Fourth Author$^{3}$
+\author[Emerick]{ Andrew Emerick$^{1,2}$\thanks{E-mail: emerick@astro.columbia.edu} + more + IQ Collaboratory (alphabetical order)
 \\
 % List of institutions
-$^{1}$Royal Astronomical Society, Burlington House, Piccadilly, London W1J 0BQ, UK\\
-$^{2}$Department, Institution, Street Address, City Postal Code, Country\\
-$^{3}$Another Department, Different Institution, Street Address, City Postal Code, Country
+$^{1}$Department of Astronomy, Columbia University, New York, NY 10027 \\
+$^{2}$Department of Astrophysics, American Museum of Natural History, New York, NY
 }
 
 % These dates will be filled out by the publisher
@@ -88,10 +83,7 @@ $^{3}$Another Department, Different Institution, Street Address, City Postal Cod
 
 % Abstract of the paper
 \begin{abstract}
-This is a simple template for authors to write new MNRAS papers.
-The abstract should briefly describe the aims, methods, and main results of the paper.
-It should be a single paragraph not more than 250 words (200 words for Letters).
-No references should appear in the abstract.
+{\bf NOTE: all plots should be considered preliminary for both style and content}
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
@@ -106,81 +98,154 @@ keyword1 -- keyword2 -- keyword3
 
 \section{Introduction}
 
-This is a simple template for authors to write new MNRAS papers.
-See \texttt{mnras\_sample.tex} for a more complex example, and \texttt{mnras\_guide.tex}
-for a full user guide.
 
-All papers should start with an Introduction section, which sets the work
-in context, cites relevant earlier studies in the field by \citet{Others2013},
-and describes the problem the authors aim to solve \citep[e.g.][]{Author2012}.
 
-\section{Methods, Observations, Simulations etc.}
+Modern large cosmological hydrodynamics simulations have made tremendous progress in being able to reproduce observed properties of galaxies. This progress is fueled both by better computational resources, allowing for increased dynamic range in these simulations, and more careful attention to models of feedback. Updated sub-grid methods for stellar feedback physics better describe how feedback regulates star formation and drives outflows in galaxies. To obtain these improvements, however, the free many parameters associated with these models are generally calibrated specifically to reproduce observed relationships of the stellar properties galaxies, such as the galaxy stellar mass function (GSFMS), the stellar mass halo mass (SMHM) relationship, galaxy sizes, and/or the redshift evolution of these relations. Understanding how well, if at all, a given simulation that reproduces galaxy stellar properties matches galaxy gas properties is an important tool to better understand the physics that drives galaxy evolution. The differences among these models are significant enough that, even with similar galaxy stellar mass properties, galaxy gas properties are not necessarily comparable. Although this study has been done individually for EAGLE \citep{Bahe2016,Marasco2016,Crain2017}, MUFASA \citep{Dave2017}, (and {\it Illustris + SAM?}), these works have never been compared with each other simultaneously. In this work we examine the gas properties of galaxies between Illustris \citep{Vogelsberger2014,Genel2014}, EAGLE \citep{Schaye2015,Crain2015}, MUFASA \citep{Dave2016}, and the ``Santa Cruz'' SAM \citep{Somerville2012,Porter2014} {\it check these refs.}.
 
-Normally the next section describes the techniques the authors used.
-It is frequently split into subsections, such as Section~\ref{sec:maths} below.
+% Illustris TNG??
 
-\subsection{Maths}
-\label{sec:maths} % used for referring to this section from elsewhere
+\section{Simulations and Data Selection}
+\begin{table*}
+\centering
+\caption{Caption}
+\label{table:simulations}
+  \begin{tabular}{l c c c c c c c}
+  \hline
+  Simulation & Baryon Res. (10$^6$ M$_{\odot}$) & DM Res. (10$^6$ M$_{\odot}$) & Vol. (x cMpc)$^3$ & $\epsilon$ (ckpc) & Gas Def. & Pressure Floor & Ref. \\
+  \hline 
+  Illustris  & 1.26 ($\Delta x$ = 48 cpc) & 6.26 & 106.5 & 0.71 / 1.42 & &  & \citep{Vogelsberger2014} \\
+  %Illustris-TNG & & & \\
+  MUFASA & 18.2 & 96 & 50 & 0.5 & & & \citep{Dave2016} \\
+  EAGLE  & 1.81 &  9.70  & 100 & 0.70 (pkpc) & &  & \citep{Schaye2015,Crain2015} \\
+  Brooks & & &  & & & & \\
+  SC-SAM & -  & - & & - & - & & \citep{Somerville2012,Porter2014}\\
+  \hline
+  \end{tabular}
+  
+\end{table*}
 
-Simple mathematics can be inserted into the flow of the text e.g. $2\times3=6$
-or $v=220$\,km\,s$^{-1}$, but more complicated expressions should be entered
-as a numbered equation:
+For each data source we utilize all central galaxies, as determined by a halo finder, without consideration of nearest-neighbor distance to a comparably massive or more massive galaxy. {\it (list halo finders used across simulations for clarity? Likely not the same)}. We consider all gas, stellar, and dark matter mass assigned as belonging to the central galaxy by the halo finder, ignoring mass assigned to sub-halos. In truth, this selection can include a large amount of gas in the circumgalactic medium (CGM), far from the central galaxy. However, we focus our attention solely on the cold gas content of these galaxies, which should be be contained predominately in the disk of the galaxy. SFR's and sSFR's are computed as averaged over 100~Myr and 1~Gyr.
 
+The works considered here treat the sub-grid physics required to model individual gas components (e.g. H, He, H$_2$) and their ionization states somewhat differently. Each of the big-box simulations lack the resolution and physics needed to self-consistently model each ionization state. Rather, these are computed through some approximation either live during the simulation (EAGLE) or via post-processing (MUFASA). Though each of these methods are similar, they likely do not produce identical results; characterizing the variation in galaxy gas properties caused by different ionization models is beyond the scope of this work. If H$_2$ is followed, we compute the gas mass of each galaxy as the total neutral hydrogen mass, or M$_{\rm gas}$ = M$_{\rm H_2}$ + M$_{\rm \ion{H}{i}}$ (EAGLE, MUFASA,Brooks), otherwise we take M$_{\rm gas}$ = M$_{\rm \ion{H}{i}}$ if H$_2$ is not tracked (Illustris, SC-SAM). This is a more faithful comparison than taking M$_{\rm \ion{H}{i}}$ alone, as the H$_2$ content in these works is derived directly from the \ion{H}{i} content. We define gas fraction here as
 \begin{equation}
-    x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
-	\label{eq:quadratic}
+f_{\rm gas} = \frac{M_{\rm HI}}{M_{\rm HI} + M_{*}},
 \end{equation}
+though we note some authors consider instead the the ratio $M_{\ion{H}{i}} / M_{*}$.
 
-Refer back to them as e.g. equation~(\ref{eq:quadratic}).
+We briefly describe each data source below including how gas phases are computed for each work. We refer the reader to the individual method papers associated with these works for detailed descriptions. The properties of these simulations are summarized in Table~\ref{table:simulations}.
 
-\subsection{Figures and tables}
+{\bf For each of the below need: 1) code + hydro (SPH, moving mesh, etc.), 2) included feedback physics and briefly how they are modeled (thermal? mechanical? any hydro or cooling decoupling? AGN threshold / methods if they exist, etc.), 3) brief characterization of the feedback physics (bursty, strong, weak, etc.), 4) how is neutral gas followed / computed in each work, and 5) resolution and box size.}
+\subsection{Illustris}
+\label{sec:illustris method}
+{\it ask Shy for text}
 
-Figures and tables should be placed at logical positions in the text. Don't
-worry about the exact layout, which will be handled by the publishers.
+\subsection{EAGLE}
+\label{sec:EAGLE method}
+{\it ask ?? for text}
 
-Figures are referred to as e.g. Fig.~\ref{fig:example_figure}, and tables as
-e.g. Table~\ref{tab:example_table}.
+\subsection{MUFASA}
+\label{sec:MUFASA method}
+{\it ask Romeel for text}
 
-% Example figure
+\subsection{SC SAM}
+\label{sec:SC-SAM method}
+{\it ask Rachel and/or Viraj for text}
+
+\subsection{Brooks zooms}
+\label{sec:Brooks method}
+{\it ask Alyson for text}
+
+\subsection{Observational datasets}
+\label{sec:observational data}
+{\bf decide if we are making observational comparisons.} describe datasets here ({\it Marla for text?}).. likely both Bradford et. al. 2015 and recent xGASS data release.
+
+\section{Results}
+\label{sec:results}
+%\subsection{Gas mass vs stellar mass}
+%Maybe just ignore this for simplicity in favor of gas fraction plots
+
+\subsection{Stellar Mass Halo Mass Relationship}
+\label{sec:results:SMHM}
+{\bf missing data at the moment}
+{\it Discuss SMHM relationship across the works. Discuss how their similarities / differences may affect how to interpret rest of paper (though they should probably be similar?).  Possibly also shade with median gas fraction... this should be similar (maybe) across works}
+
+\begin{figure*}
+\includegraphics[width = 0.975\textwidth]{halo_stellar_2D_fraction.png}
+\caption{The stellar mass halo mass relationship for the full population of galaxies across datasets. Shading indicates the fraction of galaxies within a given bin.}
+\label{fig:fgas mstar 2D}
+\end{figure*}
+
+
+\subsection{Gas fraction vs stellar mass}
+\label{sec:results:fg Mstar}
+
+\begin{figure*}
+\includegraphics[width = 0.99\textwidth]{fgas_mstar_2D_log_fgas.png}
+\caption{Galaxy gas fraction (f$_{\rm gas}$) as a function of stellar mass for the full population of galaxies in each of the four data sets with large galaxy counts. Shading indicates the fraction of galaxies in a given bin. This diagram explicitly does not include galaxies with f$_{\rm gas}$ = 0 (see Figure~\ref{fig:linear fgas mstar}).}
+\label{fig:fgas mstar 2D}
+\end{figure*}
+
+In Figure~\ref{fig:fgas mstar 2D} we present the gas fraction as a function of stellar mass for the entire population of galaxies in each of the large sample-size datasets. To zeroth order, each data set has the same trend of decreasing gas fraction with increasing stellar mass, but the distribution of gas fractions at fixed stellar mass varies significantly across each data source. In particular, Illustris is more tightly distributed around high gas fractions than the other datasets, while the remaining have wider distributions and lower typical gas fractions. EAGLE exhibits the largest spread in gas fraction at fixed stellar mass. 
+
+By nature of plotting gas fraction in logsapce, these diagrams exclude any galaxies with no gas content. To help clarify these populations across datasets we plot the median gas fraction (including galaxies with f$_{\rm gas}$ = 0) as a function of stellar mass in the top panel of Figure~\ref{fig:linear fgas mstar}, including the Brooks zoom-in simulations. The shaded regions in each encompass the innerquartile range of each distribution; in stellar mass bins with less than 10 galaxies we plot points instead of the median curve. In the bottom panel, we show the fraction of galaxies in stellar mass bins that are devoid of gas for each data source. The same trends observed in Figure~\ref{fig:fgas mstar 2D} are clear here as well: Illustris galaxies are tightly distributed with high gas fractions at fixed stellar mass, as compared to EAGLE, MUFASA, and the SC-SAM which have comparable gas fractions and wider distributions. At low stellar mass, the SC-SAM approaches unity, unlike MUFASA and EAGLE. 
+
+The bottom panel of Figure~\ref{fig:linear fgas mstar} is striking. This shows the fraction of galaxies in each stellar mass bin that contain no cold gas (defined again as either \ion{H}{i} or \ion{H}{i} and H$_2$), with the total percentage of gasless galaxies in each sample given in the legend. Both EAGLE and MUFASA uniformly have large populations of gasless galaxies across all stellar masses, with particularly high fractions at low stellar masses. In contrast, Illustris uniformly has very few galaxies devoid of cold gas at all stellar masses. The SC-SAM is the only model that evolves with stellar mass in this space. 
+
 \begin{figure}
-	% To include a figure from a file named example.*
-	% Allowable file formats are eps or ps if compiling using latex
-	% or pdf, png, jpg if compiling using pdflatex
-	\includegraphics[width=\columnwidth]{example}
-    \caption{This is an example figure. Captions appear below each figure.
-	Give enough detail for the reader to understand what they're looking at,
-	but leave detailed discussion to the main body of the text.}
-    \label{fig:example_figure}
+\includegraphics[width = 0.99\linewidth]{fgas_mstar_binned_IQR_logged.png}\\
+\includegraphics[width = 0.99\linewidth]{gasless_fraction_mstar.png}
+\caption{{\bf Top:} The running median of f$_{\rm gas}$ as a function of stellar mass for each dataset with shading denoting the inner quartile range of each. Unlike in Figure~\ref{fig:fgas mstar 2D}, this includes galaxies with zero neutral gas mass. {\bf Bottom:} The fraction of galaxies per stellar mass bin for each dataset that do not contain any neutral gas. The percent of all galaxies without gas in each dataset is shown in the legend.}
+\label{fig:linear fgas mstar}
 \end{figure}
 
-% Example table
-\begin{table}
-	\centering
-	\caption{This is an example table. Captions appear above each table.
-	Remember to define the quantities, symbols and units used.}
-	\label{tab:example_table}
-	\begin{tabular}{lccr} % four columns, alignment for each
-		\hline
-		A & B & C & D\\
-		\hline
-		1 & 2 & 3 & 4\\
-		2 & 4 & 6 & 8\\
-		3 & 5 & 7 & 9\\
-		\hline
-	\end{tabular}
-\end{table}
+\subsection{SFR vs. stellar mass}
+\label{sec:results:SFMS fgas}
 
 
-\section{Conclusions}
+\begin{figure*}
+\includegraphics[width = 0.99\linewidth]{SFMS_fits_2dhist_median.png}\\
+\caption{2D Histograms of the SFMS, colored by median gas fraction. }
+\label{fig:SFMS fgas}
+\end{figure*}
 
-The last numbered section should briefly summarise what has been done, and describe
-the final conclusions which the authors draw from their work.
+
+\begin{figure*}
+\includegraphics[width = 0.99\linewidth]{fgas_DSFMS_binned_IQR_logged.png}\\
+\caption{Running median and IQR of the gas fraction of galaxies as a function of their distance (in dex) from the SFMS, as defined in Figure~\ref{fig:SFMS fgas}.}
+\label{fig:fgas DSFMS}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width = 0.99\linewidth]{fgas_DSFMS_panel_plot_IQR_logged.png}\\
+\caption{Same as Figure~\ref{fig:fgas DSFMS}, but separated into stellar mass bins.}
+\label{fig:fgas DSFMS panel}
+\end{figure*}
+
+
+
+\section{Discussion}
+
+\subsection{Comparison to Observations}
+\label{sec:observations}
+{\it Possibly should not be the focal point of this paper, but could be nice to include. } 
+
+\begin{figure*}
+\includegraphics[width = 0.99\textwidth]{fgas_mstar_2D_log_fgas_obs.png}
+\caption{Same as Figure~\ref{fig:fgas mstar 2D}, but for the observational data from Bradford2015 and Cantinella2018.}
+\label{fig:fgas mstar 2D obs}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width = 0.99\textwidth]{SFMS_fits_2dhist_median_obs.png}
+\caption{Same as Figure~\ref{fig:SFMS fgas}, but for the observational data from Bradford2015 and Cantinella2018.}
+\label{fig:SFMS mstar 2D obs}
+\end{figure*}
+
+\section{Conclusion}
+
 
 \section*{Acknowledgements}
-
-The Acknowledgements section is not numbered. Here you can thank helpful
-colleagues, acknowledge funding agencies, telescopes and facilities used etc.
-Try to keep it short.
+IQ collab and funding
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -188,29 +253,17 @@ Try to keep it short.
 
 % The best way to enter references is to use BibTeX:
 
-%\bibliographystyle{mnras}
-%\bibliography{example} % if your bibtex file is called example.bib
+\bibliographystyle{mnras}
+\bibliography{msbib.bib} % if your bibtex file is called example.bib
 
 
 % Alternatively you could enter them by hand, like this:
 % This method is tedious and prone to error if you have lots of references
-\begin{thebibliography}{99}
-\bibitem[\protect\citeauthoryear{Author}{2012}]{Author2012}
-Author A.~N., 2013, Journal of Improbable Astronomy, 1, 1
-\bibitem[\protect\citeauthoryear{Others}{2013}]{Others2013}
-Others S., 2012, Journal of Interesting Stuff, 17, 198
-\end{thebibliography}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
 
-\appendix
-
-\section{Some extra material}
-
-If you want to present additional material which would interrupt the flow of the main paper,
-it can be placed in an Appendix which appears after the list of references.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
