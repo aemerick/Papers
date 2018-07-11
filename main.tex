@@ -1,5 +1,3 @@
-%mm2 substantive changes marked with this comment tag, minor changes and wordsmithing done silently.  12-15 Feb
-%mm3 since Greg has already read this, I have removed commentary as I go.  substantive changes now marked with %mm3 13 Mar 18
 %\documentclass[twocolumn]{aastex61}
 %\pdfoutput=1 %for arXiv submission
 \documentclass[fleqn,usenatbib,useAMS]{mnras}
@@ -97,11 +95,6 @@ Detailed interstellar medium (ISM) and chemical abundance properties of galaxies
 %{Lia2002,KawataGibson2003,Kobayashi2004,Tornatore2004,Romeo2005,OppenheimerDave2008,Wiersma2009,Shen2010,MUGS2010,ErisSimulation,Simpson2013,Brook2014,Snaith2015,Oppenheimer2016,OWLS,EAGLE,FIRE}.
 These simulations, coupled with additional attention to feedback processes, have made remarkable progress in reproducing global galaxy trends such as evolution of the mass-metallicity relationship \citep[e.g.][]{Obreja2014, Ma2016, Dave2017, Torrey2017} and more detailed quantities such as metallicity distribution functions (MDFs) and the evolution of individual species abundances \citep{Marcolini2008,Revaz2009,Sawala2010,RevazJablonka2012,Jeon2017,Hirai2017} . 
 
-%\textbf{rework here to the end... focus less on numerics}
-% However, there is a general lack of numerical diversity in these works, as a majority are implemented in some flavor of smoothed particle hydrodynamics (SPH) schemes. Given the known differences between hydrodynamics implementations \citep{Agertz2007,AGORA,AGORA2}, extending these models to a grid-based code is a valuable and complementary approach towards investigating galactic chemical evolution that has only been done recently \citep{Few2012,Few2014,Vorobyov2015}. % AE (incorrect statement): Additionally, grid-based schemes are able to generally avoid issues with metal mixing, one of the largest model uncertainties in standard SPH codes.
-
-%mm2 I think there does need to be some introduction to this discussion:
-
 However, much of this work has been done with Lagrangian smoothed particle hydrodynamics schemes, with a few recent exceptions  \citep{Few2012,Simpson2013,Few2014,Vorobyov2015,Corlies2018}. In its original form, this scheme does not capture mixing between chemically inhomogeneous particles, as necessary for chemical evolution. This can be modeled with sub-grid models of turbulent metal diffusion \citep[e.g.][]{Shen2010,Shen2013,Brook2014,Su2017a,Escala2018}, but there are many possible models and each is not necessarily applicable in every regime \citep[see ][]{Revaz2016}. While mixing occurs in Eulerian codes even without sub-grid models, numerical diffusion tends to result in over-mixing in simulations without sufficienty high spatial resolution. Molecular diffusion or even turbulent mixing is certainly not resolved in any galaxy-scale simulation with either method, requiring additional sub-grid models; this can be particularly important for understanding the initial pollution of otherwise pristine gas \citep[see ][ and references therein]{PanScannapiecoScalo2013,Sarmento2017}. Moreover, metal mixing efficiencies may vary species-by-species \citep[e.g.][]{Cohen2013, Roederer2014, FrebelNorris2015, Hirai2017, Cote2017b, KrumholzTing2018}. Mixing behavior is tied critically to the feedback source (stellar winds, supernovae, and possibly more exotic sources) that inject metals into different phases of 
 the ISM with different energies and on different timescales; the observational effect of this is poorly understood, however. The variations in how different methods handle sub-grid metal injection and metal mixing schemes can lead to uncertainties in connecting models to observations and the fundamental physics that drives galaxy evolution.
 
@@ -136,7 +129,6 @@ We set the star formation density threshold to the value at which the Jeans leng
 \label{sec:chemistry}
 
 We use the chemistry and cooling library \texttt{Grackle}\footnote{https://grackle.readthedocs.io/en/grackle-3.0/} v 3.0 to follow a nine species non-equilibrium chemistry network (H, H$^+$, He, He$^+$, He$^{++}$, e$^{-}$, H$_2$, H$^{-}$, and H$_{2}$) which includes radiative heating and cooling from these species and metals.\footnote{We use a slightly modified version of the the main \texttt{Grackle} repository, available at https://bitbucket.org/aemerick/grackle-emerick at changeset c2c0faf.} \texttt{Grackle} is a freely available, open source, multi-code library, designed to interface with a wide variety of astrophysical codes. We outline specific model choices made in our simulations and refer the reader to \citet{GrackleMethod} for a detailed discussion of the code. We apply the \citet{Glover2008} three-body rate for H$_{2}$ formation and include a model for H$_2$ formation on dust, dust heating, and dust cooling following the methods in \citet{2000ApJ...534..809O} and \citet{2005ApJ...626..627O} as included in \texttt{Grackle}. However, we update the default dust to gas ratio scaling in \texttt{Grackle} to account for the steeper scaling in low metallicity regimes ($Z \lesssim 0.1 Z_{\odot}$), using the broken power law scalings from \citet{Remy-Ruyer2014}. For metallicities above $\sim 0.1 Z_{\odot}$, this is equivalent to the default behavior of \texttt{Grackle}, where dust content scales linearly with metallicity.
-% Since we assume a dust abundance that depends only on metallicity, we do not track dust destruction or creation, which may play an important role regulating detailed ISM properties. (Vogelsberger is working on this directly but no papers yet... will cite if it gets submitted by then)
 
 As part of the \texttt{Grackle} package, metal line cooling is modeled using pre-computed \texttt{Cloudy} \citep{Cloudy2013} \footnote{http://www.nublado.org/} tables interpolated as a function of density, temperature, and redshift, using the \citet{HM2012} UV metagalactic background. As discussed in more detail in Section~\ref{sec:diffusive heating}, we account for approximate self-shielding of H and He against this UV background. Using this prescription with metal line cooling tables computed under an optically thin assumption can lead to an order of magnitude overestimation of the cooling rate at certain densities, as discussed in \citet{Hu2017} and  Appendix~\ref{appendix:cooling}. To address this issue, we use re-computed metal line tables consistent with the self-shielding approximation.  We have made these new tables public in the main \texttt{Grackle} repository. These are discussed in greater detail in Appendix ~\ref{appendix:cooling}. Finally, we ignore the effect the stellar radiation field (see Section~\ref{sec:diffusive heating}) may have on the interpolated metal line cooling rates. 
 
@@ -196,9 +188,7 @@ Stars that only undergo an AGB phase deposit their feedback at the end of their 
 
 \subsubsection{Core Collapse SNe}
 \label{sec: core collapse}
-Stars between  $M_{\rm trans} = 8$ M$_{\odot}$ and 25 M$_{\odot}$ end their lives as core collapse SNe, ejecting mass and metals as determined by the NuGrid stellar yield tables, along with 10$^{51}$ erg of thermal energy. Due to the high resolution of our simulations (1.8~pc), we generally resolve the Sedov phase of each SN explosion well (see Appendix~\ref{appendix:SN}). We inject thermal energy alone in a three-cell radius spherical region around the star particle, which we find to be sufficient to resolve the SN explosions. 
-% AE: responding to mm3, this avoids aliasing:
-We use the same Monte Carlo sampling method as used in our stellar winds to map the spherical injection region to the grid. We continue to track any remaining stellar mass after the SNe occurs as a massive remnant tracer particle. In future work these particles can be used to self-consistently account for more exotic sources of feedback and chemical enrichment such as X-ray binaries and neutron-star binary merger events which, while rare, could be important in long term galaxy evolution \citep[e.g.][]{Artale2015}.
+Stars between  $M_{\rm trans} = 8$ M$_{\odot}$ and 25 M$_{\odot}$ end their lives as core collapse SNe, ejecting mass and metals as determined by the NuGrid stellar yield tables, along with 10$^{51}$ erg of thermal energy. Due to the high resolution of our simulations (1.8~pc), we generally resolve the Sedov phase of each SN explosion well (see Appendix~\ref{appendix:SN}). We inject thermal energy alone in a three-cell radius spherical region around the star particle, which we find to be sufficient to resolve the SN explosions. We use the same Monte Carlo sampling method as used in our stellar winds to map the spherical injection region to the grid. We continue to track any remaining stellar mass after the SNe occurs as a massive remnant tracer particle. In future work these particles can be used to self-consistently account for more exotic sources of feedback and chemical enrichment such as X-ray binaries and neutron-star binary merger events which, while rare, could be important in long term galaxy evolution \citep[e.g.][]{Artale2015}.
 
 \subsubsection{Type Ia SNe}
 \label{sec:Type Ia}
@@ -235,9 +225,6 @@ Radiation feedback, including ionization, ionization heating, and radiation pres
 Enzo includes an adaptive ray tracing implementation, \textsc{Enzo+Moray} \citep{WiseAbel2011}, to solve the equations of radiative transfer coupled to the hydrodynamics of the simulation. We follow HI and HeI ionizing photons which are coupled to the \texttt{Grackle} primordial chemistry and heating and cooling routines to track photoionization and heating, as well as radiation pressure on hydrogen. 
 
 We determine the HI and HeI ionizing photon rates for each star using the OSTAR2002 \citep{Lanz2003} grid of O-type stellar models, appropriate for $M_{*} \gtrsim 15$~M$_{\odot}$ at solar metallicity\footnote{The exact stellar mass range on the OSTAR2002 grid is model dependent and a function of metallicity}. We use linear interpolation in stellar effective temperature, surface gravity, and metallicity to compute the ionizing photon fluxes and rates for each star. Stars less massive than about 15 M$_{\odot}$ and very massive stars with sub-solar metallicity are generally not well sampled by the OSTAR2002 grid. In this case, we integrate a black body spectrum at $T_{\rm eff}$ to obtain the ionizing photon fluxes, but normalize the result to be continuous with the OSTAR2002 grid (see Appendix \ref{appendix:radiation}).
-
-%AE (taking this out... looked into more detail in paper and they argue this, but frankly I do not see how they reach this conclusion from their Appendix plots): \citet{Dale2012} demonstrated that uncertainties on the order of a few in the ionizing radiation rates are not significant in giant molecular cloud (GMC) scale simulations.
-%Generally, the ionizing fluxes from high temperature black bodies underestimate the OSTAR2002 flux, and lower temperature black bodies overestimate the flux by a factor of 2-5 and 10-1000 respectively. 
 
 Instead of assigning a fixed ionizing photon energy across all sources, we integrate over each star's blackbody curve to compute the average ionizing photon energy individually for each source (see Appendix~\ref{appendix:radiation}). The average energy for HI and HeI ionizing photons changes significantly over the OSTAR2002 temperature range $\log(T_{4,\rm{eff}} [K]) \in \left[2.75,5.5\right]$, ranging from 15.72 eV to 20.07 eV and 26.52 eV to 31.97 eV respectively.
 
@@ -284,9 +271,6 @@ The galaxy initially consists of a smooth, exponential gas disk in hydrostatic e
 \rho_{\rm gas} (R,z) = \frac{M_{\rm o}}{2\pi a^2_{\rm gas}b_{\rm gas}} 0.5^2{\rm sech}\left(\frac{R}{a_{\rm gas}}\right){\rm sech}\left(\frac{z}{b_{\rm gas}}\right)
 \end{equation}
 where $a_{\rm gas}$ and $b_{\rm gas}$ are the radial and vertical gas disk scale heights, and $M_{\rm o}$ is approximately 70\% of the total gas mass. We set $a_{\rm gas} = 250$~pc, $b_{\rm gas} = 100$~pc, and $M_o = 1.26\times 10^6$~M$_{\odot}$. We adopt a \citet{Burkert1995} dark matter potential with \textbf{virial mass and radius} $M_{\rm vir} = 2.48\times 10^{9}~M_{\odot}$ and $R_{\rm vir}~=~27.4$~kpc as defined in \citep{BryanNorman1998} and \textbf{scale radius} r$_{\rm s} = 990$~pc. This gives a maximum circular velocity $V_{\rm max} = 30.1$~km~s$^{-1}$ at $R_{\rm vmax}~=~3.2$~kpc. These parameters were adopted specifically to match the observed dynamical mass of Leo P interior to 500 pc of $M_{\rm dyn} (r < 500~\rm{pc}) = 2.7\times 10^{7}$ M$_{\odot}$, and represent virial properties within the halo mass expected for galaxies of this size \citep{Ferrero2012,Read2017}.
-
-% AE: removing this as it may no longer be the case
-%We will explore the effect of adopting different dark matter potentials within the large range of possible profiles in future work.
 
 Following the initialization procedure of \citet{Hu2017}, we use artificial SN driving to generate realistic initial densities and turbulent properties in the galaxy ISM. This prevents an otherwise uniform collapse of the gas disk at the beginning of the simulation. During this period, SNe explode at a fixed rate of $0.4$~Myr$^{-1}$, corresponding to the SFR obtained given the central HI surface density and the relation presented in \citep{Roychowdhury2009}. We stop the artificial driving 25~Myr after the first star particle forms. These artificial SNe do not drive chemical evolution of the galaxy; their metal yields correspond to the mean ISM abundances. We note this initial driving is ad hoc in that we do not include other effects from the stellar population that would have caused these SNe.
 
@@ -343,7 +327,7 @@ At initialization, all H and He of our dwarf galaxy is neutral, with no molecula
 \centering
 \includegraphics[width=0.475\linewidth]{sfr_snrx100}
 \includegraphics[width=0.475\linewidth]{mass_evolution}
-\caption{Left: The SFR and core collapse SN rate in our dwarf galaxy in 10 Myr bins (left). Right: The evolution of the total gas mass (black), HI mass (blue), H$_2$ mass (orange), and stellar mass (red) in the disk of our galaxy over time. Note that the SN rate has been scaled by a factor of 100 to fit on the same vertical axis as the SFR.}
+\caption{Left: The SFR and core collapse SN rate in our dwarf galaxy in 10 Myr bins. Broken portions of this histogram are time periods with no star formation or supernovae.  Note that the SN rate has been scaled by a factor of 100 to fit on the same vertical axis as the SFR. Right: The evolution of the total gas mass (black), HI mass (blue), H$_2$ mass (orange), and stellar mass (red) in the disk of our galaxy over time.}
 \label{fig:sfr_mass_evolution}
 \end{figure*}
 
@@ -429,16 +413,6 @@ Interestingly, the v$_{\rm c}\sim$ 30 km s$^{-1}$ halos examined in \citet{Murat
 \label{fig:outflow_velocity}
 \end{figure}
 
-%\textbf{AE: Took plot and discussion of outflow metallicities out and replaced with metal mass loading factor (below)}
-%In Figure~\ref{fig:outflow_metallicity} we show the average ISM metallicity (black), halo metallicity (blue), and outflow metallicities (orange) at 0.1 (solid), 0.25 (dashed), and 1.0 (dotted) $R_{\rm vir}$ over the simulation time. The ISM metallicity evolves minimally from the initial conditions in this time, while the halo and outflow properties change significantly. It is apparent from this figure that the outflows are preferentially metal enriched, as the halo increases in metallicity by a factor of $\sim 2$ in the simulation time. Although most of the gas mass in the halo (outside the disk) remains within 0.2 $R_{\rm vir}$ (see Section~\ref{sec:obs_metals}), the mass that does make it to the outer reaches of the halo or beyond is metal enriched by a factor of $\sim$5--6 compared to the ISM. This is in contrast with the results from \citet{Muratov2017}, which generally show $Z_{\rm outflow} \simeq Z_{\rm ISM}$ at $0.25~R_{\rm vir}$ and $Z_{\rm outflow} < Z_{\rm ISM}$ at $1.0~R_{\rm vir}$, though both with some scatter that reaches $Z_{\rm outflow} > Z_{\rm ISM}$, especially at high redshift. However, we note that our simulations certainly do not contain a cosmologically realistic circumgalactic medium, nor do they include ongoing cosmological accretion of pristine gas. Mixing of outflowing, metal enriched gas and pristine inflows will lower the typical halo and outflow metallicities, particularly at large radii.
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.95\linewidth]{metallicity_evolution}
-%\caption{The mass-weighted average metallicity of our dwarf galaxy's ISM, halo, and outflowing gas at 0.1 (solid), 0.25 (dashed), and 1.0 (dotted) $R_{\rm vir}$ over the simulation time. The halo is defined as the region outside of the disk, yet inside the virial radius.}
-%\label{fig:outflow_metallicity}
-%\end{figure}
-
 \subsection{Metal Evolution} 
 \label{sec:chemical evolution}
 
@@ -477,42 +451,7 @@ two panels give the slices of number density (top right) and temperature (bottom
 %The CNM consists of cold filaments that connect dense clumps of molecular gas that are readily visible in both diagrams. Distinguishing the WNM and WIM is difficult, but the lower density regions between the cold filaments are dominated by these phases. Gas from a recent SN explosion is clearly visible as the hot (T~$\gtrsim 10^{6}$~K), diffuse region in the top left corner. 
 As shown in the left panel, log(N/O) varies significantly over this section of the ISM with notable differences across the various phases and ISM structures. As expected, O is overabundant throughout the ISM, most strongly in the region of recent SN enrichment (top left, dark purple region in log(N/O) / dark red in temperature). However, the relative abundance of N increases significantly in the warmer phases, reaching equipartition (white color in log(N/O)) in many patches throughout the ISM. There are three regions in particular that are overabundant in N (green color). 
 
-At our adopted metallicity, nitrogen is predominantly produced in AGB star winds, with very little production in core collapse SNe and winds from more massive stars. Therefore, nitrogen is injected into the ISM with significantly less energy ($v \sim 10$~km~s$^{-1}$) than elements produced in SNe, like oxygen, ($v\sim 10^3$~km~s$^{-1}$). Given the variations in Figure~\ref{fig:metal_slices}, the energetic differences between injection sources can drive abundance variations within the ISM of our dwarf galaxy. The regions most rich in N are sites of recent AGB winds that have yet to mix with the rest of the ISM. This suggests that metal mixing within the ISM (and also metal ejection from the ISM) is species dependent. A more detailed analysis is beyond the scope of this work, but we plan to investigate this point, and potential observational consequences for stellar abundances, in future work. 
-% reference my other paper if it is ready-ish by the time I submit this one.
-
-%Observations of Local Group dwarf galaxies have shown that they retain very little of the total amount of metals they are expected to have produced, given their star formation histories (see Section~\ref{sec:observation}). In Figure~\ref{fig:species_fractions} we show the fraction of metals retained within the disk or expelled into the halo of our galaxy over time, along with a breakdown of the locations of each metal species by the end of the simulation. As shown in the top panel, a majority of each metal tracer species is found outside the disk of the galaxy, in the galaxy halo. In total, \textbf{85\%} of the tracer metal species produced lie outside of the disk of our galaxy. Interestingly, the exact fraction is not uniform across metal species. 
-
-%\textbf{Use Ba here as example element, not N}
-%Most notably, N is preferentially retained by the galaxy over the other species. Roughly \textbf{35\%} of N produced remains in the disk, as compared to \textbf{15\%} of O or Fe, for example. This difference is entirely feedback driven. At this metallicity, N is produced only in the stellar winds of stars between 8 and 10 M$_{\odot}$, with little to no production in SNe. The rest of the species either have very little stellar wind production, are produced solely in SNe, or have similar production levels between both SNe and stellar winds (like O, for example). The typically lower injection energies of N into the galaxy compared to the SNe produced elements means N is preferentially retained within the ISM, and not as effectively ejected through outflows. In truth, the stars that produce N do eventually explode as SNe, sweeping up some fraction of the wind produced N into outflows. However, clearly some of this N mixes more effectively within the ISM than the other metal species. How abundance variations like this evolve over longer timescales and with varying feedback physics is the subject of ongoing work.
-% AE: possibly cite letter here if we have it done
-
-%\begin{figure*}
-%\includegraphics[width=0.9\linewidth]{species_bar.png}\\
-%\includegraphics[width=0.9\linewidth]{species_bar_disk.png}
-%\caption{The fraction of each species in the full simulation box contained in the halo, gas in the galaxy disk, and stars (top), and the fraction of species within the disk alone in each phase of the ISM (bottom).}
-%\label{fig:species_fractions}
-%\end{figure*}
-
-%The bottom panel illustrates where these metals are partitioned within the ISM of the galaxy at the end of the simulation time. The CNM contains roughly 50-60\% of each species, with the CNM and WNM together accounting for most of the metals in the galaxy. The WIM contains only $\sim$ 10\% of each species, with the HIM containing very little. This may be counterintuitive given that most metals are initially injected into the galaxy in either the WIM or HIM phases. However, the disk metals represent only a small fraction of the total metals produced. Much of the metals are effectively removed from the disk into the halo (see Section~\ref{sec:outflows}). It is apparent that the remaining metals quickly mix or cool into denser gas phases.
-
-%\subsection{Stellar Abundances}
-%\label{sec:stellar properties}
-
-% By initializing the metallicity of our galaxy to a non-zero value (XXX), yet setting each of the metal tracer species to initial mass fractions of 10$^{-20}$ (effectively zero abundance), the species abundances in our galaxy are somewhat contrived. However, this was done to be able to unambiguously follow how self-consistently produced chemical enrichment evolves over time. In effect, what each individual metal field traces is a ``delta'' abundance, or change in metal mass fraction relative to an arbitrary initial condition.
-
-%\textbf{This section needs work. As per discussion with Keith and Kathryn, displaying abundance evolution like this is confusing and misleading. Switch to discussion of mass / abundance fraction evolution of individual specie(s).}
-%We plot the $[\alpha / {\rm Fe}]-[\rm{Fe}/\rm{H}]$ ratio for all star particles in our simulation that are ``alive'' in Figure~\ref{fig:stellar_abundance}. This represents stars that have not gone SNe or have otherwise formed a compact object. Here, $\alpha = (\rm{O} + \rm{Mg} + \rm{Si})/3.0$, and the notation [X/Y] denotes the ratio of the abundance of species X over Y, relative to the solar value, or log([X/Y]) = log(X/Y) - log(X$_{\odot}$/Y$_{\odot}$). All stars are colored by their age.
-
-%\begin{figure}
-%\includegraphics[width=0.95\linewidth]{alpha_over_fe_hist}
-%\caption{The $[\alpha / {\rm Fe}]-[\rm{Fe}/\rm{H}]$
-%diagram for all stars in our simulation, colored by their age. Here, we define $\alpha = (\rm{O} + \rm{Mg} + \rm{Si})/3.0$. Each histogram shows counts, normalized to the peak in each distribution.}
-%\label{fig:stellar_abundance}
-%\end{figure}
-
-%As expected, there is a noticeable trend of stellar age with [Fe/H]; especially in our case as the overall iron abundance is gradually increasing, yet we do not have any accretion of primordial material. Interestingly, the few stars with the highest [Fe/H], between -3 and -2, are not the most recently formed; the most recent star formation is clustered around [Fe/H] between -3 and -4.
-
-%We note the ``knee'' like feature at very low [Fe/H] is not the characteristic knee seen in $[\alpha / {\rm Fe}]-[\rm{Fe}/\rm{H}]$ space, corresponding to the period when iron enrichment from SN Type Ia begins to make a significant contribution to the galactic chemical evolution. This generally occurs after roughly 1 Gyr of stellar evolution, far longer than the \textbf{170} Myr simulated here. % The origin of this feature and the longer term chemical evolution of this galaxy will be investigated in a future work.
+At our adopted metallicity, nitrogen is predominantly produced in AGB star winds, with very little production in core collapse SNe and winds from more massive stars. Therefore, nitrogen is injected into the ISM with significantly less energy ($v \sim 10$~km~s$^{-1}$) than elements produced in SNe, like oxygen, ($v\sim 10^3$~km~s$^{-1}$). Given the variations in Figure~\ref{fig:metal_slices}, the energetic differences between injection sources can drive abundance variations within the ISM of our dwarf galaxy. The regions most rich in N are sites of recent AGB winds that have yet to mix with the rest of the ISM. This suggests that metal mixing within the ISM (and also metal ejection from the ISM) is species dependent. A more detailed analysis is beyond the scope of this work, but we plan to investigate this point, and potential observational consequences for stellar abundances, in future work.  
 
 \subsection{Importance of Ionizing Radiation}
 \label{sec:ionizing radiation}
@@ -591,12 +530,6 @@ Recent work has explored the importance of cosmic ray feedback in regulating the
 We do note that an isotropic, two-fluid model for cosmic ray feedback exists in  \textsc{Enzo} \citep{SalemBryan2014,Salem2015} and has been well tested. Mechanically, including this relatively simple treatment of 
 cosmic ray feedback in our model is trivial. However, the cosmic ray population, their diffusion coefficient, and the magnetic field structure of the lowest mass dwarf galaxies each have significant enough uncertainties to warrant reserving their full inclusion into our model to later work.
 
-
-
-%\subsection{Detailed Dust Model}
-%\textbf{Should we discuss this? If so I definitely need more info and references - AE}.
-%The dust content of our galaxy is modeled only approximately, scaling with the cell-to-cell variations in gas metallicity. Explicitly following the dust content in our galaxy, even crudely, could introduce significant variations in local cooling and heating rates. Accounting for metals trapped in a dust phase would produce additional variations in the cooling rates and potentially changes to the galactic chemodynamical evolution. 
-
 \subsection{Detailed Stellar Evolution and Binary Stars}
 \label{sec:binary stars} 
 
@@ -619,9 +552,7 @@ metal mass loading factors near unity. By mass, nearly all of this outflow is mo
 
 \item 
 Only $\sim$4\% of metals are retained in the disk of our simulated galaxy, consistent with the observed metal retention fractions of ultrafaint dwarfs.  By the end of the simulation $\sim$45\% of the remaining metals remain within the virial radius (but outside the galaxy) and $\sim$50\% 
-have been ejected beyond the virial radius. 
-%The fraction in the disk remains fairly constant towards the end of the simulation, but the metals in the halo are still evolving.
-(See Figures \ref{fig:mass_outflow}, \ref{fig:outflow_velocity}, and \ref{fig:metal_evolution}.)
+have been ejected beyond the virial radius. (See Figures \ref{fig:mass_outflow}, \ref{fig:outflow_velocity}, and \ref{fig:metal_evolution}.)
 
 \item 
 The gas scale height is thin ($\sim 50$~pc), yet resolved, 
@@ -704,8 +635,6 @@ R_{\rm PDS} =
 \end{equation}
 where $E_{51}$ is the injection energy in units of 10$^{51}$~erg, $n_{o}$ is the number density of the medium, and $Z$ is the metallicity in units of $Z_{o}$. \citet{Simpson2016} found that $R_{\rm PDS} > 4.5 \Delta x$ is needed to resolve the SN explosion with thermal energy injection alone, assuming uniform density in the injection region. In practice, the injection region is never uniform. We give $R_{\rm PDS}$ assuming uniform density at both the average and maximum number density in the injection region of each SN. As shown, a majority of SNe are resolved (to the right of the 4.5$\Delta x$ line), but up to 8.3\% are not well resolved and 2.0\% are completely unresolved (below a single cell width). In general, these are SN explosions from the most massive (i.e. most prompt) stars. We do not expect that resolving these SNe will dramatically alter our results. However, we note that using our feedback model at resolutions much less than a few parsecs will require implementing an different injection mechanism.
 
-% We use a spherically symmetric thermal dump method of modelling SN explosions. This is the simplest method possible, but can often result in rapid overcooling of the heated gas, effectively underestimating the effectiveness of SN feedback. Solutions to this problem can often be ad hoc (e.g. briefly turning off cooling) in low resolution, large cosmological simulations. However, recent work has shown injecting some fraction of this thermal energy directly as kinetic energy or momentum alleviates this issue without sacrificing physical realism. However, it has been shown that simple thermal energy injection is sufficient for parsec scale (or better) resolutions, provided the SN do not occur in very high density regions; if resolved, thermal injection converges with kinetic energy / momentum injection methods. Resolving these explosions with thermal energy injection alone depends ultimately on the grid resolution, background density and ISM structure, the background cooling/heating physics used, and the size and shape of the injection region. Here, we perform a resolution test of our thermal injection method over four uniform densities (0.1 \ccunit, 1.0 \ccunit, 10.0 \ccunit, and 100.0 \ccunit) for both a 8.0 \msun and 25.0 \msun star, comparing to both the analytic solution and results using kinetic energy injection from \citet{Simpson2015}. These results are presented in Figure~\ref{fig:SN tests}. We note these are heavily idealized cases. In general in our simulations, pre-SN feedback from stellar winds and radiation will reduce the typical densities within which our SN explosions occur. In addition, SN will generally be clustered, meaning each SN will reducing the typical density for each subsequent SN in that region. In Figure~\ref{fig:SN histogram} we plot a histogram of the typical peak and average gas densities in the 3 cell injection region of each SN in the XXXX XXXXX simulation. As shown, some of the SN explode in high density regions around 100 \ccunit and are likely under-resolved, but a majority will be resolved.
-
 \begin{figure*}
 \centering
 \includegraphics[width=0.4\linewidth]{sn_density_hist}
@@ -714,26 +643,9 @@ where $E_{51}$ is the injection energy in units of 10$^{51}$~erg, $n_{o}$ is the
 \label{fig:SN histogram}
 \end{figure*}
 
-%\section{Stellar Wind Model}
-%\label{appendix:stellar winds}
-%
-% This is still probably a good idea to do at some point, but save for if/when
-% we have a paper using full stellar winds where this matters - AE (Jul. 19 2017)
-%
-%Discuss wind properties and evolution in a hand full of isolated star runs (don't need to do a resolution study... kinda) and compare to Weaver et. al. 1977 analytic results. Really we won't resolve the winds at high densities, but that is OK... as long as the wind bubbles are > 3*dx (the injection size) we are generally going to be fine... aka as long as the SN explosion goes off in wind bubble gas and not dense ISM that shouldn't be there..
-
 \setcounter{figure}{0}
 \section{Cooling and Heating Rates}
 \label{appendix:cooling}
-%AE: 2/23 Old version of text... keeping around for now:
-% For comparisons to other works, we present the cooling curve used in our simulations here. This cannot be done exactly, however, as primordial cooling and heating is computed cell-by-cell using the non-equillibrium chemistry solver in \textsc{Grackle}. These rates are not interpolated from the generated \textsc{CLOUDY} tables as is done for the metal line cooling rates. In addition, although these tables do include the effect of the UVB, they do not account for local variations in the ISRF from stellar radiation.  However, we present the combined primordial and metal line cooling rates from the generated \textit{CLOUDY} tables in Figure~\ref{fig:cooling} at three characteristic densities for $Z = 0.01$Z$_{\odot}$. As discussed in Section~\ref{sec:methods}, we account for self-shielding against the UVB in both our simulations and the computed \textsc{CLOUDY} models shown in this figure. 
-
-%AE: 2/23 Old version of text... keeping around for now:
-%To derive the diffuse cooling and heating rates used in the simulations, we make two approximations. First, the primordial cooling and heating rates shown here are those returned by \textsc{Cloudy}, but only the tabulated \textsc{Cloudy} metal-line cooling and heating rates are used. The primordial heating and cooling rates are calculated self-consistently using the non-equilibrium chemistry solver and the self-shielding approximation from radiative transfer simulations given in \citet{Rahmati2013}. However, given that we remove the optically thin assumption when computing the \textsc{Cloudy} tables, the rates shown should be comparable to the locally varying cooling curve in the simulations. Second, this figure ignores the contributions to the heating rate from the variable interstellar radiation field, namely the stellar contribution to photoelectric heating, heating from Lyman-Werner dissociation, and ionization heating. We describe how we obtain the metal line cooling rates below and quantify the change in using these updated tables. 
-%Therefore, the heating rates shown are approximate lower limits to the true heating experienced by any given cell in the simulation.
-
-%AE: 2/23 Old version of text... keeping around for now:
-%Figure ~\ref{fig:cooling} shows the combined primordial and metal line cooling and heating rates at three characteristic densities for $Z = 0.01 $Z$_{\odot}$. The Figure indicates the regime at low temperatures where heating dominates over cooling. The curve as shown includes only the $z = 0$ \citet{HM2012} metagalactic UV background.
 
 \begin{figure*}
 \centering
@@ -792,20 +704,11 @@ Theses differences in densities are shown clearly by comparing Figure~\ref{fig:p
 
 Finally, the metal retention fraction (right panel) between the fiducial and 3.6~pc runs are quite similar, but is significantly higher for the lowest resolution simulation. It is likely, however, that this is a result of the lower SFR in the 7.2~pc run and is not directly a resolution effect. This also affects the fraction of metals ejected outside the virial radius, with less metals being ejected in the lower resolution runs.
 
-%\section{Pre-SN Feedback with and without radiation}
-
 %\section{Code}
 %(likely just do this as a short blurb in acknowledgements)
 
 %A one-zone chemical evolution and feedback model was constructed to provide rapid testing and examination of the feedback and yield properties of each of our stars in our model. This code is publically available at https://github.com/aemerick/onez. In the simplest case, one can generate a series of star particles and examine their resulting properties, including wind and SN yields, as a function of mass and metallicity. Included also are more complicated examples of running the full one-zone model. Support currently only exists for running in a non-cosmological mode with a constant star formation rate. In addition, this one-zone model uses star-by-star modelling and becomes extremely inefficient at large particle counts. Future develop will better optimize this code, allow for variable input or evolving star formation rates, cosmological evolution, and parallelism. 
 
-
-
-
-
-
-%\appendix
-%\section{appendix section}
 \label{lastpage}
 
 \end{document}
