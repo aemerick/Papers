@@ -191,12 +191,13 @@ By nature of plotting gas fraction in logsapce, these diagrams exclude any galax
 
 The bottom panel of Figure~\ref{fig:linear fgas mstar} is striking. This shows the fraction of galaxies in each stellar mass bin that contain no cold gas (defined again as either \ion{H}{i} or \ion{H}{i} and H$_2$), with the total percentage of gasless galaxies in each sample given in the legend. Both EAGLE and MUFASA uniformly have large populations of gasless galaxies across all stellar masses, with particularly high fractions at low stellar masses. In contrast, Illustris uniformly has very few galaxies devoid of cold gas at all stellar masses. The SC-SAM is the only model that evolves with stellar mass in this space. 
 
-\begin{figure}
-\includegraphics[width = 0.99\linewidth]{fgas_mstar_binned_IQR_logged.png}\\
-\includegraphics[width = 0.99\linewidth]{gasless_fraction_mstar.png}
-\caption{{\bf Top:} The running median of f$_{\rm gas}$ as a function of stellar mass for each dataset with shading denoting the inner quartile range of each. Unlike in Figure~\ref{fig:fgas mstar 2D}, this includes galaxies with zero neutral gas mass. {\bf Bottom:} The fraction of galaxies per stellar mass bin for each dataset that do not contain any neutral gas. The percent of all galaxies without gas in each dataset is shown in the legend.}
+\begin{figure*}
+\includegraphics[width = 0.33\linewidth]{fgas_mstar_binned_IQR_logged.png}\\
+\includegraphics[width = 0.33\linewidth]{MHI_Mstar_binned_IQR.png}
+\includegraphics[width = 0.33\linewidth]{gasless_fraction_mstar.png}
+\caption{{\bf Left:} The running median of f$_{\rm gas}$ as a function of stellar mass for each dataset with shading denoting the inner quartile range of each. Unlike in Figure~\ref{fig:fgas mstar 2D}, this includes galaxies with zero neutral gas mass. {\bf Middle} The running median of gas mass as a function of stellar mass for each dataset with shading denoting the IQR. {\bf Right:} The fraction of galaxies per stellar mass bin for each dataset that do not contain any neutral gas. The percent of all galaxies without gas in each dataset is shown in the legend.}
 \label{fig:linear fgas mstar}
-\end{figure}
+\end{figure*}
 
 \subsection{SFR vs. stellar mass}
 \label{sec:results:SFMS fgas}
@@ -221,7 +222,11 @@ The bottom panel of Figure~\ref{fig:linear fgas mstar} is striking. This shows t
 \label{fig:fgas DSFMS panel}
 \end{figure*}
 
-
+\begin{figure*}
+\includegraphics[width = 0.99\linewidth]{fgas_DSFMS_2dhist_count_log_fgas.png}\\
+\caption{2D histogram of fraction of galaxies in a given gas fraction and distance from SFMS bin.}
+\label{fig:fgas DSFMS panel}
+\end{figure*}
 
 \section{Discussion}
 
