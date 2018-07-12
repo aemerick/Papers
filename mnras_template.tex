@@ -117,7 +117,6 @@ Modern large cosmological hydrodynamics simulations have made tremendous progres
   %Illustris-TNG & & & \\
   MUFASA & 18.2 & 96 & 50 & 0.5 & & & \citep{Dave2016} \\
   EAGLE  & 1.81 &  9.70  & 100 & 0.70 (pkpc) & &  & \citep{Schaye2015,Crain2015} \\
-  Brooks & & &  & & & & \\
   SC-SAM & -  & - & & - & - & & \citep{Somerville2012,Porter2014}\\
   \hline
   \end{tabular}
@@ -126,7 +125,7 @@ Modern large cosmological hydrodynamics simulations have made tremendous progres
 
 For each data source we utilize all central galaxies, as determined by a halo finder, without consideration of nearest-neighbor distance to a comparably massive or more massive galaxy. {\it (list halo finders used across simulations for clarity? Likely not the same)}. We consider all gas, stellar, and dark matter mass assigned as belonging to the central galaxy by the halo finder, ignoring mass assigned to sub-halos. In truth, this selection can include a large amount of gas in the circumgalactic medium (CGM), far from the central galaxy. However, we focus our attention solely on the cold gas content of these galaxies, which should be be contained predominately in the disk of the galaxy. SFR's and sSFR's are computed as averaged over 100~Myr and 1~Gyr.
 
-The works considered here treat the sub-grid physics required to model individual gas components (e.g. H, He, H$_2$) and their ionization states somewhat differently. Each of the big-box simulations lack the resolution and physics needed to self-consistently model each ionization state. Rather, these are computed through some approximation either live during the simulation (EAGLE) or via post-processing (MUFASA). Though each of these methods are similar, they likely do not produce identical results; characterizing the variation in galaxy gas properties caused by different ionization models is beyond the scope of this work. If H$_2$ is followed, we compute the gas mass of each galaxy as the total neutral hydrogen mass, or M$_{\rm gas}$ = M$_{\rm H_2}$ + M$_{\rm \ion{H}{i}}$ (EAGLE, MUFASA,Brooks), otherwise we take M$_{\rm gas}$ = M$_{\rm \ion{H}{i}}$ if H$_2$ is not tracked (Illustris, SC-SAM). This is a more faithful comparison than taking M$_{\rm \ion{H}{i}}$ alone, as the H$_2$ content in these works is derived directly from the \ion{H}{i} content. We define gas fraction here as
+The works considered here treat the sub-grid physics required to model individual gas components (e.g. H, He, H$_2$) and their ionization states somewhat differently. Each of the big-box simulations lack the resolution and physics needed to self-consistently model each ionization state. Rather, these are computed through some approximation either live during the simulation (EAGLE) or via post-processing (MUFASA). Though each of these methods are similar, they likely do not produce identical results; characterizing the variation in galaxy gas properties caused by different ionization models is beyond the scope of this work. If H$_2$ is followed, we compute the gas mass of each galaxy as the total neutral hydrogen mass, or M$_{\rm gas}$ = M$_{\rm H_2}$ + M$_{\rm \ion{H}{i}}$ (EAGLE, MUFASA), otherwise we take M$_{\rm gas}$ = M$_{\rm \ion{H}{i}}$ if H$_2$ is not tracked (Illustris, SC-SAM). This is a more faithful comparison than taking M$_{\rm \ion{H}{i}}$ alone, as the H$_2$ content in these works is derived directly from the \ion{H}{i} content. We define gas fraction here as
 \begin{equation}
 f_{\rm gas} = \frac{M_{\rm HI}}{M_{\rm HI} + M_{*}},
 \end{equation}
@@ -151,10 +150,6 @@ We briefly describe each data source below including how gas phases are computed
 \label{sec:SC-SAM method}
 {\it ask Rachel and/or Viraj for text}
 
-\subsection{Brooks zooms}
-\label{sec:Brooks method}
-{\it ask Alyson for text}
-
 \subsection{Observational datasets}
 \label{sec:observational data}
 {\bf decide if we are making observational comparisons.} describe datasets here ({\it Marla for text?}).. likely both Bradford et. al. 2015 and recent xGASS data release.
@@ -166,8 +161,7 @@ We briefly describe each data source below including how gas phases are computed
 
 \subsection{Stellar Mass Halo Mass Relationship}
 \label{sec:results:SMHM}
-{\bf missing data at the moment}
-{\it Discuss SMHM relationship across the works. Discuss how their similarities / differences may affect how to interpret rest of paper (though they should probably be similar?).  Possibly also shade with median gas fraction... this should be similar (maybe) across works}
+{\it Discuss SMHM relationship across data with references to original publications. Main story: Stellar properties of galaxies are similar (this is one example). Physics that generates these similar properties is very different. Leads into how this may affect related but un-tuned properties (i.e. gas).}
 
 \begin{figure*}
 \includegraphics[width = 0.975\textwidth]{halo_stellar_2D_fraction.png}
@@ -176,7 +170,7 @@ We briefly describe each data source below including how gas phases are computed
 \end{figure*}
 
 
-\subsection{Gas fraction vs stellar mass}
+\subsection{Gas Fraction and Gas Mass vs stellar mass}
 \label{sec:results:fg Mstar}
 
 \begin{figure*}
@@ -187,7 +181,7 @@ We briefly describe each data source below including how gas phases are computed
 
 In Figure~\ref{fig:fgas mstar 2D} we present the gas fraction as a function of stellar mass for the entire population of galaxies in each of the large sample-size datasets. To zeroth order, each data set has the same trend of decreasing gas fraction with increasing stellar mass, but the distribution of gas fractions at fixed stellar mass varies significantly across each data source. In particular, Illustris is more tightly distributed around high gas fractions than the other datasets, while the remaining have wider distributions and lower typical gas fractions. EAGLE exhibits the largest spread in gas fraction at fixed stellar mass. 
 
-By nature of plotting gas fraction in logsapce, these diagrams exclude any galaxies with no gas content. To help clarify these populations across datasets we plot the median gas fraction (including galaxies with f$_{\rm gas}$ = 0) as a function of stellar mass in the top panel of Figure~\ref{fig:linear fgas mstar}, including the Brooks zoom-in simulations. The shaded regions in each encompass the innerquartile range of each distribution; in stellar mass bins with less than 10 galaxies we plot points instead of the median curve. In the bottom panel, we show the fraction of galaxies in stellar mass bins that are devoid of gas for each data source. The same trends observed in Figure~\ref{fig:fgas mstar 2D} are clear here as well: Illustris galaxies are tightly distributed with high gas fractions at fixed stellar mass, as compared to EAGLE, MUFASA, and the SC-SAM which have comparable gas fractions and wider distributions. At low stellar mass, the SC-SAM approaches unity, unlike MUFASA and EAGLE. 
+By nature of plotting gas fraction in logsapce, these diagrams exclude any galaxies with no gas content. To help clarify these populations across datasets we plot the median gas fraction (including galaxies with f$_{\rm gas}$ = 0) as a function of stellar mass in the top panel of Figure~\ref{fig:linear fgas mstar}. The shaded regions in each encompass the innerquartile range of each distribution; in stellar mass bins with less than 10 galaxies we plot points instead of the median curve. In the bottom panel, we show the fraction of galaxies in stellar mass bins that are devoid of gas for each data source. The same trends observed in Figure~\ref{fig:fgas mstar 2D} are clear here as well: Illustris galaxies are tightly distributed with high gas fractions at fixed stellar mass, as compared to EAGLE, MUFASA, and the SC-SAM which have comparable gas fractions and wider distributions. At low stellar mass, the SC-SAM approaches unity, unlike MUFASA and EAGLE. 
 
 The bottom panel of Figure~\ref{fig:linear fgas mstar} is striking. This shows the fraction of galaxies in each stellar mass bin that contain no cold gas (defined again as either \ion{H}{i} or \ion{H}{i} and H$_2$), with the total percentage of gasless galaxies in each sample given in the legend. Both EAGLE and MUFASA uniformly have large populations of gasless galaxies across all stellar masses, with particularly high fractions at low stellar masses. In contrast, Illustris uniformly has very few galaxies devoid of cold gas at all stellar masses. The SC-SAM is the only model that evolves with stellar mass in this space. 
 
@@ -202,6 +196,16 @@ The bottom panel of Figure~\ref{fig:linear fgas mstar} is striking. This shows t
 \subsection{SFR vs. stellar mass}
 \label{sec:results:SFMS fgas}
 
+\textit{ Establish definition of SFMS from Paper I. Discuss Figure~\ref{fig:SFMS fgas}. 
+\begin{enumerate}
+\item Significant variation among simulations as to where (relative to SFMS) galaxies are gas-rich and gas-poor.
+\item SFMS slope is somewhat correlated with EAGLE f$_{\rm gas}$ = 0.5 line. Is this significant? Should they be related?
+\item SCSAM galaxies at low stellar masses are gas rich above and below SFMS.
+\end{enumerate}
+}
+
+\subsubsection{Distance from the main sequence and gas properties}
+\label{sec:distance SFMS}
 
 \begin{figure*}
 \includegraphics[width = 0.99\linewidth]{SFMS_fits_2dhist_median.png}\\
