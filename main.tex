@@ -42,7 +42,7 @@
 
 \title[Feedback with Individual Stars]{Simulating an Isolated Dwarf Galaxy with Energetic Feedback and Chemical Yields from Individual Stars}
 
-\author[A. Eemerick et. al.]{
+\author[A. Emerick et. al.]{
 Andrew Emerick,$^{1,2}$
 Greg L. Bryan,$^{1,3}$
 and Mordecai-Mark Mac Low$^{2,1}$
@@ -141,7 +141,7 @@ The stellar mass formed during a timestep $\Delta t$ \textbf{from a region with 
          M_* = \epsilon_{\rm f} M_{\rm gas} \frac{\Delta t}{\tau_{\rm ff}}
 \end{equation}
 In practice, $\Delta t/\tau_{\rm ff} \ll 1$, and $M_*$ is smaller than the minimum star particle mass at parsec scale resolution. We therefore allow star formation to proceed stochastically, following the methods in \citet{Goldbaum2015, Goldbaum2016}, modified for variable stellar masses. In each cell that could potentially form stars, we compute the probability that 100 M$_{\odot}$ of gas will be converted into stars in that time step, and use a random number draw to determine whether or not star formation actually occurs. If it does, we randomly sample from
-the adopted IMF until \textbf{approximately} 100 M$_{\odot}$ of stars form, keeping the last sampled particle when the total stellar mass formed exceeds 100 M$_{\odot}$. \textbf{The total mass of formed star particles is subtracted from the gas mass in the star forming region to ensure mass conservation.} We assume a Salpeter IMF \citep{Salpeter1955} with $\alpha = 2.35$, sampling over the range between a minimum stellar mass of 1 M$_{\odot}$ and an arbitrarily chosen maximum stellar mass of 100 M$_{\odot}$. Our lower limit on stellar masses ensures that we are able to both directly track all particles that contribute in some way to feedback and metal enrichment, and follow longer lived star particles, while reducing the computational expense of following a large number of low mass stars that have no dynamical impact on the galaxy evolution.
+the adopted IMF until \textbf{approximately} 100 M$_{\odot}$ of stars form, keeping the last sampled particle when the total stellar mass formed exceeds 100 M$_{\odot}$. \textbf{The total mass of formed star particles is subtracted from the gas mass in the star forming region to ensure mass conservation.} We assume a Salpeter IMF \citep{Salpeter1955} with $\alpha = 2.35$, sampling over the range between a minimum stellar mass of 1 M$_{\odot}$ and an arbitrarily chosen maximum stellar mass of 100 M$_{\odot}$. Our lower limit on stellar masses ensures that we are able to both directly track all particles that contribute in some way to feedback and metal enrichment, and follow longer lived star particles, while reducing the computational expense of following a large number of low mass stars that have no dynamical impact on the galaxy evolution. \textbf{By ignoring the formation of stars below 1~M$_{\odot}$, our model in effect spreads this mass into higher mass stars, changing the normalization of the IMF slightly from what would be expected for an IMF that extends below  1~M$_{\odot}$.}
 
 Formed stars are deposited with random positions within the star forming cell and assigned velocities equal to the cell bulk velocity with a 1~km~s$^{-1}$ velocity dispersion. This dispersion captures some of the unresolved gas motions below the resolution limit that are smoothed out by numerical diffusion; it is comparable to, but less than, the velocity dispersion of the coldest gas in our simulations. Stars are assigned metallicities corresponding to the metallicity of the star forming zone, and are chemically tagged with the 17 individual species abundances (H, He, and the 15 metals) that we follow in our simulations. 
 
@@ -451,15 +451,6 @@ As shown in the left panel, log(N/O) varies significantly over this section of t
 
 At our adopted metallicity, nitrogen is predominantly produced in AGB star winds, with very little production in core collapse SNe and winds from more massive stars. Therefore, nitrogen is injected into the ISM with significantly less energy ($v \sim 10$~km~s$^{-1}$) than elements produced in SNe, like oxygen, ($v\sim 10^3$~km~s$^{-1}$). Given the variations in Figure~\ref{fig:metal_slices}, the energetic differences between injection sources can drive abundance variations within the ISM of our dwarf galaxy. The regions most rich in N are sites of recent AGB winds that have yet to mix with the rest of the ISM. This suggests that metal mixing within the ISM (and also metal ejection from the ISM) is species dependent. A more detailed analysis is beyond the scope of this work, but we plan to investigate this point, and potential observational consequences for stellar abundances, in future work.  
 
-\subsection{Importance of Ionizing Radiation}
-\label{sec:ionizing radiation}
-
-We investigate the relative importance of stellar ionizing radiation as a source of feedback in our galaxy with two comparison simulations. We ran one simulation with no stellar ionizing radition (NAME) and a second including only the local effects of stellar ionizing radiation, deleting all photons that travel more than 25~pc from their source star. Although radiative transfer is itself expensive, our simulation without ionizing radiation rapidly formed a significant amount of stars and ended up being more expensive than our fiducial run. We were only able to run this simulation for XXX Myr. We compare the star formation rate
-
-In the first case, we were unable to run the simulation for more than  
-
-We compare our fiducial simulation, which includes stellar ionizing radiation traced with radiative transfer, and a simulati
-
 \section{Discussion}
 \label{sec:discussion}
 
@@ -485,7 +476,7 @@ Although simple to measure in simulations, these quantities are challenging to d
 
 We include recent observational constraints on these relationships in Figure ~\ref{fig:KS}. Our galaxy fluctuates significantly about both relationships with no clear trends in time. However, in both cases, it is consistent with the available observational sample. At times our galaxy exhibits gas surface densities below the observational constraints. The trend is still consistent with higher densities at this point, but with a larger scatter towards lower star formation rate densities and efficiencies.
 
-In constructing our galaxy model, we employed \textit{no} tuning of the underlying physics, adopting only canonical values for any available free parameters. It is thus non-trivial that our galaxy should oscillate about the median relationships in Fig.~\ref{fig:KS}, and signifies a proper accounting of the relevant physics governing gas and star forming properties in our galaxy. This result is consistent with galactic evolution simulations run at high resolution with a detailed accounting of stellar feedback physics \citep[see ][ and references therein]{NaabOstriker2017} and with the demonstration by \citet{Li2005} that the Kennicutt-Schmidt law can be reproduced by gravitation acting on an isothermal disk. 
+In constructing our galaxy model, we employed \textit{no} tuning of the underlying physics, adopting only canonical values for any available free parameters. It is thus non-trivial that our galaxy should oscillate about the median relationships in Fig.~\ref{fig:KS}, and signifies a proper accounting of the relevant physics governing gas and star forming properties in our galaxy. This result is consistent with galactic evolution simulations run at high resolution with a detailed accounting of stellar feedback physics \citep[see ][ and references therein]{NaabOstriker2017} and with the demonstration by \citet{Li2005} that the Kennicutt-Schmidt law can be reproduced by gravitation acting on an isothermal disk. \textbf{The net result of the complex interactions of heating, cooling , chemistry, and feedback physics on star formation is to offset to a level not too dissimilar to more simple simulations considering gravity alone.} % AE: Mordecai, is this an appropriate clarification of this poitn?
 
 \subsubsection{Molecular Gas Content}
 \label{sec:molecular gas content}
@@ -561,14 +552,8 @@ beyond our stellar radius, with larger scale heights ($\sim 100$--200~pc) driven
 \item 
 We find H$_2$ fractions below 5\% in our dwarf galaxy, consistent with the poor constraints on molecular gas formation in low metallicity dwarf galaxies. This H$_2$ forms entirely through gas-phase reactions facilitated by H$^{-}$ in self-shielding regions; H$_2$ formation on dust grains and in the three body reaction are both insignificant. Cold, neutral hydrogen dominates the mass of our galaxy. While warm, neutral hydrogen is present, it does not dominate the mass fraction (See Figure~\ref{fig:sfr_mass_evolution} and Figure~\ref{fig:ISM_evolution}.)
 
-\item \textbf{Placeholder for key result from comparison runs without radiation}
-
-\item Finally, we used O and N as examples to briefly demonstrate that there are marked differences in how individual metal species are distributed within the ISM of our galaxy. These variations could be tied to differences in elemental yields among different sources (for example, AGB winds vs. SNe), as suggested by \cite{KrumholzTing2018}. This will be explored in more detail in future work.
-
-%mm3 (Emerick et. al. \textit{in prep.}). [only cite after submission]
+\item Finally, we used O and N as examples to briefly demonstrate that there are marked differences in how individual metal species are distributed within the ISM of our galaxy. These variations could be tied to differences in elemental yields among different sources (for example, AGB winds vs. SNe), as suggested by \cite{KrumholzTing2018}. This will be explored in more detail in future work (Emerick et. al. \textit{in prep.}).
 \end{enumerate}
-
-%In future work we will investigate in detail how metal enrichment proceeds in low mass dwarf galaxies, including how metals move through the various phases of the ISM into star forming gas, and how individual metals move into halos. This will allow us to examine the role that each source of feedback plays in driving dwarf galaxy chemodynamics.
 
 \section*{Acknowledgments:} 
 We would like to thank the following for their advice and valuable discussions, without which this work would not have been possible: B. C\^ot\'e, S. Glover, K. Hawkins, C. Hu, K. Johnston, B. O'Shea, M. Putman, B. Smith, J. Wall, and J. Wise. A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. G.L.B. is funded by NSF AST-1312888, NASA NNX15AB20G, and NSF AST-1615955. M.-M.M.L. was partly funded by NASA  grant NNX14AP27G. We gratefully recognize computational resources provided by NSF XSEDE through grant number TGMCA99S024, the NASA High-End Computing 
