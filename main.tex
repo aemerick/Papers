@@ -1,5 +1,3 @@
-%\documentclass[twocolumn]{aastex61}
-%\pdfoutput=1 %for arXiv submission
 \documentclass[fleqn,usenatbib,useAMS]{mnras}
 \usepackage{graphicx}	% Including figure files
 \usepackage{amsmath}	% Advanced maths commands
@@ -16,29 +14,20 @@
 %\usepackage[T1]{fontenc}
 \usepackage[figure,figure*]{hypcap}
 
-\hypersetup{draft}
+%\hypersetup{draft}
 %\usepackage{multirow}
 %\usepackage{mathtools}
 %\renewcommand*{\sectionautorefname}{Section} %for \autoref
 %\renewcommand*{\subsectionautorefname}{Section} %for \autoref
 %\usepackage{graphicx}
-
-%\usepackage{apjfonts} 
 %\usepackage{natbib} % bibliography
 
 
 %\usepackage[active,floats,tightpage]{preview}
 %    \setlength\PreviewBorder{1em}
 
-
-%\shorttitle{Feedback with Individual Stars}
-%\shortauthors{Emerick, Bryan, Mac Low}
 \newcommand{\msun}{M$_{\odot}$}
 \newcommand{\ccunit}{cm$^{-3}$}
-
-%%%%%%%%%%%%%%%%%%\hypersetup{draft}
-% For bibtex
-
 
 \title[Feedback with Individual Stars]{Simulating an Isolated Dwarf Galaxy with Energetic Feedback and Chemical Yields from Individual Stars}
 
@@ -161,7 +150,7 @@ For the first time in galaxy-scale simulations, we track galactic chemodynamical
 % KVJ: Possibly include a discussion on uncertainties in stellar yields
 %
 
-Above some mass $M_{\rm trans}$ within the unsampled range of 7--12 M$_{\odot}$, stars no longer undergo AGB wind phases but end their lives instead as core collapse SNe. Where this transition occurs is uncertain, but is commonly taken to be at a mass $M_{\rm trans} \sim 8$--10~M$_{\odot}$. This is a free parameter in our model; we take $M_{\rm trans} = 8$~M$_{\odot}$ as our fiducial value. In our model, stars below this mass eject their wind yields in an AGB phase only at the end of their lives, typically over a period comparable to or less than a few time steps ($\lesssim 10$ kyr). Stars above this mass are assumed to eject their stellar yields via line-driven stellar winds at a constant mass loss rate throughout their lifetime (neglecting Wolf-Rayet and luminous blue variable phases), ending their lives as a core-collapse SN (see Sect.~\ref{sec:stellar winds} for details on the wind energetics). Varying $M_{\rm trans}$ changes both the time at which yields for stars around this mass are ejected (for reference, the lifetime of an 8 M$_{\odot}$ star is about 35--40~Myr), and the energy injection from these winds. \citet{Cote2017a} explores how the choice of $M_{\rm trans}$ affects galaxy abundances in a one-zone model. We neglect the effects of binary star evolution on stellar feedback, and discuss the significance of this in Sect.~\ref{sec:binary stars}.
+Above some mass $M_{\rm trans}$ within the unsampled range of 7--12 M$_{\odot}$, stars no longer undergo AGB wind phases but end their lives instead as core collapse SNe. Where this transition occurs is uncertain, but is commonly taken to be at a mass $M_{\rm trans} \sim 8$--10~M$_{\odot}$; we take $M_{\rm trans} = 8$~M$_{\odot}$. In our model, stars below this mass eject their wind yields in an AGB phase only at the end of their lives, typically over a period comparable to or less than a few time steps ($\lesssim 10$ kyr). Stars above this mass are assumed to eject their stellar yields via line-driven stellar winds at a constant mass loss rate throughout their lifetime (neglecting Wolf-Rayet and luminous blue variable phases), ending their lives as a core-collapse SN (see Sect.~\ref{sec:stellar winds} for details on the wind energetics). Varying $M_{\rm trans}$ changes both the time at which yields for stars around this mass are ejected (for reference, the lifetime of an 8 M$_{\odot}$ star is about 35--40~Myr), and the energy injection from these winds. \citet{Cote2017a} explores how the choice of $M_{\rm trans}$ affects galaxy abundances in a one-zone model. We neglect the effects of binary star evolution on stellar feedback, and discuss the significance of this in Sect.~\ref{sec:binary stars}.
 
 There are large uncertainties in stellar yields for stars more massive than 25 M$_{\odot}$ \citep[see ][and references therein]{Cote2016}. Indeed, even the exact fate of these stars is uncertain \citep[e.g.][]{Woosley2002,Zhang2008,Ugliano2012}, particularly as a function of metallicity \citep{Fryer2012} with potentially multiple stable and unstable regimes as a function of mass \citep{Heger2003}. Due to this uncertainty, and to avoid erroneously extrapolating from our yield tables, we adopt the simplest model and assume all stars above 25 M$_{\odot}$ end their life through direct collapse to a compact object with no further mass, metal, or energy ejection.
 
@@ -518,7 +507,7 @@ have been ejected beyond the virial radius. (See Figures \ref{fig:mass_outflow},
 
 \item 
 The gas scale height is thin ($\sim 50$~pc), yet resolved, 
-beyond our stellar radius, with larger scale heights ($\sim 100$--200~pc) driven by feedback interior to the stellar radius. This is comparable to the resolution limit of the diffuse HI in observed, gaseous ultrafaint dwarfs. At a spatial resolution of 100~pc, our galaxy has a peak HI column density $N_{\rm HI} = 2.8--4.3 \times 10^{20}$~cm$^{-2}$, depending on inclination (See Figure~\ref{fig:scale_height}).
+beyond our stellar radius, with larger scale heights ($\sim 100$--200~pc) driven by feedback interior to the stellar radius. This is comparable to the resolution limit of the diffuse HI in observed, gaseous ultrafaint dwarfs. At a spatial resolution of 100~pc, our galaxy has a peak HI column density $N_{\rm HI} = 2.8-4.3 \times 10^{20}$~cm$^{-2}$, depending on inclination (See Figure~\ref{fig:scale_height}).
 
 \item The ISRF of our galaxy varies strongly in both space and time by orders of magnitude. It is unclear how important these fluctuations are as a source of feedback, or if the affect can be approximated with a time-averaged radial profile. (See Figures \ref{fig:ISRF} and \ref{fig:ISRF_2D}.)
 
@@ -646,7 +635,7 @@ Figure~\ref{fig:resolution_study} shows that, while decreasing the resolution ce
 
 Generally ineffective feedback leads to increased, not decreased, star formation rates. However, the lower resolution run has the lowest SFR. The source of this difference is likely related to the ability to resolve dense, cold gas in the lower resolution simulations. In particular, the low resolution simulation clearly is unable to resolve the densities at which gas-phase H$_2$ formation becomes efficient, leading to significantly lower H$_2$ fractions (middle panel) and lower cooling rates. In addition, whatever H$_2$ does form at these lower resolutions exists at lower gas densities than in our fiducial run, and is less well protected by self-shielding effects. This is shown clearly in the significant plummet in the H$_2$ mass during the phase of first star formation that is less severe in our fiducial run. In this low metallicity regime, where H$_2$ is an important coolant, the ability to resolve the densities responsible for H$_2$ formation and self-shielding is important. 
 
-Theses differences in densities are shown clearly by comparing Figure~\ref{fig:phase_diagram} with Figure~\ref{fig:phase_resolution}. Although the lowest temperature reached in each simulation is comparable, there is less gas in the coldest, densest portion of the phase diagram in each of the lower resolution simulations. In the 7.2~pc run, the gas phases are notably less distinct, with gas more evenly smoothed out in the multi-phase region between cold, dense gas and warm, ionized gas. We note the 7.2~pc simulation, which ran quickly, was conducted without the temperature ceiling used in the 3.6~pc and fiducial runs; we do not expect this to have a significant effect on the comparison.
+Theses differences in densities are shown clearly by comparing Figure~\ref{fig:phase} with Figure~\ref{fig:phase_resolution}. Although the lowest temperature reached in each simulation is comparable, there is less gas in the coldest, densest portion of the phase diagram in each of the lower resolution simulations. In the 7.2~pc run, the gas phases are notably less distinct, with gas more evenly smoothed out in the multi-phase region between cold, dense gas and warm, ionized gas. We note the 7.2~pc simulation, which ran quickly, was conducted without the temperature ceiling used in the 3.6~pc and fiducial runs; we do not expect this to have a significant effect on the comparison.
 
 
 \begin{figure*}
