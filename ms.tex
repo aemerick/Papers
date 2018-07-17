@@ -1,198 +1,22 @@
-%%
-%% Beginning of file 'sample62.tex'
-%%
-%% Modified 2018 January
-%%
-%% This is a sample manuscript marked up using the
-%% AASTeX v6.2 LaTeX 2e macros.
-%%
-%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
-%% (Copyright 2000-2015).  See the classfile for details.
 
-%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
-%% other external packages (latexsym, graphicx, amssymb, longtable, and epsf).
-%% All of these external packages should already be present in the modern TeX 
-%% distributions.  If not they can also be obtained at www.ctan.org.
-
-%% The first piece of markup in an AASTeX v6.x document is the \documentclass
-%% command. LaTeX will ignore any data that comes before this command. The 
-%% documentclass can take an optional argument to modify the output style.
-%% The command below calls the preprint style  which will produce a tightly 
-%% typeset, one-column, single-spaced document.  It is the default and thus
-%% does not need to be explicitly stated.
-%%
-%%
-%% using aastex version 6.2
 \documentclass[twocolumn]{aastex62}
 
-%% The default is a single spaced, 10 point font, single spaced article.
-%% There are 5 other style options available via an optional argument. They
-%% can be envoked like this:
-%%
-%% \documentclass[argument]{aastex62}
-%% 
-%% where the layout options are:
-%%
-%%  twocolumn   : two text columns, 10 point font, single spaced article.
-%%                This is the most compact and represent the final published
-%%                derived PDF copy of the accepted manuscript from the publisher
-%%  manuscript  : one text column, 12 point font, double spaced article.
-%%  preprint    : one text column, 12 point font, single spaced article.  
-%%  preprint2   : two text columns, 12 point font, single spaced article.
-%%  modern      : a stylish, single text column, 12 point font, article with
-%% 		  wider left and right margins. This uses the Daniel
-%% 		  Foreman-Mackey and David Hogg design.
-%%  RNAAS       : Preferred style for Research Notes which are by design 
-%%                lacking an abstract and brief. DO NOT use \begin{abstract}
-%%                and \end{abstract} with this style.
-%%
-%% Note that you can submit to the AAS Journals in any of these 6 styles.
-%%
-%% There are other optional arguments one can envoke to allow other stylistic
-%% actions. The available options are:
-%%
-%%  astrosymb    : Loads Astrosymb font and define \astrocommands. 
-%%  tighten      : Makes baselineskip slightly smaller, only works with 
-%%                 the twocolumn substyle.
-%%  times        : uses times font instead of the default
-%%  linenumbers  : turn on lineno package.
-%%  trackchanges : required to see the revision mark up and print its output
-%%  longauthor   : Do not use the more compressed footnote style (default) for 
-%%                 the author/collaboration/affiliations. Instead print all
-%%                 affiliation information after each name. Creates a much
-%%                 long author list but may be desirable for short author papers
-%%
-%% these can be used in any combination, e.g.
-%%
-%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex62}
-%%
-%% AASTeX v6.* now includes \hyperref support. While we have built in specific
-%% defaults into the classfile you can manually override them with the
-%% \hypersetup command. For example,
-%%
-%%\hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
-%%
-%% will change the color of the internal links to red, the links to the
-%% bibliography to green, the file links to cyan, and the external links to
-%% magenta. Additional information on \hyperref options can be found here:
-%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
-%%
-%% If you want to create your own macros, you can do so
-%% using \newcommand. Your macros should appear before
-%% the \begin{document} command.
-%%
 \newcommand{\vdag}{(v)^\dagger}
 \newcommand\aastex{AAS\TeX}
 \newcommand\latex{La\TeX}
 
-%% Tells LaTeX to search for image files in the 
-%% current directory as well as in the figures/ folder.
 \graphicspath{{./}{figures/}}
 
-%% Reintroduced the \received and \accepted commands from AASTeX v5.2
-%\received{January 1, 2018}
-%\revised{January 7, 2018}
-%\accepted{\today}
-%% Command to document which AAS Journal the manuscript was submitted to.
-%% Adds "Submitted to " the arguement.
+
 \submitjournal{ApJ}
 
-%% Mark up commands to limit the number of authors on the front page.
-%% Note that in AASTeX v6.2 a \collaboration call (see below) counts as
-%% an author in this case.
-%
-%\AuthorCollaborationLimit=3
-%
-%% Will only show Schwarz, Muench and "the AAS Journals Data Scientist 
-%% collaboration" on the front page of this example manuscript.
-%%
-%% Note that all of the author will be shown in the published article.
-%% This feature is meant to be used prior to acceptance to make the
-%% front end of a long author article more manageable. Please do not use
-%% this functionality for manuscripts with less than 20 authors. Conversely,
-%% please do use this when the number of authors exceeds 40.
-%%
-%% Use \allauthors at the manuscript end to show the full author list.
-%% This command should only be used with \AuthorCollaborationLimit is used.
-
-%% The following command can be used to set the latex table counters.  It
-%% is needed in this document because it uses a mix of latex tabular and
-%% AASTeX deluxetables.  In general it should not be needed.
-%\setcounter{table}{1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% The following section outlines numerous optional output that
-%% can be displayed in the front matter or as running meta-data.
-%%
-%% If you wish, you may supply running head information, although
-%% this information may be modified by the editorial offices.
-\shorttitle{Sample article}
+\shorttitle{Radiation Feedback in Dwarf Galaxies}
 \shortauthors{Emerick et. al.}
-%%
-%% You can add a light gray and diagonal water-mark to the first page 
-%% with this command:
-% \watermark{text}
-%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
-%% long you can control the water-mark size with:
-%  \setwatermarkfontsize{dimension}
-%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% This is the end of the preamble.  Indicate the beginning of the
-%% manuscript itself with \begin{document}.
 
 \begin{document}
 
 \title{Stellar Radiation is Critical for Regulating Star Formation and Driving Outflows in Low Mass Dwarf Galaxies}
-
-%% LaTeX will automatically break titles if they run longer than
-%% one line. However, you may use \\ to force a line break if
-%% you desire. In v6.2 you can include a footnote in the title.
-
-%% A significant change from earlier AASTEX versions is in the structure for 
-%% calling author and affilations. The change was necessary to implement 
-%% autoindexing of affilations which prior was a manual process that could 
-%% easily be tedious in large author manuscripts.
-%%
-%% The \author command is the same as before except it now takes an optional
-%% arguement which is the 16 digit ORCID. The syntax is:
-%% \author[xxxx-xxxx-xxxx-xxxx]{Author Name}
-%%
-%% This will hyperlink the author name to the author's ORCID page. Note that
-%% during compilation, LaTeX will do some limited checking of the format of
-%% the ID to make sure it is valid.
-%%
-%% Use \affiliation for affiliation information. The old \affil is now aliased
-%% to \affiliation. AASTeX v6.2 will automatically index these in the header.
-%% When a duplicate is found its index will be the same as its previous entry.
-%%
-%% Note that \altaffilmark and \altaffiltext have been removed and thus 
-%% can not be used to document secondary affiliations. If they are used latex
-%% will issue a specific error message and quit. Please use multiple 
-%% \affiliation calls for to document more than one affiliation.
-%%
-%% The new \altaffiliation can be used to indicate some secondary information
-%% such as fellowships. This command produces a non-numeric footnote that is
-%% set away from the numeric \affiliation footnotes.  NOTE that if an
-%% \altaffiliation command is used it must come BEFORE the \affiliation call,
-%% right after the \author command, in order to place the footnotes in
-%% the proper location.
-%%
-%% Use \email to set provide email addresses. Each \email will appear on its
-%% own line so you can put multiple email address in one \email call. A new
-%% \correspondingauthor command is available in V6.2 to identify the
-%% corresponding author of the manuscript. It is the author's responsibility
-%% to make sure this name is also in the author list.
-%%
-%% While authors can be grouped inside the same \author and \affiliation
-%% commands it is better to have a single author for each. This allows for
-%% one to exploit all the new benefits and should make book-keeping easier.
-%%
-%% If done correctly the peer review system will be able to
-%% automatically put the author and affiliation information from the manuscript
-%% and save the corresponding author the trouble of entering it by hand.
 
 \correspondingauthor{Andrew Emerick}
 \email{emerick@astro.columbia.edu}
@@ -218,48 +42,53 @@ Ionizing radiation from recently formed massive stars is important in destroying
 %% keywords and the rules for their use.
 \keywords{galaxies -- feedback -- galaxy evolution -- galactic winds}
 
-%% From the front matter, we move on to the body of the paper.
-%% Sections are demarcated by \section and \subsection, respectively.
-%% Observe the use of the LaTeX \label
-%% command after the \subsection to give a symbolic KEY to the
-%% subsection for cross-referencing in a \ref command.
-%% You can use LaTeX's \ref and \label commands to keep track of
-%% cross-references to sections, equations, tables, and figures.
-%% That way, if you change the order of any elements, LaTeX will
-%% automatically renumber them.
-%%
-%% We recommend that authors also use the natbib \citep
-%% and \citet commands to identify citations.  The citations are
-%% tied to the reference list via symbolic KEYs. The KEY corresponds
-%% to the KEY in the \bibitem in the reference list below. 
-
 \section{Introduction} \label{sec:intro}
 Overview of importance of pre-SN feedback in regulating SF. Brief literature overview of recent simulations with full radiative transfer. Brief mention / discussion of current approximations / simplifications made in runs without RT that include something for radiation feedback. Motivate how it is unclear as to whether or not full fancy RT physics is necessary, or if 1) can just do SNe (unlikely), and 2) can just get by with local (e.g. Stromgren) approximation. How might this affect global galaxy properties beyond SFR?
 
-\section{Methods} \label{sec:methods}
-See paper I. VERY SHORT summary here
+Key here is that radiation affects role of SNe in driving galactic winds. This is known already (Peters2016, Hu2016, Hu2017, and more), but has not been demonstrated like this for outflowing properties, primarily b/c many methods use approximate effects of RT. 
 
-\section{Results}
-Plots of SFR, gas mass evolution, phase evolution, mass loading factors. Figure out a reasonable selection of panels to show that demonstrate the characteristic differences in outflow properties. Particularly one early on during first "break-out" of SNe and one at late time. Plot metal mass fraction retention.
+\section{Methods and Initial Conditions} \label{sec:methods}
+We refer the reader to Paper I for a more detailed description of our methods, briefly summarized here. We use the adaptive mesh refinement hydrodynamics code \textsc{Enzo} \citep{Enzo} to evolve an idealized, isolated low mass dwarf galaxy initialized as a smooth exponential disk set in hydrostatic equillibrium with a static dark matter potential with $M_{\rm gas} = 2 \times 10^6~$~M$_{\odot}$, radial and vertical gas scale heights of 250~pc and 100~pc respectively, $M_{\rm vir} = 2.48 \times 10^9$~M$_{\odot}$, and a maximum physical resolution of 1.8~pc. We include a UV background, tabulated metal line cooling, and a 9 species non-equillibrium chemistry solver using \textsc{Grackle} \citep{Grackle}. Star formation occurs stochastically in cold, dense regions ($n > 200$~cm$^{-3}$, $T < 200$~K) by sampling the \cite{Salpeter1995} IMF from 1~M$_{\odot}$ to 100~M$_{\odot}$ and depositing \textit{individual} star particles over this mass range. For each star, we include feedback from stellar winds, AGB winds, FUV and LW band radiation which drives photoelectric heating and H$_2$ dissociation respectively, HI and HeI ionizing radiation, and core collapse and Type Ia SNe using thermal energy injection. FUV and LW band radiation are both taken to be optically thin, which approximate, local self-shielding alone, but ionizing radiation is followed with radiative transfer (see below). 
+
+\textbf{Stellar Ionizing Radiation Models} $-$ We present a comparison of three simulations in this work, which are identical with the exception of their stellar ionizing radiation feedback. In our fiducial simulation, we track the HI and HeI photoionizing radiation using the adaptive ray-tracing radiative transfer method of \citep{MORAY} for all stars above 8$M_{\odot}$ (see Paper I for details on determining the ionizing photon rates for each star). We additionally present a simulation run without any stellar ionizing radiation (``noRT'') and a second simulation to test the relative importance of short-range vs. long-range effects of the radiation where we follow the full ionizing radiation RT, but delete photons once they have traveled more than 20~pc from their source (``shortrad''). This last simulation performs a similar, though significantly more detailed, function as commonly used methods to account for stellar radiation feedback which either deposit thermal energy (citation) or thermal energy and ionization (citations) locally, typically within the Stromgren radius, of each star.  Each simulation is identical up until the formation of the first star particles, at which point they begin to diverge. We note that the stars from the very first star formation event in each run (21 star particles with a total mass of 114 M$_{\odot}$) are the same in each run. Of these, one particle emits ionizing radiation ($M_* > 8 $~M$_{\odot}$). 
+
+\section{Results} \label{sec:results}
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.32\linewidth]{sfr}
-\includegraphics[width=0.32\linewidth]{mass}
-\includegraphics[width=0.32\linewidth]{metal_retention}
+\includegraphics[width=0.49\linewidth]{sfr}
+\includegraphics[width=0.49\linewidth]{mass}
 \caption{}
 \label{fig:sfr_mass_evolution}
 \end{figure*}
 
+We compare the resulting star formation rate (left) and gas mass properties (right) of our three simulations in Figure~\ref{fig:sfr_mass_evolution}. There is a clear, significant contrast between the runs with and without ionizing radiation. Stellar ionizing radiation leads to a factor of $\sim$ 5 reduction in the resulting SFR, as compared to the noRT run. Since the shortrad and fiducial simulations are so similar over the first $\sim$~100~Myr, it is clear that stellar radiation acts to significantly reduce the local star formation efficiency around young, massive stars. Radiation from these stars quickly ionizes and dissipates surrounding dense gas that would otherwise have gone to fuel a significant amount of additional star formation. We are unable to follow the long-term evolution of the noRT galaxy due to computational constraints. Although radiative transfer is expensive, this run is substantially more computationally expensive than the fiducial and shortrad runs due to the significantly higher star formation rate.
+
+Looking again at the first $\sim$100~Myr of simulation time, the effects of ionizing radiation beyond our 20~pc cutoff radius are not significant. However, these two simulations begin to diverge significantly after this point. The shortrad simulations has continual, steady star formation for the entire simulation time, while the star formation rate in our fiducial run is bursty, with periods of active, low-level star formation interspersed with periods (sometimes up to 50~Myr) of no star formation. The driver of these differences is clear in the right hand panel. Our fiducial run looses a significant amount of total gas and HI mass (black and blue lines) as compared to the shortrad simulation by a factor of XX. Clearly, galactic winds and outflows are much more effective in the fiducial case, with full accounting of stellar ionizing radiation feedback, then in the shortrad simulation.
+
+This can be confirmed by examining the mass loading factor and metal retention fraction (the fraction of produced metals retained within the disk of the galaxy) in each simulation. As shown in Figure~\ref{fig:metal_retention}, the mass loading factor in the fiducial run is a factor of XXX higher at 0.25~R$_{\rm vir}$ than the shortrad simulation, and is the only simulation with any significant outflow beyond the virial radius. This is especially interesting considering the factor 5 increase in SFR of the noRT run. The noRT run does have a significant amount of gas mass outflowing at XXXX, but note that its low mass loading factor is due primarily to the significantly larger SFR in this galaxy. Radiation feedback, both locally and over longer ranges, is important in determining the ability for SN to drive significant outflows. We discuss the reasons for this in the following section.
+
+\section{Discussion} \label{sec:discussion}
+Again, it is known that accounting for feedback from stellar radiation plays a significant role in determining the ability for SN energy to couple to the ISM and therefore drive outflows. However, the specific importance of localized ionization vs. ionization far from the source star has not been examined. As shown above, accounting for stellar radiation feedback locally alone is insufficient to describe the long-term evolution of an isolated dwarf galaxy. To explore the cause of this difference we present two panel-plots in Figure~\ref{fig:panel1} and Figure~\ref{fig:panel2} which compare the gas number density (left), temperature (middle), and HI ionization fraction (right) in edge-on slices in each of our simulations at two different times.\footnote:{See ({\it insert link here}) for a movie of this comparison} 
+
+Figure~\ref{fig:panel1}, at XX Myr, shows each just after the first few SN in each simulation. Already there are significant differences across runs. Gas outside the galaxy is warm ($\sim$~10$^{4}$~K) and ionized out to XX~pc above/below the plane of the disk in our fiducial run. This same gas is cold ($<10^4$~K) and neutral in both other runs. As a result, the SNe in each are contained, creating very hot diffuse bubbles contained by colder, denser shells close to the disk. These mass and energy from the SNe in our fiducial run readily escape the galaxy through the channels of diffuse, ionized gas carved out by long-range stellar radiation feedback.
+
 \begin{figure*}
 \centering
 \includegraphics[width=0.99\linewidth]{comparison_panel}
-\caption{Panel}
-\label{fig:panel}
+\caption{\textbf{In the final version of this figure I will add labels for each row marking the simulation, and a line giving the scale of each figure.}}
+\label{fig:pane1l}
 \end{figure*}
 
-\section{Discussion and Conclusion}
-Keep this short and to the point.
+\begin{figure*}
+\centering
+\includegraphics[width=0.99\linewidth]{comparison_panel2}
+\caption{Panel}
+\label{fig:pane2}
+\end{figure*}
+
+\section{Conclusion}  \label{sec:conclusion}
+Very short. Just re-iterate points
 
 \begin{thebibliography}{}
 
