@@ -91,14 +91,17 @@ We compare the resulting star formation rate (left) and gas mass properties (rig
    from the large number of stars formed. 
 Although radiative transfer is computationally expensive, this run is substantially more expensive than the fiducial and shortrad runs due to the significantly higher star formation rate.
 
-Looking again at the first $\sim$100~Myr of simulation time, the effects of ionizing radiation beyond our 20~pc cutoff radius are not significant. However, these two simulations begin to diverge significantly after this point. The shortrad simulation has continual, steady star formation for the entire simulation time, while the star formation rate in our fiducial run is bursty, with periods of active, low-level star formation interspersed with periods (sometimes up to 50~Myr) of no star formation. The driver of these differences is clear in the right hand panel. Our fiducial run loses 
-%mm a significant amount of 
-    a factor of $\sim 2$ more 
+Looking again at the first $\sim$100~Myr of simulation time, the effects of ionizing radiation beyond our 20~pc cutoff radius are not significant. However, these two simulations begin to diverge significantly after this point. The shortrad simulation has continual, steady star formation for the entire simulation time, while the star formation rate in our fiducial run is bursty, with periods of active, low-level star formation interspersed with periods (sometimes up to 50~Myr) of no star formation. The driver of these differences is clear in the right hand panel. Our fiducial run 
+%mm looses a significant amount of 
+    loses a factor of $\sim 2$ more 
 total gas and HI mass (black and blue lines) as compared to the shortrad simulation. 
 %mm by a factor of $\sim$2. 
-Clearly, galactic winds and outflows are much more effective in the fiducial case, with full accounting of stellar ionizing radiation feedback, then in the shortrad simulation.
+Clearly, galactic winds and outflows are much more effective in the fiducial case, with full accounting of stellar ionizing radiation feedback, than in the shortrad simulation.
 
-This can be confirmed by examining the metal retention fraction (the fraction of produced metals retained within the disk of the galaxy) and mass outflow rates in each simulation. As shown in Figure~\ref{fig:metal_retention}, the mass outflow rate in the fiducial run peaks at an order of magnitude higher at 0.25~R$_{\rm vir}$ than the shortrad simulation, declining only due to a comparative drop off in star formation. Given this, the fiducial simulation has an even higher mass loading factor, since the shortrad simulation has a typically higher SFR. The fiducial run is also the only simulation with any significant outflow beyond the virial radius, though we note the noRT run has not been simulated long enough for gas to have reached the virial radius. The outflow in noRT is nearly the same as the fiducial run, but it requires a 5 times higher supernova rate in this simulation to match the same outflow seen with full stellar radiation feedback. Radiation feedback, therefore allows SN to be substantially more effective in driving outflows. We provide a physical
+This can be confirmed by examining the metal retention fraction (the fraction of produced metals retained within the disk of the galaxy) and mass outflow rates in each simulation. As shown in Figure~\ref{fig:metal_retention}, the mass outflow rate in the fiducial run peaks at an order of magnitude higher at 0.25~R$_{\rm vir}$ than the shortrad simulation, declining only due to a comparative drop off in star formation. Given this, the fiducial simulation has an even higher mass loading factor, since the shortrad simulation has a typically higher SFR. The fiducial run is also the only 
+%mm simulation 
+   one of the three 
+with any significant outflow beyond the virial radius, though we note the noRT run has not been simulated long enough for gas to have reached the virial radius. The outflow in noRT is nearly the same as the fiducial run, but it requires a five times higher supernova rate in this simulation to match the same outflow seen with full stellar radiation feedback. We conclude that radiation feedback allows SN to be substantially more effective in driving outflows. We provide a physical
 %mm intuition 
    explanation
 for these differences in the following section.
@@ -107,16 +110,34 @@ for these differences in the following section.
 \centering
 \includegraphics[width=0.95\linewidth]{metal_retention}\\
 \includegraphics[width=0.95\linewidth]{mass_loading_comparison}
-\caption{{\bf Top:} The fraction of metals contained within the ISM of each galaxy (blue) and the fraction ejected beyond the virial radius (orange). As in Figure~\ref{fig:sfr_mass_evolution}, the fiducial run is given as solid lines, while the noRT and shortrad are dash-dotted and dashed respectively. {\bf Bottom:} The mass outflow rate for each run at 0.25~R$_{\rm vir}$ (solid) and R$_{\rm vir}$ (dashed).}
+\caption{{\bf Top:} The fraction of metals contained within the ISM of each galaxy (blue) and the fraction ejected beyond the virial radius (orange). As in Figure~\ref{fig:sfr_mass_evolution}, the fiducial run is given as solid lines, while the noRT and shortrad are dash-dotted and dashed respectively. {\bf Bottom:} The mass outflow rate for each run at 0.25~R$_{\rm vir}$ (solid) and R$_{\rm vir}$ (dashed).
+%mm
+   {\bf Could you add a panel explicitly showing mass loading factor as discussed in the text?}
+}
 \label{fig:metal_retention}
 \end{figure}
 
-\textbf{We may have room for one more figure and a little more text to explain it. Possibly a comparison of mass / volume fractions in certain phases? But maybe not necessary....}
+\textbf{We may have room for one more figure and a little more text to explain it. Possibly a comparison of mass / volume fractions in certain phases? But maybe not necessary.... 
+
+What about vertical profiles of density, temperature, ionization?  These would support your discussion below - MM
+}
 
 \section{Discussion} \label{sec:discussion}
-Again, it is known that accounting for feedback from stellar radiation plays a significant role in determining the ability for SN energy to couple to the ISM and therefore drive outflows. However, the specific importance of localized ionization vs. ionization from a diffuse radiation field far from a single star has not been examined. As shown above, accounting for stellar radiation feedback locally alone is insufficient to describe the long-term evolution of an isolated dwarf galaxy. To explore the cause of this difference we present two panel-plots in Figure~\ref{fig:panel1} and Figure~\ref{fig:panel2} which compare the gas number density (left), temperature (middle), and hydrogen ionization fraction (right) in edge-on slices in each of our simulations at two different times.\footnote{See ({\it insert link here once posted}) for a movie of this comparison.} 
+%mm Again, it is known that 
+Accounting for feedback from stellar radiation plays a significant role in determining the ability for SN energy to couple to the ISM and therefore drive outflows. 
+%mm However, the specific 
+     We believe this work is novel in examining the
+importance of localized ionization vs.\ ionization from a diffuse radiation field far from a single star
+%mm has not been examined. As shown above, accounting for 
+    Only modeling 
+stellar radiation feedback locally 
+%mm alone 
+is insufficient to describe the long-term evolution of an isolated dwarf galaxy. To explore the cause of this difference we 
+%mm present two panel-plots in Figure~\ref{fig:panel1} and Figure~\ref{fig:panel2} which 
+compare in Figures~\ref{fig:panel1} and~Figure~\ref{fig:panel2} 
+the gas number density (left), temperature (middle), and hydrogen ionization fraction (right) in edge-on slices in each of our simulations at two different times.\footnote{See ({\it insert link here once posted}) for a movie of this comparison.} 
 
-Figure~\ref{fig:panel1}, at 17~Myr, compares each simulation just after the first few SNe. Already there are significant differences across runs. Gas outside the galaxy is warm ($\sim$~10$^{4}$~K) and ionized up to $\sim$500~pc above/below the plane of the disk in our fiducial run. This same gas is cold ($<10^4$~K) and neutral in both other runs. The contrast between the effect of ionizing radiation in the fiducial and shortrad runs is seen most clearly in the ionized region in-plane and to the right of center. This region contains massive stars that are capable of generating enough ionizing radiation to carve a channel out to the halo of our fiducial simulation; this does not occur in the shortrad case. Instead, the HII region is confined by surrounding cold, neutral gas. 
+Figure~\ref{fig:panel1}, at 17~Myr, compares each simulation just after the first few SNe. Already there are significant differences between the runs. Gas outside the galaxy is warm ($\sim$~10$^{4}$~K) and ionized up to $\sim$500~pc above/below the plane of the disk in our fiducial run. This same gas is cold ($<10^4$~K) and neutral in both other runs. The contrast between the effect of ionizing radiation in the fiducial and shortrad runs is seen most clearly in the ionized region in-plane and to the right of center. This region contains massive stars that are capable of generating enough ionizing radiation to carve a channel out to the halo of our fiducial simulation; this does not occur in the shortrad case. Instead, the HII region is confined by surrounding cold, neutral gas. 
 
 \begin{figure*}
 \centering
@@ -125,7 +146,15 @@ Figure~\ref{fig:panel1}, at 17~Myr, compares each simulation just after the firs
 \label{fig:panel1}
 \end{figure*}
 
-Although the ISM properties within the HII region in each case are quite similar between the simulations, the SNe that will eventually go off in this region are confined by this neutral gas in the shortrad simulation, but are readily ejected into the galaxy halo in our fiducial case. As these simulations evolve, the existence of these diffuse, ionized channels in the fiducial run easily allow continual and significant outflows from SNe. In contrast, the same SNe in the other two simulations are well contained, surrounded by shells of denser, neutral gas. Though they make a significant local impact on the ISM, they are unable to drive significant mass loss from the galaxy. In the noRT case, outflow does eventually develop, but it takes the factor of 5 increase in SFR, and corresponding increase in supernova rate, for SNe to finally break out from the neutral gas surrounding the galaxy. These differences are shown more clearly in Figure~\ref{fig:panel2}, which gives each simulation 40~Myr after the formation of the first stars. 
+Although the ISM properties within the HII region in each case are quite similar between the simulations, the SNe that eventually go off in this region are confined by the neutral gas in the shortrad simulation, but 
+%mm are readily ejected
+   readily escape through the lower density ionized gas
+into the galaxy halo in our fiducial case. As these simulations evolve, the existence of these diffuse, ionized channels in the fiducial run easily allow continual and significant outflows from SNe,
+%mm
+   as shown in  Figure~\ref{fig:panel2}, which shows each simulation 40~Myr after the 
+   formation of the first stars. 
+In contrast, the same SNe in the other two simulations are well contained, surrounded by shells of denser, neutral gas. Though they make a significant local impact on the ISM, they are unable to drive significant mass loss from the galaxy. In the noRT case, an outflow does eventually develop, but it takes the factor of five increase in SFR, and corresponding increase in supernova rate, for SNe to finally break out from the neutral gas surrounding the galaxy. 
+%mm These differences are shown more clearly in Figure~\ref{fig:panel2}, which shows each simulation 40~Myr after the formation of the first stars. 
 
 \begin{figure*}
 \centering
@@ -135,9 +164,19 @@ Although the ISM properties within the HII region in each case are quite similar
 \end{figure*}
 
 \section{Conclusion}  \label{sec:conclusion}
-In agreement with previous works we find that stellar radiation feedback is effective in regulating star formation and driving outflows in our simulations of an isolated, low mass dwarf galaxy. Simulations run without ionizing radiation feedback have star formation rates a factor of five higher than our fiducial simulation. In spite of this difference, SNe in our fiducial run are capable of driving larger galactic outflows, aided significantly by the ionizing radiation feedback.
+In agreement with previous work we find that stellar radiation feedback is effective in regulating star formation and driving outflows in our simulations of an isolated, low mass, dwarf galaxy. Simulations run without ionizing radiation feedback have star formation rates a factor of five higher than our fiducial simulation. In spite of this difference, SNe in our fiducial run are capable of driving larger galactic outflows, aided significantly by the ionizing radiation feedback.
 
-We also demonstrate that simple prescriptions which treat stellar radiation feedback locally do not fully reproduce the same evolution as our fiducial model. Our simulation with radiation localized to 20~pc around each star particle does effectively regulate star formation on short time scales, predominately by quickly destroying cold, dense gas around young, hot stars. However, this model does not drive the significant outflows seen in our fiducial simulation. Long-range ionizing radiation is important for carving channels allowing the release of significant amounts mass and metals from SNe. Our simulation with localized radiation feedback retains metals at a significantly higher fraction than expected observationally for low mass dwarf galaxies.
+We 
+%mm also 
+demonstrate
+%mm
+   for the first time 
+that simple prescriptions 
+%mm which treat stellar radiation feedback locally do not fully reproduce the same
+%evolution as our fiducial model. 
+    of local stellar radiation feedback fail to reproduce the evolution of our fiducial 
+    model.
+Our simulation with radiation localized to 20~pc around each star particle does effectively regulate star formation on short time scales, predominately by quickly destroying cold, dense gas around young, hot stars. However, this model does not drive the significant outflows seen in our fiducial simulation. Long-range ionizing radiation is important for carving channels allowing the release of significant amounts mass and metals from SNe. Our simulation with localized radiation feedback retains metals at a significantly higher fraction than expected observationally for low mass dwarf galaxies.
 
 Finally, we note that we have performed this experiment on only one possible type of galaxy. Its low virial temperature ($\sim10^{4}$~K) makes this galaxy particularly sensitive to the effects of stellar feedback and ionizing radiation in particular. Examining the role of long-range, diffuse stellar ionizing radiation on star formation and galactic winds in more massive galaxies is an important avenue of future research. 
 
