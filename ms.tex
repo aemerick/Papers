@@ -23,14 +23,17 @@
 
 \author{Andrew Emerick}
 \affil{Columbia University}
-\affil{American Museum of Natural History (AMNH)}
+\affil{Department of Astrophysics, American Museum of Natural History, New York, NY 10024}
 
 \author{Greg L. Bryan}
 \affiliation{Columbia University}
 \affiliation{Flatiron Institute}
 
 \author{Mordecai-Mark Mac Low}
-\affiliation{American Museum of Natural History (AMNH)}
+%mm [I've been asked to use my Columbia affiliation when working with CU students]
+\affil{Department of Astrophysics, American Museum of Natural History, New York, NY 10024}
+\affiliation{Columbia University}
+
 \nocollaboration
 
 \begin{abstract}
@@ -81,14 +84,34 @@ We compare the resulting star formation rate (left) and gas mass properties (rig
 
 Looking again at the first $\sim$100~Myr of simulation time, the effects of ionizing radiation beyond our 20~pc cutoff radius are not significant. However, these two simulations begin to diverge significantly after this point. The shortrad simulation has continual, steady star formation for the entire simulation time, while the star formation rate in our fiducial run is bursty, with periods of active, low-level star formation interspersed with periods (sometimes up to 50~Myr) of no star formation. The driver of these differences is clear in the right hand panel. Our fiducial run loses a factor of $\sim 2$ more total gas and HI mass (black and blue lines) as compared to the shortrad simulation. Clearly, galactic winds and outflows are much more effective in the fiducial case, with full accounting of stellar ionizing radiation feedback, than in the shortrad simulation.
 
-This can be confirmed by examining the metal retention fraction (the fraction of produced metals retained within the disk of the galaxy) and mass outflow rates in each simulation. As shown in Figure~\ref{fig:metal_retention}, the mass outflow rate in the fiducial run peaks at an order of magnitude higher at 0.25~R$_{\rm vir}$ than the shortrad simulation, declining only due to a comparative drop off in star formation. Because of this difference in SFR, the mass loading factor differences across simulations ($\eta = \dot{M}_{\rm out} / <\rm{SFR}>_{100 \rm{Myr}}$) are more significant. While the fiducial run reaches a peak $\eta$ of a few hundred, shortrad is consistently an order of magnitude or more below this, while noRT is even lower. The fiducial run is also the only one of the three with any significant outflow beyond the virial radius, though we note the noRT run has not been simulated long enough for gas to have reached the virial radius. The outflow in noRT is nearly the same as the fiducial run, but it requires a five times higher supernova rate in this simulation to match the same outflow seen with full stellar radiation feedback. We conclude that radiation feedback allows SN to be substantially more effective in driving outflows. We provide a physical explanation for these differences in the following section.
+This can be confirmed by examining the metal retention fraction (the fraction of produced metals retained within the disk of the galaxy) and mass outflow rates in each simulation. As shown in Figure~\ref{fig:metal_retention}, the mass outflow rate in the fiducial run peaks at an order of magnitude higher at 0.25~R$_{\rm vir}$ than the shortrad simulation, declining only due to a comparative drop off in star formation. Because of this difference in SFR, 
+%mm [rewrote to display equation]
+the differences across simulations are more significant for our computed mass loading factor 
+\begin{equation}
+    \eta = \dot{M}_{\rm out} / <\rm{SFR}>_{100 \rm{Myr}}
+\end{equation}. The brackets indicate time averaging over 100~Myr.
+%
+While the fiducial run reaches a peak $\eta$ of a few hundred, shortrad is consistently an order of magnitude or more below this, while noRT is even lower. 
+
+%mm [ended the paragraph to leave the previous important sentence in the place of emphasis at the end of the paragraph.]
+The fiducial run is also the only one of the three with any significant outflow beyond the virial radius, though we note the noRT run has not been simulated long enough for gas to have reached the virial radius. The outflow in noRT is 
+%mm nearly the same as 
+   only a factor of a few lower than 
+the fiducial run, but it requires a five times higher supernova rate in this simulation to match the same outflow seen with full stellar radiation feedback, 
+%mm 
+    so it implies a far lower mass loading factor. 
+We conclude that radiation feedback allows SNe to be substantially more effective in driving outflows. 
+%mm We provide a physical explanation for these differences in the following section.
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.32\linewidth]{metal_retention}
 \includegraphics[width=0.32\linewidth]{mass_outflow_comparison} 
 \includegraphics[width=0.32\linewidth]{mass_loading_comparison}
-\caption{{\bf Left:} The fraction of metals contained within the ISM of each galaxy (blue) and the fraction ejected beyond the virial radius (orange). As in Figure~\ref{fig:sfr_mass_evolution}, the fiducial run is given as solid lines, while the noRT and shortrad are dash-dotted and dashed respectively. {\bf Middle:} The mass outflow rate for each run at 0.25~R$_{\rm vir}$ (solid) and R$_{\rm vir}$ (dashed). {\bf Right:} The mass loading factor, calculated as the outflow rate divided by 100~Myr averaged SFR. }
+\caption{{\bf Left:} The fraction of metals contained within the ISM of each galaxy (blue) and the fraction ejected beyond the virial radius (orange). As in Figure~\ref{fig:sfr_mass_evolution}, the fiducial run is given as solid lines, while the noRT and shortrad are dash-dotted and dashed respectively. {\bf Middle:} The mass outflow rate for each run at 0.25~R$_{\rm vir}$ (solid) and R$_{\rm vir}$ (dashed). {\bf Right:} The mass loading factor $\eta$ calculated as the outflow rate divided by the SFR averaged over 100~Myr. 
+%mm
+   Inclusion of diffuse ionization makes an order of magnitude difference in $\eta$ in 
+   this case. }
 \label{fig:metal_retention}
 \end{figure*}
 
