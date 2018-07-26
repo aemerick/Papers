@@ -1,4 +1,3 @@
-
 \documentclass[twocolumn]{aastex62}
 
 \newcommand{\vdag}{(v)^\dagger}
@@ -59,10 +58,7 @@ In this work we present a comparison of three simulations of the evolution of an
 \section{Methods and Initial Conditions} \label{sec:methods}
 We refer the reader to Paper I for a more detailed description of our methods, briefly summarized here. We use the adaptive mesh refinement hydrodynamics code \textsc{Enzo} \citep{Enzo2014} to evolve an idealized, isolated low mass dwarf galaxy. The galaxy is initialized as a smooth exponential disk set in hydrostatic equillibrium with a static dark matter potential \citep{Burkert1995} with $M_{\rm gas} = 2 \times 10^6~$~M$_{\odot}$, radial and vertical gas scale heights of 250~pc and 100~pc respectively, $M_{\rm vir} = 2.48 \times 10^9$~M$_{\odot}$, on a grid with a maximum physical resolution of 1.8~pc. We do not model an initial stellar population, but do include random driving from supernovae as an initial source of feedback up until the first explicit star formation in our model.
 
-We include a UV background, tabulated metal line cooling, and a 9 species non-equilibrium chemistry solver using \textsc{Grackle} \citep{GrackleMethod}. Star formation occurs stochastically in cold, dense regions ($n > 200$~cm$^{-3}$, $T < 200$~K) by sampling a
-%  removed to try and limit citation count
-    %\cite{Salpeter1955} 
-Salpeter IMF from 1~M$_{\odot}$ to 100~M$_{\odot}$ and depositing \textit{individual} star particles over this mass range. For each star, we include feedback from stellar winds, AGB winds, FUV and LW band radiation which drives photoelectric heating and H$_2$ dissociation respectively, HI and HeI ionizing radiation, and core collapse and Type Ia SNe using thermal energy injection. FUV and LW band radiation are both taken to be optically thin, with local (cell-by-cell) attenuation alone. Ionizing radiation is followed using radiative transfer, as discussed below. Stellar lifetimes, surface gravity, effective temperature, and radii are set by the initial stellar mass and metallicity through interpolation over the PARSEC \citep{Bressan2012} zero age main sequence values. These values for surface gravity, effective temperature, and radii are used to set the FUV, LW, and ionizing photon fluxes from each star through interpolation on the OSTAR2002 \citep{LanzHubeny2003} grid. We only follow the radiation from stars with masses above 8~M$_{\odot}$. 
+We include a UV background, tabulated metal line cooling, and a 9 species non-equilibrium chemistry solver using \textsc{Grackle} \citep{GrackleMethod}. Star formation occurs stochastically in cold, dense regions ($n > 200$~cm$^{-3}$, $T < 200$~K) by sampling a \cite{Salpeter1955} Salpeter IMF from 1~M$_{\odot}$ to 100~M$_{\odot}$ and depositing \textit{individual} star particles over this mass range. For each star, we include feedback from stellar winds, AGB winds, FUV and LW band radiation which drives photoelectric heating and H$_2$ dissociation respectively, HI and HeI ionizing radiation, and core collapse and Type Ia SNe using thermal energy injection. FUV and LW band radiation are both taken to be optically thin, with local (cell-by-cell) attenuation alone. Ionizing radiation is followed using radiative transfer, as discussed below. Stellar lifetimes, surface gravity, effective temperature, and radii are set by the initial stellar mass and metallicity through interpolation over the PARSEC \citep{Bressan2012} zero age main sequence values. These values for surface gravity, effective temperature, and radii are used to set the FUV, LW, and ionizing photon fluxes from each star through interpolation on the OSTAR2002 \citep{LanzHubeny2003} grid. We only follow the radiation from stars with masses above 8~M$_{\odot}$. 
 %tellar wind and supernovae mass loss are determined with the  NuGrid yield tables for $M_* < 25$~M$_{\odot}$ and from Slemer et. al. (in prep) for $M_* > 25$~M$_{\odot}$. 
 
 
@@ -97,20 +93,9 @@ This can be confirmed by examining the metal retention fraction (the fraction of
 \end{figure*}
 
 
-\begin{figure*}
-\centering
-\includegraphics[width=0.98\linewidth]{density_temperature_ionization_z_profile}
-\caption{Volume-averaged quantities above / below the disk of each galaxy. {\bf Left:} number density. {\bf Middle:} Temperature {\bf Right:} Hydrogen ionization fraction. These profiles correspond to the same point in time as Figure~\ref{fig:panel2}. \textbf{New figure. We can decide if we want to keep all panels, or stick with just 1 of the 3 quantities}}
-\label{fig:vertical profiles}
-\end{figure*}
-
-\textbf{New text (AE needs work not done yet): Finally, we quantify these findings in Figure~\ref{fig:vertical profiles}, showing the volume-weighted average number density (left), temperature (middle) and hydrogen ionization fraction (right) as a function of distance above/below the disk of our galaxy at the same time as Figure~\ref{fig:panel2}. Over the sampled heights, the gas outside the disk of our fiducial simulation is lower density, higher temperature, and has a higher ionization fraction at all heights. }
-
 \section{Discussion} \label{sec:discussion}
 Accounting for feedback from stellar radiation plays a significant role in determining the ability for SN energy to couple to the ISM and therefore drive outflows. We believe this work is novel in examining the
 importance of localized ionization vs.\ ionization from a diffuse radiation field far from a single star. Only modeling stellar radiation feedback locally is insufficient to describe the long-term evolution of an isolated dwarf galaxy. To explore the cause of this difference we compare in Figures~\ref{fig:panel1} and~Figure~\ref{fig:panel2} the gas number density (left), temperature (middle), and hydrogen ionization fraction (right) in edge-on slices in each of our simulations at two different times.\footnote{See ({\it insert link here once posted}) for a movie of this comparison.} 
-
-Figure~\ref{fig:panel1}, at 17~Myr, compares each simulation just after the first few SNe. Already there are significant differences between the runs. Gas outside the galaxy is warm ($\sim$~10$^{4}$~K) and ionized up to $\sim$500~pc above/below the plane of the disk in our fiducial run. This same gas is cold ($<10^4$~K) and neutral in both other runs. The contrast between the effect of ionizing radiation in the fiducial and shortrad runs is seen most clearly in the ionized region in-plane and to the right of center. This region contains massive stars that are capable of generating enough ionizing radiation to carve a channel out to the halo of our fiducial simulation; this does not occur in the shortrad case. Instead, the HII region is confined by surrounding cold, neutral gas. 
 
 \begin{figure*}
 \centering
@@ -119,16 +104,27 @@ Figure~\ref{fig:panel1}, at 17~Myr, compares each simulation just after the firs
 \label{fig:panel1}
 \end{figure*}
 
-Although the ISM properties within the HII region in each case are quite similar between the simulations, the SNe that eventually go off in this region are confined by the neutral gas in the shortrad simulation, but readily escape through the lower density ionized gas into the galaxy halo in our fiducial case. As these simulations evolve, the existence of these diffuse, ionized channels in the fiducial run easily allow continual and significant outflows from SNe, as shown in  Figure~\ref{fig:panel2}, which shows each simulation 40~Myr after the formation of the first stars. In contrast, the same SNe in the other two simulations are well contained, surrounded by shells of denser, neutral gas. Though they make a significant local impact on the ISM, they are unable to drive significant mass loss from the galaxy. In the noRT case, an outflow does eventually develop, but it takes the factor of five increase in SFR, and corresponding increase in supernova rate, for SNe to finally break out from the neutral gas surrounding the galaxy. 
-
-\textbf{New text: As shown in Figure~\ref{fig:metal_retention} the differences in ionization structure and its effect on galactic winds has direct consequences for the chemical evolution of our dwarf galaxy. The winds in our fiducial simulation carry nearly all of the metals produced out from the disk of our galaxy. This is the only run in agreement with observations of Local Group dwarf galaxies, both dSph's \citep{Kirby2011} and the gaseous, star forming Local Group dwarf galaxy Leo P \citep{McQuinn2015}, with metal ejection fractions of up to 95\%. This is in stark contrast to the $\sim$30\% retention fraction in our shortrad simulation. This would also influence the chemical enrichment of neighboring galaxies, given the significant differences in metal ejection past the virial radius between these two runs. Clearly the effects of feedback on observable chemical properties of galaxies is a key descriminator among models.}
-
 \begin{figure*}
 \centering
 \includegraphics[width=0.99\linewidth]{DD0160_fiducial_shortrad_nort}
 \caption{Same as Figure~\ref{fig:panel1}, but at 40~Myr.}
 \label{fig:panel2}
 \end{figure*}
+
+Figure~\ref{fig:panel1}, at 17~Myr, compares each simulation just after the first few SNe. Already there are significant differences between the runs. Gas outside the galaxy is warm ($\sim$~10$^{4}$~K) and ionized up to $\sim$500~pc above/below the plane of the disk in our fiducial run. This same gas is cold ($<10^4$~K) and neutral in both other runs. The contrast between the effect of ionizing radiation in the fiducial and shortrad runs is seen most clearly in the ionized region in-plane and to the right of center. This region contains massive stars that are capable of generating enough ionizing radiation to carve a channel out to the halo of our fiducial simulation; this does not occur in the shortrad case. Instead, the HII region is confined by surrounding cold, neutral gas. 
+
+Although the ISM properties within the HII region in each case are quite similar between the simulations, the SNe that eventually go off in this region are confined by the neutral gas in the shortrad simulation, but readily escape through the lower density ionized gas into the galaxy halo in our fiducial case. As these simulations evolve, the existence of these diffuse, ionized channels in the fiducial run easily allow continual and significant outflows from SNe, as shown in  Figure~\ref{fig:panel2}, which shows each simulation 40~Myr after the formation of the first stars. In contrast, the same SNe in the other two simulations are well contained, surrounded by shells of denser, neutral gas. Though they make a significant local impact on the ISM, they are unable to drive significant mass loss from the galaxy. In the noRT case, an outflow does eventually develop, but it takes the factor of five increase in SFR, and corresponding increase in supernova rate, for SNe to finally break out from the neutral gas surrounding the galaxy. 
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.98\linewidth]{density_temperature_ionization_z_profile}
+\caption{Volume-averaged quantities above / below the disk of each galaxy. {\bf Left:} number density. {\bf Middle:} Temperature {\bf Right:} Hydrogen ionization fraction. These profiles correspond to the same point in time as Figure~\ref{fig:panel2}. \textbf{New figure. We can decide if we want to keep all panels, or stick with just 1 of the 3 quantities}}
+\label{fig:vertical profiles}
+\end{figure*}
+
+\textbf{New text: Finally, we quantify these findings in Figure~\ref{fig:vertical profiles}, showing the volume-weighted average number density (left), temperature (middle) and hydrogen ionization fraction (right) as a function of distance above/below the disk of our galaxy at the same time as Figure~\ref{fig:panel2}. The gas outside the disk of our fiducial simulation is lower density, higher temperature, and has a higher ionization fraction at all points above the disk. The shortrad simulation, which lacks both the enhanced SNR of the noRT run and the long-range ionizing radiation effects, of the fiducial simulation, maintains a denser, cooler, more neutral shell of gas above the disk, preventing significant outflows.}
+
+\textbf{New text: As shown in Figure~\ref{fig:metal_retention} the differences in ionization structure and its effect on galactic winds has direct consequences for the chemical evolution of our dwarf galaxy. The winds in our fiducial simulation carry nearly all of the metals produced out from the disk of our galaxy. This is the only run in agreement with observations of Local Group dwarf galaxies, both dSph's \citep{Kirby2011} and the gaseous, star forming Local Group dwarf galaxy Leo P \citep{McQuinn2015}, with metal ejection fractions of up to 95\%. This is in stark contrast to the $\sim$30\% retention fraction in our shortrad simulation. This would also influence the chemical enrichment of neighboring galaxies, given the significant differences in metal ejection past the virial radius between these two runs. Clearly the effects of feedback on observable chemical properties of galaxies is a key discriminator among models.}
 
 \section{Conclusion}  \label{sec:conclusion}
 In agreement with previous work we find that stellar radiation feedback is effective in regulating star formation and driving outflows in our simulations of an isolated, low mass, dwarf galaxy. Simulations run without ionizing radiation feedback have star formation rates a factor of five higher than our fiducial simulation. In spite of this difference, SNe in our fiducial run are capable of driving larger galactic outflows, aided significantly by the ionizing radiation feedback.
