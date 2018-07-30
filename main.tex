@@ -113,9 +113,33 @@ In this work we focus in detail on how each of the 15 individual metal species e
 \label{fig:species_fractions}
 \end{figure}
 
+<<<<<<< HEAD
+The top panel of Figure~\ref{fig:species_fractions} gives the mass fraction of each element at the end of the simulation (500~Myr) in each of four reservoirs: locked in stars (yellow), in the ISM (blue), outside the galaxy but within the virial radius (purple), and outside the virial radius (salmon), including gas that has left the domain. We subdivide the ISM by phase in the bottom panel, giving the mass fractions of each element in the cold neutral medium (CNM, $f_{\rm H_2} < 0.5$,  T$< 100$~K), warm neutral medium (WNM, $10^2~\rm{K}\le \rm{T} < 10^4~\rm{K}$), warm ionized medium (WIM, $10^4~\rm{K}\le \rm{T} < 10^{5.5}~\rm{K}$), the hot ionized medium (HIM T$\ge 10^{5.5}$~K), and locked in stars (yellow). 
+%mm Again, with the exception of  H and He, we [H & He aren't metals]
+    We
+only consider metals produced self-consistently through our star formation and stellar feedback methods; the initial mass of each metal species is zero.
+
+We find two major results.
+%mm [reversed order of results to follow figure.  The opposite choice could also be made, by reversing the order of the figure...]
+    First, 
+only a small fraction of produced metals are retained within the dwarf galaxy, in agreement with observations of nearby dwarf galaxies \citep[see][]{Kirby2011-metals, McQuinn2015}; however, the retention factor varies 
+%mm 
+    among elements. The top panel shows a qualitative disagreement between the retention fractions of N and Ba (about 20\% for each) as compared to the rest of the metals ($\sim$ 4 -- 5\%). This suggests that individual metals \textit{do not} share the same dynamical evolution. 
+%mm Clearly
+       Thus, 
+metal enrichment in galaxies is a phenomenon that cannot be fully captured using a single, global metallicity field. In this particular case, assuming that all metals behave the same would underestimate the N and Ba enrichment by a factor of up to five, at least for low mass dwarf galaxies.
+
+    Second,
+nearly all of the metals 
+%mm
+    retained in the disk
+reside within neutral gas, mostly in the CNM; only a few percent
+reside in the hot phases. The exact fraction varies with each species, most notably for carbon; these fluctuations are at most $\sim 10$\%. This is not surprising, as the cold phases represent the majority of the mass in the ISM, but, as shown in Section~\ref{sec:statistics}, even though the cold phases harbor most of the metals, the hot phases have significantly higher metal mass fractions. 
+=======
 The top panel of Figure~\ref{fig:species_fractions} gives the mass fraction of each element at the end of the simulation (500~Myr) in each of four reservoirs: locked in stars (yellow), in the ISM (blue), outside the galaxy but within the virial radius (purple), and outside the virial radius (salmon), including gas that has left the domain. We subdivide the ISM by phase in the bottom panel, giving the mass fractions of each element in the cold neutral medium (CNM, $f_{\rm H_2} < 0.5$,  T$< 100$~K), warm neutral medium (WNM, $10^2~\rm{K}\le \rm{T} < 10^4~\rm{K}$), warm ionized medium (WIM, $10^4~\rm{K}\le \rm{T} < 10^{5.5}~\rm{K}$), the hot ionized medium (HIM T$\ge 10^{5.5}$~K), and locked in stars (yellow). Again, with the exception of H and He, we only consider metals produced self-consistently through our star formation and stellar feedback methods; the initial mass of each metal species is zero.
 
 We find two major results. First, nearly all of the metals reside within neutral gas, mostly in the CNM; only a few percent reside in the hot phases. The exact fraction varies with each species, most notably for carbon; these fluctuations are at most $\sim 10$\%. This is not surprising, as the cold phases represent the majority of the mass in the ISM, but, as shown in Section~\ref{sec:statistics}, even though the cold phases harbor most of the metals, the hot phases have significantly higher metal mass fractions. Second, only a small fraction of produced metals are retained within the dwarf galaxy, in agreement with observations of nearby dwarf galaxies \citep[see][]{Kirby2011-metals, McQuinn2015}; however, the retention factor varies. The top panel shows a qualitative disagreement between the retention fractions of N and Ba (about 20\% for each) as compared to the rest of the metals ($\sim$ 4 -- 5\%). This suggests that individual metals \textit{do not} share the same dynamical evolution. Clearly, metal enrichment in galaxies is a phenomenon that cannot be fully captured using single, global metallicity field. In this particular case, assuming that all metals behave the same would underestimate the N and Ba enrichment by a factor of up to five, at least for low mass dwarf galaxies.
+>>>>>>> 134a2fabac2aea2275cb3e8014308282b438742f
 
 \begin{figure}
 \centering
@@ -144,20 +168,30 @@ AGB winds have low energy and velocities (10~km~s$^{-1}$) as compared to the ene
 \subsection{Mixing and Distribution of Metals in the ISM}
 \label{sec:mixing}
 
+<<<<<<< HEAD
+%mm I think this material duplicates the first paragraph of the introduction.
+% Chemical evolution models make varying approximations as to what fraction and on what timescales newly formed metals populate a galaxy's ISM and become available to enrich future generations of stars. In the simplest models, new metals are instantaneously available upon the formation of new stars, ignoring delays due to stellar lifetimes (\textit{refs, but maybe not if included in introduction}). Accounting for delays due to individual stellar lifetimes, loss from galactic winds, and dilution from accretion of pristine gas leads to models that can more accurately capture a variety of mean chemical properties of galaxies with some ability to account for spreads in abundances. In hydrodynamics simulations, there has been substantial work understanding how metals, often characterized as passive scalar fields, diffuse in both turbulent boxes and global galaxy models. 
+%mm However, there is not  yet a complete model for how metals should mix and evolve in the complex, multi-phase ISM of real galaxies. To build towards this, we characterize the metal evolution and distributions in our galaxy below. 
+      We characterize the metal distributions (in Sections~\ref{sec:log-normal} and \ref{sec:phase-pdfs}) and evolution (in Section~\ref{sec:statistics}) in our galaxy to build towards a  a complete model for how metals mix and evolve in the complex, multi-phase ISM of real galaxies.
+=======
 %mm should most of this material be in the introduction, and just the last two sentences be here?
 %   AE: I agree this is mostly redundant. I removed this
 %Chemical evolution models make varying approximations as to what fraction and on what timescales newly formed metals populate a galaxy's ISM and become available to enrich future generations of stars. In the simplest models, new metals are instantaneously available upon the formation of new stars, ignoring delays due to stellar lifetimes (\textit{refs, but maybe not if included in introduction}). Accounting for delays due to individual stellar lifetimes, loss from galactic winds, and dilution from accretion of pristine gas leads to models that can more accurately capture a variety of mean chemical properties of galaxies with some ability to account for spreads in abundances. 
 In hydrodynamics simulations, there has been substantial work understanding how metals, often characterized as passive scalar fields, diffuse in both turbulent boxes and global galaxy models. However, there is not  yet a complete model for how metals should mix and evolve in the complex, multi-phase ISM of real galaxies. To build towards this, we characterize the metal evolution and distributions in our galaxy below.
+>>>>>>> 134a2fabac2aea2275cb3e8014308282b438742f
 
 
 \subsubsection{A Functional Form for Metal PDFs}
 \label{sec:log-normal}
 
-The log-normal distribution is found often in nature, generally describing processes with non-negative values that grow with time. In astrophysics, for example, the log-normal distribution can be used to describe the time evolution of the star formation rate density \citep[see ][]{Gladders2013,Abramson2016,Diemer2017}. In addition, as expected from analytic theory \citep{Vazquez-Semadeni1994}, isothermal turbulence gives rise to log-normal density probability distribution functions \citep[PDFs;][]{Padoan1997, Passot1998, Ostriker1999,PadoanNordlund2002,KrumholzMcKee2005,Federrath2008}. Although these PDFs are only log-normal in simulations containing a more realistic, multi-phase ISM \citep{Scalo1998} if the disk is very stable \citep{WadaNorman2007}, individual phases within the ISM do exhibit some log-normality \citep{Tasker2009, Tasker2011,Joung2009,PriceFederrathBrunt2011, HopkinsQuataertMurray2012}. It has been shown that the 3D density PDF and the column density PDF, in both simulations and observations, have a characteristic shape. This includes a log-normal component, generated by multiplicative processes (shocks and the turbulent cascade in the ISM) and a power-law component at high densities arising from the additive combination of individual, self-gravitating cloud structures \citep{Vazquez-Semadeni1994,Burkhart2009, FederrathKlessen2013, Collins2012, Myers2015, Burkhart2017, Chen2017}.
+The log-normal distribution is found often in nature, generally describing 
+%mm
+    multiplicative
+processes with non-negative values that grow with time. In astrophysics, for example, the log-normal distribution can be used to describe the time evolution of the star formation rate density \citep[see ][]{Gladders2013,Abramson2016,Diemer2017}. In addition, as expected from analytic theory \citep{Vazquez-Semadeni1994}, isothermal turbulence gives rise to log-normal density probability distribution functions \citep[PDFs;][]{Padoan1997, Passot1998, Ostriker1999,PadoanNordlund2002,KrumholzMcKee2005,Federrath2008}. Although these PDFs are only log-normal in simulations containing a more realistic, multi-phase ISM \citep{Scalo1998} if the disk is very stable \citep{WadaNorman2007}, individual phases within the ISM do exhibit some log-normality \citep{Tasker2009, Tasker2011,Joung2009,PriceFederrathBrunt2011, HopkinsQuataertMurray2012}. It has been shown that the 3D density PDF and the column density PDF, in both simulations and observations, have a characteristic shape. This includes a log-normal component, generated by multiplicative processes---in this case shocks and the turbulent cascade in the ISM---and a power-law component at high densities arising from the additive combination of individual, self-gravitating cloud structures \citep{Vazquez-Semadeni1994,Burkhart2009, FederrathKlessen2013, Collins2012, Myers2015, Burkhart2017, Chen2017}.
 
 The physics that drives the density PDF is directly related to the process of metal mixing and diffusion. However, there is no a priori reason why gas density and metallicity PDFs should have similar functional forms. We demonstrate here for the first time that the mass fraction PDFs for each metal species in our simulation can indeed be well fit using a piecewise log-normal + power-law PDF. We use a simple conceptual model in Section~\ref{sec:interpretation} to motivate the emergence of this distribution.
 
-We follow \cite{Collins2012}, \citet{Burkhart2017}, and \citet{Chen2017} in constructing our piecewise PDF. We define the distribution of metals in the ISM as a function of the fraction of mass contained at a given metallicity, $Z$, or metal mass fraction, $Z_i$, where $i$ denotes an individual element. This PDF is given as
+We follow \citet{Collins2012}, \citet{Burkhart2017}, and \citet{Chen2017} in constructing our piecewise PDF. We define the distribution of metals in the ISM as a function of the fraction of mass contained at a given metallicity, $Z$, or metal mass fraction, $Z_i$, where $i$ denotes an individual element. This PDF is given as
 \begin{align*}
   p(Z) =
   \begin{cases}
@@ -177,11 +211,14 @@ and
 p_o = \frac{1}{\sigma Z_{\rm t} \sqrt{2 \pi}} {\rm exp}\left[-\frac{({\rm ln}(Z_{\rm t}) - \mu)^2}{2 \sigma^2} + \alpha {\rm ln}(Z_{\rm t}) \right]
 \end{equation}.
 
-We compute the numerical metal mass fraction PDFs for each metal species in our simulation using a fixed bin with of 0.05 dex. We fit $p(Z)$ to each of these using a Levenberg-Marquardt algorithm as implemented in \textsc{SciPy} \cite{SciPy}, stepping through possible values for $Z_{\rm t}$, set to the centers of each of these bins. The best of these fits is then compared to best fits using only a log-normal component or only a power-law component, and the best of these three is accepted. The log-normal + power-law PDF produces the best fit in nearly all cases.
+We compute the numerical metal mass fraction PDFs for each metal species in our simulation using a fixed bin 
+%mm with 
+         width
+of 0.05 dex. We fit $p(Z)$ to each of these using a Levenberg-Marquardt algorithm as implemented in \textsc{SciPy} \cite{SciPy}, stepping through possible values for $Z_{\rm t}$, set to the centers of each of these bins. The best of these fits is then compared to best fits using only a log-normal component or only a power-law component, and the best of these three is accepted. The log-normal + power-law PDF produces the best fit in nearly all cases.
 
 We show in Figure~\ref{fig:log-normal} the numerical PDFs (solid histograms) and log-normal + power-law fits (dashed lines) across individual gas phases. These PDFs have been computed at an arbitrary single point in time, at 270 Myr. For clarity, we only show a subset of the 15 elements we follow. As shown, there are clear differences in the PDFs across elements of different nucleosynthetic origins and between each phase. However, each of these distributions are characterized by a power-law tail towards high metal fractions and a turnover of varying width at low metal fractions. We discuss the differences among each phase in more detail in the next section, but note here that the significance of each of these components varies notably across phases. In many of these cases, the piecewise log-normal + power-law distribution fits the numerical PDF quite well. However, there are often deviations, particularly at low metal fractions, from pure log-normal behavior. This manifests as either a very broad, flat PDF at low metal fraction (see N and Ba, for example), or large peaks not well described by $p(Z)$ at low metal fraction. In these situations, it is unclear what, if any, portion should be considered as a log-normal, or if there are multiple components within this region.
 
-We argue here that the log-normal + power-law PDF can be a powerful tool for modelling the the metal fraction  PDFs of individual elements in galaxy models. The fits are not uniformly perfect but some deviation from a simple analytic model is expected in a complex, multi-phase ISM. In addition, some of this deviation, particularly in the WNM and WIM, could be caused by grouping together qualitatively distinct gas in a single phase; this would tend to broaden the distributions. Most importantly, however, the PDFs of the CNM, are indeed well fit by the adopted $p(Z)$. As this is the source of star forming gas in the ISM, the log-normal + power-law PDF appears useful to account for intrinsic scatter in stellar abundances in galaxy evolution models.
+We argue here that the log-normal + power-law PDF can be a powerful tool for modelling the metal fraction  PDFs of individual elements in galaxy models. The fits are not uniformly perfect but some deviation from a simple analytic model is expected in a complex, multi-phase ISM. In addition, some of this deviation, particularly in the WNM and WIM, could be caused by grouping together qualitatively distinct gas in a single phase; this would tend to broaden the distributions. Most importantly, however, the PDFs of the CNM, are indeed well fit by the adopted $p(Z)$. As this is the source of star forming gas in the ISM, the log-normal + power-law PDF appears useful to account for intrinsic scatter in stellar abundances in galaxy evolution models.
 
 \begin{figure*}
 \centering
@@ -254,6 +291,7 @@ This toy model provides a physical intuition for the general trends in the PDFs 
 %
 % A.E. paragraph may need work
 %
+
 Mixing timescales are likely proportional to the eddy turnover times at the injection scale \citep{PanScannapieco2010, Colbrook2017} and the properties of turbulence in the ISM \citep{YangKrumholz2012}. Mixing within a phase is likely dependent upon the phase's sound speed and velocity dispersion. This would imply rapid mixing timescales in the WIM and HIM, with typical velocity dispersions of $\sim$~30 km~s$^{-1}$ and $\sim$~100~km~s$^{-1}$ respectively, and long mixing timescales in cold, dense gas ($\sim$ 1 km s$^{-1}$). Our results show, however, that in general the WIM and HIM are the least well mixed, while the CNM is the most well mixed across the galaxy. This is particularly curious as the sound crossing time of the HIM across the galaxy ($\sim 1$ kpc) is $\sim$10~Myr, compared to $\sim$~1~Gyr for the coldest gas. It must be that the HIM is far from equillibrium throughout the simulation, in part due to the continual enrichment by ongoing supernovae. Newly enriched gas must mix through the HIM on galaxy scales, becoming well mixed and less enriched by the time it cools into the CNM and eventually star forming gas. Since elements produced in AGB winds do not directly enter the HIM, mixing is less efficient driving larger variations across the galaxy. The idea of metals processing first through the hot ISM has been proposed before to explain observed metallicity trends in the outskirts of more massive galaxies \citep{Tassis2008,Werk2011}.
 
 \subsection{Context With Previous Studies of Metal Mixing}
