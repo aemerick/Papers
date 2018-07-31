@@ -542,18 +542,27 @@ We summarize our results as follows:
    on log-normal 
 metal fraction PDFs are a natural consequence of ongoing chemical enrichment, with the power-law slope related to the rate at which mixing dilutes newly enriched gas.
 
-\item Hotter phases have metal fraction PDFs that are more enriched with significant power-law tails as compared to cold phases, which have a more dominant log-normal structure. The lack of significant tails in the cold-phase PDFs indicates that metal mixing occurs rapidly in hotter phases before cooling into dense gas. % missing text???????????
+\item Hotter phases have metal fraction PDFs that are more enriched, with significant power-law tails as compared to cold phases, which have a more %mm dominant log-normal structure. 
+   prominent log-normal component.
+The lack of significant tails in the cold-phase PDFs indicates that metal mixing occurs rapidly in hotter phases before cooling into dense gas. 
+% missing text???????????
 
 \item Metal outflow in low mass dwarf galaxies depends upon nucleosynthetic site. Metals from lower energy enrichment events (e.g. AGB winds) are preferentially retained in the ISM as compared to those from higher energy events (e.g. SNe). The degree to which this is true likely depends upon global galaxy properties such as star formation rate, dark matter potential well, and gas geometry.
 
-\item Likewise, metals originating in AGB winds are less well mixed in the ISM compared to metals injected through SNe, with spreads of over 1 dex in cold gas, as compared to
+\item Likewise, metals originating in AGB winds are less well mixed in the ISM compared to metals injected through SNe, with spreads of over 1 dex in cold gas, as compared to 
+%mm [missing text??]
+   {\bf [what?]}
 
-\item Metal distributions exhibit positive skew, such that the mean metal fraction can be anywhere from 0.1 to 1.0 dex above the median metal fraction. Simple chemical evolution models, which generally follow the mean abundance, that are unable to account for complex metal mixing physics are likely biased towards higher enrichment values.
+\item Metal distributions exhibit positive skew, such that the mean metal fraction can be anywhere from 0.1 to 1.0 dex above the median metal fraction. Simple chemical evolution models, which generally follow the mean abundance, 
+%mm that are unable to 
+    and thus can not
+account for complex metal mixing physics, are likely biased towards higher enrichment values.
 
 
 \end{itemize}
 
-We expect these results to be general for more massive galaxies and galaxy properties. However, it may be the case that metals couple more uniformly to galactic winds in more massive galaxies as wind driving occurs increasingly through entrainment of the ambient ISM rather than the ejection of individual enrichment events. This warrants further examination. But interpreting these results for low mass dwarf galaxies, we expect that: 1) s-process elements from AGB winds should exhibit larger spreads than $\alpha$ elements and 2) these elements should be overabundant in dwarf galaxies at fixed age, as compared to massive galaxies like the Milky Way.
+%mm [you argued above that the wind results would NOT necessarily be general. I'm not sure I like the formulation about entrainment of the ambient ISM, though.] We expect these results to be general for more massive galaxies and galaxy properties. However, it may be the case that metals couple more uniformly to galactic winds in more massive galaxies as wind driving occurs increasingly through entrainment of the ambient ISM rather than the ejection of individual enrichment events. This warrants further examination. But interpreting these results for low mass dwarf galaxies
+    Extending these results to low-mass dwarf galaxies in general, we expect that: 1) s-process elements from AGB winds should exhibit larger spreads than $\alpha$ elements and 2) these elements should be overabundant in dwarf galaxies at fixed age, as compared to massive galaxies like the Milky Way.
 % Removed as-per Benoit's suggestion:
 % , and 3) that r-process enrichment from NS-NS mergers should behave similarly to s-process elements from AGB winds, as compared to $\alpha$ elements
 
@@ -581,7 +590,14 @@ A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. G.L.B. is f
 
 \section{Density PDF}
 \label{appendix:density PDF}
-We show the density PDF in Figure~\ref{fig:density_pdf} to illustrate our result in comparison to comparable works that have computed the density PDF in global galaxy simulations with a multi-phase ISM \citep{Joung2009, Tasker2009, Tasker2011, Tasker2015,HopkinsQuataertMurray2012}. We show the mass-weighted PDF ($dm/Md\rm{log}n$) on the left, and the volume-weighted PDF ($dv/Vd\rm{log}n$) on the right. As has been demonstrated in previous work, the full density PDF (black) is not well described as a log-normal distribution. The mass-weighted PDF is broad and flat at low densities, with a large tail through to high densities. The volume weighted PDF is much better described as a multi-component power law. The other phases do also show some log-normality (more for the mass weighted PDFs than the volume weighted PDFs), but all exhibit power-law tails towards higher densities. These deviations from a log-normal may still be the result of grouping together qualitatively different types of ISM gas. Finally, \cite{Hopkins2013} suggests a different functional form for describing these PDFs across a range of idealized simulations, but it still may be insufficient to fully describe the density PDF in realistic galaxy simulations. Clearly, we are far from a general understanding of mass-weighted and volume-weighted density PDFs in the case of a turbulent, self-gravitating, multi-phase ISM.
+We show the density PDF in Figure~\ref{fig:density_pdf} to illustrate our result in comparison to comparable works that have computed the density PDF in global galaxy simulations with a multi-phase ISM \citep{Joung2009, Tasker2009, Tasker2011, Tasker2015,HopkinsQuataertMurray2012}. We show the mass-weighted PDF ($dm/Md\log n$) on the left, and the volume-weighted PDF ($dv/Vd\log n$) on the right. As has been demonstrated in previous work, the full density PDF (black) is not well described as a log-normal distribution. The mass-weighted PDF is broad and flat at low densities, with a large tail through to high densities.   The volume weighted PDF is much better described as a multi-component power law. The other phases do also show some log-normality (more for the mass weighted PDFs than the volume weighted PDFs), but all exhibit power-law tails towards higher densities. These deviations from a log-normal may still be the result of grouping together qualitatively different types of ISM gas. 
+
+%mm [you could cut this if you want.]
+     It is worth noting that this PDF shows the rather small cold gas 
+     fraction found in these models in comparison to the Milky Way
+      ISM, where roughly half the mass is found in cold gas 
+      \citep{Ferriere2001}.
+Finally, \cite{Hopkins2013} suggests a different functional form for describing these PDFs across a range of idealized simulations, but it still may be insufficient to fully describe the density PDF in realistic galaxy simulations. Clearly, we are far from a general understanding of mass-weighted and volume-weighted density PDFs in the case of a turbulent, self-gravitating, multi-phase ISM.
 
 \begin{figure}
 \centering
@@ -591,12 +607,12 @@ We show the density PDF in Figure~\ref{fig:density_pdf} to illustrate our result
 \end{figure}
 
 \section{Resolution Comparison}
-We perform a resolution test to confirm that the key results of this study are convergent, at least qualitatively. Given the variations in star formation rate, feedback effectiveness, and stochasticisty in our model, we do not expect exact numerical convergence in any one quantity. We conduct two lower resolution simulations with a maximum physical resolution of 3.6 pc and 7.2 pc. We refer the reader to Paper I for a previous comparison of these simulations to our fiducial run. In Figure~\ref{fig:resolution-phase} we demonstrate that O and Ba abundances behave qualitatively similar in our lower resolution runs as in our fiducial model. In both lower resolution runs O has a generally tighter distribution that narrows over time, while Ba is much less well mixed, in agreement with our fiducial simulation. The exact numerical values for these spreads are not convergent across simulations, but we do note significant variations in the exact SFH of these lower resolution runs could be driving these differences.
+We perform a resolution test to confirm that the key results of this study are convergent, at least qualitatively. Given the variations in star formation rate, feedback effectiveness, and stochasticity in our model, we do not expect exact numerical convergence in any one quantity. We conduct two lower resolution simulations with a maximum physical resolution of 3.6 pc and 7.2 pc. We refer the reader to Paper I for a previous comparison of these simulations to our fiducial run. In Figure~\ref{fig:resolution-phase} we demonstrate that O and Ba abundances behave qualitatively similar in our lower resolution runs as in our fiducial model. In both lower resolution runs O has a generally tighter distribution that narrows over time, while Ba is much less well mixed, in agreement with our fiducial simulation. The exact numerical values for these spreads are not convergent across simulations, but we do note significant variations in the exact SFH of these lower resolution runs could be driving these differences.
 
 \begin{figure*}
 \centering
 \includegraphics[width=0.95\linewidth]{O_Ba_resolution_study.png}
-\caption{Resolution comparison at two lower resolution runs giving the log difference between the 90$^{\rm th}$ decile and 10$^{\rm th}$ decile in dex for the metal PDFS of O and Ba across all phases. Compare to Figure~\ref{fig:phase-statistics}.}
+\caption{Resolution comparison of two lower resolution runs giving the log difference between the 90$^{\rm th}$ decile and 10$^{\rm th}$ decile in dex for the metal PDFS of O and Ba across all phases. Compare to Figure~\ref{fig:phase-statistics}.}
 \label{fig:resolution-phase}
 \end{figure*}
 
