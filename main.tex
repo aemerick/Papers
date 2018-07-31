@@ -39,11 +39,14 @@ in Dwarf Galaxies is Dependent on Nucleosynthetic Source}
 \author{Benoit C{\^o}t{\'e}}
 \affiliation{Konkoly Observatory, Research Centre for Astronomy and Earth Sciences, Hungarian Academy of Sciences, Konkoly Thege Miklos ut 15-17, H-1121 Budapest, Hungary}
 \affiliation{National Superconducting Cyclotron Laboratory, Michigan State University, East Lansing, MI 48824, USA}
-\affiliation{Joint Institute for Nuclear Astrophysics - Center for the Evolution of the Elements, USA}
+\affiliation{Joint Institute for Nuclear Astrophysics -- Center for the Evolution of the Elements, USA}
 \author{Kathryn V. Johnston}
 \affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
-\author{Brian O'Shea}
-\affiliation{T.B.D.}
+\author{Brian W. O'Shea}
+\affiliation{Department of Computational Mathematics, Science, and Engineering, Michigan State University, East Lansing, MI, 48824, USA}
+\affiliation{Department of Physics and Astronomy, Michigan State University, East Lansing, MI, 48824, USA}
+\affiliation{National Superconducting Cyclotron Laboratory, Michigan State University, East Lansing, MI, 48824, USA}
+\affiliation{Joint Institute for Nuclear Astrophysics -- Center for the Evolution of the Elements, USA}
 
 
 
@@ -296,24 +299,23 @@ We begin with a simple toy model that motivates the power-law tail at high metal
 % does this sufficiently.
 Take the simple case of an initially primordial, uniform, isothermal medium of mass $M_o$ with initial metallicity $Z_{\rm o}$, containing a single, un-mixed enrichment event of mass $M_{\rm ej}$ whose size is small compared to the system and mass $M_{\rm ej} / M_o \ll 1$. Thus the background medium represents a virtually inexhaustible (but finite) source of un-enriched gas. In this case, $p(t,Z)$ initially takes the form of a double-delta function
 \begin{equation}
-
 p(t_{\rm o},Z) = \delta(Z_{\rm o}) + \frac{M_{\rm ej}}{M_o}\delta(Z - Z_{\rm ej}).
 \end{equation}
 %mm [edited the rest of this paragraph, and the next though I don't think there are any substantive changes unmarked.]
-If the enriched material mixes continually with the un-enriched gas at a constant rate, after some time  $\tau_{\rm mix}$ this gas will have mixed with an equal amount of primordial gas. \textbf{At this time, $p(\tau_{\rm mix},Z) = \delta(Z_{\rm o}) + (2M_{\rm ej}/M_o) \delta(Z - (1/2)Z_{\rm ej})$, $p(2\tau_{\rm mix},Z) = \delta(Z_{\rm o}) + (4M_{\rm ej}/M_o)\delta(Z - (1/4) Z_{\rm ej})$, and so on for other multiples of $\tau_{\rm mix}$.} This represents an inverse relationship between the mass of enriched gas and the metallicity of the enriched gas. \textbf{The superposition of the distributions of a single event evolving in time will appear as a power-law distribution with slope $\alpha = 1$.}
+If the enriched material mixes continually with the un-enriched gas at a constant rate, after some time  $\tau_{\rm mix}$ this gas will have mixed with an equal amount of primordial gas. \textbf{At this time, $p(\tau_{\rm mix},Z) = \delta(Z_{\rm o}) + (2M_{\rm ej}/M_o) \delta(Z - (1/2)Z_{\rm ej})$. Then, $p(2\tau_{\rm mix},Z) = \delta(Z_{\rm o}) + (4M_{\rm ej}/M_o)\delta(Z - (1/4) Z_{\rm ej})$, and so on for other multiples of $\tau_{\rm mix}$.} This represents an inverse relationship between the mass of enriched gas and the metallicity of the enriched gas. \textbf{The superposition of the distributions of a single event evolving in time will appear as a power-law distribution with slope $\alpha = 1$.}
 
 \textbf{Thus, if the gas is continually enriched by identical, well-separated enrichment events of mass $M_{\rm ej}$ and metallicity $Z_{\rm ej}$, the instantaneous distribution $p(t,Z)$
 %mm , or $p(Z)$, 
-of these many events will be a power law in $Z$ with slope $\alpha = 1$, truncated at some minimim $Z$ (related to the time since enrichment began) and some maximum, $Z_{\rm ej}$.}
+of these many events will be $\delta(Z_{\rm o})$ plus a power law in $Z$ with slope $\alpha = 1$, truncated at some minimim $Z$ (related to the time since enrichment began) and some maximum, $Z_{\rm ej}$.}
 % and thus a power-law evolution in time of the high metallicity portion of $p(Z)$ with slope $\alpha = 1$. 
 The slope of the power-law, then, is determined by the rate of injection versus mixing with the ambient medium. A power-law index $\alpha < 1$ can occur when injection occurs more rapidly than the newly enriched gas can mix with the ambient medium. Steeper power-laws, $\alpha > 1$, develop when mixing occurs more rapidly than 
 %mm enrichment. 
          injection.
 If the ambient, primordial gas were truly infinite, the power-law would never completely encompass the delta function at $Z = Z_o$.
 
-In reality, however, $M_o$ is not an inexhaustible reservoir of primordial gas. Eventually the entire ambient medium will become enriched to some $Z > Z_o$, and $p(Z)$ will consist entirely of a truncated power-law. As enrichment proceeds, gas near the low metallicity truncation of $p(Z)$, which still comprises much of the mass of the system, enriches towards higher metallicities in the power-law tail. This will produce a turnover at the low $Z$ limit of $p(Z)$. The low-turnover limit is produced by diffusion from many different sources, and is thus an additive process, which, as we noted above, tends to produce log-normal distributions. 
+In reality, however, $M_o$ is not an inexhaustible reservoir of primordial gas. Eventually the entire ambient medium will become enriched to some $Z > Z_o$, and $p(Z)$ will consist entirely of a truncated power-law. As enrichment proceeds, gas near the low metallicity truncation of $p(Z)$, which still comprises much of the mass of the system, enriches towards higher metallicities in the power-law tail. This will produce a turnover at the low $Z$ limit of $p(Z)$. The low-turnover limit is produced by diffusion from many different sources, and is thus multiplicative process, which, as we noted above, tends to produce log-normal distributions. 
 %mm [additive vs multiplicative]
-   {\bf [According to Section~\ref{sec:log-normal}, MULTIPLICATIVE processes produce log-normals. Additive processes produce power-laws.  However, see Mouri (2013) for a possible counterexample...]}
+   %{\bf [According to Section~\ref{sec:log-normal}, MULTIPLICATIVE processes produce log-normals. Additive processes produce power-laws.  However, see Mouri (2013) for a possible counterexample...]}
 The physical interpretation of these two components is that the power-law tail represents newly enriched and poorly mixed gas that is above the average gas metallicity and is undergoing dilution, while the log-normal component represents the ambient medium that lies below the average gas metallicity and is undergoing enrichment.
 
 This toy model provides a physical intuition for the general trends in the PDFs presented here across ISM phases. 
@@ -561,7 +563,7 @@ We expect these results to be general for more massive galaxies and galaxy prope
 
 
 \acknowledgments
-A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. G.L.B. is funded by NSF AST-1312888, NASA NNX15AB20G, and NSF AST-1615955. M.-M.M.L. was partly funded by NASA  grant NNX14AP27G. B.C. acknowledges support from the ERC Consolidator Grant (Hungary) funding scheme (project RADIOSTAR, G.A. n. 724560) and from the National Science Foundation (USA) under grant No. PHY-1430152 (JINA Center for the Evolution of the Elements). \textbf{K.V.J....}. \textbf{B.O....}. We gratefully recognize computational resources provided by NSF XSEDE through grant number TGMCA99S024, the NASA High-End Computing Program through the NASA Advanced Supercomputing Division at Ames Research Center, Columbia University, and the Flatiron Institute. This work made significant use of many open source software packages, including \textsc{yt}, \textsc{Enzo}, \textsc{Grackle}, \textsc{Python}, \textsc{IPython}, \textsc{NumPy}, \textsc{SciPy}, \textsc{Matplotlib}, \textsc{HDF5}, \textsc{h5py}, \textsc{Astropy}, \textsc{Cloudy} and \textsc{deepdish}. These are products of collaborative effort by many independent developers from numerous institutions around the world. Their commitment to open science has helped make this work possible. 
+A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. G.L.B. is funded by NSF AST-1312888, NASA NNX15AB20G, and NSF AST-1615955. M.-M.M.L. was partly funded by NASA  grant NNX14AP27G. B.C. acknowledges support from the ERC Consolidator Grant (Hungary) funding scheme (project RADIOSTAR, G.A. n. 724560) and from the National Science Foundation (USA) under grant No. PHY-1430152 (JINA Center for the Evolution of the Elements). B.W.O was supported in part by NSF grants PHY-1430152 and AST-1514700, by NASA grants NNX12AC98G, and NNX15AP39G, and by Hubble Theory Grant HST-AR-14315.001-A. We gratefully recognize computational resources provided by NSF XSEDE through grant number TGMCA99S024, the NASA High-End Computing Program through the NASA Advanced Supercomputing Division at Ames Research Center, Columbia University, and the Flatiron Institute. This work made significant use of many open source software packages, including \textsc{yt}, \textsc{Enzo}, \textsc{Grackle}, \textsc{Python}, \textsc{IPython}, \textsc{NumPy}, \textsc{SciPy}, \textsc{Matplotlib}, \textsc{HDF5}, \textsc{h5py}, \textsc{Astropy}, \textsc{Cloudy} and \textsc{deepdish}. These are products of collaborative effort by many independent developers from numerous institutions around the world. Their commitment to open science has helped make this work possible. 
 
 \facilities{XSEDE (Stampede, Stampede-2), ADS} % there is no ApJ kewword for this: NASA HECC (Pleiades)}
 \software{Numpy, Enzo, yt, astropy}
