@@ -22,17 +22,17 @@
 \email{emerick@astro.columbia.edu}
 
 \author{Andrew Emerick}
-\affil{Columbia University}
+\affil{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
 \affil{Department of Astrophysics, American Museum of Natural History, New York, NY 10024}
 
 \author{Greg L. Bryan}
-\affiliation{Columbia University}
-\affiliation{Flatiron Institute}
+\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
+\affiliation{Center for Computational Astrophysics, Flatiron Institute, 162 5th Ave, New York, NY, 10003, U.S.A}
 
 \author{Mordecai-Mark Mac Low}
 %mm [I've been asked to use my Columbia affiliation when working with CU students]
 \affil{Department of Astrophysics, American Museum of Natural History, New York, NY 10024}
-\affiliation{Columbia University}
+\affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
 
 \nocollaboration
 
@@ -60,7 +60,7 @@ Effective stellar feedback is used in models of galaxy formation to regulate sta
 \keywords{galaxies -- feedback -- galaxy evolution -- galactic winds}
 
 \section{Introduction} \label{sec:intro}
-Historically, simulations of galaxy formation have suffered from the ``overcooling'' problem, whereby the action of self-gravity and radiative cooling alone produces galaxies with far too many stars. This problem has been addressed by employing various models of strong stellar feedback physics which are capable of generating self-regulating star formation in galaxies (see \cite{SomervilleDave2015} and \cite{NaabOstriker2017} for recent reviews). \textbf{Energy injection from supernovae (SNe) has historically been used as the sole form of feedback. However, this is generally done heuristically as many simulations lack the ability to resolve the Sedov phase of individual SNe. But even with this strong feedback, recent work has argued for the need for pre-SN feedback, from stellar winds and/or stellar radiation \citep[e.g.][]{Hu2016,Hopkins2018}, though this is typically modeled simply as additional energy injection around newly formed stars. The need for additional feedback is confirmed by simulations that are capable of fully resolving individual SN \citep[e.g.][]{Peters2017,Hu2018}. However, modeling these processes in detail is challenging, and their competing effects on galactic evolution are poorly constrained.}
+Historically, simulations of galaxy formation have suffered from the ``overcooling'' problem, whereby the action of self-gravity and radiative cooling alone produces galaxies with far too many stars. This problem has been addressed by employing various models of strong stellar feedback physics which are capable of generating self-regulating star formation in galaxies (see \cite{SomervilleDave2015} and \cite{NaabOstriker2017} for recent reviews). \textbf{Energy injection from supernovae (SNe) has historically been used as the sole form of feedback. However, this is generally done heuristically as many simulations lack the ability to resolve the Sedov phase of individual SNe. But even with this strong feedback, recent work has argued for the need for pre-SN feedback, from stellar winds and/or stellar radiation \citep[e.g.][]{Hu2016,Hopkins2018}, though this is typically modeled simply as additional energy injection around newly formed stars. The need for additional feedback is confirmed by simulations that are capable of fully resolving individual SN \citep[e.g.][]{Peters2017,Smith2018a,Smith2018b,Hu2018}. However, modeling these processes in detail is challenging, and their competing effects on galactic evolution are poorly constrained.}
 
 Radiation from massive stars dominates the total feedback energy output of a stellar population \citep[e.g.][]{Abbott1982,Leitherer1999,Agertz2013}, surpassing the energy ejection of supernova ($\sim 10^{51}$~erg) by two orders of magnitude. If radiation couples effectively to the interstellar medium (ISM), it can be a substantial source of additional feedback. Simulations including stellar radiation feedback followed through radiative transfer or radiation-hydrodynamics schemes have found it to be effective in regulating star formation and driving galactic winds \citep[e.g.][]{WiseAbel2012,Kim2013a,Sales2014,Oshea2015,Rosdahl2015,Ocvirk2015,Pawlik2015,Peters2017}. This occurs in four ways: 1) heating of diffuse gas and preventing the formation of cold, dense star formation regions, 2) destruction of cold, dense gas around recently formed stars, preventing further star formation, 3) momentum input by direct absorption of UV radiation by gas and (in some cases) dust through re-emission and scattering in the infrared, and 4) lowering the typical ISM densities in which SNe occur and greatly increasing their effectiveness. % the relevance / importance of RP from dust in the IR is beyond the scope of this work... 
 
@@ -70,7 +70,7 @@ However, most works that employ stellar radiation feedback to account for these 
 %The 
 %It is unclear what, if any, effect the long-range ionization and heating processes play in regulating star formation and driving galactic winds. 
 
-In this work we use a detailed model for stellar feedback presented in \cite{Emerick2018} (hereafter Paper I) to study the role of radiation feedback in dwarf galaxy evolution. For the first time in a galaxy-scale simulation, we resolve individual HII using an adaptive ray tracing radiative transfer method to follow the ionizing radiation from particles that represent individual stars. We focus on addressing two questions: 1) what role does radiation feedback play in regulating star formation, and 2) are the long-range effects of radiation feedback important, or is the local destruction of dense gas the dominant effect.
+In this work we use a detailed model for stellar feedback presented in \cite{Emerick2018} (hereafter Paper I) to study the role of radiation feedback in dwarf galaxy evolution. For the first time in a galaxy-scale simulation, we resolve individual HII rgeions using an adaptive ray tracing radiative transfer method to follow the ionizing radiation from particles that represent individual stars. We focus on addressing two questions: 1) what role does radiation feedback play in regulating star formation, and 2) are the long-range effects of radiation feedback important, or is the local destruction of dense gas the dominant effect.
 
 To investigate these questions, we compare three simulations of the evolution of an isolated, low mass dwarf galaxy. Our fiducial model, containing full stellar radiation feedback, is compared against a run without ionizing radiation feedback, and a run with ionizing feedback limited to the local region around a given star. We discuss our methods in Section~\ref{sec:methods} and present our results ion Section~\ref{sec:results}.
 
