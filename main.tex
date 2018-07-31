@@ -430,9 +430,10 @@ show similar bahavior. It takes over a gigayear for C to be dominated by AGB win
 \label{sec:stellar abundances}
 In order to better understand the physics driving stellar abundance patterns and distributions it is important to characterize the chemical evolution of star-forming gas in our simulations. This could be used to help disentangle sources of scatter in observed stellar abundance, including radial/azimuthal abundance gradients and stellar migration, redshift evolution, asymmetric accretion of pristine gas, and the intrinsic scatter in ISM abundances. If the 
 %mm star-forming gas in our simulations can also be well-fit by a log-normal + power-law PDF
-        elemental abundances in star-forming gas in our simulations can also be well fit by 
-        log-normal + power-law PDFs,
-and if we can parameterize their evolution as functions of global galaxy properties, this %mm can 
+        metal mass fractions in star-forming gas in our simulations 
+        can also be well fit by log-normal + power-law PDFs,
+and if we can parameterize their evolution as functions of global galaxy properties, this 
+%mm can 
     could
 be used as a powerful 
 %mm and analytic 
@@ -440,14 +441,11 @@ tool for modeling stellar abundance patterns in semi-analytic models. This would
 
 Unfortunately, there is insufficient star-forming gas at any one time in our simulations to construct PDFs of 
 %mm metal distributions
-    elemental abundances. 
+    metal mass fractions. 
 However, star-forming gas originates from the CNM, so it is reasonable to expect that this gas, and therefore stars themselves, 
 %mm follow a similar PDF 
-   to have abundance PDFs similar
-to the CNM. To verify this, Figure ~\ref{fig:stars} shows the difference between the oxygen mass fraction of stars and the median mass fraction from the CNM PDF at the time that particle formed. The large scatter at early times ($<$ 120~Myr) is a result of the early enrichment phase, when the initial gas oxygen mass fraction was zero. Stars seem to be sampled evenly around the median of the CNM distribution, with only a slight bias (52\% of stars) towards values below the median. However, for stars formed after the initial phase, the median separation from the CNM median is 0.31~dex, and can reach up to $\sim$~0.5~dex. Though a significant deviation, this is smaller than the typical inner-quartile range (IQR) of the CNM (see Figure~\ref{fig:phase-statistics}). Additionally, if we further subdivide the CNM by density, the 
-%mm metal fraction 
-    abundance
-PDFs narrow and tend towards the median value as a function of increasing density. High density gas, from which star formation occurs, is not biased towards higher metallicity in cold gas.
+   to have mass fraction PDFs similar
+to the CNM. To verify this, Figure ~\ref{fig:stars} shows the difference between the oxygen mass fraction of stars and the median mass fraction from the CNM PDF at the time that particle formed. The large scatter at early times ($<$ 120~Myr) is a result of the early enrichment phase, when the initial gas oxygen mass fraction was zero. Stars seem to be sampled evenly around the median of the CNM distribution, with only a slight bias (52\% of stars) towards values below the median. However, for stars formed after the initial phase, the median separation from the CNM median is 0.31~dex, and can reach up to $\sim$~0.5~dex. Though a significant deviation, this is smaller than the typical inner-quartile range (IQR) of the CNM (see Figure~\ref{fig:phase-statistics}). Additionally, if we further subdivide the CNM by density, the metal fraction PDFs narrow and tend towards the median value as a function of increasing density. High density gas, from which star formation occurs, is not biased towards higher metallicity in cold gas.
 
 %KVJ suggested emphasizing that there is much more potential in this work / work like this by examining more dimensions
 \textbf{We emphasize that this study focuses on each chemical dimension independently, as a means to first understand galactic chemical enrichment in the simplest possible framework. However, the cross-correlation of multiple metal fractions and abundance ratios is the most useful in revealing key processes in galactic chemodynamics. A study in this multi-dimensional chemical space is key to understand the relative timescales over which certain enrichment events become important, the number of distinct nucleosynthetic channels that determine observed stellar abundance patterns, and is required for chemical tagging experiements. We will examine this more complicated multi-dimensional space with these 
@@ -497,10 +495,18 @@ In contrast, we expect the properties of the enrichment PDFs, and the variations
 \subsection{Implications for Exotic Enrichment Sources}
 \label{sec:exotic enrichment}
 %   AE: Benoit suggested removing arguments relating to NS-NS merger energetics as I had misred / miscaclulated the energy release values. He said greater emphasise on potential differences of mixing due to rarity, rather than energy.
-We have shown that the dynamical evolution of metals depends upon their nucleosynthetic source, focusing here on AGB synthesized elements and SN synthesized elements. However, these differences should also apply to exotic enrichment sources, such as hypernovae (HNe), neutron-star neutron-star mergers (NSM), and neutron star - black hole mergers. These sources can have energies that differ significantly from typical SN, reaching $> 10^{52}$~erg for HNe \citep{Nomoto2004}, for example. In addition, the rarity of these events, for example, there are approximately $10^{-5}$ per M$_{\odot}$ of star formation for NSMs \citep{Kim2015} in the Milky Way, could significantly influence the typical ISM environments within which they eject their metals. We would therefore expect different mixing behaviors for metals synthesized through these channels as compared to SNe. Based on our results here, we would expect elements from HNe to be more well mixed in the ISM of all galaxies, but more readily ejected in dwarf galaxies, as compared to elements from SNe. 
+We have shown that the dynamical evolution of metals depends upon their nucleosynthetic source, focusing here on AGB synthesized elements and SN synthesized elements. However, these differences should also apply to exotic enrichment sources, such as hypernovae, neutron-star neutron-star mergers, and neutron-star black-hole mergers. These sources can have energies that differ significantly from typical SNe, reaching $> 10^{52}$~erg for hypernovae \citep{Nomoto2004}, for example. In addition, 
+%mm the rarity of these events, for example,  there are approximately $10^{-5}$ per M$_{\odot}$ of star formation NSM in the Milky Way, could
+     these events are rare.  For example, neutron star mergers occur 
+     at a rate of approximately $10^{-5}$ per M$_{\odot}^{-1}$ of star
+     formation in the Milky Way\citep{Kim2015}.  This rarity could 
+significantly influence the typical ISM environments into which they eject their metals. We would therefore expect different mixing behaviors for metals synthesized through these channels as compared to SNe. Based on our results here, 
+%mm
+     for example,
+we would expect elements from hypernovae to be more well mixed in the ISM of all galaxies, but more readily ejected in dwarf galaxies, as compared to elements from SNe. 
 % Benoit suggesed removing this given energy argument removal above
 %    Elements from NSMs, a significant source of r-process enrichment, would be less well-mixed in the ISM of all galaxies and more easily retained than SNe elements in dwarf galaxies. 
-Depending on their injection energy, NSMs could exhibit different mixing behaviors in the ISM. These differences could provide important signatures for distinguishing individual, exotic enrichment sources from observed stellar abundance patterns in our own Milky Way and in nearby dwarf galaxies. In particular, low mass dwarf galaxies with unusual r-process enrichment \citep[e.g.][]{Ji2016}, are valuable for constraining the source of these elements, their frequency, and typical yields. The differential metal evolution presented in our work both opens up an additional avenue by which elements from distinct nucleosynthetic sources may be distinguished in observations and challenges current assumptions used in interpreting these observations.
+Depending on their injection energy, neutron star mergers could exhibit different mixing behaviors in the ISM. These differences could provide important signatures for distinguishing individual, exotic enrichment sources from observed stellar abundance patterns in our own Milky Way and in nearby dwarf galaxies. In particular, low mass dwarf galaxies with unusual r-process enrichment \citep[e.g.][]{Ji2016}, are valuable for constraining the source of these elements, their frequency, and typical yields. The differential metal evolution presented in our work both opens up an additional avenue by which elements from distinct nucleosynthetic sources may be distinguished in observations and challenges current assumptions used in interpreting these observations.
 
 
 
@@ -512,7 +518,16 @@ Depending on their injection energy, NSMs could exhibit different mixing behavio
 
 \section{Conclusions}
 \label{sec:conclusions}
-For the first time we present a detailed analysis of galactic chemodynamics and metal mixing on an element-by-element basis in a low mass dwarf galaxy with hydrodynamics simulations that simultaneously capture multi-channel stellar feedback in detail with a multi-phase ISM. This high resolution simulation, coupled with our star-by-star modelling of stellar nucleosynthetic yields, has allowed us to analyze how individual metal species couple to the galactic winds and ISM of this galaxy. We find that individual metal species do not share the same dynamical evolution, with differences directly related to nucleosynthetic origin (AGB winds, winds from massive stars, core collapse SNe, and Type Ia SNe). This difference is most significant in our model between elements ejected predominately through AGB winds and those ejected predominantly by core-collapse SNe. In addition, we find for the first time that the metal mass fraction PDFs of each metal in the ISM can be described using an analytic piece-wise log-normal + power-law PDF. The properties of these PDFs vary with both ISM phase and metal species, again driven mostly by differences in enrichment sources.
+%mm For the first time we 
+We present a detailed analysis of galactic chemodynamics and metal mixing on an element-by-element basis in a low mass dwarf galaxy with hydrodynamics simulations that simultaneously capture multi-channel stellar feedback in detail with a multi-phase ISM. This high resolution simulation, coupled with our star-by-star modelling of stellar nucleosynthetic yields, has allowed us to analyze
+%mm
+      for the first time
+how individual metal species couple to the ISM and galactic wind of this galaxy. We find that individual metal species do not share the same dynamical evolution, with differences directly related to nucleosynthetic origin (AGB winds, winds from massive stars, or core collapse SNe)
+%mm , and Type Ia SNe).  [I'm inclined to leave them out as we really didn't model their influence]
+This difference is most significant in our model between elements ejected predominately by AGB winds and those ejected predominantly by core-collapse SNe. In addition, we find 
+%mm for the first time 
+    the novel result
+that the mass fraction PDFs of each metal in the ISM can be described using an analytic piecewise log-normal + power-law PDF. The properties of these PDFs vary with both ISM phase and metal species, again driven mostly by differences in enrichment sources.
 
 We summarize our results as follows:
 \begin{itemize}
@@ -520,7 +535,10 @@ We summarize our results as follows:
 
 %\item Elements from lower energy enrichment sources (i.e. AGB winds) are preferentially retained in the ISM of low mass dwarf galaxies as compared to those from higher energy sources (SNe), which are more readily launched in galactic winds. This result is likely sensitive to global galaxy properties, becoming less significant with increasing halo mass. We predict the abundance ratios between AGB wind dominated metals (s-process elements) and SN dominated metals ($\alpha$ elements) to be higher at fixed metallicity in low mass dwarf galaxies than in more massive galaxies, like the Milky Way.
 
-\item Power-law tails in metal fraction PDFs are a natural consequence of ongoing chemical enrichment, with the power-law slope related to the rate at which mixing dilutes newly enriched gas.
+\item Power-law tails 
+%mm in 
+   on log-normal 
+metal fraction PDFs are a natural consequence of ongoing chemical enrichment, with the power-law slope related to the rate at which mixing dilutes newly enriched gas.
 
 \item Hotter phases have metal fraction PDFs that are more enriched with significant power-law tails as compared to cold phases, which have a more dominant log-normal structure. The lack of significant tails in the cold-phase PDFs indicates that metal mixing occurs rapidly in hotter phases before cooling into dense gas. % missing text???????????
 
