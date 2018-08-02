@@ -14,19 +14,7 @@
 
 \begin{document}
 
-%\title{Evolution of Individual Metals in Galactic Winds and the ISM}
-
-% GB(AE): Make sure to specify DG in title and at minimum hint at results of paper (include log-normal some how??)
-% AE: Had a hard time coming up with a succinct and interesting sounding title that
-%     fit both of the interesting results:
-%          1) analytic PDF fits and 2) variations in metal mixing...
-\title{Metal Mixing
-%mm
-    and Ejection
-in Dwarf Galaxies is Dependent on Nucleosynthetic Source}
-
-%Non-Uniform Metal Distributions in a Dwarf Galaxy Simulation}
-%Variations in the Distribution and Evolution of Individual Metals in Dwarf Galaxies}
+\title{Metal Mixing and Ejection in Dwarf Galaxies is Dependent on Nucleosynthetic Source}
 
 \author{Andrew Emerick}
 \affiliation{Department of Astronomy, Columbia University, New York, NY, 10027, USA}
@@ -48,8 +36,6 @@ in Dwarf Galaxies is Dependent on Nucleosynthetic Source}
 \affiliation{National Superconducting Cyclotron Laboratory, Michigan State University, East Lansing, MI, 48824, USA}
 \affiliation{Joint Institute for Nuclear Astrophysics -- Center for the Evolution of the Elements, USA}
 
-
-
 \begin{abstract}
 Using a high resolution simulation of an isolated dwarf galaxy, accounting for multi-channel
 stellar feedback and chemical evolution on a star-by-star basis, we investigate how each of 15 metal species are distributed within our multi-phase interstellar medium (ISM) and ejected from our galaxy by galactic winds. For the first time, we demonstrate that the mass fraction probability distribution functions (PDFs) of individual metal species in the ISM are well described by a piecewise log-normal and power-law distribution. The log-normal component generally describes gas at lower metal fractions undergoing enrichment towards the mean metal fraction, driven by recent enrichment events in the power-law tail. The PDF properties, and relative significance of these two components, vary within each ISM phase. Hot gas is dominated by recent enrichment, with a significant power-law tail to high metal fractions, while cold gas is dominated by the log-normal component. In addition, elements dominated by asymptotic giant branch (AGB) wind enrichment, such as N and Ba, mix less efficiently than elements dominated by supernova enrichment, such as $\alpha$ elements and Fe. This difference is driven by the differences in
@@ -62,13 +48,8 @@ Nearly all of the produced metals are ejected from the galaxy (only 4\% are reta
 
 \section{Introduction}
 Understanding galactic chemical evolution for all metal species across galaxy mass scales remains one of the most challenging aspects of modeling galaxy evolution. One of the most pressing difficulties is a lack of understanding in exactly how metals propagate from their injection sites from stellar winds or supernovae (SNe) and mix through the phases of the interstellar medium (ISM) into star-forming gas.
-%
-% get a sentence with a better punch at the end
-%
 
-One-zone chemical evolution models assume homoegeneous mixing of metals from recent star formation into gas available for future star formation \citep[e.g.][]{Lanfranchi2006b,Kirby2011-III,Cote2017,Andrews2017}. While this assumes that metal mixing in the ISM plays no role in delaying future enrichment in star formation, accounting for this process is challenging. More complex models \citep[e.g.][]{SchonrichBinney2009,Pezzulli2016} employ multiple (usually radial) zones or follow multiple gas phases to attempt to account for these effects. How to properly account for multi-phase mixing, however, is still poorly understood. This is in large part because both these models and large-scale cosmological simulations lack the necessary fidelity to capture the detailed, multi-phase mixing process of metals in the ISM directly. 
-%Consequently, following metal mixing, if treated in these models, requires assumptions about how metals mix within the ISM and how metals couple to galactic outflows. 
-Recent hydrodynamics simulations have employed parameteric models to account for unresolved sub-grid metal mixing \citep{PanScannapiecoScalo2013,Sarmento2017,Sarmento2018}, which plays an important role in determining the chemical properties of galaxies \citep[e.g.][]{Shen2010, Pilkington2012, Few2012, Brook2014, FengKrumholz2014, Escala2018, Armillotta2018} 
+One-zone chemical evolution models assume homoegeneous mixing of metals from recent star formation into gas available for future star formation \citep[e.g.][]{Lanfranchi2006b,Kirby2011-III,Cote2017,Andrews2017}. While this assumes that metal mixing in the ISM plays no role in delaying future enrichment in star formation, accounting for this process is challenging. More complex models \citep[e.g.][]{SchonrichBinney2009,Pezzulli2016} employ multiple (usually radial) zones or follow multiple gas phases to attempt to account for these effects. How to properly account for multi-phase mixing, however, is still poorly understood. This is in large part because both these models and large-scale cosmological simulations lack the necessary fidelity to capture the detailed, multi-phase mixing process of metals in the ISM directly. Recent hydrodynamics simulations have employed parameteric models to account for unresolved sub-grid metal mixing \citep{PanScannapiecoScalo2013,Sarmento2017,Sarmento2018}, which plays an important role in determining the chemical properties of galaxies \citep[e.g.][]{Shen2010, Pilkington2012, Few2012, Brook2014, FengKrumholz2014, Escala2018, Armillotta2018} 
 % KVJ: citations to high-redshift work in this area
 \textbf{and the enrichment process and chemical signatures of the first stars \citep[e.g.][]{Jeon2015,Ritter2015,Smith2015}.} Detailed hydrodynamics simulations incorporating a realistic multi-phase ISM and detailed stellar feedback are required to understand the details of metal mixing and metal outflows in galaxies.
 
@@ -84,7 +65,9 @@ It is becoming increasingly valuable to develop a concrete theoretical understan
 
 In this paper we present the first detailed chemical evolution results from a set of high-resolution hydrodynamics simulations of an isolated, low-mass, dwarf galaxy performed with the adaptive mesh refinement code \textsc{Enzo} \citep{Enzo2014}. The simulation discussed here was introduced in detail in \cite{Emerick2018} (hereafter Paper I). To address the outstanding questions discussed above, these simulations follow star formation using individual star particles, including stellar feedback from massive star and AGB-phase stellar winds, photoelectric heating, Lyman Werner dissociation, ionizing radiation tracked through an adaptive ray-tracing radiative transfer method, and core collapse and Type Ia SNe. This is in addition to a detailed model for ISM physics using the \textsc{Grackle} library, as discussed below. We show that metals are strongly ejected via galactic winds, but that the retention of metals in the ISM and their mixing through phases varies significantly depending on the production source of the given elemental species. We show how these elements are distributed in the ISM and conclude with a discussion on the implications of these results.
 
-The physical processes that drive galactic chemical evolution are complex, driven by the details of stellar feedback, turbulence and diffusion in a multi-phase ISM, and variations in stellar yields with nucleosynthetic source and stellar metallicity. Uncertainties in each of these processes make reproducing and interpreting observations of gas and stellar abundances challenging. [list examples of modelling problems]. These uncertainties, combined with the difficulty in simulating a fully self-consistent galaxy in detail, motivates this current study. By focusing on a low mass dwarf galaxy, with small size and low star formation rate, we can capture detailed feedback and ISM physics at high resolution, while following individual stars. In this work we focus on theoretical quantities, namely the probability density distributions (PDFs) of metals in the ISM as a function of metal mass fraction, rather than the common observables of stellar and gas abundance ratios, for two reasons. First, we would like to build our understanding of galactic chemical evolution from a fundamental level. Second, there is only a severly limited sample of gas-rich dwarf galaxies of this size that we can use for direct observational comparison, and it is computationally infeasible to simulate galaxies of easily observable size in as much detail as done here. This work will be the first of several attempting to bridge this gap. With a more fundamental understanding of metal mixing and stellar enrichment in galaxies, we can construct better one-zone chemical evolution models and physically motivated sub-grid physics models for lower resolution simulations of more massive galaxies.
+The physical processes that drive galactic chemical evolution are complex, driven by the details of stellar feedback, turbulence and diffusion in a multi-phase ISM, and variations in stellar yields with nucleosynthetic source and stellar metallicity. Uncertainties in each of these processes make reproducing and interpreting observations of gas and stellar abundances challenging. 
+[list examples of modelling problems]. 
+These uncertainties, combined with the difficulty in simulating a fully self-consistent galaxy in detail, motivates this current study. By focusing on a low mass dwarf galaxy, with small size and low star formation rate, we can capture detailed feedback and ISM physics at high resolution, while following individual stars. In this work we focus on theoretical quantities, namely the probability density distributions (PDFs) of metals in the ISM as a function of metal mass fraction, rather than the common observables of stellar and gas abundance ratios, for two reasons. First, we would like to build our understanding of galactic chemical evolution from a fundamental level. Second, there is only a severly limited sample of gas-rich dwarf galaxies of this size that we can use for direct observational comparison, and it is computationally infeasible to simulate galaxies of easily observable size in as much detail as done here. This work will be the first of several attempting to bridge this gap. With a more fundamental understanding of metal mixing and stellar enrichment in galaxies, we can construct better one-zone chemical evolution models and physically motivated sub-grid physics models for lower resolution simulations of more massive galaxies.
 
 We summarize our methods and physics models in Section~\ref{sec:methods}. We begin our analysis by presenting the only direct observable comparison we can make at this galaxy mass, discussing the metal retention fractions of our galaxy in Section~\ref{sec:ejection}. In Section~\ref{sec:log-normal} we focus on how each of our 15 individual metal species are distributed and evolve within each phase of the ISM. We discuss our results in Section~\ref{sec:discussion}, and conclude in Section~\ref{sec:conclusions}.
 
@@ -93,7 +76,7 @@ We summarize our methods and physics models in Section~\ref{sec:methods}. We beg
 \label{sec:methods}
 We refer the reader to Paper I for a detailed description of our numerical methods and feedback models. We briefly summarize the relevant details here.
 
-\paragraph{Hydrodynamics} We use the adaptive mesh refinement astrophysical hydrodynamics and N-body code \textsc{Enzo}\footnote{http://enzo-project.org/} \citep{Enzo2014}. Hydrodynamics are solved using a direct-Eulerian piecewise parabolic method and a two-shock approximate Riemann solver with progressive fallback to more diffusive solvers. We include gas self-gravity and evolve collisionless star particles using a particle mesh N-body solver. We use a 128$^{3}$ base grid with outflow boundary conditions measuring 2.16~R$_{vir}$ on a side, where R$_{\rm vir}$ = 27.4~kpc, and 8 levels of refinement, for a maximum spatial resolution of 1.8~pc. Refinement occurs when either: 1) a cell contains more than 50~M$_{\odot}$ of gas or 2) a cell's local Jeans length becomes resolved by less than eight cells. Also, if the cell is within four zones of a star particle with active feedback, it is refined to the maximum resolution. At the maximum resolution, we use a pressure floor to prevent artificial fragmentation when the Jeans length is unresolved.
+\paragraph{Hydrodynamics} We use the adaptive mesh refinement astrophysical hydrodynamics and N-body code \textsc{Enzo}\footnote{http://enzo-project.org/} \citep{Enzo2014}. Hydrodynamics are solved using a direct-Eulerian piecewise parabolic method and a two-shock approximate Riemann solver with progressive fallback to more diffusive solvers. We include gas self-gravity and evolve collisionless star particles using a particle mesh N-body solver. We use a 128$^{3}$ base grid with outflow boundary conditions measuring 2.16~R$_{vir}$ on a side, where R$_{\rm vir}$ = 27.4~kpc, and 9 levels of refinement, for a maximum spatial resolution of 1.8~pc. Refinement occurs when either: 1) a cell contains more than 50~M$_{\odot}$ of gas or 2) a cell's local Jeans length becomes resolved by less than eight cells. Also, if the cell is within four zones of a star particle with active feedback, it is refined to the maximum resolution. At the maximum resolution, we use a pressure floor to prevent artificial fragmentation when the Jeans length is unresolved.
 
 \paragraph{Chemistry, Heating, and Cooling Physics} We use the the astrophysical chemistry and cooling package and cooling package \textsc{Grackle} \citep{GrackleMethod} to evolve a nine species non-equilibrium primordial chemistry model (H, H$^+$, He, He$^+$, He$^P{++}$, H$^-$, H$_2$, H$_2^+$, and e$^-$), follow approximate metal line cooling using a \textsc{Cloudy} look-up table, and apply heating from a metagalactic UV background \citep{HM2012}. We account for approximate self-shielding of H~{\sc i} against the UV background following \cite{Rahmati2013}. We assume He~{\sc i} self-shields in the same fashion as H~{\sc i}, and ignore He~{sc ii} heating from the UVB entirely. Approximate H$_2$ self-shielding from background Lyman-Werner (LW) radiation is accounted for using the Sobolov-like method from \cite{Wolcott-Green2011}. Finally, we use the updated metal line cooling tables which self-consistently account for the decrease in metal line cooling rates due to lower ionization fractions in self-shielding gas, as compared to metal cooling tables computed under the optically thin assumption.
 
@@ -105,7 +88,7 @@ We refer the reader to Paper I for a detailed description of our numerical metho
 \paragraph{Initial Conditions} Our dwarf galaxy is initialized to approximate, but not reproduce, the $z = 0$ properties of an ultrafaint dwarf galaxy (UFD) as informed by the observed properties of Leo P \citep[see ][]{Giovanelli2013,McQuinn2015a,McQuinn2015}. We initialize a M$_{\rm gas} = 1.8 \times 10^{6}$~M$_{\odot}$ disk as an exponential profile with a metal mass fraction of $Z = 4.3 \times 10^{-4}$ centered on a static \cite{Burkert1995} dark matter potential with M$_{\rm vir} = 2.5 \times 10^{9}$~M$_{\odot}$. The gas scale radius and scale height are set to 250~pc and 100~pc respectively, with a maximum radial extent of 600~pc. Both the gas temperatures and velocities are set iteratively to enforce initial hydrostatic equilibrium. The galaxy contains no initial background stellar population, limiting the number of Typa Ia SNe in our model, but we do provide initial SN driving to limit the initial transient burst of star formation from the initial cooling and collapse of the galaxy. Although the total metallicity field is initially non-zero, we only track the self-consistently produced metal enrichment for each individual metal species in our simulation, setting their initial abundances to zero. Our analysis is based on the evolution of this galaxy during the first 500~Myr after the formation of the first star particle.
 
 \section{Results}
-For context, in Paper I we focused on the global properties of the evolution of this dwarf galaxy, including an analysis of the galaxy's gas mass and star formation evolution, the ISM properties in terms of mass fractions, volume fractions, and phase diagrams, the interstellar radiation field in each tracked radiation band, the gas outflow rates and galactic wind velocities, and the retention / ejection of metals from the galaxy. This galaxy has an average star formation rate of $1.2~\times 10^{-4}$ M$_{\odot}$ yr$^{-1}$ and is consistent with observed low mass dwarfs galaxies in the Kenicutt-Schmidt relation.  The galaxy exhibits strong, feedback-driven outflows that eject a significant amount of gas and metals from the galaxy. The mass loading factor at 0.25~R$_{\rm vir}$ was found to be $\eta \sim 50$, where $\eta$ is defined as the mass outflow rate in through a 0.1~$R_{\rm vir}$ annulus centered at 0.25~R$_{\rm vir}$ divided by the 100~Myr averaged SFR. These winds eject 95\% of the metals produced in the galaxy, with 50\% of all metals leaving the virial radius by the end of the simulation time.
+For context, in Paper I we focused on the global properties of the evolution of this dwarf galaxy, including an analysis of the galaxy's gas mass and star formation evolution, the ISM properties in terms of mass fractions, volume fractions, and phase diagrams, the interstellar radiation field in each tracked radiation band, the gas outflow rates and galactic wind velocities, and the retention / ejection of metals from the galaxy. This galaxy has an average star formation rate of $1.2~\times 10^{-4}$ M$_{\odot}$ yr$^{-1}$ and is consistent with observed low mass dwarfs galaxies in the Kenicutt-Schmidt relation.  The galaxy exhibits strong, feedback-driven outflows \citep{Emerick2018b} that eject a significant amount of gas and metals from the galaxy. The mass loading factor at 0.25~R$_{\rm vir}$ was found to be $\eta \sim 50$, where $\eta$ is defined as the mass outflow rate in through a 0.1~$R_{\rm vir}$ annulus centered at 0.25~R$_{\rm vir}$ divided by the 100~Myr averaged SFR. These winds eject 95\% of the metals produced in the galaxy, with 50\% of all metals leaving the virial radius by the end of the simulation time.
 
 In this work we focus in detail on how each of the 15 individual metal species evolve in this galaxy. We address differences between the ejection fractions of each metal in Section~\ref{sec:ejection} and analyze for the first time the mass-fraction PDFs of the metals retained by the ISM in Section~\ref{sec:mixing}.
 
@@ -174,27 +157,12 @@ AGB winds have low energy and velocities (10~km~s$^{-1}$) as compared to the ene
 
 \subsection{Mixing and Distribution of Metals in the ISM}
 \label{sec:mixing}
-
-
-%mm I think this material duplicates the first paragraph of the introduction.
-% Chemical evolution models make varying approximations as to what fraction and on what timescales newly formed metals populate a galaxy's ISM and become available to enrich future generations of stars. In the simplest models, new metals are instantaneously available upon the formation of new stars, ignoring delays due to stellar lifetimes (\textit{refs, but maybe not if included in introduction}). Accounting for delays due to individual stellar lifetimes, loss from galactic winds, and dilution from accretion of pristine gas leads to models that can more accurately capture a variety of mean chemical properties of galaxies with some ability to account for spreads in abundances. In hydrodynamics simulations, there has been substantial work understanding how metals, often characterized as passive scalar fields, diffuse in both turbulent boxes and global galaxy models. 
-%mm However, there is not  yet a complete model for how metals should mix and evolve in the complex, multi-phase ISM of real galaxies. To build towards this, we characterize the metal evolution and distributions in our galaxy below. 
-      We characterize the metal distributions (in Sections~\ref{sec:log-normal} and \ref{sec:phase-pdfs}) and evolution (in Section~\ref{sec:statistics}) in our galaxy to build towards a  a complete model for how metals mix and evolve in the complex, multi-phase ISM of real galaxies.
-
-%mm should most of this material be in the introduction, and just the last two sentences be here?
-%   AE: I agree this is mostly redundant. I removed this
-%Chemical evolution models make varying approximations as to what fraction and on what timescales newly formed metals populate a galaxy's ISM and become available to enrich future generations of stars. In the simplest models, new metals are instantaneously available upon the formation of new stars, ignoring delays due to stellar lifetimes (\textit{refs, but maybe not if included in introduction}). Accounting for delays due to individual stellar lifetimes, loss from galactic winds, and dilution from accretion of pristine gas leads to models that can more accurately capture a variety of mean chemical properties of galaxies with some ability to account for spreads in abundances. 
-%In hydrodynamics simulations, there has been substantial work understanding how metals, often characterized as passive scalar fields, diffuse in both turbulent boxes and global galaxy models. However, there is not  yet a complete model for how metals should mix and evolve in the complex, multi-phase ISM of real galaxies. To build towards this, we characterize the metal evolution and distributions in our galaxy below.
-
-
+We characterize the metal distributions (in Sections~\ref{sec:log-normal} and \ref{sec:phase-pdfs}) and evolution (in Section~\ref{sec:statistics}) in our galaxy to build towards a  a complete model for how metals mix and evolve in the complex, multi-phase ISM of real galaxies.
 
 \subsubsection{A Functional Form for Metal PDFs}
 \label{sec:log-normal}
 
-The log-normal distribution is found often in nature, generally describing 
-%mm
-    multiplicative
-processes with non-negative values that grow with time. In astrophysics, for example, the log-normal distribution can be used to describe the time evolution of the star formation rate density \citep[see ][]{Gladders2013,Abramson2016,Diemer2017}. In addition, as expected from analytic theory \citep{Vazquez-Semadeni1994}, isothermal turbulence gives rise to log-normal density probability distribution functions \citep[PDFs;][]{Padoan1997, Passot1998, Ostriker1999,PadoanNordlund2002,KrumholzMcKee2005,Federrath2008}. Although these PDFs are only log-normal in simulations containing a more realistic, multi-phase ISM \citep{Scalo1998} if the disk is very stable \citep{WadaNorman2007}, individual phases within the ISM do exhibit some log-normality \citep{Tasker2009, Tasker2011,Joung2009,PriceFederrathBrunt2011, HopkinsQuataertMurray2012}. It has been shown that the 3D density PDF and the column density PDF, in both simulations and observations, have a characteristic shape. This includes a log-normal component, generated by multiplicative processes---in this case shocks and the turbulent cascade in the ISM---and a power-law component at high densities arising from the additive combination of individual, self-gravitating cloud structures \citep{Vazquez-Semadeni1994,Burkhart2009, FederrathKlessen2013, Collins2012, Myers2015, Burkhart2017, Chen2017}.
+The log-normal distribution is found often in nature, generally describing multiplicative processes with non-negative values that grow with time. In astrophysics, for example, the log-normal distribution can be used to describe the time evolution of the star formation rate density \citep[see ][]{Gladders2013,Abramson2016,Diemer2017}. In addition, as expected from analytic theory \citep{Vazquez-Semadeni1994}, isothermal turbulence gives rise to log-normal density probability distribution functions \citep[PDFs;][]{Padoan1997, Passot1998, Ostriker1999,PadoanNordlund2002,KrumholzMcKee2005,Federrath2008}. Although these PDFs are only log-normal in simulations containing a more realistic, multi-phase ISM \citep{Scalo1998} if the disk is very stable \citep{WadaNorman2007}, individual phases within the ISM do exhibit some log-normality \citep{Tasker2009, Tasker2011,Joung2009,PriceFederrathBrunt2011, HopkinsQuataertMurray2012}. It has been shown that the 3D density PDF and the column density PDF, in both simulations and observations, have a characteristic shape. This includes a log-normal component, generated by multiplicative processes---in this case shocks and the turbulent cascade in the ISM---and a power-law component at high densities arising from the additive combination of individual, self-gravitating cloud structures \citep{Vazquez-Semadeni1994,Burkhart2009, FederrathKlessen2013, Collins2012, Myers2015, Burkhart2017, Chen2017}.
 
 The physics that drives the density PDF is directly related to the process of metal mixing and diffusion. However, there is no a priori reason why gas density and metallicity PDFs should have similar functional forms. We demonstrate here for the first time that the mass fraction PDFs for each metal species in our simulation can indeed be well fit using a piecewise log-normal + power-law PDF. We use a simple conceptual model in Section~\ref{sec:interpretation} to motivate the emergence of this distribution.
 
@@ -232,7 +200,7 @@ We argue here that the log-normal + power-law PDF can be a powerful tool for mod
 \begin{figure*}
 \centering
 \includegraphics[width=0.95\linewidth]{DD0390_element_by_element.png}
-\caption{The numerical PDFs (solid histograms) and the associated log-normal + power-law fits (dashed lines) for a subset of the elements tracked in our simulation in each of the four gas phases defined in Section~\ref{sec:ejection}: CNM (blue), WNM (green), WIM (purple), HIM (red), and all the gas in the ISM (black). For clarity, each distribution is normalized to the mode of the full-disk PDF (black) and is centered on the median value of the full-disk PDF. We note the vertical axis normalization is such that integrating over the shown PDF gives the mass fraction of that phase in the disk. Since the CNM dominates the mass fraction of our galaxy, the black curve is often obscured at low metal fractions. \textbf{Check colorblindness and add legend}}
+\caption{The numerical PDFs (solid histograms) and the associated log-normal + power-law fits (dashed lines) for a subset of the elements tracked in our simulation in each of the four gas phases defined in Section~\ref{sec:ejection}: CNM (dark blue), WNM (light blue), WIM (light orange), HIM (red), and all the gas in the ISM (black). For clarity, each distribution is normalized to the mode of the full-disk PDF (black) and is centered on the median value of the full-disk PDF. We note the vertical axis normalization is such that integrating over the shown PDF gives the mass fraction of that phase in the disk. Since the CNM dominates the mass fraction of our galaxy, the black curve is often obscured at low metal fractions.}
 \label{fig:log-normal}
 \end{figure*}
 
@@ -357,63 +325,13 @@ The evolution of metallicity PDFs has been investigated previously in some of th
 
 More detailed models of global galaxy evolution have generally focused on spatial correlations and mixing timescales of initially asymmetric fields, without concern for ongoing enrichment \citep[e.g.][]{deAvillez2002,Petit2015} or focused primarily on the evolution of stellar abundance patterns and metallicity distribution functions \citep[e.g][]{Jeon2017,Hirai2017,Escala2018}, without directly examining the evolution of gas-phase metallicity PDFs.
 
-%
-% MM: remove from this section:
-%This is the first work examining the gas-phase properties of metallicity PDFs in a global galaxy simulation with a detailed model for stellar feedback, chemical enrichment, and a multi-phase ISM. Since we are far from a complete understanding of galactic chemical evolution, investigating the physics behind what sets the statistical properties of these PDFs, particularly what drives the differences across metal species and phases, is important. Although this is beyond the scope of this current work, we use scaling arguments to speculate on the meaning of these results. %Metal mixing in the ISM is a diffusive process driven by turbulence.
-
-% Recent works investigating dwarf galaxy chemical enrichment with Lagrangian simulations have shown that the sub-grid diffusion models required to reproduce observed dwarf galaxy abundance properties imply fairly rapid mixing timescales \citep{Escala2018,Hirai2017}. In contrast to this work, \cite{Escala2018} finds dwarf galaxy
-%The sub-grid diffusion models in Langrangian simulations of dwarf galaxy chemical enrichment that match the abundance properties of observed dwarf galaxies imply rapid mixing timescales
-
-%
-%
-%  Recent works specifically examining metal mixing in dwarf galaxies. Saving for potential future discussion:
-% \cite{Hirai2017} uses constrains the diffusion parameter in their SPH simulations comparing their simulated dwarf galaxies to observations in [Mg/Fe] vs. [Fe/H] and [Ba/Fe] vs. [Fe/H] space. Suggests Ba/Fe is more powerful constraint and briefly discusses potential differences in mixing between elements but does not do work with this
-% \cite{Jeon2017}
-% \cite{Escala2018} tests of role of metal diffusion models in producing realistic MDFs in dwarf galaxies. Able to reproduce things like MDF width and [alpha/Fe]vs[Fe/H] scatter.
-
-% The properties of log-normal density PDFs in isothermal simulations are governed by the statistical properties of turbulence (refs) and the relative importance of compressive and solenoidal driving. However, the density PDFs in simulations of global galaxies with a resolved, multiphase ISM show significant departures from log-normallity \citep[see][]{Hopkins2013} but are still approximately log-normal within individual phases of the ISM \citep{HopkinsQuataertMurray2012}. The properties of the density PDF in multiphase simulations have not been well studied which offers little insight into what sets the mass fraction PDFs for each element. We speculate on this here to motivate future study, but note that a detailed characterization is beyond the scope of this work.
-
-
-
 % The log-normal density PDFs found in ISM simulations have a variance that is proportional to the mach number \citep[e.g.][(maybe more)]{PNJ1997, Passot1998, Fedderath2008, LemasterStone2009}. In our simulations, however,
-
-
-
-
-%We discuss possible caveats to this in Section~\ref{sec:caveats}. Does this extend to more massive? how does DM potential affect this? Are general trends still true in much larger galaxies? or are things very different once HIM crossing times are more like 100 Myr (aka MW size galaxies).
 
 \subsection{Timescale Dependence of AGB Ejecta}
 \label{sec:discussion:metal yields}
-We can generally say that metals 
-%mm produced
-    ejected 
-in AGB winds evolve qualitatively differently than metals produced by SNe in 
-%mm dwarf galaxies 
-     our dwarf galaxy. 
-However, exactly which metals exhibit these differences, and to what degree, is timescale and metallicity dependent. Short timescales ($\lesssim 100$~Myr) only sample enrichment from the most massive AGB stars, 
-%mm which 
-     while 
-stars on order of a few solar masses 
-%mm 
-    only
-enrich on timescales of a gigayear or longer. In our simulations, which only 
-%mm sample
-   simulate 
-500 Myr of evolution, N and Ba are dominated 
-%mm from 
-     by
-AGB wind ejecta. C is commonly used to track AGB wind enrichment, but as it originates from lower mass AGB stars, C enrichment operates on gigayear timescales, longer than we follow in this work. Enrichment additionally varies with metallicity. Sr, for example, is only significantly ejected through AGB winds at our metallicity on gigayear timescales, while stellar winds from more massive stars dominate the production of Sr on shorter timescales. At higher metallicity, much more Sr is produced through massive AGB stars, decreasing the timescale over which Sr should exhibit a differential chemical evolution compared to SN-ejected elements.
+We can generally say that metals ejected in AGB winds evolve qualitatively differently than metals produced by SNe in our dwarf galaxy. However, exactly which metals exhibit these differences, and to what degree, is timescale and metallicity dependent. Short timescales ($\lesssim 100$~Myr) only sample enrichment from the most massive AGB stars, while stars on order of a few solar masses only enrich on timescales of a gigayear or longer. In our simulations, which only simulate 500 Myr of evolution, N and Ba are dominated by AGB wind ejecta. C is commonly used to track AGB wind enrichment, but as it originates from lower mass AGB stars, C enrichment operates on gigayear timescales, longer than we follow in this work. Enrichment additionally varies with metallicity. Sr, for example, is only significantly ejected through AGB winds at our metallicity on gigayear timescales, while stellar winds from more massive stars dominate the production of Sr on shorter timescales. At higher metallicity, much more Sr is produced through massive AGB stars, decreasing the timescale over which Sr should exhibit a differential chemical evolution compared to SN-ejected elements (see \cite{Ritter2017} and \cite{Ritter2017b} and references therein).
 
-To illustrate some of these differences, Figure~\ref{fig:agb evolution} gives the fraction of a given metal ejected by AGB winds relative to the total amount of that metal produced in a single-age stellar population with a metal fraction of $Z = 10^{-4}$ at four different times. This model was run using \textsc{SYGMA} \citep{Ritter2017}. As shown, metal enrichment from AGB winds only begins to dominate for
-%mm a given species at 
-    any elements after 
-$\sim$ 100 Myr. This includes N and Ba, which we follow in our simulations, but this 
-%mm plot indicates
-    model predicts 
-that Ag and Pb 
-%mm should 
-     will
-show similar bahavior. It takes over a gigayear for C to be dominated by AGB wind ejecta, which is the case for many of the elements shown. F, which shows very little contribution from AGB winds at short timescales, is dominated by enrichment from them on longer timescales. These dependences on metallicity and timescales certainly add complications in generalizing our work and in interpreting observations in the context of the results presented here, but these difference could be leveraged to better understand galactic chemical evolution on multiple, distinct timescales. Clearly this motivates future work covering gigayear timescales to fully understand how metal mass fraction PDFs evolve with time.
+To illustrate some of these differences, Figure~\ref{fig:agb evolution} gives the fraction of a given metal ejected by AGB winds relative to the total amount of that metal produced in a single-age stellar population with a metal fraction of $Z = 10^{-4}$ at four different times. This model was run using \textsc{SYGMA} \citep{Ritter2017}. As shown, metal enrichment from AGB winds only begins to dominate for any elements after $\sim$ 100 Myr. This includes N and Ba, which we follow in our simulations, but this model predicts that Ag and Pb will show similar bahavior. It takes over a gigayear for C to be dominated by AGB wind ejecta, which is the case for many of the elements shown. F, which shows very little contribution from AGB winds at short timescales, is dominated by enrichment from them on longer timescales. These dependences on metallicity and timescales certainly add complications in generalizing our work and in interpreting observations in the context of the results presented here, but these difference could be leveraged to better understand galactic chemical evolution on multiple, distinct timescales. Clearly this motivates future work covering gigayear timescales to fully understand how metal mass fraction PDFs evolve with time.
 
 \begin{figure*}
 \centering
@@ -422,67 +340,25 @@ show similar bahavior. It takes over a gigayear for C to be dominated by AGB win
 \label{fig:agb evolution}
 \end{figure*}
 
-
-%\begin{figure*}
-%\centering
-%\includegraphics[width=0.95\linewidth]{C_N_evolution.png}
-%\caption{The fractional contribution of AGB winds to the total yields of C and N as a function of time for a simple stellar population at three different metallicities. Since the nucleosynthetic source governs the mixing dynamics of a given metal, this plot illustrates how this can change with both time and metallicity for a given species. These models were generated using \textsc{SYGMA} \citep{Ritter2017-sygma}}
-%\label{fig:agb evolution}
-%\end{figure*}
-
-
 \subsection{Impact on Stellar Abundance Patterns}
 \label{sec:stellar abundances}
-In order to better understand the physics driving stellar abundance patterns and distributions it is important to characterize the chemical evolution of star-forming gas in our simulations. This could be used to help disentangle sources of scatter in observed stellar abundances, including radial/azimuthal abundance gradients and stellar migration, redshift evolution, asymmetric accretion of pristine gas, and the intrinsic scatter in ISM abundances. If the 
-%mm star-forming gas in our simulations can also be well-fit by a log-normal + power-law PDF
-        metal mass fractions in star-forming gas in our simulations 
-        can also be well fit by log-normal + power-law PDFs,
-and if we can parameterize their evolution as functions of global galaxy properties, this 
-%mm can 
-    could
-be used as a powerful 
-%mm and analytic 
-tool for modeling stellar abundance patterns in semi-analytic models. This would be a physically motivated way to account for both the intrinsic spread in stellar abundances due to inhomogeneities in the ISM and variations in mixing for different metal species. We reserve an analysis of these distributions in abundance space in both the gas and stars for future work. However, we briefly discuss the connection to star-forming gas and stellar enrichment below.
+In order to better understand the physics driving stellar abundance patterns and distributions it is important to characterize the chemical evolution of star-forming gas in our simulations. This could be used to help disentangle sources of scatter in observed stellar abundances, including radial/azimuthal abundance gradients and stellar migration, redshift evolution, asymmetric accretion of pristine gas, and the intrinsic scatter in ISM abundances. If the metal mass fractions in star-forming gas in our simulations can also be well fit by log-normal + power-law PDFs, and if we can parameterize their evolution as functions of global galaxy properties, this could be used as a powerful tool for modeling stellar abundance patterns in semi-analytic models. This would be a physically motivated way to account for both the intrinsic spread in stellar abundances due to inhomogeneities in the ISM and variations in mixing for different metal species. We reserve an analysis of these distributions in abundance space in both the gas and stars for future work. However, we briefly discuss the connection to star-forming gas and stellar enrichment below.
 
-Unfortunately, there is insufficient star-forming gas at any one time in our simulations to construct PDFs of 
-%mm metal distributions
-    metal mass fractions. 
-However, star-forming gas originates from the CNM, so it is reasonable to expect that this gas, and therefore stars themselves, 
-%mm follow a similar PDF 
-   to have mass fraction PDFs similar
-to the CNM. To verify this, Figure ~\ref{fig:stars} shows the difference between the oxygen mass fraction of stars and the median mass fraction from the CNM PDF at the time that particle formed. The large scatter at early times ($<$ 120~Myr) is a result of the early enrichment phase, when the initial gas oxygen mass fraction was zero. Stars seem to be sampled evenly around the median of the CNM distribution, with only a slight bias (52\% of stars) towards values below the median. However, for stars formed after the initial phase, the median separation from the CNM median is 0.31~dex, and can reach up to $\sim$~0.5~dex. Though a significant deviation, this is smaller than the typical inner-quartile range (IQR) of the CNM (see Figure~\ref{fig:phase-statistics}). Additionally, if we further subdivide the CNM by density, the metal fraction PDFs narrow and tend towards the median value as a function of increasing density. High density gas, from which star formation occurs, is not biased towards higher metallicity in cold gas.
+Unfortunately, there is insufficient star-forming gas at any one time in our simulations to construct PDFs of metal mass fractions. However, star-forming gas originates from the CNM, so it is reasonable to expect that this gas, and therefore stars themselves, to have mass fraction PDFs similar to the CNM. To verify this, Figure ~\ref{fig:stars} shows the difference between the oxygen mass fraction of stars and the median mass fraction from the CNM PDF at the time that particle formed. The large scatter at early times ($<$ 120~Myr) is a result of the early enrichment phase, when the initial gas oxygen mass fraction was zero. Stars seem to be sampled evenly around the median of the CNM distribution, with only a slight bias (52\% of stars) towards values below the median. However, for stars formed after the initial phase, the median separation from the CNM median is 0.31~dex, and can reach up to $\sim$~0.5~dex. Though a significant deviation, this is smaller than the typical inner-quartile range (IQR) of the CNM (see Figure~\ref{fig:phase-statistics}). Additionally, if we further subdivide the CNM by density, the metal fraction PDFs narrow and tend towards the median value as a function of increasing density. High density gas, from which star formation occurs, is not biased towards higher metallicity in cold gas.
 
 %KVJ suggested emphasizing that there is much more potential in this work / work like this by examining more dimensions
-\textbf{We emphasize that this study focuses on each chemical dimension independently, as a means to first understand galactic chemical enrichment in the simplest possible framework. However, the cross-correlation of multiple metal fractions and abundance ratios is the most useful in revealing key processes in galactic chemodynamics. A study in this multi-dimensional chemical space is key to understand the relative timescales over which certain enrichment events become important, the number of distinct nucleosynthetic channels that determine observed stellar abundance patterns, and is required for chemical tagging experiements. We will examine this more complicated multi-dimensional space with these 
-%mm simulations 
-   numerical methods
-in future work.}
+\textbf{We emphasize that this study focuses on each chemical dimension independently, as a means to first understand galactic chemical enrichment in the simplest possible framework. However, the cross-correlation of multiple metal fractions and abundance ratios is the most useful in revealing key processes in galactic chemodynamics. A study in this multi-dimensional chemical space is key to understand the relative timescales over which certain enrichment events become important, the number of distinct nucleosynthetic channels that determine observed stellar abundance patterns, and is required for chemical tagging experiements. We will examine this more complicated multi-dimensional space with these numerical methods in future work.}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.95\linewidth]{stellar_CNM_distance.png}
-\caption{\textbf{Clarify vertical axis label} The separation (in dex) of each star's oxygen fraction from the median value of the CNM oxygen mass fraction PDF for the
-%mm
-    time 
-within 1~Myr (our time resolution) of each star's formation time. The median deviation is given in the plot for stars formed after the initial star formation and enrichment period (120~Myr.)}
+\caption{The separation (in dex) of each star's oxygen fraction from the median value of the CNM oxygen mass fraction PDF for the time within 1~Myr (our time resolution) of each star's formation time. The median deviation is given in the plot for stars formed after the initial star formation and enrichment period (120~Myr.)}
 \label{fig:stars}
 \end{figure}
 
-% AE: Capitalized header
 \subsection{Do These Results Apply to More Massive Galaxies?}
 \label{sec:massive galaxies}
-%mm One
-   An 
-important caveat about our work is that these results are derived from simulations of an isolated, low mass, dwarf galaxy whose properties vary dramatically from more massive galaxies like the Milky Way. It is unclear how much these results apply to more massive galaxies 
-%mm given their 
-     with
-deeper potential wells and higher star formation rates. Feedback-driven galactic outflow properties do vary significantly with halo mass \citep[e.g.][]{MacLowFerrara1999,Muratov2017}, as more massive galaxies more easily retain and re-accrete gas. We expect the results presented in Figure~\ref{fig:species_fractions} to be the most susceptible to the particular star formation history and halo depth of a given galaxy. With gas from individual enrichment events more easily contained, we would expect the retention fractions to be more similar across metal species with increasing halo mass or decreasing star formation rate. \textbf{We anticipate three potential regimes of metal retention, 
-%mm related directly to 
-    depending on
-dark matter halo mass and SFR: i) at very low halo mass, even below that examined here, there is equally poor retention of metal enrichment from both AGB 
-%mm
-    stars 
-and SNe, ii) AGB enrichment is preferentially retained, but SN enrichment is ejected efficiently (as is the case in this study), and iii) both sources are well retained in the galaxy's ISM.}. If true, this difference in metal retention can be a key observable in verifying our result that the dynamical evolution of metals in the ISM is not uniform.
+An important caveat about our work is that these results are derived from simulations of an isolated, low mass, dwarf galaxy whose properties vary dramatically from more massive galaxies like the Milky Way. It is unclear how much these results apply to more massive galaxies with deeper potential wells and higher star formation rates. Feedback-driven galactic outflow properties do vary significantly with halo mass \citep[e.g.][]{MacLowFerrara1999,Muratov2017}, as more massive galaxies more easily retain and re-accrete gas. We expect the results presented in Figure~\ref{fig:species_fractions} to be the most susceptible to the particular star formation history and halo depth of a given galaxy. With gas from individual enrichment events more easily contained, we would expect the retention fractions to be more similar across metal species with increasing halo mass or decreasing star formation rate. \textbf{We anticipate three potential regimes of metal retention, depending on dark matter halo mass and SFR: i) at very low halo mass, even below that examined here, there is equally poor retention of metal enrichment from both AGB stars and SNe, ii) AGB enrichment is preferentially retained, but SN enrichment is ejected efficiently (as is the case in this study), and iii) both sources are well retained in the galaxy's ISM.}. If true, this difference in metal retention can be a key observable in verifying our result that the dynamical evolution of metals in the ISM is not uniform.
 % AE: rewording given Benoits suggested changes
 %     If massive galaxies retain metals equally, we would expect dwarf galaxies to exhibit larger abundance ratios between AGB wind elements and SN enriched elements than stars in more massive galaxies, like the Milky Way.
 This difference would be greater at later times, once AGB enrichment becomes significant. 
@@ -492,11 +368,6 @@ We would expect dwarf galaxies to exhibit larger abundance ratios between AGB wi
 
 In contrast, we expect the properties of the enrichment PDFs, and the variations between AGB enriched elements and SN enriched elements (as presented in Figures~\ref{fig:log-normal} and ~\ref{fig:phase-statistics}), to be general. We expect metals to exhibit log-normal + power-law distributions in the ISM of all galaxies, with similar trends with enrichment source and gas phase as outlined here. However, the detailed properties of the PDFs (e.g, log-normal width, power-law slope) likely depend non-trivially on global galaxy properties. How these results vary as a function of galaxy properties will be investigated in future work.
 
-% Talk about CGM at all???
-
-%\textit{In addition, hot gas in a galaxy with a deeper potential well is less likely to be ejected from the galaxy, allowing more time for homogenization and possibly smaller metal fraction variation than seen here.}.
-
-
 \subsection{Implications for Exotic Enrichment Sources}
 \label{sec:exotic enrichment}
 %   AE: Benoit suggested removing arguments relating to NS-NS merger energetics as I had misred / miscaclulated the energy release values. He said greater emphasise on potential differences of mixing due to rarity, rather than energy.
@@ -505,36 +376,16 @@ We have shown that the dynamical evolution of metals depends upon their nucleosy
      these events are rare.  For example, neutron star mergers occur 
      at a rate of approximately $10^{-5}$ per M$_{\odot}^{-1}$ of star
      formation in the Milky Way\citep{Kim2015}.  This rarity could 
-significantly influence the typical ISM environments into which they eject their metals. We would therefore expect different mixing behaviors for metals synthesized through these channels as compared to SNe. Based on our results here, 
-%mm
-     for example,
-we would expect elements from hypernovae to be more well mixed in the ISM of all galaxies, but more readily ejected in dwarf galaxies, as compared to elements from SNe. 
+significantly influence the typical ISM environments into which they eject their metals. We would therefore expect different mixing behaviors for metals synthesized through these channels as compared to SNe. Based on our results here, for example, we would expect elements from hypernovae to be more well mixed in the ISM of all galaxies, but more readily ejected in dwarf galaxies, as compared to elements from SNe. 
 % Benoit suggesed removing this given energy argument removal above
 %    Elements from NSMs, a significant source of r-process enrichment, would be less well-mixed in the ISM of all galaxies and more easily retained than SNe elements in dwarf galaxies. 
 Depending on their injection energy, neutron star mergers could exhibit different mixing behaviors in the ISM. These differences could provide important signatures for distinguishing individual, exotic enrichment sources from observed stellar abundance patterns in our own Milky Way and in nearby dwarf galaxies. In particular, low mass dwarf galaxies with unusual r-process enrichment \citep[e.g.][]{Ji2016}, are valuable for constraining the source of these elements, their frequency, and typical yields. The differential metal evolution presented in our work both opens up an additional avenue by which elements from distinct nucleosynthetic sources may be distinguished in observations and challenges current assumptions used in interpreting these observations.
 
-
-
-%\subsection{Extra things I could discuss:}
-%\textit{Things to maybe}
-%\begin{itemize}
-%\item Observed N/O in stellar abundances exhibits large spreads at low metallicity. Argument has been that this is driven by timescale differences in AGB vs. massive star nucleosynthesis. However, our results would predict that N/O have a large spread due to mixing efficiency diffein rences between AGB winds and SNe.
-%\end{itemize}
-
 \section{Conclusions}
 \label{sec:conclusions}
-%mm For the first time we 
-We present a detailed analysis of galactic chemodynamics and metal mixing on an element-by-element basis in a low mass dwarf galaxy with hydrodynamics simulations that simultaneously capture multi-channel stellar feedback in detail with a multi-phase ISM. This high resolution simulation, coupled with our star-by-star modelling of stellar nucleosynthetic yields, has allowed us to analyze
-%mm
-      for the first time
-how individual metal species couple to the ISM and galactic wind of this galaxy. 
+We present a detailed analysis of galactic chemodynamics and metal mixing on an element-by-element basis in a low mass dwarf galaxy with hydrodynamics simulations that simultaneously capture multi-channel stellar feedback in detail with a multi-phase ISM. This high resolution simulation, coupled with our star-by-star modelling of stellar nucleosynthetic yields, has allowed us to analyze for the first time how individual metal species couple to the ISM and galactic wind of this galaxy. 
 
-We find that individual metal species do not share the same dynamical evolution, with differences directly related to nucleosynthetic origin (AGB winds, winds from massive stars, or core collapse SNe)
-%mm , and Type Ia SNe).  [I'm inclined to leave them out as we really didn't model their influence]
-This difference is most significant, in our model, between elements ejected predominately by AGB winds and those ejected predominantly by core-collapse SNe. In addition, we find 
-%mm for the first time 
-    the novel result
-that the mass fraction PDFs of each metal in the ISM can be described using an analytic piecewise log-normal + power-law PDF. The properties of these PDFs vary with both ISM phase and metal species, again driven mostly by differences in enrichment sources.
+We find that individual metal species do not share the same dynamical evolution, with differences directly related to nucleosynthetic origin (AGB winds, winds from massive stars, or core collapse SNe). This difference is most significant, in our model, between elements ejected predominately by AGB winds and those ejected predominantly by core-collapse SNe. In addition, we find the novel result that the mass fraction PDFs of each metal in the ISM can be described using an analytic piecewise log-normal + power-law PDF. The properties of these PDFs vary with both ISM phase and metal species, again driven mostly by differences in enrichment sources.
 
 We summarize our results as follows:
 \begin{itemize}
@@ -542,24 +393,15 @@ We summarize our results as follows:
 
 %\item Elements from lower energy enrichment sources (i.e. AGB winds) are preferentially retained in the ISM of low mass dwarf galaxies as compared to those from higher energy sources (SNe), which are more readily launched in galactic winds. This result is likely sensitive to global galaxy properties, becoming less significant with increasing halo mass. We predict the abundance ratios between AGB wind dominated metals (s-process elements) and SN dominated metals ($\alpha$ elements) to be higher at fixed metallicity in low mass dwarf galaxies than in more massive galaxies, like the Milky Way.
 
-\item Power-law tails 
-%mm in 
-   on log-normal 
-metal fraction PDFs are a natural consequence of ongoing chemical enrichment, with the power-law slope related to the rate at which mixing dilutes newly enriched gas.
+\item Power-law tails on log-normal metal fraction PDFs are a natural consequence of ongoing chemical enrichment, with the power-law slope related to the rate at which mixing dilutes newly enriched gas.
 
-\item Hotter phases have metal fraction PDFs that are more enriched, with significant power-law tails as compared to cold phases, which have a more %mm dominant log-normal structure. 
-   prominent log-normal component.
-The lack of significant tails in the cold-phase PDFs indicates that metal mixing occurs rapidly in hotter phases before cooling and/or mixing into denser gas. 
-
+\item Hotter phases have metal fraction PDFs that are more enriched, with significant power-law tails as compared to cold phases, which have a more prominent log-normal component. The lack of significant tails in the cold-phase PDFs indicates that metal mixing occurs rapidly in hotter phases before cooling and/or mixing into denser gas. 
 
 \item Metal outflow in low mass dwarf galaxies depends upon nucleosynthetic site. Metals from lower energy enrichment events (e.g. AGB winds) are preferentially retained in the ISM as compared to those from higher energy events (e.g. SNe). The degree to which this is true likely depends upon global galaxy properties such as star formation rate, dark matter potential well, and gas geometry.
 
 \item Likewise, metals originating in AGB winds are less well mixed in the ISM, with spreads of over 1 dex in cold gas, as compared to metals injected through SNe, with spreads of about 0.5~dex
 
-\item Metal distributions exhibit positive skew, such that the mean metal fraction can be anywhere from 0.1 to 1.0 dex above the median metal fraction. Simple chemical evolution models, which generally follow the mean abundance, 
-%mm that are unable to 
-    and thus can not
-account for complex metal mixing physics, are likely biased towards higher enrichment values.
+\item Metal distributions exhibit positive skew, such that the mean metal fraction can be anywhere from 0.1 to 1.0 dex above the median metal fraction. Simple chemical evolution models, which generally follow the mean abundance, and thus can not account for complex metal mixing physics, are likely biased towards higher enrichment values.
 
 
 \end{itemize}
@@ -568,11 +410,6 @@ account for complex metal mixing physics, are likely biased towards higher enric
     Extending these results to low-mass dwarf galaxies in general, we expect that: 1) s-process elements from AGB winds should exhibit larger spreads than $\alpha$ elements released through SNe and 2) these elements should be overabundant in dwarf galaxies at fixed age, as compared to massive galaxies like the Milky Way.
 % Removed as-per Benoit's suggestion:
 % , and 3) that r-process enrichment from NS-NS mergers should behave similarly to s-process elements from AGB winds, as compared to $\alpha$ elements
-
-%\section{Things to cite}
-%Hou, Yu, Lu 2014: Need to read closer, but CE model playing around with SN energy feedback effectiveness finds that weaker feedback leads to more metal enrichment, higher FB, lower metallicities. Suggestion of importance of FB driving CE.
-
-
 
 \acknowledgments
 A.E. is funded by the NSF Graduate Research Fellowship DGE 16-44869. G.L.B. is funded by NSF AST-1312888, NASA NNX15AB20G, and NSF AST-1615955. M.-M.M.L. was partly funded by NASA  grant NNX14AP27G. B.C. acknowledges support from the ERC Consolidator Grant (Hungary) funding scheme (project RADIOSTAR, G.A. n. 724560) and from the National Science Foundation (USA) under grant No. PHY-1430152 (JINA Center for the Evolution of the Elements). B.W.O was supported in part by NSF grants PHY-1430152 and AST-1514700, by NASA grants NNX12AC98G, and NNX15AP39G, and by Hubble Theory Grant HST-AR-14315.001-A. We gratefully recognize computational resources provided by NSF XSEDE through grant number TGMCA99S024, the NASA High-End Computing Program through the NASA Advanced Supercomputing Division at Ames Research Center, Columbia University, and the Flatiron Institute. This work made significant use of many open source software packages, including \textsc{yt}, \textsc{Enzo}, \textsc{Grackle}, \textsc{Python}, \textsc{IPython}, \textsc{NumPy}, \textsc{SciPy}, \textsc{Matplotlib}, \textsc{HDF5}, \textsc{h5py}, \textsc{Astropy}, \textsc{Cloudy} and \textsc{deepdish}. These are products of collaborative effort by many independent developers from numerous institutions around the world. Their commitment to open science has helped make this work possible. 
