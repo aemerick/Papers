@@ -6,7 +6,8 @@ of the works, but this is definitely not always the case. If I ever get around t
 go through and prune messy directories of unneeded (mostly extra images) files.
 
 Complete citation information for each paper is included in the `citation.bib` files in 
-each directory.
+each directory. You can use the included python script to gather all of these at once
+if needed.
 
 This repository is not complete. It does not include papers where I was a co-author, and
 is missing first-author papers prior to 2018 (of which there are 3).
