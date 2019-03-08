@@ -29,7 +29,7 @@ pdf: $(NAME).tex
 	rm -f $(NAME).blg $(NAME).log $(NAME).aux
 
 clean:
-	rm -f *~ *.aux *.dvi *.gz *.out *.toc *log *-temp.* *.blg *~ $(NAME).ps $(NAME).bbl $(NAME).pdf msNotes.bib
+	rm -f *~ *.aux *.dvi *.gz *.out *.toc *.lof *.lot *log *-temp.* *.blg *~ $(NAME).ps $(NAME).bbl $(NAME).pdf msNotes.bib
 
 
 
