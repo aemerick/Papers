@@ -8,7 +8,7 @@ NAME=thesis
 
 LATEX=pdflatex 
 
-all:  $(NAME).pdf
+#all:  $(NAME).pdf
 
 dvi: $(NAME).tex
 	$(LATEX) $(NAME) || true
