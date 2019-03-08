@@ -1,0 +1,10 @@
+*.zip
+*.bbl
+*.aux
+*.log
+*.blg
+*.*~
+*.lof
+*.lot
+*.toc
+*.out
