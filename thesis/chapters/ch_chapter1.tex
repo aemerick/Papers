@@ -1,5 +1,5 @@
-\chapter[Feedback with Individual Stars]{Simulating an Isolated Dwarf Galaxy with Multi-Channel Feedback and Chemical Yields from Individual Stars \label{ch:chapter1}}
-\let\thefootnote\relax\footnotetext{This section contains text from an article published in \cite{Emerick2019}}
+\chapter[Simulating an Isolated Dwarf Galaxy with Multi-Channel Feedback and Chemical Yields from Individual Stars ]{Simulating an Isolated Dwarf Galaxy with Multi-Channel Feedback and Chemical Yields from Individual Stars \label{ch:chapter1}}
+\let\thefootnote\relax\footnotetext{This section contains text from an article published originally as \cite{Emerick2019}}
 
 %
 % Copy paste paper here, without abstract or keywords
@@ -27,7 +27,7 @@ We introduce a new method for studying galactic chemical evolution that follows 
 %For example, \citet{Forbes2016} found that photoelectric heating can be a significant source of feedback in small galaxies. \citet{Hu2016} and \citet{Hu2017} examined the relative importance of various feedback physics in regulating ISM properties of dwarf galaxies. 
 Our work builds upon our current understanding of feedback and galactic chemodynamics while making three notable advances: 1) direct star-by-star modeling, 2) stellar winds from both massive and asymptotic giant branch (AGB) stars, and 3) using an adaptive ray tracing method to follow stellar ionizing radiation. We also include core collapse and Type Ia supernova feedback, photoelectric heating from stellar far ultra-violet (FUV) radiation, and Lyman-Werner dissociation from stellar radiation. 
 
-Using star-by-star modeling, we capture in more detail the stellar yields from individual stars released over their lifetime. This includes yields from massive and AGB stellar winds, and supernovae (SNe). In addition to better capturing how individual metal species enrich the ISM, this allows us to chemically tag individual stars. This ability opens an exciting new channel for testing models of galaxy evolution by leveraging current and ongoing observations probing the detailed distributions of chemical abundances of stars in the Milky Way and Local Group, such as APOGEE and APOGEE2 \citep{APOGEE2010,APOGEE}, the Gaia-ESO survey \citep{Gaia}, and GALAH \citep{GALAH}. This paper is the first in a series examining in detail the role that individual components of multi-channel stellar feedback play in galaxy dynamical and chemical evolution. In \cite{Emerick2018b} we investigate the importance of ionizing radiation in regulating star formation and driving outflows in our galaxy. In \cite{Emerick2018c} we explore how individual metal species mix within the ISM and are ejected via galactic winds.
+Using star-by-star modeling, we capture in more detail the stellar yields from individual stars released over their lifetime. This includes yields from massive and AGB stellar winds, and supernovae (SNe). In addition to better capturing how individual metal species enrich the ISM, this allows us to chemically tag individual stars. This ability opens an exciting new channel for testing models of galaxy evolution by leveraging current and ongoing observations probing the detailed distributions of chemical abundances of stars in the Milky Way and Local Group, such as APOGEE and APOGEE2 \citep{APOGEE2010,APOGEE}, the Gaia-ESO survey \citep{Gaia}, and GALAH \citep{GALAH}. This paper is the first in a series examining in detail the role that individual components of multi-channel stellar feedback play in galaxy dynamical and chemical evolution. In \cite{Emerick2018b} we investigate the importance of ionizing radiation in regulating star formation and driving outflows in our galaxy. In \cite{Emerick2018b} we explore how individual metal species mix within the ISM and are ejected via galactic winds.
 
 We describe each mode of our multi-channel feedback 
 in detail in Section~\ref{sec:methods}, describe their implementation in an isolated dwarf galaxy simulation in Section~\ref{sec:IC}, show results from this simulation in Section~\ref{sec:results}, discuss the results in Section~\ref{sec:discussion}, and conclude in Section~\ref{sec:conclusion}. Readers who may want to only briefly skim (or skip) over the details of our included physics are advised to just read the beginning of Section~\ref{sec:methods}, which contains a complete---yet brief---summary of the included physics.
@@ -132,7 +132,7 @@ In practice, rather than drawing a random number for each candidate every timest
 
 \subsubsection{Ionizing Radiation from Discrete Sources}
 \label{sec:ionizing radiation}
-Radiation feedback, including ionization, ionization heating, and radiation pressure, is an important source of feedback in galaxies. \ion{H}{2} regions carved out by stellar radiation change the ISM structure in regions where SNe eventually explode, generally increasing their dynamical importance. However, accounting for angular effects, radiation can also allow energy from SNe to dissipate more readily by escaping out of channels carved through dense clouds. Radiation feedback effects have been included with various approximations in a wide range of simulations \citep[e.g.][]{OppenheimerDave2006, Krumholz2007, HopkinsQuataertMurray2012, Agertz2013, Renaud2013, Stinson2013, Roskar2014, Ceverino2014, FIRE, AgertzKravtsov2015, Forbes2016, Hu2016, Hu2017, FIRE2}, with a smaller subset using full radiation hydrodynamics \citep{WiseAbel2012,Wise2012a,Wise2014,Kim2013a, Kim2013b,Pawlik2013,Rosdahl2015,Aubert2015,Ocvirk2016,BaczynskiGloverKlessen2015,Pawlik2017} due to the additional computational expense of direct ray tracing. As we seek a complete accounting of stellar feedback physics, we follow HI and HeI ionizing radiation from our stars through the ray tracing methods described below. 
+Radiation feedback, including ionization, ionization heating, and radiation pressure, is an important source of feedback in galaxies. \ion{H}{2} regions carved out by stellar radiation change the ISM structure in regions where SNe eventually explode, generally increasing their dynamical importance. However, accounting for angular effects, radiation can also allow energy from SNe to dissipate more readily by escaping out of channels carved through dense clouds. Radiation feedback effects have been included with various approximations in a wide range of simulations \citep[e.g.][]{OppenheimerDave2006, Krumholz2007, HQM2012, Agertz2013, Renaud2013, Stinson2013, Roskar2014, Ceverino2014, FIRE, AgertzKravtsov2015, Forbes2016, Hu2016, Hu2017, FIRE2}, with a smaller subset using full radiation hydrodynamics \citep{WiseAbel2012,Wise2012a,Wise2014,Kim2013a, Kim2013b,Pawlik2013,Rosdahl2015,Aubert2015,Ocvirk2016,BaczynskiGloverKlessen2015,Pawlik2017} due to the additional computational expense of direct ray tracing. As we seek a complete accounting of stellar feedback physics, we follow HI and HeI ionizing radiation from our stars through the ray tracing methods described below. 
 
 Enzo includes an adaptive ray tracing implementation, \textsc{Enzo+Moray} \citep{WiseAbel2011}, to solve the equations of radiative transfer coupled to the hydrodynamics of the simulation. We follow HI and HeI ionizing photons which are coupled to the \texttt{Grackle} primordial chemistry and heating and cooling routines to track photoionization and heating, as well as radiation pressure on hydrogen. 
 
@@ -344,7 +344,7 @@ two panels give the slices of number density (top right) and temperature (bottom
 
 As shown in the left panel, [N/O] varies significantly over this section of the ISM with notable differences across the various phases and ISM structures. The hottest gas, dominated by recent supernova explosions is overabundant in oxygen, relative to solar (purple). However, the relative abundance of nitrogen increases in the WIM and WNM, being overabundant relative to solar (green). 
 
-At our adopted metallicity, nitrogen is predominantly produced in AGB star winds, with very little production in core collapse SNe and winds from more massive stars. Therefore, nitrogen is injected into the ISM with significantly less energy ($v \sim 10$~km~s$^{-1}$) than elements produced in SNe, like oxygen, ($v\sim 10^3$~km~s$^{-1}$). Given the variations in Fig.~\ref{fig:metal_slices}, the energetic differences between injection sources can drive abundance variations within the ISM of our dwarf galaxy. The regions most rich in N are sites of recent AGB winds that have yet to mix with the rest of the ISM. This suggests that metal mixing within the ISM (and also metal ejection from the ISM) is species dependent. A more detailed analysis is beyond the scope of this work, but we investigate this in detail in \cite{Emerick2018c}.
+At our adopted metallicity, nitrogen is predominantly produced in AGB star winds, with very little production in core collapse SNe and winds from more massive stars. Therefore, nitrogen is injected into the ISM with significantly less energy ($v \sim 10$~km~s$^{-1}$) than elements produced in SNe, like oxygen, ($v\sim 10^3$~km~s$^{-1}$). Given the variations in Fig.~\ref{fig:metal_slices}, the energetic differences between injection sources can drive abundance variations within the ISM of our dwarf galaxy. The regions most rich in N are sites of recent AGB winds that have yet to mix with the rest of the ISM. This suggests that metal mixing within the ISM (and also metal ejection from the ISM) is species dependent. A more detailed analysis is beyond the scope of this work, but we investigate this in detail in \cite{Emerick2018b}.
 
 \section{Discussion}
 \label{sec:discussion}
@@ -442,7 +442,7 @@ Beyond the stellar radius, the gas scale height is thin ($\sim 50$~pc), yet reso
 \item 
 We find H$_2$ fractions below 5\% in our dwarf galaxy, consistent with the poor constraints on molecular gas formation in low metallicity dwarf galaxies. This H$_2$ forms entirely through gas-phase reactions facilitated by H$^{-}$ in self-shielding regions; H$_2$ formation on dust grains and in the three body reaction are both insignificant. Cold, neutral hydrogen dominates the mass of our galaxy. While warm, neutral hydrogen is present, it does not dominate the mass fraction (See Fig.~\ref{fig:sfr_mass_evolution} and Fig.~\ref{fig:ISM_evolution}.)
 
-\item Finally, we present gas-phase oxygen and nitrogen distributions as examples to briefly demonstrate that there are marked differences in how individual metal species are distributed within the ISM of our galaxy. These variations could be tied to differences in elemental yields among different sources (for example, AGB winds vs. SNe), as suggested by \cite{KrumholzTing2018}. This is explored in more detail in \citep{Emerick2018c}.
+\item Finally, we present gas-phase oxygen and nitrogen distributions as examples to briefly demonstrate that there are marked differences in how individual metal species are distributed within the ISM of our galaxy. These variations could be tied to differences in elemental yields among different sources (for example, AGB winds vs. SNe), as suggested by \cite{KrumholzTing2018}. This is explored in more detail in \citep{Emerick2018b}.
 \end{enumerate}
 
 \section*{Acknowledgments:} 
@@ -456,10 +456,8 @@ We would like to thank the following for their advice and valuable discussions, 
 
 %\clearpage
 %\appendix
-
-\appendix
-\renewcommand\thefigure{\thesection.\arabic{figure}}    
-\setcounter{figure}{0}
+\setcounter{section}{0}%
+\renewcommand\thesection{\thechapter.\Alph{section}}
 
 \section{Gas Phases of the ISM}
 \label{appendix:phases}
@@ -601,10 +599,6 @@ Theses differences in densities are shown clearly by comparing Fig.~\ref{fig:pha
 Finally, the metal retention fraction (right panel) between the fiducial and 3.6~pc runs are quite similar, but is significantly higher for the lowest resolution simulation. It is likely, however, that this is a result of the lower SFR in the 7.2~pc run and is not directly a resolution effect. This also affects the fraction of metals ejected outside the virial radius, with less metals being ejected in the lower resolution runs.
 
 %\label{lastpage}
-
-\setcounter{section}{0}%
-\renewcommand\thesection{\thechapter.\Alph{section}}
-
 
 
 \renewcommand\thesection{\thechapter.\arabic{section}}
