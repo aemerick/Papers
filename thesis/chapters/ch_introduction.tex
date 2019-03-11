@@ -1,7 +1,11 @@
 \chapter[Introduction]{Introduction}
 \label{ch:intro}
-\vspace{-16pt} \begin{chapquote}{----} \singlespacing Some cool quote (optional)
+\vspace{-16pt} 
+\begin{chapquote}{Isaac Asimov} \singlespacing The most exciting phrase to hear in science, the one that heralds discoveries, is not ‘Eureka!’ but ‘Now that’s funny…
 \end{chapquote} \vspace{-8pt}
+\begin{chapquote}{Brian W. Kernighan} \singlespacing Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it
+\end{chapquote} \vspace{-8pt}
+
 \noindent\makebox[\linewidth]{\rule{0.5\textwidth}{0.5pt}} \vspace{1pt}
 
 
@@ -10,7 +14,31 @@
 % \frac{\mathrm{d}}{\mathrm{d}t} \int_S \mathbf{B} \cdot \mathrm{d}S = 0,f
 % \eeq
 
-Text
+Galaxies are amalgamations of gas and stars embedded in dark matter halos, formed over cosmic time as the products of the hierarchical assembly that follows from the collapse of primordial density fluctuations that arose after the Big Bang. The gravitational pull of dark matter controls the growth of structure in the Universe which, as is predicted from $\Lambda$CDM cosmology, TEXT HERE. While, broadly speaking, the evolution of baryons is dominated by the gravitational pull of dark matter, the beautiful simplicity of the evolution of dark matter and $\Lambda$CDM is muddied by their existence. The complexities of hydrodynamics, magnetohydrodynamics, thermodynamics, chemistry, radiative processes, and nucleosynthesis -- or, ``astrophysics'' for short -- drives these deviations and gives rise to the Universe that we observe and interact with and -- not least of all -- us. It is understanding the rich set of physics that formed our own Galaxy and the countless galaxies scattered throughout the Universe that motivates this work. 
+
+
+A substantial slice of modern astrophysics has been devoted towards understanding the chemical evolution -- the abundances of individual elements in space and time -- of the Universe. With the exception of H, He, and trace amounts of light elements, such as Li, all of the elements in the Universe are produced in nuclear reactions in the cores of stars, massive star stellar winds, asymptotic giant branch (AGB) winds of low mass stars, and more exotic sites like nuetron star - neutron star mergers (NS-NS). See \cite{Nomoto2013, Thielmann2017, Frebel2018} for recent reviews on this topic as it applies to studies of galactic and stellar evolution. 
+
+Discuss interest in galactic CE today with observational landscape (and upcoming observations). 
+
+Mention simulations here somewhere (a la naab and ostriker)
+
+Mention study of dwarf galaxies instead of MW first as way to simulate physics in detail and build up undserstanding to more massive regimes. Lead into physics that is important below.
+
+
+\section{Star Formation and Stellar Feedback}\label{sec:section1}
+
+As elements are synthesized throughout stellar evolution, any framework for modelling galactic evolution requires an understanding of both where, how, and with what properties stars form in a galaxy. 
+
+As described above, the nucleosynthetic sites of 
+
+% maybe a section on each FB method? R
+
+\subsection{Star Particles in Simulations}
+
+\subsection{Stellar Radiation Feedback}
+\ref{sec:radiation}
+
 
 \section{Ingredients of Galactic Evolution}
 
@@ -27,7 +55,13 @@ Cover (briefly) each enrichment source and dominant production elements.
 
 \subsection{Metals in Local Group Dwarfs}
 
-\subsubsection{Metal Retention / Ejection}
+Until recently, the study of chemical evolution in Local Group dwarf galaxies has focused predominantly on the stellar component. This is due in large part because, though dwarf galaxies have higher gas fractions than more massive galaxies \citep{Geha2006}, many of these galaxies have undergone environmental stripping processes, rendering them devoid of a measurable gas component \citep{GrcevichPutman2009}. 
+
+% mention difficulties of measuring gas phase abundances in dwarf galaxies?
+
+\subsubsection{Galactic Winds: Metal Retention / Ejection}
+
+Stellar feedback drives outflows, galactic winds, from galaxies across all scales (references). Dwarf galaxies in particular, with their relatively shallow potential wells, drive effective galactic winds, with mass loading factors ($\eta$ = $\dot{\rm{M}}_{\rm out} / {\rm SFR}$) ranging from XXX to XXX (cite, muratov etc.). How exactly stellar feedback couples to the ISM to drive these stellar winds is still uncertain, and is the topic of substantial ongoing research, but effective winds 
 
 \subsubsection{Stellar Abundances}
 
@@ -42,13 +76,6 @@ Cover (briefly) each enrichment source and dominant production elements.
 Definitely have a lot here. Motivate need for better understanding of mixing processes in galaxies. \citep{SchonrichWeinberg2019}
 
 
-\section{Stellar Feedback}\label{sec:section1}
-
-Overview
-
-% maybe a section on each FB method? R
-
-\subsection{Star Particles in Simulations}
 
 %
 %
@@ -57,8 +84,14 @@ Overview
 
 \section{Structure of Dissertation}\label{sec:structure}
 
-In Chapter \ref{ch:chapter1} I...
+In this work we investigate the role of both stellar feedback and mixing in a multi-phase ISM in driving galactic chemical evolution. Using a novel method for following star formation and stellar feedabck in galaxy-scale hydrodynamics simulations, we provide significant insight into how individual metals from distinct nucleosynthetic sites enrich the ISM, how their abundances are set and imprinted upon newly formed stars, and how they are ejected from galaxies through galactic winds. 
 
-%In Chapter \ref{ch:chapter2}
+In Chapter \ref{ch:chapter1} \citep[published as ][]{Emerick2019}, we motivate the need for a new model of star formation and stellar feedback to address the open uncertainties in galactic chemical evolution. We implement such a model, which follows stars as individual star particles over a fully sampled IMF, in hydrodynamics simulations of an isolated, low-mass dwarf galaxy. We describe in detail the physics included in these simulations, including a stellar feedback model that follows stellar radiation, stellar winds, and supernovae. We find that RESULTS
 
-We conclude in Chapter \ref{ch:conclusion} and briefly discuss future work as extensions of this Dissertation.
+In Chapter \ref{ch:chapter2} \citep[published as ][]{Emerick2018a}, we investigate how stellar ionizing radiation feedback impacts the evolution of our simulated low mass dwarf galaxy. We confirm the findings in recent works, as dicsussed in Section~\ref{sec:radiation}, that find that stellar radiation is an important source of pre-supernova feedback that regulates star formation and can help drive galactic outflows outflows. We additionally investigate how radiation feedback couples to the ISM to drive galactic winds by demonstrating that the ionization of gas far from individual ionzing sources, out into the disk-halo interface of our galaxy, creates low-density channels through which supernovae can readily drive gas and metals into and beyond the galaxy's CGM. This suggests that not only is the local deposition of energy from stellar radiation important, which quickly destroys dense gas in stellar birth-sites, but also long-range effects are important to consider in a consistent model of stellar feedback.
+
+In Chapter \ref{ch:chapter3} \citep[published as ][]{Emerick2018b}, we dive in detail into the evolution of each of the 15 individual metal species that we follow in our simulation. We focus primarily on the evolution of the gas-phase abundances of these metals, and how the site of nucleosynthesis (e.g. AGB winds or SNe) drives the subsequent evolution of each species. We find that elements released in lower energy enrichment sources (e.g. AGB winds) mix less effectively in the ISM across all phases than elements released in higher energy enrichment sources (e.g. SNe). Likewise, energy difference associated with their enrichment directly impacts their ability to couple to galactic outflows. We find that elements released in AGB winds are retained at a higher fraction (by a factor of $\sim$ 4-5) than elements released in SNe. 
+
+In Chapter \ref{ch:chapter4} we discuss recent, unpublished results which build upon the work in Chapter~\ref{ch:chapter3} by investigating in more detail how energy, spatial location within the galaxy, and galaxy SFR affect the mixing and ejection of metals for individual enrichment events. With a more detailed study, we again confirm that metal mixing in the ISM and ejection in galactic winds depends upon the energy of the enrichment event, sampling event energies from AGB winds ($\sim$ erg) to hypernovae ($\sim 10^{52}$~erg).
+
+Finally, we conclude in Chapter \ref{ch:conclusion} and briefly discuss future work as extensions of this Dissertation.
