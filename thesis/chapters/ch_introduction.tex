@@ -28,8 +28,14 @@ It should be obvious now to the reader why there remains so much to be learned a
 
 The observational landscape today is primed for developing a more detailed understanding these processes. Recent observational campaigns such as SEGUE \citep{Yanny2009}, RAVE \citep{Kunder2017}, the Gaia-ESO survey \citep{Gaia}, APOGEE and APOGEE2 \citep{APOGEE2010,APOGEE}, GALAH \citep{GALAH,Buder2018}, as well as upcoming observations, such as the Local Volume Mapper as part of SDSS-V, have generated tremendous amounts of information on detailed stellar abundnaces and stellar kinematics in our Milky Way and nearby Local Group dwarf galaxies. One of the most powerful proposed uses of this enormous trove of data is chemical tagging \citep{Freeman2002}, whereby stellar populations are analyzed in chemical space and 6D phase space to identify co-eval and co-natal groups of stars. This process of galactic archeaology aims to break down and identify each distinct stellar component of our Galaxy, explaining the process of their formation and evolution. Substantial work has been made recently to determine the efficacy of this approach \citep[e.g.][]{Armillotta2018}, yet the physical processes that give rise to stellar abundances as we observe them today are still uncertain. The excitement at the availability of this data does not even mention 
 
-One of the most common ways to model and understand the stellar populations of galaxies in high-dimensional chemical space is through simplified one-zone (or many-zone) models. This treatment extends back to XXX, where galaxies were treated as closed-box systems of gas and stars with simple approximations such as the instantaneous recycling of metal yields from massive stars and homogenous mixing. While simple, these models have been used extensively to explain the mean evolution of stars in chemical space in individual galaxies. 
+%
+% 
+%
+\textbf{Not quite sure if onez models should be its own section:} One of the most common ways to model and understand the stellar populations of galaxies in high-dimensional chemical space is through simplified one-zone (or many-zone) models. This treatment extends back many decades \citep[e.g.][]{Schmidt1963,TalbotArnett1971,Lynden-Bell1975}, where galaxies and their total metal abundance were treated as closed-box systems of gas and stars. Over the interveaning decades these models have improved, including perscriptions for gas outflow (a ``leaky-box") or gas inflow (``accreting box"), or both (a ``bathtub" model, e.g. \cite{FinlatorDave2008,Bouche2010}). The assumptions that go into these models vary dramatically with complexity. Simple models can assume, for example, that long-lived low mass stars do not contribute to metal enrichment while metals from massive stars are instantaneously recylced into the galaxy's gas reservoir (i.e. ignoring stellar lifetimes) or that all metals mix instantly and homogenously. More complex models . 
 
+Regardless of the assumptions that go into these models, they are powerful tools used 
+
+ with simple approximations such as the instantaneous recycling of metal yields from massive stars and homogenous mixing. While simple, these models have been used extensively to explain the mean evolution of stars in chemical space in individual galaxies.  
 
 Mention simulations here somewhere (a la naab and ostriker)
 
@@ -37,23 +43,13 @@ Mention simulations here somewhere (a la naab and ostriker)
 Mention study of dwarf galaxies instead of MW first as way to simulate physics in detail and build up undserstanding to more massive regimes. Lead into physics that is important below.
 
 
-\section{Observations of Local Group Dwarf Galaxies}
-
-
-\subsection{Metals in Local Group Dwarfs}
-
-Until recently, the study of chemical evolution in Local Group dwarf galaxies has focused predominantly on the stellar component. This is due in large part because, though dwarf galaxies have higher gas fractions than more massive galaxies \citep{Geha2006}, many of these galaxies have undergone environmental stripping processes, rendering them devoid of a measurable gas component \citep{GrcevichPutman2009}. 
-
-% mention difficulties of measuring gas phase abundances in dwarf galaxies?
-
-\subsubsection{Galactic Winds: Metal Retention / Ejection}
-
-Stellar feedback drives outflows, galactic winds, from galaxies across all scales (references). Dwarf galaxies in particular, with their relatively shallow potential wells, drive effective galactic winds, with mass loading factors ($\eta$ = $\dot{\rm{M}}_{\rm out} / {\rm SFR}$) ranging from XXX to XXX (cite, muratov etc.). How exactly stellar feedback couples to the ISM to drive these stellar winds is still uncertain, and is the topic of substantial ongoing research, but effective winds 
 
 
 \section{Ingredients of Galactic Chemical Evolution}
 
 We give a primer on how to model galactic evolution in hydrodynamics simulations. We focus on the physics needed to simulate galaxies (cooling, heating, chemistry, star formation, feedback, etc.) as it pertains to the aspects of galactic chemical evolution examined in this dissertation. This is meant to be a broad overview of the physical processes modelled in such simulations, focusing on aspects of their implementation rather than the derivation of theory behind such processes. While important, the latter is better reserved for a much more detailed work (i.e. textbook), and focusing on the former gives a much more accurate represenation of the actual work done for this dissertation. This discussion includes a very brief overview of hydrodynamics and the numerical methods used in this work in Section~\ref{intro:sec:hydrodynamics}, nucleosynthesis and stellar evolution in Section~\ref{intro:sec:nucleosynthesis}, star formation and star particles in Section~\ref{intro:sec:sf} and Section~\ref{intro:sec:stars},
+
+But first, we note that Astronomy jargon is full of idiosyncrisies. As metioned before, the word ``chemical" in the ``galactic chemical evolution" is a bit of a misnomer. This is commonly applied simply to refer to studies interested in the evolution of metal abundances (either as a whole, or for individual isotopes) in galaxies over time, and less often to the astrochemistry that those elements may participate in. Likewise, ``metals" refers broadly to every element except H and He. Throughout this dissertation we often refer to the metallicity ($Z$) of a galaxy, its gas, or its stars. This quantity represents the total mass fraction of all metals -- and is computed as such in our simulations -- but we note that this is impossible to measure the abundances of all metals in astrophysical contexts outside our own Solar System. The metallicity of our own Sun ($Z_{\odot}$), for example, is still uncertain \citep{Asplund2009}. Instead, most observational works adopt Fe as a proxy for total metallicity in stars (due to its many, strong absorption lines) and O as a proxy in gas abundances (as it is the most abundant metal in the Universe and has convenient, strong emisson lines). These metallicity proxies are commonly reported in some form of normalized abundance ratio. For stellar metallicities, this is given in the form [A/B], where [A/B] = log($N_A / N_B$) - log($N_A / N_B$)$_{\odot}$, and $N$ refers to the number of atoms of a given element (usually as [Fe/H]). Confusingly, gas-phase abundances are commonly reported as just log($N_A / N_B$), often with the somewhat arbitrary normalization of 12, or log(O/H) + 12, for example.
 
 \subsection{Hydrodynamics}
 \textit{(This will be a sub-section of something, but putting here for now as placeholder).}
@@ -72,13 +68,9 @@ In this Dissertation, we make use of the adaptive-mesh refinement (AMR) hydrodyn
 
 \subsection{Nucleosynthesis and Stellar Evolution} \label{intro:sec:nucleosynthesis}
 
-Cover (briefly) each enrichment source and dominant production elements. 
 
-% maybe a section on our own galaxy
 
-%\subsection{Star Formation and Stellar Feedback}\label{intro:sec:sffb}
-%
-%As elements are synthesized throughout stellar evolution, any framework for modelling galactic evolution requires an understanding of both where, how, and with what properties stars form in a galaxy. 
+
 
 \subsection{Star Formation} \label{intro:sec:sf}
 
@@ -110,7 +102,7 @@ Although not included in this dissertation, for the sake of completeness, we men
 \subsubsection{Supernova Feedback}
 \label{intro:sec:supernovae}
 
-In the simplest model, supernova feedback is treated as the injection of pure thermal energy (and mass) into the fluid element(s) that are host / closest to the chosen site of a supernova explosion. In self-consistent models of star formation and feedback these sites are usually actual star particles, but this does not have to be the case. The first models which included supernova feedback lacked the spatial / mass resolution to resolve individual (or even collective) SN events. This is the source of the commonly known ``overcooling" problem, whereby too little energy is injected into too much mass such that the affected region only reaches modest temperatures ($T \lessim 10^5$~K, as opposed to $T > 10^7$~K, or so). This temperature is right around the peak of the cooling curve, and thus the energy is rapidly radiated away before the injected energy has any time to make a significant dynamical impact of the galaxy. This is still a problem today in large-box simulations of cosmological volumes which have insufficient resulution to resolve individual SNe. While some of the initial, ad-hoc fixes for this problem (e.g. turning off cooling for some time in SN affected fluid elements, decoupling SN affected SPH particles from the hydrodynamics for some time) are still in use today, some notable advancements have been made to employ some combination of kinetic, momentum, and thermal energy feedback to attempt to capture SNe in a more consistent fashion \citep[e.g.][]{Hopkins2014,Simpson2015,Hopkins2018}.
+In the simplest model, supernova feedback is treated as the injection of pure thermal energy (and mass) into the fluid element(s) that are host / closest to the chosen site of a supernova explosion. In self-consistent models of star formation and feedback these sites are usually actual star particles, but this does not have to be the case. The first models which included supernova feedback lacked the spatial / mass resolution to resolve individual (or even collective) SN events. This is the source of the commonly known ``overcooling" problem, whereby too little energy is injected into too much mass such that the affected region only reaches modest temperatures ($T \lesssim 10^5$~K, as opposed to $T > 10^7$~K, or so). This temperature is right around the peak of the cooling curve, and thus the energy is rapidly radiated away before the injected energy has any time to make a significant dynamical impact of the galaxy. This is still a problem today in large-box simulations of cosmological volumes which have insufficient resulution to resolve individual SNe. While some of the initial, ad-hoc fixes for this problem (e.g. turning off cooling for some time in SN affected fluid elements, decoupling SN affected SPH particles from the hydrodynamics for some time) are still in use today, some notable advancements have been made to employ some combination of kinetic, momentum, and thermal energy feedback to attempt to capture SNe in a more consistent fashion \citep[e.g.][]{Hopkins2014,Simpson2015,Hopkins2018}.
 
 High resolution simulations, like those developed in this dissertation, can typically resort to utilizing pure thermal energy injection into the fluid elements surrounding the supernova site and avoiding artificial ``overcooling". This is true for simulations with typical spatial / mass resolutions better than a few pc / 10 M$_{\odot}$ \citep{Simpson2015,Hu2018,Smith2018b}. However, a spatial resolution requirement is a density dependent statement; in this case supernovae that occur in the densest gas ($n > 10^{2-3}$~cm$^{-3}$) may still be under-resolved and ineffective. In this case, accounting for feedback processes from massive stars that occur before the first core collapse SN in a given star formation event becomes critical \citep{Hu2016}. Including these physics, as discussed below, greatly reduces the typical ISM densities in which SNe occur, greatly increasing the likelihood that these events are well resolved.
 
@@ -125,6 +117,27 @@ Non-ionizing radiation also contributes to the regulation of star formation and 
 \label{intro:sec:stellarwinds}
 
 Stellar winds, in addition to stellar radiation, are a potentially important source of pre-SN feedback that helps regulate star formation in / around the birth clouds of newly formed stars. However, the hot ($T>10^{6}$~K), fast ($v \sim 10^{3}$~km~s$^{-1}$) winds from massive stars \citep{Weaver1977} are challenging to model self-consistently in galaxy-scale simulations. For this reason, there has been comparatively little research on how they affect global galaxy properties, even though some models do include their energy injection in an integrated / approximate fashion \citep[e.g.][]{FIRE}. However, stellar winds, from both massive stars and weaker winds from the AGB phase of low mass stars, are important sources of metal enrichment. For these reasons we do include a simplified model for stellar wind feedback in this disseration.\footnote{Although we do not have conclusive results to this end, initial examination of our simulations has shown that our stellar wind model is only globally important in experimental simulations where radiation feedback is ignored. It is thus likely subdominant to radiation feedback.}
+
+\section{Observations of Local Group Dwarf Galaxies}
+
+
+\subsection{Metals in Local Group Dwarfs}
+
+Until recently, the study of chemical evolution in Local Group dwarf galaxies has focused predominantly on the stellar component. This is due in large part because, though dwarf galaxies have higher gas fractions than more massive galaxies \citep{Geha2006}, many of these galaxies have undergone environmental stripping processes, rendering them devoid of a measurable gas component \citep{GrcevichPutman2009}. 
+
+% mention difficulties of measuring gas phase abundances in dwarf galaxies?
+
+\subsection{Metals in the ISM and CGM of Dwarf Galaxies}
+
+The proximity of Milky Way dwarf galaxy satellites allows us to make some of the most detailed extragalactic stellar abundances measurements. 
+
+Stellar feedback drives outflows, galactic winds, from galaxies across all scales (references). Dwarf galaxies in particular, with their relatively shallow potential wells, drive effective galactic winds, with mass loading factors ($\eta$ = $\dot{\rm{M}}_{\rm out} / {\rm SFR}$) ranging from XXX to XXX (cite, muratov etc.). How exactly stellar feedback couples to the ISM to drive these stellar winds is still uncertain, and is the topic of substantial ongoing research, but effective winds 
+
+\subsection{Leo P: A Case Study}
+
+We dedicate this section to a specific Local Group dwarf galaxy, Leo P, as its observed properties motivate the initial conditions of the simulations developed in this dissertation. This galaxy is remarkable for being one of the lowest mass dwarf galaxies with observed, ongoing star formation. It is located at a distance of $\sim$ XXX (cite), and was first discovered in HI (cite). Since then, multiple studies have examined its star formation history (cite), gas phase metal abundance as traced through emission in an HII region (cite), stellar abundances (cite), and, most recently, resolved spectroscopy of both the gas and stars
+
+
 %
 %
 %
