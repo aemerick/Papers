@@ -211,7 +211,7 @@ Constraining the gas scale height in ultra-faint dwarf galaxies observationally 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.975\linewidth]{figures/ch1/scale_height}
+\includegraphics[width=0.75\linewidth]{figures/ch1/scale_height}
 \caption{The total gas scale height at various times throughout the simulation. These times match the images in Figs.~\ref{fig:ch1:panel_x} and ~\ref{fig:ch1:panel_z}.}
 \label{fig:ch1:scale_height}
 \end{figure}
@@ -252,8 +252,8 @@ These results are in contrast with those found for the more massive dwarf galaxy
 
 \begin{figure*}
 %\centering
-\includegraphics[width=0.45\linewidth]{figures/ch1/phase_mass_fraction_evolution_log.png}
-\includegraphics[width=0.45\linewidth]{figures/ch1/phase_volume_fraction_evolution_log.png}
+\includegraphics[width=0.475\linewidth]{figures/ch1/phase_mass_fraction_evolution_log.png}
+\includegraphics[width=0.475\linewidth]{figures/ch1/phase_volume_fraction_evolution_log.png}
 \caption{The evolution of the mass and volume fractions for each phase of the model galaxy's ISM. See Appendix~\ref{appendix:phases} for definitions of each phase.}
 \label{fig:ch1:ISM_evolution}
 \end{figure*}
@@ -266,20 +266,20 @@ The interstellar radiation field (ISRF) of our galaxy varies dramatically in bot
 The bottom panel gives the HI ionizing photon flux from stellar radiation. The ionizing radiation profile follows a similar trend, yet with significantly more variation, anywhere from two to four orders of magnitude. As this radiation is followed through radiative transfer, the profile encodes information about local attenuation by dense, neutral gas. This is the main driver of the differences between the two panels. The total fluctuation in both panels is due in part to the low-level, stochastic star formation in our galaxy. A higher star formation rate would produce a more regular population of massive stars and more uniform (in time) ISRF.
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{figures/ch1/G_o_profile} \\
-\includegraphics[width=0.95\linewidth]{figures/ch1/ionizing_photon_profile}
+\includegraphics[width=0.475\linewidth]{figures/ch1/G_o_profile}
+\includegraphics[width=0.475\linewidth]{figures/ch1/ionizing_photon_profile}
 \caption{
 Azimuthally averaged radial profiles of the ISRF in the mid-plane of our galaxy in two different bands, time-averaged over 50 Myr from 300 -- 350~Myr. Here we define the midplane as within 2.5~$dx$ of z = 0, or 4.5~pc. The top panel gives $G_{\rm o}$, the flux of radiation between 6--13.6 eV normalized to the value in the solar neighborhood, shaded between minimum and maximum values at each position, with the average shown as a black line. The bottom panel gives the HI ionizing stellar radiation flux. Since this radiation is tracked directly through radiative transfer, the minimum value at all radii is 0 at some point. For this reason we only shade between the first quartile and maximum values. HeI ionizing radiation is very similar to HI ionizing radiation, with a small vertical offset, and is not shown for clarity. In the top panel, the minimum of the vertical axis is the UVB value of $G_o$.}
 \label{fig:ch1:ISRF}
 \end{figure}
 
-\begin{figure*}
+\begin{figure}
 %\centering
-\includegraphics[width=0.45\linewidth]{figures/ch1/g_o_2D_phase}
-\includegraphics[width=0.45\linewidth]{figures/ch1/q_o_2D_phase}
+\includegraphics[width=0.475\linewidth]{figures/ch1/g_o_2D_phase}
+\includegraphics[width=0.475\linewidth]{figures/ch1/q_o_2D_phase}
 \caption{Single-snapshot 2D radial profile plots at 300~Myr of the ISRF in two flux bands, $G_{\rm o}$ and HI ionizing radiation, illustrating the full dynamic range of radiation flux at a given radius in the galaxy. Here, we include all gas within the mid-plane of our dwarf galaxy. Since a majority of the mass of the galaxy is in the cold phase (see Fig.~\ref{fig:ch1:phase}), and is therefore optically thick to HI ionizing radiation, it does not show up in the HI ionizing radiation diagram. This gas readily appears in the $G_{\rm o}$ diagram since we assume it to be optically thin, though we do apply a localized shielding approximation.}
 \label{fig:ch1:ISRF_2D}
-\end{figure*}
+\end{figure}
 
 To further quantify the local variations in these radiation fields, we present the full distribution of $G_{\rm o}$ and the HI ionizing flux in Fig.~\ref{fig:ch1:ISRF_2D} at a single snapshot at 300~Myr. This diagram shows how dramatic the increase in ISRF near young, massive stars is (the spikes in both diagrams), while much of the mid-plane sees an ISRF orders of magnitude lower. The striking contrast between the two diagrams is due to the shielding of the HI ionizing flux in the most massive (cold and dense) regions of the galaxy through the radiative transfer calculations; shielding of the FUV radiation is approximate and in general weaker, making these regions more prominent in the left hand figure (the pink/white clumps). From both of these diagrams, it is clear that the ISRF of a low mass dwarf galaxy varies greatly over time and space in a way that cannot be appropriately captured by an analytic profile. Although one could adopt an averaged radial profile to provide a realistic, global source of energy for thermal pressure support of the gas against collapse, it is unclear how sufficient this would be in suppressing star formation. In particular, the large increases around sites of recent star formation could be important sources of feedback to destroy molecular clouds and reduce their effective star formation efficiency. It remains to be seen which of these two modes of feedback is more important in regulating star formation.
 
@@ -297,8 +297,8 @@ The total mass outflow rates and mass loading factors at 0.1, 0.25, 0.5, and 1.0
 Interestingly, the v$_{\rm c}\sim$ 30 km s$^{-1}$ halos examined in \citet{Muratov2015} are more massive than the M$_{\rm vir} = 2.5\times 10^9$ M$_{\odot}$ halo examined here by a factor of a few. Using a fit provided in \citet{Muratov2015} to extrapolate and compare $\eta$ at fixed halo mass, one would expect mass loading factors on order of 100 at 0.25 R$_{\rm vir}$ for our dwarf galaxy, a factor of a few higher than what we find. These differences could be attributed to our lack of cosmological evolution in these isolated simulations, but ultimately requires a larger set of dwarf galaxy simulations to make a more robust comparison. We note, however, that our results are closer to the \citet{Muratov2015} results than those in \citet{Hu2016,Hu2017}, which find lower mass loading factors even closer to the disk, at 0.05 $R_{\rm vir}$, between 1 and 10 for a dwarf galaxy with M$_{\rm vir} = 10^{10}$ M$_{\odot}$; certainly this implies even smaller mass loading factors at 0.25 $R_{\rm vir}$.
 
 \begin{figure*}
-\includegraphics[width=0.45\linewidth]{figures/ch1/total_mass_outflow}
-\includegraphics[width=0.45\linewidth]{figures/ch1/total_mass_loading}
+\includegraphics[width=0.475\linewidth]{figures/ch1/total_mass_outflow}
+\includegraphics[width=0.475\linewidth]{figures/ch1/total_mass_loading}
 \caption{Spherical mass outflow rates (Eq.~[\ref{eq:dotM}]) and mass loading rates over time at 4 different radii from the galaxy.}
 \label{fig:ch1:mass_outflow}
 \end{figure*}
@@ -306,7 +306,8 @@ Interestingly, the v$_{\rm c}\sim$ 30 km s$^{-1}$ halos examined in \citet{Murat
 Detailed outflow properties, beyond outflow rates and mass loading factors, can help discriminate between the model dependent feedback physics included in galaxy simulations. In Fig.~\ref{fig:ch1:outflow_velocity} we present radial velocity distributions of all material outside our dwarf galaxy's disk, and within the halo, broken into three gas phases. Gas with a negative velocity is moving towards the center of the halo. Roughly 25\% of this mass is inflowing, mostly with modest negative velocities, and corresponds to previously ejected gas mixing and recycling throughout the halo. Half of the outflowing gas (positive velocities) is moving at velocities below 30 km s$^{-1}$, 75\% at velocities below 70 km s$^{-1}$, and 95\% at velocities below 100 km s$^{-1}$. Although the mass contained in the tails of these distributions is a sub-dominant fraction of the total, there is still a non-negligible amount of gas moving at velocities of a few hundreds of km/s, with a peak velocity of over 700 km s$^{-1}$. The WNM and WIM together dominate the mass of both the inflowing and outflowing gas, with the WIM and HIM dominating at velocities above 200 km s$^{-1}$. The dominant launching mechanism in this simulation is SN feedback, which generates a rapidly moving and volume-filling WIM and HIM, consistent with the results in \citet{Hu2016,Hu2017}. However, as shown, the HIM, which is mostly the SN ejecta itself, comprises very little of the outflow by mass. Most of the outflowing gas (by mass) comes from the warm phase, pushed out by the high pressure, fast moving HIM. Some of this warm gas certainly originates from adiabatically and radiatively cooled HIM, however. The amount of transfer between phases in the halo of our galaxy will be investigated in future work.
 
 \begin{figure}
-\includegraphics[width=0.95\linewidth]{figures/ch1/velocity_distribution_time_average}
+\centering
+\includegraphics[width=0.75\linewidth]{figures/ch1/velocity_distribution_time_average}
 \caption{The time averaged radial velocity distribution of outflowing material external to the disk and within the virial radius of our dwarf galaxy. This is averaged over the same time interval as Fig.~\ref{fig:ch1:ISRF}. The outflowing material is multiphase, broken into WNM, WIM, and HIM. See Section~\ref{ch1:sec:phase} for definitions of these regimes. We note that WNM is often labeled simply as ``cold'', or gas below $T = 10^{4}$~K. There is little to no outflowing mass in the CNM.}
 \label{fig:ch1:outflow_velocity}
 \end{figure}
@@ -315,20 +316,20 @@ Detailed outflow properties, beyond outflow rates and mass loading factors, can 
 \label{ch1:sec:chemical evolution}
 
 \subsubsection{Metal Enriched Outflows}
-Dwarf galaxies efficiently, and preferentially, eject metals released in stellar feedback from their shallow potential wells \citep{MacLowFerrara1999,FerraraTolstoy2000}. This has been better quantified recently both observationally \citep[e.g.][]{Kirby2011-metals,Zahid2012,Peeples2014,McQuinn2015} and with more detailed cosmological simulations \citep{Simpson2013,Angles-Alcazar2017,Muratov2017}. In the top panel of Fig.~\ref{fig:ch1:metal_evolution}, we give the metal mass loading factor for our galaxy over time, at the same radii as in Fig.~\ref{fig:ch1:mass_outflow}. The parameter used to quantify metal outflow efficiencies varies among works. Here, we define the metal mass loading factor as the metal outflow rate divided by the metal production rate, or
+Dwarf galaxies efficiently, and preferentially, eject metals released in stellar feedback from their shallow potential wells \citep{MacLowFerrara1999,FerraraTolstoy2000}. This has been better quantified recently both observationally \citep[e.g.][]{Kirby2011-metals,Zahid2012,Peeples2014,McQuinn2015} and with more detailed cosmological simulations \citep{Simpson2013,Angles-Alcazar2017,Muratov2017}. In the left panel of Fig.~\ref{fig:ch1:metal_evolution}, we give the metal mass loading factor for our galaxy over time, at the same radii as in Fig.~\ref{fig:ch1:mass_outflow}. The parameter used to quantify metal outflow efficiencies varies among works. Here, we define the metal mass loading factor as the metal outflow rate divided by the metal production rate, or
 \begin{equation} \label{eq:eta-metal}
 \eta_{\rm metal} = \frac{\dot{M}_{\rm metal}}{\rm{SFR} \times (M_{\rm metal}/M_{*})},
 \end{equation}
 where $\dot{M}_{\rm metal}$ is the metal mass outflow rate, $M_{\rm metal}$ is the total mass in metals produced, and $M_{*}$ is the total mass in stars. These metal loading factors fluctuate significantly with the SFR, just as was shown in Fig.~\ref{fig:ch1:mass_outflow}, reaching a minimum of about 0.05, but peaking at around 5. On average, over the simulation time, $\eta_{\rm metal}$ is below unity (around 0.5). Recent simulations of outflows from a Milky Way type disk indicate typical $\eta_{\rm metal}$ comparable to our results, usually between 0.5 and 1 \citep{Li2017,Fielding2017}. \cite{Muratov2017} computes a slightly different quantity for their galaxies, the normalized metal outflow rate $\eta_{Z} = \dot{M}_{\rm metal}/{\rm SFR}$, finding values of about 0.02 at 0.25~$R_{\rm vir}$ regardless of galaxy circular velocity. Our galaxy is consistent with this value, with an average $\eta_Z = 0.015$, fluctuating between 0.007 and 0.02.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/ch1/metal_mass_loading} \\
-\includegraphics[width=0.9\linewidth]{figures/ch1/metal_retention}
-\caption{{\bf Top}: Metal mass loading factor (see Eq.[~\ref{eq:eta-metal}]) at the same radii as in Fig.~\ref{fig:ch1:mass_outflow}. This is the ratio between the metal outflow rate and the metal production rate. {\bf Bottom}: The fraction of metals contained in the disk, CGM, and outside the halo of our dwarf galaxy over time. In both panels, we consider the total mass of all individually tracked metal species, which is zero at initialization, not the aggregate total metallicity field, which is non-zero at initialization.}
+\includegraphics[width=0.475\linewidth]{figures/ch1/metal_mass_loading}
+\includegraphics[width=0.475\linewidth]{figures/ch1/metal_retention}
+\caption{{\bf Left}: Metal mass loading factor (see Eq.[~\ref{eq:eta-metal}]) at the same radii as in Fig.~\ref{fig:ch1:mass_outflow}. This is the ratio between the metal outflow rate and the metal production rate. {\bf Right}: The fraction of metals contained in the disk, CGM, and outside the halo of our dwarf galaxy over time. In both panels, we consider the total mass of all individually tracked metal species, which is zero at initialization, not the aggregate total metallicity field, which is non-zero at initialization.}
 \label{fig:ch1:metal_evolution}
 \end{figure}
 
-These large metal mass loading factors indicate that a majority of the metals produced in our dwarf galaxy are ejected from the disk. This is quantified in the lower panel of Fig.~\ref{fig:ch1:metal_evolution}, where we show the mass fraction of metals in the disk, circumgalactic medium (CGM), and outside the virial radius of our galaxy over time. After the first 20 Myr, SN-driven winds rapidly drive out large quantities of metals from the disk and into the galaxy's halo. This continues throughout the simulation, with only $\sim$4\% of produced metals residing in the disk of the galaxy. It only takes 150 Myr for some metals to reach the virial radius of the halo, with a steadily increasing fraction continually leaving the virial radius until about 350 Myr where the fraction levels off to just above 50\%. Likewise, the CGM metal content continually decreases until the end of the simulation from loss through the virial radius of the halo. See Section~\ref{ch1:sec:obs_metals} for further discussion.
+These large metal mass loading factors indicate that a majority of the metals produced in our dwarf galaxy are ejected from the disk. This is quantified in the right panel of Fig.~\ref{fig:ch1:metal_evolution}, where we show the mass fraction of metals in the disk, circumgalactic medium (CGM), and outside the virial radius of our galaxy over time. After the first 20 Myr, SN-driven winds rapidly drive out large quantities of metals from the disk and into the galaxy's halo. This continues throughout the simulation, with only $\sim$4\% of produced metals residing in the disk of the galaxy. It only takes 150 Myr for some metals to reach the virial radius of the halo, with a steadily increasing fraction continually leaving the virial radius until about 350 Myr where the fraction levels off to just above 50\%. Likewise, the CGM metal content continually decreases until the end of the simulation from loss through the virial radius of the halo. See Section~\ref{ch1:sec:obs_metals} for further discussion.
 
 \subsubsection{Differential Evolution of Elements Within the ISM}
 It is important to understand how metals from each source of stellar yields enrich the ISM. Observations of more massive dwarf galaxies than those simulated here indicate fairly uniform radial gas-phase metallicity profiles, even beyond the stellar radius \citep[e.g.][]{Werk2011,Belfiore2017}. This requires that metal mixing and transport occur on hundred megayear timescales, much more rapidly than the gigayear timescale expected from assuming transport at the cold gas sound speed. Therefore, either metals are transported first through a hot phase with high sound speed, or through efficient turbulent mixing within the ISM \citep[e.g.][]{Avillez2002,Tassis2008,YangKrumholz2012}. It remains uncertain how metal abundances vary in detail within these galaxies, beyond one-dimensional radial profiles, and whether or not abundance distributions depend on the metal species. It is even more unclear how metals are transported and distributed within low-mass dwarf galaxies, which generally host too few \ion{H}{2} regions for a detailed examination.
@@ -363,9 +364,9 @@ Although simple to measure in simulations, these quantities are challenging to d
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.475\linewidth]{figures/ch1/all_gas_schmidt_law_evolution.png}
-\includegraphics[width=0.475\linewidth]{figures/ch1/all_gas_efficiency_evolution.png}
-\caption{The Kennicutt-Schmidt law (left) and extended Schmidt law (right) relationships for our galaxy as measured every megayear, plotted as points colored by time, with dark / purple early and light / green late. See text for details of the calculation. Recent observations from the SHIELD sample \protect\citep{Teich2016} are plotted as black points with error bars. On the left, we also give the best fit line to galaxies from the FIGGS sample from \protect\cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \protect\cite{Shi2011}. There is no clear correlation with time in this diagram.}
+\includegraphics[width=0.5\linewidth]{figures/ch1/all_gas_schmidt_law_evolution.png}\\
+\includegraphics[width=0.5\linewidth]{figures/ch1/all_gas_efficiency_evolution.png}
+\caption{The Kennicutt-Schmidt law (top) and extended Schmidt law (bottom) relationships for our galaxy as measured every megayear, plotted as points colored by time, with dark / purple early and light / green late. See text for details of the calculation. Recent observations from the SHIELD sample \protect\citep{Teich2016} are plotted as black points with error bars. On the left, we also give the best fit line to galaxies from the FIGGS sample from \protect\cite{Roychowdhury2014}, and on the right we also show the best fit line and 1 $\sigma$ errors from \protect\cite{Shi2011}. There is no clear correlation with time in this diagram.}
 \label{fig:ch1:KS}
 \end{figure*}
 
@@ -557,7 +558,7 @@ Although the replacement of star formation by random SNe in these models produce
 
 \begin{figure}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/ch1/fH2.png}
+\includegraphics[width=0.75\linewidth]{figures/ch1/fH2.png}
 \caption{The final H$_2$ mass fraction in a grid of one-zone Grackle cooling models run with the same Grackle parameters and metallicity as our full hydrodynamics simulation. Each model is held at a uniform density $n = 10$~cm$^{-3}$. Each model varies either the H$^{-}$ photodetachment rate or the Lyman-Werner background over their respective UVB values by a given scale factor. Contours give factors of ten change in the H$_2$ fraction. We note the regime below 1.0 on each axis is somewhat unphysical, and is never reached in our hydrodynamics simulations.}
 \label{fig:ch1:Grackle grid}
 \end{figure}
@@ -574,9 +575,9 @@ We demonstrate the effect of varying resolution in the evolution of our galaxy m
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.33\linewidth]{figures/ch1/sfr_resolution_study.png}
-\includegraphics[width=0.33\linewidth]{figures/ch1/mass_evolution_resolution.png}
-\includegraphics[width=0.33\linewidth]{figures/ch1/metal_retention_resolution.png}
+\includegraphics[width=0.475\linewidth]{figures/ch1/sfr_resolution_study.png}
+\includegraphics[width=0.475\linewidth]{figures/ch1/mass_evolution_resolution.png}\\
+\includegraphics[width=0.475\linewidth]{figures/ch1/metal_retention_resolution.png}
 \caption{A comparison of the SFR (left), disk gas mass (middle), and metal retention (right) evolution for our fiducial run (solid), 3.6~pc run (dotted), 3.6~pc run with a doubled initial supernova driving rate (dashed), and 7.2~pc run (dash-dotted). The line colors in the left panel are for better clarity between the SFRs.}
 \label{fig:ch1:resolution_study}
 \end{figure*}
@@ -590,8 +591,8 @@ Theses differences in densities are shown clearly by comparing Fig.~\ref{fig:ch1
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.475\linewidth]{figures/ch1/3pc_phase.png}
-\includegraphics[width=0.475\linewidth]{figures/ch1/6pc_phase.png}
+\includegraphics[width=0.75\linewidth]{figures/ch1/3pc_phase.png}\\
+\includegraphics[width=0.75\linewidth]{figures/ch1/6pc_phase.png}
 \caption{Temperature-density phase diagrams for our 3.6~pc run (left) and 7.2~pc run (right), as presented for our fiducial run in Fig.~\ref{fig:ch1:phase}.}
 \label{fig:ch1:phase_resolution}
 \end{figure*}
