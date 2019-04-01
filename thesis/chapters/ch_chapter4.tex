@@ -77,7 +77,6 @@ What we can examine, however, is the final quantity of interest: the long-term e
 
 However, the metals from each source do gradually trend towards a fraction of $\sim$0.8 by the end of the 150~Myr simulation time, corresponding to the mass fraction of the CNM at this point in the galaxy's evolution (see Figure~\ref{ch1:fig:}). This trend -- that the fraction of metals contained in a given phases tends towards the mass fraction of that phase -- is true across all phases in the simulation. Therefore, we can consider that the metals for each source are well-mixed across the \textit{phases} of the ISM on timescales of $\sim$100-150~Myr. \textbf{Compute the cooling timescale of each phase (maybe with a phase diagram?) and also the dynamical timescale and make comparisons here.}. These two results suggest that the delay-time between when metals are available to enrich ongoing star formation is on order of $\sim$10~Myr across sources, and only significant for the lowest (E46, AGB-like) energy sources. Although well-mixed across phases, we emphasize that this does not imply that the abundances are the same across phases nor that the metals are spatially well-mixed across the galaxy. We investigate this second point further below.
 
-
 \subsection{Homogeneity of Mixing}
 \label{ch4:sec:spreads}
 
@@ -101,7 +100,61 @@ We note that these results are given for \textit{single} enrichment events. If m
 What this does suggest, however, is that in utilizing stars with unusual abundances at low metallicities to infer the yields of exotic enrichment sources, the spread of abundances in those stars may provide an important insight into the origin of those metals. For example, r-process enrichment from exotic enrichment events like hypernovae should manifest itself as more well-mixed than if the elements originated in lower energy NS-NS mergers.
 \textbf{Go back to reticulum papers and see what the spreads on these are}
 
-\section{Discussion}
+
+\subsection{Event-by-Event Variation}
+
+For clarity we focused on the \textit{mean} evolution of individual enrichment events at fixed injection energy in the results thus far, but we turn now to discuss how much variety exists among these individual events. For each of the discussed runs (from set II), Figure~\ref{ch4:fig:CGM_CNM_variance} shows the fraction of metals ejected from the galaxy (left) and the fraction of metals in the ISM within the CNM (right) as a function of source energy at two different times, 20~Myr (blue) and 100~Myr (orange). The averaged values at each energy are shown as points, and the bars denote the min/max value for each event energy.\footnote{While the standard deviation or IQR may be more informative here, rather than min / max, the sample size at each energy, with the exception of the E46 runs, is too small to reliably do so.} As shown, there is substantial variation at each energy. This is particularly striking for the E46 events, which seemingly can have effectively any value for $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ at any point during the evolution. It is clear that the trends discussed thus far applies to the average behavior of events at a fixed $E_{\rm ej}$, but not for an individual event. In addition, a higher $E_{\rm ej}$ seems to increase the minimum $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ expected, but the behavior of any one event must depend on additional factors.
+
+ \begin{figure*}
+   \centering
+   \includegraphics[width=0.8\linewidth]{figures/ch4/II_Ej_CNM_average}
+   \caption{A summary of the results presented in Figure~\ref{ch4:fig:CGM_CNM} that demonstrate the significant variation in $f_{\rm CGM}$ and
+   $f_{\rm CNM} / f_{\rm Disk}$ at fixed injection energy. The points give the average values at each energy at two different times, while the
+   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II_E52_r0 and II_E52_r300 without averaging.}
+   \label{ch4:fig:CGM_CNM_variance}
+ \end{figure*}
+
+But what causes this variation among individual events? Do additional properties about the injection site (ISM density, position, local SFR), determine the subsequent evolution? Or is this the result of a complex, non-deterministic set of complex interactions the metals from a given event experience over their lifetime in the galaxy? We investigate the dependence on a few of these properties below.
+
+\subsection{Dependence on Radial Position}
+\label{ch4:sec:radial position}
+We place each source in regular, but arbitrary, positions in the galaxy without consideration for the local ISM conditions at injection. Sources are placed at the center of the galaxy ($r = 0$~pc) or at various radii (at cardinal positions at 300~pc, and 600~pc), all in the mid-place of the galaxy. Since the E46 events were likely to not self-interact, we additionally placed events at $r = 100$~pc and one event at each $r$ at about one scale height above the disk ($z = 50$~pc). For each II run, we plot $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ as a function of radial position in the galaxy for each event. The points, error bars, and colors are the same as in Figure~\ref{ch4:fig:CGM_CNM_variance}.
+
+ \begin{figure*}
+   \centering
+   \includegraphics[width=0.95\linewidth]{figures/ch4/II_radial_dependence}
+   \caption{A summary of the results presented in Figure~\ref{ch4:fig:CGM_CNM} that demonstrate the significant variation in $f_{\rm CGM}$ and
+   $f_{\rm CNM} / f_{\rm Disk}$ at fixed injection energy. The points give the average values at each energy at two different times, while the
+   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II_E52_r0 and II_E52_r300 without averaging.}
+   \label{ch4:fig:CGM_CNM_variance}
+ \end{figure*}
+
+\subsection{Variation with Local ISM Conditions}
+\label{ch4:sec:ISM density}
+
+ Although the exact positions of each event are arbitrarily chosen, we compute the average ISM properties within a 4-zone radius ($4 \times dx$=7.2~pc) around each injection site to examine any potential correlations in evolution with ISM properties.\footnote{Note that the injection region for each event is a 3-cell radius sphere mapped onto the grid with a CIC interpolation scheme.} In Figure~\ref{ch4:fig:ISM_variance} we plot $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ for each II run as a function of the average number density ($<n>$) in the injection region within 0.1~Myr (our time resolution) of the event.
+
+ \begin{figure*}
+   \centering
+   \includegraphics[width=0.95\linewidth]{figures/ch4/II_n_dependence}
+   \caption{A summary of the results presented in Figure~\ref{ch4:fig:CGM_CNM} that demonstrate the significant variation in $f_{\rm CGM}$ and
+   $f_{\rm CNM} / f_{\rm Disk}$ at fixed injection energy. The points give the average values at each energy at two different times, while the
+   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II_E52_r0 and II_E52_r300 without averaging.}
+   \label{ch4:fig:CGM_CNM_variance}
+ \end{figure*}
+
+
+\subsubsection{Variation with SFR}
+\label{ch4:sec:SFR}
+
+Finally, we examine the companion runs (I and III) to see if the global star formation rate of the galaxy drives variation in these results. Although this does not help to directly account for the variation seen in the previous plots, this could provide insight into how SFR (in an averaged sense) affects the evolution of metals. We note that correlation with SFR is of interest not because the formation of stars by themselves, but rather the increase in feedback associated with a higher SFR (and thus a warmer / hotter ISM, greater turbulence in the ISM, and more significant outflows).
+
+
+\section{Discussion and Conclusions}
+
+Galactic chemical evolution is far from ``one-zone" and metal mixing is clearly neither homogeneous nor instantaneous. In addition, the
+
+Variations with individual events in the above results suggests that it would be challenging to make any conclusive statements about the enrichment behavior of single enrichment sources. This is problematic for interpreting the chemical abundances in UFDs that are likely to have been host to just a single, exotic enrichment event. Using these observations to constrain the total nucelosynthetic yields of these sources requires implicit assumptions about how quickly metals are available in star forming gas, how homogenously they are distributed throughout the galaxy, and what fraction are ejected from the galaxy. It is likely that none of these quantities can be determined as simple parameters based upon the feedback properties of a single enrichment source or even the global properties of a galaxy (such as $M_{\rm halo}$, $\Sigma_{\rm SFR}$, $\Sigma_{\rm gas}$). However, this study has shown that these parameters can be characterized in an averaged sense, even though the exact result is subject to substantial stochastic effects. This, combined with some mechanism to provide this stochasticity, can be used in combination with many runs of a simple galactic chemical evolution model to understand the possible outcomes for various XXXXX. Then, the observed properties of an individual galaxy can be mapped to this XXXXXX
 
 Not sure how much to put in here, and may very well need to just pull out some of the above and put it here.
 
