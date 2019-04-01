@@ -7,7 +7,6 @@
 
 \section{Introduction}
 
-\section*{Acknowledgments}
 
 \section{Methods}
 \label{ch4:sec:methods}
@@ -107,10 +106,10 @@ For clarity we focused on the \textit{mean} evolution of individual enrichment e
 
  \begin{figure*}
    \centering
-   \includegraphics[width=0.8\linewidth]{figures/ch4/II_Ej_CNM_average}
+   \includegraphics[width=0.8\linewidth]{figures/ch4/II_Eej_CNM_avg}
    \caption{A summary of the results presented in Figure~\ref{ch4:fig:CGM_CNM} that demonstrate the significant variation in $f_{\rm CGM}$ and
    $f_{\rm CNM} / f_{\rm Disk}$ at fixed injection energy. The points give the average values at each energy at two different times, while the
-   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II_E52_r0 and II_E52_r300 without averaging.}
+   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II\_E52\_r0 and II\_E52\_r300 without averaging.}
    \label{ch4:fig:CGM_CNM_variance}
  \end{figure*}
 
@@ -118,29 +117,27 @@ But what causes this variation among individual events? Do additional properties
 
 \subsection{Dependence on Radial Position}
 \label{ch4:sec:radial position}
-We place each source in regular, but arbitrary, positions in the galaxy without consideration for the local ISM conditions at injection. Sources are placed at the center of the galaxy ($r = 0$~pc) or at various radii (at cardinal positions at 300~pc, and 600~pc), all in the mid-place of the galaxy. Since the E46 events were likely to not self-interact, we additionally placed events at $r = 100$~pc and one event at each $r$ at about one scale height above the disk ($z = 50$~pc). For each II run, we plot $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ as a function of radial position in the galaxy for each event. The points, error bars, and colors are the same as in Figure~\ref{ch4:fig:CGM_CNM_variance}.
+We place each source in regular, but arbitrary, positions in the galaxy without consideration for the local ISM conditions at injection. Sources are placed at the center of the galaxy ($r = 0$~pc) or at various radii (at cardinal positions at 300~pc, and 600~pc), all in the mid-place of the galaxy. Since the E46 events were likely to not self-interact, we additionally placed events at $r = 100$~pc and one event at each $r$ at about one scale height above the disk ($z = 50$~pc). For each II run, we plot $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ as a function of radial position in the galaxy for each event in Figure~\ref{ch4:fig:radial position}. The points, error bars, and colors are the same as in Figure~\ref{ch4:fig:CGM_CNM_variance}.
 
  \begin{figure*}
    \centering
    \includegraphics[width=0.95\linewidth]{figures/ch4/II_radial_dependence}
-   \caption{A summary of the results presented in Figure~\ref{ch4:fig:CGM_CNM} that demonstrate the significant variation in $f_{\rm CGM}$ and
-   $f_{\rm CNM} / f_{\rm Disk}$ at fixed injection energy. The points give the average values at each energy at two different times, while the
-   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II_E52_r0 and II_E52_r300 without averaging.}
-   \label{ch4:fig:CGM_CNM_variance}
+   \caption{The dependence of $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ on the radial position of each event at two different times in the evolution of the galaxy. The meaning of each point, the error bars, and colors are the same as in Figure~\ref{ch4:fig:CGM_CNM_variance}.}
+   \label{ch4:fig:radial position}
  \end{figure*}
+
+Across runs, there is no clear dependence on the radial position of the event and the fraction of metals ejected beyond the galaxy for any of the displayed runs at either 20~Myr or 100~Myr. There is a slight increase in the minimum fraction of metals ejected from the galaxy as a function of radius for the higher energy runs ($>10^{50}$~erg). This perhaps not surprising for the largest radii as 600~pc is right near the very edge of the galaxy's disk. But again, the trend is weak and there is clearly still a great variance at both fixed $E_{\rm ej}$ and $r$.
 
 \subsection{Variation with Local ISM Conditions}
 \label{ch4:sec:ISM density}
 
- Although the exact positions of each event are arbitrarily chosen, we compute the average ISM properties within a 4-zone radius ($4 \times dx$=7.2~pc) around each injection site to examine any potential correlations in evolution with ISM properties.\footnote{Note that the injection region for each event is a 3-cell radius sphere mapped onto the grid with a CIC interpolation scheme.} In Figure~\ref{ch4:fig:ISM_variance} we plot $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ for each II run as a function of the average number density ($<n>$) in the injection region within 0.1~Myr (our time resolution) of the event.
+We compute the average ISM properties within a 4-zone radius ($4 \times dx$=7.2~pc) around each injection site to examine any potential correlations in evolution with ISM properties.\footnote{Note that the injection region for each event is a 3-cell radius sphere mapped onto the grid with a CIC interpolation scheme.} In Figure~\ref{ch4:fig:ISM_variance} we plot $f_{\rm CGM}$ and $f_{\rm CNM} / f_{\rm Disk}$ for each II run as a function of the average number density ($<n>$) in the injection region within 0.1~Myr (our time resolution) of the event.
 
  \begin{figure*}
    \centering
    \includegraphics[width=0.95\linewidth]{figures/ch4/II_n_dependence}
-   \caption{A summary of the results presented in Figure~\ref{ch4:fig:CGM_CNM} that demonstrate the significant variation in $f_{\rm CGM}$ and
-   $f_{\rm CNM} / f_{\rm Disk}$ at fixed injection energy. The points give the average values at each energy at two different times, while the
-   error bars show the min/max values at each energy. The points at different times have been offset slightly along the horizontal axes for clarity. Since they are only two points, we show the results from II_E52_r0 and II_E52_r300 without averaging.}
-   \label{ch4:fig:CGM_CNM_variance}
+   \caption{.}
+   \label{ch4:fig:ISM_variance}
  \end{figure*}
 
 
@@ -159,6 +156,8 @@ Variations with individual events in the above results suggests that it would be
 Not sure how much to put in here, and may very well need to just pull out some of the above and put it here.
 
 %************* APPENDICES ************************%
+
+%\section*{Acknowledgments}
 
 %\clearpage
 %\appendix - Liklely DO NOT use this command
