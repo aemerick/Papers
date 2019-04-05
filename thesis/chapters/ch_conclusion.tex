@@ -10,7 +10,7 @@ This \dissertation has focused on building an understanding of galactic chemical
 
 In order to address these outstanding issues in galactic evolution, we developed a new model for galactic chemical evolution that -- for the first time in galaxy-scale simulations -- follows star particles as individual stars along with their detailed feedback and metal yields. As detailed in Chapter~\ref{ch:chapter_2} we use the AMR hydrodynamics code \textsc{Enzo}, we produce a set of simulations using this model of an idealized, isolated low-mass dwarf galaxy ($M_{\rm gas} \sim 10^{6}$~M$_{\odot}$, $M_{\rm halo} \sim 3 \times 10^{9}$~M$_{\odot}$) embedded in a static dark matter potential. Using a detailed model for gas chemistry and radiative cooling, we follow the evolution of this galaxy and its multi-phase ISM as it forms stars, depositing individual star particles sampled over 1 to 100 M$_{\odot}$. We follow the feedback processes from each of these stars, including the AGB winds from low mass stars, Lyman-Werner radiation, FUV radiation (and photoelectric heating), and ionizing radiation from massive stars, and both core collapse and Type Ia supernovae. We track the metal yields for each of these stars, following 15 individual metal species as they mix within the ISM and imprint their abundances onto the sites of future star formation or are ejected from the galaxy altogether.
 
-summarize results here
+\textbf{summarize results from Ch 1 here}
 
 In ongoing work we are extending these methods by implementing them in cosmological simulations of UFD galaxy evolution. Our detailed model tracking the feedback and yields from individual stars will build substantially upon recent works investigating metal enrichment at high redshift and in UFDs and their progenitors \citep[e.g.][]{Ritter2015,Jeon2017,Corlies2018}. This work includes additional improvements to the simulations presented in this \dissertation, including a model for Pop III star formation and chemical enrichment adapted from \cite{Wise2012a}, a new IMF sampling scheme that allows us to follow very low mass stars ($M_* \lesssim 2$~M$_{\odot}$) -- which have no significant feedback or metal enrichment, but are important long-lived tracers of galactic chemical enrichment -- aggregated together into a single particle during each star formation event, and improvements to the numerical implementation to ease memory consumption in these significantly larger simulations.
 
@@ -19,10 +19,22 @@ Finally, as part of this \dissertation we additionally produced a significant se
 
 \section{Stellar Radiation Feedback in Dwarf Galaxies}
 
+Stellar radiation has recently been invoked as an important source of feedback -- in addition to supernovae -- that helps to regulate star formation and drive galactic winds in galaxies across the mass scale. This feedback channel acts immediately after the formation of massive stars and is thus an important source of pre-SN feedback. In addition to destroying cold gas in star forming regions, this acts to dramatically reduce the typical ISM densities in which SNe explode, increasing their impact. While often invoked as a source of feedback, modeling stellar radiation in galaxies in detail can be computationally expensive, with a variety of approximate methods available to reduce this expense. In our simulations we track the ionizing radiation from massive stars accurately using an adaptive ray-tracing radiative transfer method with sufficient resolution to capture the HII regions from individual stars. In Chapter~\ref{ch:chapter_2} we demonstrate that stellar ionizing radiation dramatically reduces the star formation rate and generally increases the effectiveness of galactic winds at our low-mass dwarf galaxy simulations.
+
+In addition, we explore the mechanism by which stellar radiation acts to regulate star formation and drive outflows by comparing our fiducial simulations to simulations that only account for localized ($< 20$~pc) ionization around massive stars. This second set of runs approximates the behavior of various approximations for stellar radiation feedback which do not follow radiation propagation in detail, but rather deposit energy / ionize gas in the immediate vicinity of newly formed stars. We find that star formation is regulated by ionizing radiation locally -- destroying cold gas around young, massive stars that would otherwise have formed stars -- as the $< 20$~pc restricted run (initially) shares a very similar SFR to our fiducial run. However, we find that these simulations exhibit dramatically different outflow properties, which drive long-term differences in galactic properties including SFR and metal retention. Stellar radiation at larger distance scales is important for carving out diffuse channels of gas in the ISM and into the CGM of our dwarf galaxy through which SNe can effectively blow out mass and metals from the ISM. This suggests that -- at least in low mass dwarf galaxies -- localized approximations of radiation feedback are likely insufficient to capturing the full effects of stellar radiation.
+
+\textbf{Maybe mention radiation comparison runs that will be examined in the future?}.
 
 
 \section{Mixing and Ejection of Individual Metals}
 
+\textbf{Summarize results}
+
 \section{Mixing Behavior of Single-Sources}
 
+\textbf{very briefly sSummarize results}
+
+
 \section{Future Work}
+
+\textbf{Cosmological simulations may already be mentioned above....} if so, just focus on how I implemented stuff into a onezone model to match the simualtiosn and play around iwth the effects of f$_{ej}$ and mixing timescales. say we will explore how this works and implement in larger onezone / semi-analytic models (cote). 
