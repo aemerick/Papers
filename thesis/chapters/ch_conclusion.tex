@@ -1,5 +1,28 @@
 \chapter[Conclusion]{Conclusion}
 \label{ch:conclusion}
 
-%Summarize key results 
+%Summarize key results
 
+This \dissertation has focused on building an understanding of galactic chemical evolution from the assumption that the same feedback processes that regulate star formation and drive galactic winds in galaxies also play a fundamental role in their metal enrichment. It is understood that stellar feedback plays an important role in driving metals out into the CGM and beyond in galaxies, but the exact coupling of metals to galactic winds is not well understood. This is in part because how metals mix within a multi-phase ISM to eventually be swept up in galactic outflows or mix within cold, star forming gas is not well constrained. Even more, how metals from the full range of nucleosynthetic sources, including AGB winds, stellar winds, core collapse and Type Ia supernovae, and NS-NS mergers, participate in these processes -- mixing and galactic winds -- differently has only recently been examined in efforts to better understand results from the ever increasing availability of high-quality stellar abundance measurements of stars in our own Milky Way and in nearby dwarf galaxies. In order to understand these processes and build a complete picture of metal evolution in the Universe, we have developed a new model for star formation, stellar feedback, and chemical enrichment to follow these processes in simulations of isolated dwarf galaxies. Using this model, we have made critical advancements in understanding both how stellar feedback governs the evolution of low mass dwarf galaxies and how individual metals are distributed in (and beyond) these galaxies over time. We summarize these results below, and conclude with a discussion of future research.
+
+
+\section{A New Model for Galactic Chemical Enrichment}
+
+In order to address these outstanding issues in galactic evolution, we developed a new model for galactic chemical evolution that -- for the first time in galaxy-scale simulations -- follows star particles as individual stars along with their detailed feedback and metal yields. As detailed in Chapter~\ref{ch:chapter_2} we use the AMR hydrodynamics code \textsc{Enzo}, we produce a set of simulations using this model of an idealized, isolated low-mass dwarf galaxy ($M_{\rm gas} \sim 10^{6}$~M$_{\odot}$, $M_{\rm halo} \sim 3 \times 10^{9}$~M$_{\odot}$) embedded in a static dark matter potential. Using a detailed model for gas chemistry and radiative cooling, we follow the evolution of this galaxy and its multi-phase ISM as it forms stars, depositing individual star particles sampled over 1 to 100 M$_{\odot}$. We follow the feedback processes from each of these stars, including the AGB winds from low mass stars, Lyman-Werner radiation, FUV radiation (and photoelectric heating), and ionizing radiation from massive stars, and both core collapse and Type Ia supernovae. We track the metal yields for each of these stars, following 15 individual metal species as they mix within the ISM and imprint their abundances onto the sites of future star formation or are ejected from the galaxy altogether.
+
+summarize results here
+
+In ongoing work we are extending these methods by implementing them in cosmological simulations of UFD galaxy evolution. Our detailed model tracking the feedback and yields from individual stars will build substantially upon recent works investigating metal enrichment at high redshift and in UFDs and their progenitors \citep[e.g.][]{Ritter2015,Jeon2017,Corlies2018}. This work includes additional improvements to the simulations presented in this \dissertation, including a model for Pop III star formation and chemical enrichment adapted from \cite{Wise2012a}, a new IMF sampling scheme that allows us to follow very low mass stars ($M_* \lesssim 2$~M$_{\odot}$) -- which have no significant feedback or metal enrichment, but are important long-lived tracers of galactic chemical enrichment -- aggregated together into a single particle during each star formation event, and improvements to the numerical implementation to ease memory consumption in these significantly larger simulations.
+
+Finally, as part of this \dissertation we additionally produced a significant set of companion simulations at lower resolution (3.6~pc instead of 1.8~pc) turning on and off each independent feedback process (ionizing radiation, radiation pressure, LW and FUV radiation, and supernovae). With these runs, we sought to build upon recent works examining the various effects of each stellar feedback process in driving the evolution of low mass dwarf galaxies \citep{Hu2016,Hu2017,Hu2018,Forbes2016}. In future work we will examine these completed runs in more detail to better understand the complex, interconnected role multi-channel stellar feedback plays in galactic evolution. With our simulations, we can place greater emphasis on how each feedback channel drives the mixing and ejection of individual metals within and beyond low mass dwarf galaxies.
+% Until recently, most (if not all) simulations of galaxy formation and evolution followed metal enrichment with a single, global metallicity field, ignoring the potential differential evolution across individual metals. Models for star formation and stellar feedback have also -- until recently -- made extensive use of phenomenological prescriptions to capture their effects on galactic evolution. With the increase in computational power
+
+\section{Stellar Radiation Feedback in Dwarf Galaxies}
+
+
+
+\section{Mixing and Ejection of Individual Metals}
+
+\section{Mixing Behavior of Single-Sources}
+
+\section{Future Work}
