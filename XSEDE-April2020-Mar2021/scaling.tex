@@ -1,0 +1,117 @@
+\documentclass[12pt]{article} % font size here: some require 11 or 12 point
+\usepackage{setspace}
+\usepackage{fancyvrb}
+\usepackage{epsfig}
+\usepackage{fullpage}
+\usepackage[small,compact]{titlesec}
+\usepackage{times}
+\usepackage{enumitem}
+\usepackage{wrapfig}
+\setlength{\topmargin}{+0.0in}   %%%%%%%%% this is hacked (from +.0.1in) so that it looks right when converted.
+\setlength{\oddsidemargin}{-0.0in}
+\setlength{\evensidemargin}{-0.0in}
+\setlength{\textheight}{9.0in}
+\setlength{\textwidth}{6.5in}
+\usepackage[margin=1.0in,headheight=0pt,footskip=20pt,headsep=0.2in]{geometry}
+\usepackage{natbib}
+% ----------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing % may need to switch to single spacing
+
+\usepackage{natbib}
+\usepackage{color}
+\bibliographystyle{apj}
+\newcommand{\apj}{ApJ}
+\newcommand{\apss}{Astrophysics and Space Science}
+\newcommand{\aj}{AJ}
+\newcommand{\apjl}{ApJL}
+\newcommand{\mnras}{MNRAS}
+\newcommand{\apjs}{ApJS}
+\newcommand{\pasp}{PASP}
+\newcommand{\araa}{ARA\&A}
+\newcommand{\aap}{A\&A}
+\newcommand{\aaps}{A\&AS}
+\newcommand{\pasj}{PASJ}
+\newcommand{\prd}{Phys. Rev. D}
+\newcommand{\nat}{Nature}
+\newcommand{\nar}{New Astronomy Review}
+\newcommand{\ao}{Applied Optics}
+\newcommand{\physrep}{Physics Reports}
+\newcommand{\etal}{et al}
+\def\subsun{\mbox{$_{\odot}$}}
+\def\lesssim{\mathrel{\hbox{\rlap{\hbox{%
+ \lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\gtrsim{\mathrel{\hbox{\rlap{\hbox{%
+ \lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+\RequirePackage{natbib}
+%\usepackage{setspace}
+\setlength{\bibsep}{0.0pt}
+\newenvironment{itemize*}%
+{\begin{itemize}%
+  \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+{\end{itemize}}
+
+\newenvironment{enumerate*}%
+{\begin{enumerate}%
+  \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+{\end{enumerate}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{Performance and Scaling}
+
+%\usepackage[pagestyles]{titlesec}
+%\newpagestyle{mystyle}{\sethead{}{}{Name -- Number}\setfoot{}{\thepage}{}}
+%\pagestyle{mystyle}
+
+\title{\vspace{-5ex} Performance and Scaling
+       \vspace{-2ex}}
+
+\begin{document} \thispagestyle{empty}
+
+% Star-by-Star Stellar Feedback and Chemical Evolution in Dwarf Galaxies
+
+\maketitle
+
+\textsc{Enzo} has been used extensively a range of large-scale computing resources including Blue Waters, NASA Pleiades, and Frontera \textbf{AE: need more?}, in addition to both \textsc{Stampede} and \textsc{Stampede-2}, the proposed resource. Generally, \textsc{Enzo} has been shown to achieve very good weak scaling in unigrid cosmological simulations on up to 4096 cores, and speed-ups in strong scaling tests of a 512$^3$ adamtive mesh refinement (AMR) simulation with 6 levels of refinement on up to 4096 cores. We present here the performance and scaling properties of \textsc{Enzo} in the particular context of typical computational loads of our proposed cosmological simulations.
+
+In this situation, we are primarily concerned with the strong scaling properties of \textsc{Enzo} given our proposed problem size, AMR hierarchy depth, and included physics in order to find the optimum core / node count and node type (SKX or KNL) for our desired problem. We discuss the numerical methods employed in \textsc{Enzo} relevant to our proposed problem in the main document, and begin here with a description of the methods used to achieve high-performance and good scaling on HPC systems. 
+
+\section{Computational Methods and Problem}
+
+As described in the main document, our AMR cosmological simulations are initialized in a (1~Mpc co-moving)$^3$ box with a 256$^3$ cell root-grid with 256$^3$ dark matter particles. This AMR simulation has a maximum of 12 levels of refinement to a resolution of 1~pc co-moving. 
+
+\subsection{Grid Hierarchy and Parallelization Strategy}
+
+\texttt{Enzo} AMR simulations begin with a defined rectilinear root grid encompassing the computational domain. Additional levels of refinement take the form of child sub-grids nested within the root grid, generating a nested tree comprised of grid parents, children, and siblings; for our purposes, additional sub-grids increase resolution by a factor of two. \textsc{Enzo} utilizes a patch-based AMR approach allowing for arbitrary sub-grid sizes and dimensions, which tends to reduce refinement to only those zones where it is needed, as opposed to other AMR schemes with fixed grid dimensions (e.g. oct-tree block structured AMR). Each grid is comprised of active zones and ghost zones that store boundary information from sibling grids. Each level in this tree is evolved on independent time steps, reducing unneeded computation on lower levels of refinement.
+
+Using grid objects as fundamental units that exist entirely on a single processor, \texttt{Enzo} has been parallelized with the message passing interface (MPI). Grids are therefore distributed among processors in such a way to attempt to balance the computational load across processors. This is simple for the root grid, which is evenly divided in tiles to all processors, but is more complicated for higher refinement levels, which usually are not uniformly distributed in the simulation volume. Higher levels of refinement are initially placed on the processors that host their parent grids, but are subsequently distributed among other processors to reduce computational load. Load is estimated as the number of active zones on each grid. We use a simple load-balancing option to progressively move grids from processors with high computational loads to processors with the lowest computational loads until the load ratio of the most-to-least loaded processors is less than 1.05. To improve performance further, \texttt{Enzo} dynamically adjusts the size of each sub-grid on a given level depending on the number of zones on the given level and the load balance across processors on that level. This reduces communication time across processors on each level while also improving the effectiveness of load-balancing.
+
+Each processor contains a copy of the entire grid hierarchy meta data, allowing for easy non-blocking communication across processors; the additional memory overhead of storing this data on each processor is negligible. In addition, all star particle information is stored on each processor (again, with negligible memory overhead), removing the need for communication when injecting feedback from stars close to grid boundaries.
+
+\textbf{Radiative transfer communication and load balancing}
+
+%\subsection{Radiative Transfer Methods}
+
+%\cite{WiseAbel2011} implemented radiative transfer capabilities in \texttt{Enzo}, performing rigorous tests of its capabilities, and has been used in a variety of applications \citep[e.g.][]{Wise2012a,WiseAbel2012,Wise2014, Smith2015, OShea2015, Koh2016, Regan2016a, Regan2016b}. The equations of radiative transfer are solved directly on the computational domain following directly traced rays from individual point sources. This is an inherently computationally expensive process. To improve efficiency \texttt{Enzo} employs an adaptive ray tracing method \citep{AbelWandelt2002} where rays are mapped from a point source to HEALPix pixels surrounding the source. The resulting rays are advanced through the grid, progressively refining rays by splitting them into child rays once the ratio of the cell face area to ray solid angle drops sufficiently. In a given time step, rays propagate a distance $c\times dt$, or until they either leave the computational domain or their flux drops by 99.99\% or more in a single cell. If the rays still exist at the end of the ray tracing step, their evolution is halted and stored for the next time step. The resulting ionization and heating rates due to the radiation field are computed assuming the photo-ionization and absorption rate are equal, ensuring photon conservation \citep{Abel1999, Mellema2006}. These are passed to the \texttt{Grackle} chemistry solver to update the correct ionization, chemical, and energy states in each cell.
+
+\section{Performance and Scaling Results}
+
+Profiling the exact scaling and performance results of a cosmological AMR simulation is challenging, as the total number of computational grids can vary significantly over a run. In general, however, computational expense will increase as a simulation progresses as the number of cells grow to follow dense, star forming gas, and the number of star particles grows. We tested various compile-time options for our simulations to find the optimal configuration for running on SKX nodes: compiling without the recommended SKX/KNL optimization flags, compiling with the recommended SKX-only flags (-xCORE-AVX512), and compiling with the recommended SKX/KNL flags using the TACC\_VEC\_FLAGS environment variable. For each case, we tested -O2 and -O3 optimization. We found that for fixed core counts (48 cores / node), running on SKX nodes is at least a factor a four times faster than running on KNL nodes when running on reach with SKX-only and KNL-only compiler settings respectively. Although KNL nodes allow more cores per SU -- which could make this resource the cheaper -- our computation is memory intensive. The much lower available RAM per process on KNL nodes compared to SKX makes this unavailable. For these reasons, we plan to use SKX nodes for this study. We find in each case that -O3 optimizations leads to a $\sim$25-30\% slower computation than -O2, compiling with the -xCORE-AVX512 flag leads to a $\sim$10\% speed-up, and compiling with the general TACC\_VEC\_FLAGS option is a 2-5\% slower than using the SKX-specific settings. We will use the -O2 and -xCORE-AVX512 compiler settings for this project and the remainder of these tests.
+
+In Figure~\ref{fig:weak_scaling} we present strong scaling results of our fiducial simulation run at redshift 
+
+
+\def\bibfont{\footnotesize}
+\bibliographystyle{apj}
+\bibliography{msbib}%\thispagestyle{empty}
+
+
+\end{document}
